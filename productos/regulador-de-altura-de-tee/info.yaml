@@ -1,0 +1,21 @@
+nombre: Regulador de altura de tee
+descripcion: Guía con medidas para clavar el tee siempre a la misma altura y repetir
+  tu golpe de salida.
+personalizable: Color a elección (10 colores de PLA)
+precio: 1100
+gramos: 8.9
+tiempo: 19 min
+colores:
+- verde
+- amarillo
+- negro
+destacado: false
+notas: ''
+printables_id: '1119205'
+url: https://www.printables.com/model/1119205-golf-tee-height-guide
+autor: Byer
+licencia: CC-BY-SA
+piezas:
+- archivo: Tee-adjuster v2 w-Large Numbers.stl
+  printables_file_id: '4674103'
+  gramos: 8.9

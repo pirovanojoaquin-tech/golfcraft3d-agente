@@ -1,0 +1,24 @@
+nombre: Pelota de golf con compartimento secreto
+descripcion: Pelota de golf que se abre en dos y esconde un compartimento adentro.
+  Regalo divertido para cualquier golfista.
+personalizable: Color a elección (10 colores de PLA)
+precio: 2000
+gramos: 16.4
+tiempo: 47 min
+colores:
+- blanco
+- amarillo
+- cian
+destacado: false
+notas: Se imprime en 2 mitades.
+printables_id: '472593'
+url: https://www.printables.com/model/472593-golf-ball-secret-hidden-compartment
+autor: Pazu
+licencia: CC-BY
+piezas:
+- archivo: golf 2.3mf
+  printables_file_id: '2042705'
+  gramos: 7.7
+- archivo: golf 1.3mf
+  printables_file_id: '2042704'
+  gramos: 8.8

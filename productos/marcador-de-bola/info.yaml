@@ -1,0 +1,20 @@
+nombre: Marcador de bola
+descripcion: Marcador de bola liviano para el green, con flecha calada de alineación.
+personalizable: Color a elección (10 colores de PLA)
+precio: 100
+gramos: 0.3
+tiempo: 1 min
+colores:
+- rojo
+- azul
+- negro
+destacado: false
+notas: 'Pieza mínima: ofrecer en pack o combo.'
+printables_id: '210934'
+url: https://www.printables.com/model/210934-golf-tees-and-ball-marker
+autor: gofishrd
+licencia: CC-BY
+piezas:
+- archivo: BallMark.STL
+  printables_file_id: '875725'
+  gramos: 0.3

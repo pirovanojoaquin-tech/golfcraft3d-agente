@@ -1,0 +1,21 @@
+nombre: Guía de agarre para el palo
+descripcion: Ayuda de entrenamiento que guía la posición de las manos en el grip.
+  Para practicar el agarre en casa o en el driving.
+personalizable: Color a elección; versión para diestros o zurdos
+precio: 2000
+gramos: 16.2
+tiempo: 33 min
+colores:
+- negro
+- verde
+- azul
+destacado: false
+notas: ''
+printables_id: '739749'
+url: https://www.printables.com/model/739749-golf-grip-training-aid
+autor: gbombadon
+licencia: CC0
+piezas:
+- archivo: Golfgrip v4.stl
+  printables_file_id: '3134208'
+  gramos: 16.2

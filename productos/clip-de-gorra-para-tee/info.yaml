@@ -1,0 +1,21 @@
+nombre: Clip de gorra para tee
+descripcion: Clip que se engancha en la visera de la gorra y te deja el tee siempre
+  a mano. Liviano y discreto.
+personalizable: Color a elección (10 colores de PLA)
+precio: 400
+gramos: 2.8
+tiempo: 8 min
+colores:
+- verde
+- negro
+- rojo
+destacado: false
+notas: Ideal en pack de 3 o como regalo con otra compra.
+printables_id: '73309'
+url: https://www.printables.com/model/73309-golf-tee-hat-clip
+autor: partypancake8
+licencia: CC-BY
+piezas:
+- archivo: hat tee clip.stl
+  printables_file_id: '326037'
+  gramos: 2.8
