@@ -12,6 +12,8 @@ Todo lo que se le manda al dueño va por **Gmail** a `pirovanojoaquin@gmail.com`
 estética de la marca (verde #016040 y crema #F4F1EA). Antes de cada rutina: `git pull`.
 
 ### Lunes 9:00 — Propuesta de productos nuevos
+0. Si hay una propuesta de los últimos 3 días sin respuesta, no mandes otra: mandá un recordatorio
+   corto en ese mismo hilo y terminá.
 1. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (solo Printables, solo licencias
    que permiten vender, descarta lo ya propuesto).
 2. Elegí **3 a 5**: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,

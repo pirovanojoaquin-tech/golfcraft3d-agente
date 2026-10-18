@@ -73,7 +73,8 @@ def ya_vistos():
     vistos = set()
     if PROPUESTOS.exists():
         vistos |= {str(p["printables_id"]) for p in json.loads(PROPUESTOS.read_text(encoding="utf-8"))}
-    for info in (RAIZ / "productos").glob("*/info.yaml"):
+    # también los propuestos que todavía no tienen respuesta
+    for info in list((RAIZ / "productos").glob("*/info.yaml")) + list((RAIZ / "propuestas").glob("*/*/ficha.yaml")):
         m = re.search(r"printables_id:\s*['\"]?(\d+)", info.read_text(encoding="utf-8"))
         if m:
             vistos.add(m.group(1))
