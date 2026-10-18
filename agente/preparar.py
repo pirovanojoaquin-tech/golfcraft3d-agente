@@ -72,11 +72,26 @@ def a_stl(ruta):
     return salida
 
 
+def medidas(ruta):
+    r = subprocess.run(["prusa-slicer", "--info", str(ruta)], capture_output=True, text=True)
+    return {k: float(v) for k, v in re.findall(r"size_([xyz]) = ([\d.]+)", r.stdout)}
+
+
 def laminar(ruta):
-    """Devuelve (gramos, minutos) estimados para una pieza."""
+    """Devuelve (gramos, minutos) estimados para una pieza.
+
+    Si la pieza viene parada de forma que no apoya en la cama (ej: un disco de canto),
+    se reintenta acostándola sobre su cara más ancha.
+    """
     gcode = ruta.with_suffix(".gcode")
-    r = subprocess.run(["prusa-slicer", "--export-gcode", "--load", str(PERFIL), "--center", "128,128",
-                        "-o", str(gcode), str(ruta)], capture_output=True, text=True)
+    base = ["prusa-slicer", "--export-gcode", "--load", str(PERFIL), "--center", "128,128", "-o", str(gcode)]
+    r = subprocess.run(base + [str(ruta)], capture_output=True, text=True)
+    if r.returncode != 0 or not gcode.exists():
+        m = medidas(ruta)
+        menor = min(m, key=m.get) if m else "z"
+        giro = {"x": ["--rotate-y", "90"], "y": ["--rotate-x", "90"]}.get(menor)
+        if giro:
+            r = subprocess.run(base + giro + [str(ruta)], capture_output=True, text=True)
     if r.returncode != 0 or not gcode.exists():
         raise RuntimeError(f"No se pudo laminar {ruta.name}: {r.stderr[-400:] or r.stdout[-400:]}")
     texto = gcode.read_text(errors="ignore")
