@@ -11,5 +11,348 @@
     "estado": "publicado",
     "ig_media_id": "17866191294676018",
     "publicado_en": "2026-10-18T11:26:01-03:00"
+  },
+  {
+    "id": "2026-10-19-historia-1",
+    "fecha": "2026-10-19",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "regulador-de-altura-de-tee",
+    "imagenes": [
+      "contenido/media/2026-10-19/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-19-post",
+    "fecha": "2026-10-19",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "regulador-de-altura-de-tee",
+    "imagenes": [
+      "contenido/media/2026-10-19/post-1.jpg",
+      "contenido/media/2026-10-19/post-2.jpg",
+      "contenido/media/2026-10-19/post-3.jpg",
+      "contenido/media/2026-10-19/post-4.jpg",
+      "contenido/media/2026-10-19/post-5.jpg"
+    ],
+    "caption": "¿Un día le pegás bárbaro con el driver y al otro no sabés qué pasó? A veces es el tee 👀\n\nEl regulador de altura te marca la medida exacta para clavar el tee siempre igual. Lo llevás en el bolsillo y repetís tu salida en cada hoyo.\n\nElegí tu color entre 10 opciones de PLA. Escribinos por DM y te lo hacemos 📩\n#drive #teedegolf #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-19-historia-2",
+    "fecha": "2026-10-19",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-19/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-19-historia-3",
+    "fecha": "2026-10-19",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-19/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-20-historia-1",
+    "fecha": "2026-10-20",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-20/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-20-post",
+    "fecha": "2026-10-20",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-20/post-1.jpg",
+      "contenido/media/2026-10-20/post-2.jpg",
+      "contenido/media/2026-10-20/post-3.jpg",
+      "contenido/media/2026-10-20/post-4.jpg",
+      "contenido/media/2026-10-20/post-5.jpg"
+    ],
+    "caption": "Parece una pelota de golf más… hasta que la abrís 🤫\n\nSe separa en dos mitades y adentro tiene un compartimento para guardar lo que quieras. Un regalo distinto para ese amigo que vive en la cancha.\n\nLa hacemos en blanco clásico o en el color que elijas. Escribinos por DM 📩\n#regalosgolf #pelotadegolf #golfistas #regalooriginal\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-20-historia-2",
+    "fecha": "2026-10-20",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-20/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-20-historia-3",
+    "fecha": "2026-10-20",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "regulador-de-altura-de-tee",
+    "imagenes": [
+      "contenido/media/2026-10-20/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-21-historia-1",
+    "fecha": "2026-10-21",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "guia-de-agarre-para-el-palo",
+    "imagenes": [
+      "contenido/media/2026-10-21/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-21-post",
+    "fecha": "2026-10-21",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "guia-de-agarre-para-el-palo",
+    "imagenes": [
+      "contenido/media/2026-10-21/post-1.jpg",
+      "contenido/media/2026-10-21/post-2.jpg",
+      "contenido/media/2026-10-21/post-3.jpg",
+      "contenido/media/2026-10-21/post-4.jpg",
+      "contenido/media/2026-10-21/post-5.jpg"
+    ],
+    "caption": "El swing empieza en las manos 🏌️‍♂️\n\nEsta guía de agarre te ayuda a poner las manos en la posición correcta sobre el grip, para que practiques el agarre en casa o en el driving hasta que te salga solo.\n\nHay versión para diestros y para zurdos. Escribinos por DM y te la hacemos 📩\n#agarre #swing #entrenamientogolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-21-historia-2",
+    "fecha": "2026-10-21",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-21/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-21-historia-3",
+    "fecha": "2026-10-21",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-21/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-22-historia-1",
+    "fecha": "2026-10-22",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "clip-de-gorra-para-tee",
+    "imagenes": [
+      "contenido/media/2026-10-22/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-22-post",
+    "fecha": "2026-10-22",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "clip-de-gorra-para-tee",
+    "imagenes": [
+      "contenido/media/2026-10-22/post-1.jpg",
+      "contenido/media/2026-10-22/post-2.jpg",
+      "contenido/media/2026-10-22/post-3.jpg",
+      "contenido/media/2026-10-22/post-4.jpg",
+      "contenido/media/2026-10-22/post-5.jpg"
+    ],
+    "caption": "¿Dónde dejaste el tee? Sí, otra vez 😅\n\nEste clip se engancha en la visera de la gorra y te deja el tee siempre a mano. Es chiquito, liviano y no molesta para nada.\n\nIdeal para sumarlo a cualquier pedido o regalar en pack. Escribinos por DM 📩\n#gorradegolf #teedegolf #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-22-historia-2",
+    "fecha": "2026-10-22",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-22/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-22-historia-3",
+    "fecha": "2026-10-22",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-22/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-23-historia-1",
+    "fecha": "2026-10-23",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "marcador-de-bola",
+    "imagenes": [
+      "contenido/media/2026-10-23/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-23-post",
+    "fecha": "2026-10-23",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "marcador-de-bola",
+    "imagenes": [
+      "contenido/media/2026-10-23/post-1.jpg",
+      "contenido/media/2026-10-23/post-2.jpg",
+      "contenido/media/2026-10-23/post-3.jpg",
+      "contenido/media/2026-10-23/post-4.jpg",
+      "contenido/media/2026-10-23/post-5.jpg"
+    ],
+    "caption": "Llegaste al green: marcá, levantá y limpiá la bola con estilo ⛳\n\nNuestro marcador de bola es liviano, tiene una flecha calada y lo hacemos en el color que quieras. Perfecto para combinar con otros accesorios.\n\nPedilo en pack o sumalo a tu pedido. Escribinos por DM 📩\n#marcadordebola #green #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-23-historia-2",
+    "fecha": "2026-10-23",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-23/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-23-historia-3",
+    "fecha": "2026-10-23",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-23/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-24-historia-1",
+    "fecha": "2026-10-24",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-24/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-24-post",
+    "fecha": "2026-10-24",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "clip-de-gorra-para-tee",
+    "imagenes": [
+      "contenido/media/2026-10-24/post-1.jpg",
+      "contenido/media/2026-10-24/post-2.jpg",
+      "contenido/media/2026-10-24/post-3.jpg",
+      "contenido/media/2026-10-24/post-4.jpg",
+      "contenido/media/2026-10-24/post-5.jpg"
+    ],
+    "caption": "El kit que todo golfista quiere tener a mano 🏌️\n\nClip de gorra para el tee, marcador de bola y regulador de altura: tres accesorios chicos que te hacen la vuelta más cómoda. Los armamos en los colores que elijas.\n\n¿Te armamos el tuyo? Escribinos por DM 📩\n#kitdegolf #accesoriosdegolf #regalosgolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-24-historia-2",
+    "fecha": "2026-10-24",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-24/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-24-historia-3",
+    "fecha": "2026-10-24",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "guia-de-agarre-para-el-palo",
+    "imagenes": [
+      "contenido/media/2026-10-24/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-25-historia-1",
+    "fecha": "2026-10-25",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-25/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-25-post",
+    "fecha": "2026-10-25",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-25/post-1.jpg",
+      "contenido/media/2026-10-25/post-2.jpg",
+      "contenido/media/2026-10-25/post-3.jpg",
+      "contenido/media/2026-10-25/post-4.jpg",
+      "contenido/media/2026-10-25/post-5.jpg"
+    ],
+    "caption": "¿Buscás un regalo para un golfista y no sabés qué? 🎁\n\nEsta pelota se abre en dos y esconde un compartimento adentro: ahí podés poner una nota, una entrada o lo que se te ocurra. Sorpresa asegurada.\n\nLa hacemos en el color que quieras. Escribinos por DM 📩\n#regalosgolf #regalooriginal #pelotadegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-25-historia-2",
+    "fecha": "2026-10-25",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-25/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-25-historia-3",
+    "fecha": "2026-10-25",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-25/historia-3.jpg"
+    ],
+    "estado": "pendiente"
   }
 ]

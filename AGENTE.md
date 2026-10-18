@@ -104,6 +104,9 @@ Al menos 1 de las 3 historias del día tiene que ser de producto.
 - Los textos que van **dentro de las imágenes** (títulos, etiquetas, items) sin emojis: la
   tipografía no los tiene y se quitan solos. Los emojis van en el caption.
 - Usá solo fotos que estén en `productos/<producto>/fotos/`. No inventes productos ni características.
-- No pongas precios salvo que estén en `info.yaml` (si no hay precio: "consultá por DM").
+- No pongas precios en las publicaciones: los clientes consultan por DM (los precios de `info.yaml`
+  son para que el dueño responda). Si el dueño pide lo contrario, respetalo.
+- En el slide `cta`, `nombre_corto` va **con artículo**: "el regulador de tee", "la pelota secreta".
+- En los YAML de planes, poné entre comillas los textos con `?`, `:` o comas.
 - No prometas tiempos de entrega ni envíos que no estén en `info.yaml`.
 - No menciones marcas registradas de terceros como si fueran nuestras (Titleist, Callaway, etc.).

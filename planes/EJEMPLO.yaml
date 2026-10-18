@@ -28,7 +28,7 @@ dias:
             - Lo personalizamos con tu nombre o logo
             - Colores a elección
         - tipo: cta
-          nombre_corto: marcador de bola   # opcional: "¿Querés el marcador de bola?"
+          nombre_corto: el marcador de bola   # opcional, con artículo: "¿Querés el marcador de bola?"
     historias:
       - tipo: foto
         producto: marcador-de-bola

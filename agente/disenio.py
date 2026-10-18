@@ -41,18 +41,36 @@ def cargar_foto(ruta):
     return ImageOps.exif_transpose(Image.open(ruta)).convert("RGB")
 
 
+def _borde_suave(foto, y, hacia):
+    """True si cerca del borde la foto casi no cambia (fondo de estudio): se puede estirar sin que se note."""
+    a = foto.crop((0, y, foto.width, y + 1)).resize((32, 1)).getdata()
+    b = foto.crop((0, y + hacia * 8, foto.width, y + hacia * 8 + 1)).resize((32, 1)).getdata()
+    return max(abs(p[i] - q[i]) for p, q in zip(a, b) for i in range(3)) < 14
+
+
 def encajar(foto, tamanio):
-    """Mete la foto entera en `tamanio`, rellenando con una versión desenfocada de sí misma."""
+    """Mete la foto entera en `tamanio`.
+
+    Si sobran franjas arriba/abajo y el fondo de la foto es liso cerca del borde (renders de estudio),
+    estira la última fila de píxeles de cada lado; si no, rellena con la foto desenfocada.
+    """
     w, h = tamanio
-    fondo = ImageOps.fit(foto, tamanio, Image.LANCZOS).filter(ImageFilter.GaussianBlur(40))
-    fondo = Image.blend(fondo, Image.new("RGB", tamanio, (0, 0, 0)), 0.15)
     escala = min(w / foto.width, h / foto.height)
     chica = foto.resize((round(foto.width * escala), round(foto.height * escala)), Image.LANCZOS)
-    fondo.paste(chica, ((w - chica.width) // 2, (h - chica.height) // 2))
+    x0, y0 = (w - chica.width) // 2, (h - chica.height) // 2
+    alto_abajo = h - y0 - chica.height
+    if chica.width == w and y0 > 0 and _borde_suave(chica, 0, 1) and _borde_suave(chica, chica.height - 1, -1):
+        fondo = Image.new("RGB", tamanio)
+        fondo.paste(chica.crop((0, 0, w, 1)).resize((w, y0)), (0, 0))
+        fondo.paste(chica.crop((0, chica.height - 1, w, chica.height)).resize((w, alto_abajo)), (0, y0 + chica.height))
+    else:
+        fondo = ImageOps.fit(foto, tamanio, Image.LANCZOS).filter(ImageFilter.GaussianBlur(40))
+        fondo = Image.blend(fondo, Image.new("RGB", tamanio, (0, 0, 0)), 0.15)
+    fondo.paste(chica, (x0, y0))
     return fondo
 
 
-_EMOJIS = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
+_EMOJIS = re.compile("[\U0001F000-\U0001FAFF\u2600-\u27BF\uFE0F\u200D]")
 
 
 def limpiar(texto):
@@ -176,7 +194,8 @@ def slide_cta(producto=None):
     l = logo(300, blanco=True)
     im.paste(l, ((1080 - l.width) // 2, 230), l)
     y = 230 + l.height + 90
-    titulo = f"¿Querés el {producto.lower()}?" if producto else "¿Lo querés?"
+    # `producto` ya trae el artículo: "el regulador de tee", "la pelota secreta"
+    titulo = f"¿Querés {producto}?" if producto else "¿Lo querés?"
     f_tit = ajustar_fuente(d, titulo, 940, 250, 84)
     y = texto_bloque(d, (70, y), titulo, f_tit, BLANCO, 940, 1.1, centrado=True) + 40
     y = pastilla(d, (540, y), CTA, fuente(46, 800), BLANCO, VERDE, pad=(44, 22), centro=True) + 60
