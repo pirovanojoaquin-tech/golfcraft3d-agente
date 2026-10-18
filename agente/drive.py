@@ -46,7 +46,15 @@ def guardar(slug, url_app):
     r = requests.post(url_app, json={"carpeta": info["nombre"], "archivos": archivos, "ficha": texto_ficha(info)},
                       timeout=300)
     r.raise_for_status()
-    datos = r.json()
+    try:
+        datos = r.json()
+    except ValueError:
+        # Apps Script devuelve una página HTML cuando la implementación no es pública o falla al iniciar
+        import re
+        titulo = re.search(r"<title>(.*?)</title>", r.text, re.S)
+        cuerpo = re.sub(r"<[^>]+>", " ", r.text)
+        raise RuntimeError(f"Drive no devolvió JSON (HTTP {r.status_code}, url final {r.url.split('?')[0]}): "
+                           f"{titulo.group(1).strip() if titulo else ''} | {' '.join(cuerpo.split())[:300]}")
     if not datos.get("ok"):
         raise RuntimeError(datos.get("error"))
     return datos
