@@ -56,3 +56,11 @@ pip install -r requirements.txt
 python -m agente.planificar planes/2026-10-20.yaml    # genera imágenes + calendario
 python -m agente.publicar --simular                   # qué se publicaría ahora
 ```
+
+## Google Drive
+
+- Carpeta: **PRODUCTOS 3D GOLF** (Drive de pirovanojoaquin@gmail.com).
+- El programa de Apps Script (`herramientas/guardar_en_drive.gs`) está instalado en la cuenta
+  **franciscopirovano@gmail.com**, que tiene permiso de edición sobre la carpeta. Si se deja de
+  compartir la carpeta con esa cuenta, el guardado en Drive falla con "No item with the given ID".
+- La URL de la aplicación web (termina en `/exec`) está en el secreto `DRIVE_WEBAPP_URL`.
