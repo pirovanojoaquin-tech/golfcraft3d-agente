@@ -2,7 +2,7 @@
 
 Uso (lo llama agente/fotos.py, no hace falta usarlo a mano):
     blender -b -P agente/render.py -- modelo.stl salida.png --color "#E5262B" \
-        [--angulo 35] [--giro 30] [--fondo "#F4F1EA"] [--tam 1080] [--muestras 96]
+        [--angulo 35] [--giro 30] [--fondo "#F4F1EA"] [--tam 1080] [--alto 1350] [--muestras 96]
 """
 import argparse
 import math
@@ -26,7 +26,8 @@ def args():
     ap.add_argument("--fondo", default="#F4F1EA")
     ap.add_argument("--angulo", type=float, default=32, help="elevación de la cámara en grados")
     ap.add_argument("--giro", type=float, default=35, help="rotación alrededor del modelo en grados")
-    ap.add_argument("--tam", type=int, default=1080)
+    ap.add_argument("--tam", type=int, default=1080, help="ancho en píxeles")
+    ap.add_argument("--alto", type=int, help="alto en píxeles (por defecto, cuadrado)")
     ap.add_argument("--muestras", type=int, default=96)
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     return ap.parse_args(argv)
@@ -132,6 +133,7 @@ def camara(obj, angulo, giro):
     radio = obj.dimensions.length * 0.5 * 1.02
     cam_d = bpy.data.cameras.new("Cam")
     cam_d.lens = 85
+    cam_d.sensor_fit = "HORIZONTAL"  # el encuadre se calcula sobre el ancho, también en vertical
     cam = bpy.data.objects.new("Cam", cam_d)
     bpy.context.collection.objects.link(cam)
     # distancia para que el modelo entre en el cuadro con un 85 mm
@@ -162,7 +164,8 @@ def main():
     con_oidn = getattr(bpy.app.build_options, "openimagedenoise", False)
     esc.cycles.use_denoising = con_oidn
     esc.cycles.samples = a.muestras if con_oidn else a.muestras * 4
-    esc.render.resolution_x = esc.render.resolution_y = a.tam
+    esc.render.resolution_x = a.tam
+    esc.render.resolution_y = a.alto or a.tam
     # "Standard" respeta el color real del filamento (AgX/Filmic lo desaturan)
     esc.view_settings.view_transform = "Standard"
     esc.view_settings.look = "None"
