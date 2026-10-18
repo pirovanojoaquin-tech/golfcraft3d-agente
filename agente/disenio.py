@@ -1,4 +1,5 @@
 """Plantillas visuales de GolfCraft3D (carrusel 1080x1350 e historias 1080x1920)."""
+import re
 from pathlib import Path
 
 import yaml
@@ -51,7 +52,16 @@ def encajar(foto, tamanio):
     return fondo
 
 
+_EMOJIS = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
+
+
+def limpiar(texto):
+    """Quita emojis: Montserrat no los tiene y saldrían como cuadraditos (en el caption sí van)."""
+    return re.sub(r"[ \t]{2,}", " ", _EMOJIS.sub("", texto)).strip()
+
+
 def _lineas(draw, texto, f, ancho_max):
+    texto = limpiar(texto)
     lineas = []
     for parrafo in texto.split("\n"):
         actual = ""
@@ -95,6 +105,7 @@ def ajustar_fuente(draw, texto, ancho_max, alto_max, inicial, minimo=40, peso=80
 
 def pastilla(draw, xy, texto, f, fondo, color, pad=(28, 14), centro=False):
     x, y = xy
+    texto = limpiar(texto)
     w = draw.textlength(texto, font=f) + pad[0] * 2
     h = f.size + pad[1] * 2
     if centro:
