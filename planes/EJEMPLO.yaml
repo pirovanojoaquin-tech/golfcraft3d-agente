@@ -1,0 +1,46 @@
+# Ejemplo de plan. Copialo como planes/AAAA-MM-DD.yaml y cambiá el contenido.
+# Los productos se refieren por el nombre de su carpeta en productos/.
+# Las fotos por el nombre del archivo dentro de productos/<producto>/fotos/.
+
+dias:
+  - fecha: 2026-10-20
+    post:
+      producto: marcador-de-bola
+      caption: |
+        ¿Seguís marcando la bola con una moneda? 🪙
+
+        Nuestro marcador se engancha en la gorra, no se pierde y lo hacemos con tu inicial o el logo de tu club. Impreso en 3D, liviano y resistente.
+
+        Escribinos por DM y te lo hacemos a tu medida 📩
+        #marcadordebola #accesoriosdegolf #regalogolfista
+      slides:
+        - tipo: portada
+          foto: 1.jpg
+          titulo: Marcador de bola con tu inicial
+          subtitulo: Liviano, resistente y 100% personalizable
+          etiqueta: Nuevo
+        - tipo: foto
+          foto: 2.jpg
+        - tipo: info
+          titulo: ¿Por qué te va a encantar?
+          items:
+            - Se engancha en la gorra o el guante
+            - Lo personalizamos con tu nombre o logo
+            - Colores a elección
+        - tipo: cta
+          nombre_corto: marcador de bola   # opcional: "¿Querés el marcador de bola?"
+    historias:
+      - tipo: foto
+        producto: marcador-de-bola
+        foto: 1.jpg
+        etiqueta: Nuevo
+        titulo: Tu inicial en cada green
+        subtitulo: Elegí color y tipografía
+      - tipo: texto
+        etiqueta: Tip de golf
+        titulo: ¿Sabías que...?
+        texto: Antes de levantar la bola en el green tenés que marcarla. Hacelo con estilo.
+      - tipo: texto
+        etiqueta: Impreso en 3D
+        titulo: Hecho capa por capa
+        texto: Cada pieza se imprime a pedido, por eso la podemos personalizar como quieras.

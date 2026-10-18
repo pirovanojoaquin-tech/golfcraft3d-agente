@@ -1,0 +1,12 @@
+# Copiá esta carpeta para cada producto, por ejemplo productos/marcador-de-bola/
+# (nombre en minúsculas, sin espacios ni tildes, con guiones)
+# y poné las fotos en productos/marcador-de-bola/fotos/ (1.jpg, 2.jpg, ...)
+
+nombre: Marcador de bola personalizado
+descripcion: >
+  Marcador de bola que se engancha en la gorra. Se personaliza con inicial,
+  nombre o logo del club.
+personalizable: "Inicial, nombre o logo; colores a elección"
+precio: null          # ej: 8500 — si queda en null, el agente dice "consultá por DM"
+destacado: false      # true = aparece más seguido
+notas: ""             # cualquier dato útil para los textos (medidas, material, uso)

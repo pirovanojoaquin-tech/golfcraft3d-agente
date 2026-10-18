@@ -1,0 +1,30 @@
+# Configuración general del agente de GolfCraft3D
+
+marca:
+  nombre: GolfCraft3D
+  usuario: "@golfcraft3d"
+  color_principal: "#016040"   # verde del logo
+  color_claro: "#F4F1EA"       # crema de fondo
+  color_texto: "#14231C"
+  cta: "Escribinos por DM"
+
+# Hora (Argentina) de cada publicación del día.
+# El workflow de GitHub corre unos minutos después de cada horario
+# y publica todo lo que esté pendiente para hoy con hora <= ahora.
+horarios:
+  historia-1: "10:00"
+  post: "12:30"
+  historia-2: "16:00"
+  historia-3: "20:30"
+
+zona_horaria: America/Argentina/Buenos_Aires
+
+# Hashtags fijos que se agregan al final de cada post (el agente suma 3-5 específicos)
+hashtags_base:
+  - "#golf"
+  - "#golfargentina"
+  - "#impresion3d"
+  - "#golfcraft3d"
+
+instagram:
+  api_version: v23.0

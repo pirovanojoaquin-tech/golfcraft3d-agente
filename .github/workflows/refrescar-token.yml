@@ -1,0 +1,30 @@
+name: Renovar token de Instagram
+
+# El token de Instagram vence a los 60 días. Este workflow lo renueva cada semana
+# y guarda el nuevo en el secreto IG_ACCESS_TOKEN (necesita el secreto GH_PAT).
+
+on:
+  schedule:
+    - cron: "23 12 * * 1"   # lunes 09:23 Argentina
+  workflow_dispatch:
+
+jobs:
+  renovar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Renovar y guardar token
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          RESPUESTA=$(curl -sS --get "https://graph.instagram.com/refresh_access_token" \
+            --data-urlencode "grant_type=ig_refresh_token" \
+            --data-urlencode "access_token=${IG_ACCESS_TOKEN}")
+          NUEVO=$(echo "$RESPUESTA" | jq -r '.access_token // empty')
+          if [ -z "$NUEVO" ]; then
+            echo "No se pudo renovar el token:"; echo "$RESPUESTA" | jq '.error // .'
+            exit 1
+          fi
+          echo "::add-mask::$NUEVO"
+          gh secret set IG_ACCESS_TOKEN --body "$NUEVO" --repo "$GITHUB_REPOSITORY"
+          echo "Token renovado. Vence en $(( $(echo "$RESPUESTA" | jq -r .expires_in) / 86400 )) días."
