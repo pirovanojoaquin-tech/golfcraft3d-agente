@@ -30,3 +30,7 @@ fotos:
   color: azul
 estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
   perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
+descripcion_es: Ayuda de entrenamiento que guía la posición de las manos en el grip.
+  Ideal para practicar el agarre en casa o en el driving.
+aviso: Esta versión es para diestros (el modelo también trae versión para zurdos).
+  Revisá en Bambu Studio si necesita soportes.
