@@ -28,3 +28,24 @@ hashtags_base:
 
 instagram:
   api_version: v23.0
+
+# Producción
+produccion:
+  precio_kg_filamento: 40000   # ARS
+  multiplicador: 3             # precio final = costo de filamento x 3
+  redondeo: 100                # se redondea hacia arriba a la centena
+  impresoras: ["Bambu Lab P2S (con AMS)", "Bambu Lab A2L"]
+  material: PLA
+
+# Colores de PLA en stock (nombre: color para los renders)
+colores:
+  negro: "#1E1E1E"
+  blanco: "#F2F2F2"
+  rojo: "#C62828"
+  azul: "#1E4FBF"
+  verde: "#1B7A3E"
+  cian: "#00A3C4"
+  amarillo: "#F2C200"
+  piel: "#E8C4A0"
+  marroncito: "#A0784A"
+  gris: "#8A8D91"

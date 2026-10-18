@@ -1,0 +1,81 @@
+name: Preparar propuesta de productos
+
+# Lo lanza el agente cada semana. Para cada modelo de Printables: descarga, lamina
+# (gramos/tiempo/precio) y renderiza en los colores pedidos. Un producto por máquina.
+
+on:
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: "Fecha de la propuesta (AAAA-MM-DD)"
+        required: true
+      productos:
+        description: 'JSON: [{"id":"320193","nombre":"Tee","archivos":"golf tee.stl","colores":"verde,blanco"}]'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  producto:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        p: ${{ fromJSON(inputs.productos) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar laminador y Blender
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender
+          pip install -r requirements.txt
+
+      - name: Preparar ficha
+        env:
+          ID: ${{ matrix.p.id }}
+          NOMBRE: ${{ matrix.p.nombre }}
+          ARCHIVOS: ${{ matrix.p.archivos }}
+          COLORES: ${{ matrix.p.colores }}
+          FECHA: ${{ inputs.fecha }}
+        run: |
+          ARGS=(--fecha "$FECHA")
+          [ -n "$NOMBRE" ] && ARGS+=(--nombre "$NOMBRE")
+          [ -n "$ARCHIVOS" ] && ARGS+=(--archivos "$ARCHIVOS")
+          [ -n "$COLORES" ] && ARGS+=(--colores "$COLORES")
+          python -m agente.preparar "$ID" "${ARGS[@]}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: propuesta-${{ matrix.p.id }}
+          path: propuestas/
+
+  guardar:
+    needs: producto
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: propuesta-*
+          path: propuestas/
+          merge-multiple: true
+
+      - name: Subir fichas al repo
+        run: |
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add propuestas/
+          if ! git diff --cached --quiet; then
+            git commit -m "Propuesta de productos ${{ inputs.fecha }}"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

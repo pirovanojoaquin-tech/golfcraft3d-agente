@@ -79,11 +79,21 @@ def normalizar(obj):
         obj.data.auto_smooth_angle = math.radians(35)
 
 
+def es_claro(color):
+    r, g, b, _ = hex_a_lineal(color)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.45
+
+
 def material_pla(obj, color):
     m = bpy.data.materials.new("PLA")
     m.use_nodes = True
     p = m.node_tree.nodes["Principled BSDF"]
-    p.inputs["Base Color"].default_value = hex_a_lineal(color)
+    # el PLA blanco real refleja ~75 %: limitarlo evita que se "queme" en la foto
+    base = hex_a_lineal(color)
+    tope = max(base[:3])
+    if tope > 0.72:
+        base = [c * 0.72 / tope for c in base[:3]] + [1.0]
+    p.inputs["Base Color"].default_value = base
     p.inputs["Roughness"].default_value = 0.42
     if "Specular IOR Level" in p.inputs:
         p.inputs["Specular IOR Level"].default_value = 0.45
@@ -151,7 +161,8 @@ def main():
     obj = importar(a.modelo)
     normalizar(obj)
     material_pla(obj, a.color)
-    escenario(a.fondo)
+    # con colores claros (blanco, amarillo, piel) el fondo pasa a gris verdoso para que contraste
+    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD")
     luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
     luz("Relleno", (3, -2, 1.5), 140, 4)
     luz("Contra", (0.5, 3, 2.5), 260, 2)
