@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "2026-10-18-historia-prueba",
+    "fecha": "2026-10-18",
+    "hora": "11:25",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-18/historia-prueba.jpg"
+    ],
+    "estado": "pendiente"
+  }
+]
