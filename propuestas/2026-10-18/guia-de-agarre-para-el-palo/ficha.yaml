@@ -1,0 +1,32 @@
+nombre: Guía de agarre para el palo
+nombre_original: Golf grip training aid
+descripcion: Useful grip training aid for golf based on a simplified version of the
+  typical grip aids. Snaps on easily. R&L handed.
+printables_id: '739749'
+url: https://www.printables.com/model/739749-golf-grip-training-aid
+autor: gbombadon
+licencia: CC0
+licencia_nombre: Creative Commons — Public Domain
+piezas:
+- archivo: Golfgrip v4.stl
+  printables_file_id: '3134208'
+  gramos: 16.2
+gramos: 16.2
+tiempo_min: 33
+tiempo: 33 min
+costo_filamento: 648
+precio: 2000
+material: PLA
+colores_render:
+- negro
+- verde
+- azul
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

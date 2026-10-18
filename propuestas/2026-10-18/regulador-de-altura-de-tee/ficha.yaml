@@ -1,0 +1,31 @@
+nombre: Regulador de altura de tee
+nombre_original: Golf Tee Height Guide
+descripcion: Stay consistent with your ball height
+printables_id: '1119205'
+url: https://www.printables.com/model/1119205-golf-tee-height-guide
+autor: Byer
+licencia: CC-BY-SA
+licencia_nombre: Creative Commons — Attribution  — Share Alike
+piezas:
+- archivo: Tee-adjuster v2 w-Large Numbers.stl
+  printables_file_id: '4674103'
+  gramos: 8.9
+gramos: 8.9
+tiempo_min: 19
+tiempo: 19 min
+costo_filamento: 355
+precio: 1100
+material: PLA
+colores_render:
+- verde
+- amarillo
+- negro
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: amarillo
+- archivo: 3.jpg
+  color: negro
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

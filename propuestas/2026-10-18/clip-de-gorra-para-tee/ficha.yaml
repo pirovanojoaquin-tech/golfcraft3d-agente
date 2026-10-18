@@ -1,0 +1,31 @@
+nombre: Clip de gorra para tee
+nombre_original: Golf tee hat clip
+descripcion: A simple clip that you can put onto your hat to hold a golf tee.
+printables_id: '73309'
+url: https://www.printables.com/model/73309-golf-tee-hat-clip
+autor: partypancake8
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: hat tee clip.stl
+  printables_file_id: '326037'
+  gramos: 2.8
+gramos: 2.8
+tiempo_min: 8
+tiempo: 8 min
+costo_filamento: 113
+precio: 400
+material: PLA
+colores_render:
+- verde
+- negro
+- rojo
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: rojo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

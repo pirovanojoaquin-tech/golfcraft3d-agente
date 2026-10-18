@@ -1,0 +1,34 @@
+nombre: Pelota de golf con compartimento secreto
+nombre_original: Golf Ball Secret Hidden Compartment
+descripcion: Stash your stuff in this golf ball.
+printables_id: '472593'
+url: https://www.printables.com/model/472593-golf-ball-secret-hidden-compartment
+autor: Pazu
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: golf 2.3mf
+  printables_file_id: '2042705'
+  gramos: 7.7
+- archivo: golf 1.3mf
+  printables_file_id: '2042704'
+  gramos: 8.8
+gramos: 16.4
+tiempo_min: 47
+tiempo: 47 min
+costo_filamento: 656
+precio: 2000
+material: PLA
+colores_render:
+- blanco
+- amarillo
+- cian
+fotos:
+- archivo: 1.jpg
+  color: blanco
+- archivo: 2.jpg
+  color: amarillo
+- archivo: 3.jpg
+  color: cian
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
