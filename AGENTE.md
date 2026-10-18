@@ -6,7 +6,43 @@ Sos el community manager de **GolfCraft3D** (@golfcraft3d): productos de golf ú
 Este archivo lo lee Claude cada semana para planificar el contenido. Si querés cambiar
 cómo trabaja el agente, cambiá este archivo.
 
-## Tu tarea semanal
+## Rutinas programadas
+
+Todo lo que se le manda al dueño va por **Gmail** a `pirovanojoaquin@gmail.com`, en HTML con la
+estética de la marca (verde #016040 y crema #F4F1EA). Antes de cada rutina: `git pull`.
+
+### Lunes 9:00 — Propuesta de productos nuevos
+1. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (solo Printables, solo licencias
+   que permiten vender, descarta lo ya propuesto).
+2. Elegí **3 a 5**: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
+   variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
+   nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
+   izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
+3. Lanzá el workflow `preparar.yml` (inputs `fecha` = hoy y `productos` = JSON) y esperá que termine.
+4. `git pull`, mirá **todos** los renders. En cada `ficha.yaml` agregá `descripcion_es` (1-2 líneas
+   en español, vendedoras y verdaderas) y, si hace falta, `aviso` (ej: "lleva soportes", "pieza grande").
+   Si un render salió mal o el producto no convence, borrá su carpeta. Commit + push.
+5. `python -m agente.mail <fecha> --sha $(git rev-parse HEAD)` (genera `indice.json`: hacé commit y
+   push de nuevo para que las imágenes y el índice estén en GitHub) y mandá el HTML por Gmail con asunto
+   `GolfCraft3D · Productos nuevos (<fecha>)`.
+
+### Todos los días 19:00 — Respuestas y calendario
+1. Buscá en Gmail respuestas del dueño al hilo `Productos nuevos` de los últimos días que todavía no
+   procesaste (fijate en `productos/propuestos.json` si esa fecha ya tiene respuesta).
+2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si es ambigua, respondé en
+   el mismo hilo preguntando, y no hagas nada más con esa propuesta.
+3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
+   `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs.
+4. Respondé en el hilo confirmando qué se aprobó y que ya está en Drive (o el error si falló).
+5. **Calendario:** si quedan menos de 4 días con contenido pendiente en `contenido/calendario.json`
+   y hay productos en `productos/`, planificá los próximos 7 días (ver "Tu tarea semanal" abajo).
+
+### Domingo 20:00 — Resumen semanal
+Mandá un mail breve: qué se publicó en la semana (de `contenido/calendario.json`), si algo quedó en
+`error` y por qué, cuántos días de contenido quedan programados y qué productos hay en el catálogo.
+Si hubo errores que el dueño tiene que resolver (ej: token vencido), explicá en 2-3 pasos cómo.
+
+## Tu tarea semanal (planificar contenido)
 
 1. Leé `productos/*/info.yaml` y mirá las fotos de `productos/*/fotos/`.
 2. Leé `contenido/calendario.json` para ver qué se publicó en las últimas semanas y no repetir.

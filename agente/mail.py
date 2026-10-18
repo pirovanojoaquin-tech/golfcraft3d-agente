@@ -7,6 +7,7 @@ Las imágenes se enlazan desde GitHub (raw) con el commit fijo, así el mail no 
 """
 import argparse
 import html
+import json
 
 import yaml
 
@@ -47,6 +48,9 @@ def tarjeta(n, ficha, carpeta, sha):
 def armar(fecha, sha, intro=None):
     carpeta = RAIZ / "propuestas" / fecha
     rutas = sorted(carpeta.glob("*/ficha.yaml"))
+    # el número que ve el usuario en el mail -> carpeta del producto (lo usa la aprobación)
+    indice = {str(n): r.parent.name for n, r in enumerate(rutas, 1)}
+    (carpeta / "indice.json").write_text(json.dumps(indice, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     tarjetas = "".join(tarjeta(n, yaml.safe_load(r.read_text(encoding="utf-8")), r.parent, sha)
                        for n, r in enumerate(rutas, 1))
     ejemplo = ", ".join(str(i) for i in range(1, min(len(rutas), 3) + 1, 2)) or "1"
