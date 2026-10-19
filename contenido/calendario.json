@@ -21,9 +21,10 @@
     "imagenes": [
       "contenido/media/2026-10-19/historia-1.jpg"
     ],
-    "estado": "pendiente",
+    "estado": "publicado",
     "intentos": 1,
-    "error": "POST 17841445495228241/media_publish -> 400: {'message': 'The requested resource does not exist', 'type': 'OAuthException', 'code': 24, 'error_subcode': 2207006, 'is_transient': False, 'error_user_title': 'Media Not Found', 'error_user_msg': 'The media with 18,083,713,931,516,508 cannot be found.', 'fbtrace_id': 'A9P75XHQZnTUowoO0IY4Grj'}"
+    "ig_media_id": "18339801625261866",
+    "publicado_en": "2026-10-19T16:39:10-03:00"
   },
   {
     "id": "2026-10-19-post",
