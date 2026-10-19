@@ -1,0 +1,32 @@
+nombre: Pack de 8 tees de golf
+nombre_original: Golf tees
+descripcion: I designed this simply because i have got very bored having to buy new
+  tees every time i break them therefore this is…
+printables_id: '187377'
+url: https://www.printables.com/model/187377-golf-tees
+autor: Ender3Knight4
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: Pack_of_8_different_golf_tees_1.stl
+  printables_file_id: '790575'
+  gramos: 12.3
+gramos: 12.3
+tiempo_min: 54
+tiempo: 54 min
+costo_filamento: 490
+precio: 1500
+material: PLA
+colores_render:
+- blanco
+- rojo
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: blanco
+- archivo: 2.jpg
+  color: rojo
+- archivo: 3.jpg
+  color: amarillo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
