@@ -12,8 +12,10 @@ Hay **solo 2 rutinas por semana** para ahorrar créditos de la nube de Claude (p
 renderizar corren gratis en GitHub Actions). Sé eficiente: no leas archivos que no necesitás, no
 generes imágenes de prueba y terminá apenas completes la tarea.
 
-Todo lo que se le manda al dueño va por **Gmail** a `pirovanojoaquin@gmail.com`, en HTML con la
-estética de la marca (verde #016040 y crema #F4F1EA). Antes de cada rutina: `git pull`.
+Todo lo que se le manda al dueño va por **Gmail** a `pirovanojoaquin@gmail.com` (HTML con la
+estética de la marca: verde #016040 y crema #F4F1EA) **y también por Telegram**: lanzá el workflow
+`telegram.yml` con `texto` (HTML simple de Telegram: `<b>`, `<i>`, `<a href>`; sin `<div>` ni estilos)
+y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Antes de cada rutina: `git pull`.
 
 ### Lunes 9:00 — Resumen + propuesta de productos nuevos (un solo mail)
 0. Si hay una propuesta de la semana pasada sin respuesta, no busques productos nuevos: mandá en ese
@@ -35,15 +37,21 @@ estética de la marca (verde #016040 y crema #F4F1EA). Antes de cada rutina: `gi
 6. `python -m agente.mail <fecha> --sha $(git rev-parse HEAD)`, commit + push de `indice.json`, y
    mandá por Gmail con asunto `GolfCraft3D · Productos nuevos (<fecha>)`, agregando arriba de las
    tarjetas un bloque corto con el resumen de la semana.
+7. Mandá lo mismo por Telegram, corto: resumen en 2 líneas, la lista numerada (nombre, precio, gramos,
+   tiempo), "Respondé acá o en el mail: SI 1, 3" y como `fotos` la foto 1 de cada producto.
 
 ### Miércoles 19:00 — Aprobaciones + contenido
-1. Buscá en Gmail la respuesta del dueño al hilo `Productos nuevos` más reciente que todavía no
-   procesaste (fijate en `productos/propuestos.json` si esa fecha ya tiene respuesta).
+1. Buscá la respuesta del dueño a la propuesta más reciente que todavía no procesaste (fijate en
+   `productos/propuestos.json` si esa fecha ya tiene respuesta). Puede estar en Gmail (hilo
+   `Productos nuevos`) **o en Telegram**: corré `python -m agente.telegram leer` no hace falta, ya lo
+   hace GitHub cada hora; mirá en `contenido/telegram.json` los mensajes con `procesado: false`
+   posteriores a la propuesta. Cuando uses uno, marcalo `procesado: true`.
 2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si es ambigua, respondé en
    el mismo hilo preguntando y no hagas nada más con esa propuesta. Si no respondió, seguí al paso 5.
 3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
    `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs.
-4. Respondé en el hilo confirmando qué se aprobó y que ya está en Drive (o el error si falló).
+4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
+   Telegram (mensaje corto).
 5. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
    y hay productos en `productos/`, planificá **7 días más** a partir del último día programado
    (ver abajo). Revisá las imágenes con una hoja de contacto por día. Commit + push.

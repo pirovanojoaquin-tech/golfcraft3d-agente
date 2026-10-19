@@ -1,0 +1,61 @@
+name: Telegram
+
+# - Cada hora: guarda en contenido/telegram.json lo que el dueño le escribió al bot
+#   (ej: "SI 1, 3"); la rutina de los miércoles lo lee desde ahí.
+# - A pedido (workflow_dispatch): manda un mensaje con fotos opcionales.
+
+on:
+  schedule:
+    - cron: "41 * * * *"
+  workflow_dispatch:
+    inputs:
+      texto:
+        description: "Mensaje (HTML de Telegram: <b>, <i>, <a href>)"
+        required: false
+      fotos:
+        description: "URLs de fotos separadas por coma (opcional)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram
+  cancel-in-progress: false
+
+jobs:
+  telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Leer mensajes nuevos
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python -m agente.telegram leer
+
+      - name: Enviar mensaje
+        if: ${{ inputs.texto != '' && inputs.texto != null }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TEXTO: ${{ inputs.texto }}
+          FOTOS: ${{ inputs.fotos }}
+        run: python -m agente.telegram enviar --texto "$TEXTO" --fotos "$FOTOS"
+
+      - name: Guardar estado
+        run: |
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contenido/telegram.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Mensajes de Telegram $(date -u +'%F %H:%M') UTC"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

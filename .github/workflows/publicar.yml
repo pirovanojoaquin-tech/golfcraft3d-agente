@@ -50,6 +50,15 @@ jobs:
           [ -n "$ID" ] && ARGS+=(--id "$ID")
           python -m agente.publicar "${ARGS[@]}"
 
+      - name: Avisar por Telegram si algo falló
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -z "$TELEGRAM_BOT_TOKEN" ] && exit 0
+          python -m agente.telegram enviar --texto "⚠️ <b>Falló una publicación en Instagram.</b> Se reintenta en el próximo horario. Detalle: <a href=\"$URL\">ver en GitHub</a>" || true
+
       - name: Guardar estado del calendario
         if: always()
         run: |
