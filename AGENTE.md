@@ -43,9 +43,8 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 ### Miércoles 19:00 — Aprobaciones + contenido
 1. Buscá la respuesta del dueño a la propuesta más reciente que todavía no procesaste (fijate en
    `productos/propuestos.json` si esa fecha ya tiene respuesta). Puede estar en Gmail (hilo
-   `Productos nuevos`) **o en Telegram**: corré `python -m agente.telegram leer` no hace falta, ya lo
-   hace GitHub cada hora; mirá en `contenido/telegram.json` los mensajes con `procesado: false`
-   posteriores a la propuesta. Cuando uses uno, marcalo `procesado: true`.
+   `Productos nuevos`) **o en Telegram**: GitHub guarda cada hora lo que el dueño le escribe al bot en
+   `contenido/telegram.json`; mirá ahí los mensajes con `procesado: false` posteriores a la propuesta. Cuando uses uno, marcalo `procesado: true`.
 2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si es ambigua, respondé en
    el mismo hilo preguntando y no hagas nada más con esa propuesta. Si no respondió, seguí al paso 5.
 3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
