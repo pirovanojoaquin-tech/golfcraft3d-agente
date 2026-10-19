@@ -7,7 +7,7 @@
  */
 
 const CARPETA_ID = '1d7j56w2Qh00IbWcfqnolZ9tt-Goz-UY5';  // PRODUCTOS 3D GOLF
-const SITIOS_PERMITIDOS = ['files.printables.com', 'media.printables.com',
+const SITIOS_PERMITIDOS = ['files.printables.com', 'media.printables.com', 'raw.githubusercontent.com',
                            'cdn.thingiverse.com', 'cdn.thingiverse.net'];
 const MAX_MB = 50;
 
