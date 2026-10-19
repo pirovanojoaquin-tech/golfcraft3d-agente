@@ -136,7 +136,9 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
 
     disponibles = [s for s in d["stls"] if s["name"].lower().endswith((".stl", ".3mf", ".obj"))]
     if archivos:
-        elegidos = [s for s in disponibles if s["name"] in archivos]
+        # respetamos el orden pedido: el primero es el que se renderiza
+        por_nombre = {s["name"]: s for s in disponibles}
+        elegidos = [por_nombre[n] for n in archivos if n in por_nombre]
         faltan = set(archivos) - {s["name"] for s in elegidos}
         if faltan:
             sys.exit(f"No existen en el modelo: {sorted(faltan)}. Hay: {[s['name'] for s in disponibles]}")
