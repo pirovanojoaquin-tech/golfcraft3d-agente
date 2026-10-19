@@ -8,18 +8,18 @@ autor: WeighingMyOptions
 licencia: CC0
 licencia_nombre: Creative Commons — Public Domain
 piezas:
-- archivo: Zwing Trainer Stick Connectors.stl
-  printables_file_id: '5224064'
-  gramos: 22.2
-- archivo: Zwing Trainer Sticks.stl
-  printables_file_id: '5224065'
-  gramos: 48.3
-- archivo: Zwing Trainer Base v4.stl
-  printables_file_id: '5747682'
-  gramos: 100.0
 - archivo: Zwing Trainer v4 Main Body.stl
   printables_file_id: '5801582'
   gramos: 167.7
+- archivo: Zwing Trainer Base v4.stl
+  printables_file_id: '5747682'
+  gramos: 100.0
+- archivo: Zwing Trainer Sticks.stl
+  printables_file_id: '5224065'
+  gramos: 48.3
+- archivo: Zwing Trainer Stick Connectors.stl
+  printables_file_id: '5224064'
+  gramos: 22.2
 gramos: 338.2
 tiempo_min: 624
 tiempo: 10 h 24 min
