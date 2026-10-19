@@ -1,0 +1,35 @@
+nombre: Arco de putting
+descripcion: Arco de entrenamiento para el putt. La bola tiene que pasar por debajo
+  sin tocarlo, así practicás la línea de salida y la dirección del golpe.
+inspiracion: Los "putting gates" que usan los profesionales para entrenar la línea
+  de salida. Diseño propio, sin copiar ningún producto en particular.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: arco-de-putting
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/arco-de-putting/modelo.stl
+  gramos: 16.1
+gramos: 16.1
+tiempo_min: 42
+tiempo: 42 min
+costo_filamento: 643
+precio: 2000
+material: PLA
+colores_render:
+- verde
+- blanco
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: blanco
+- archivo: 3.jpg
+  color: amarillo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
