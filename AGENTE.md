@@ -25,12 +25,13 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    contenido programado.
 2. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (solo Printables, solo licencias
    que permiten vender, descarta lo ya propuesto).
-3. Elegí **3 a 5**: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
+3. **La propuesta es mitad y mitad: 2 modelos de Printables + 2 diseños propios** (si el dueño pide
+   más, mantené la proporción). De Printables elegí **2**: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
    variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
    nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
    izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
-3b. **Diseño propio de la semana (1 por semana):** sumá a la propuesta un producto de
-   **entrenamiento de golf** diseñado por nosotros (ver "Diseños propios" abajo). Va en el mismo JSON
+3b. **Diseños propios de la semana (2 por semana):** sumá a la propuesta dos productos de
+   **entrenamiento de golf** diseñados por nosotros (ver "Diseños propios" abajo). Va en el mismo JSON
    de `preparar.yml` con `"id": "propio:<carpeta>"` (sin `nombre` ni `archivos`; sí `colores`).
 4. Lanzá el workflow `preparar.yml` (inputs `fecha` = hoy y `productos` = JSON) y esperá que termine
    (consultá su estado cada 60 s con un loop de bash, sin gastar mensajes).
@@ -64,7 +65,7 @@ Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terc
 
 1. **Investigá** (WebSearch, 1-2 búsquedas) qué ayudas de entrenamiento de golf se usan: gates de putting,
    guías de alineación, entrenadores de muñeca o de plano de swing, marcadores de distancia para chipping,
-   soportes para varillas de alineación, etc. Elegí **una idea que no esté ya en `disenos/`** y que se
+   soportes para varillas de alineación, etc. Elegí **dos ideas distintas entre sí que no estén ya en `disenos/`** y que se
    pueda imprimir bien en FDM.
 2. **Inspirate en la función, no copies el producto.** Nada de logos, nombres comerciales ni la forma
    exacta de un producto de otra marca (muchos tienen diseño registrado o patente). Diseño nuestro,
