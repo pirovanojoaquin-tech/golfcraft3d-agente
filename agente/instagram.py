@@ -49,9 +49,17 @@ class Instagram:
             time.sleep(5)
         raise ErrorInstagram(f"El contenedor {contenedor_id} no terminó de procesarse")
 
-    def _publicar(self, contenedor_id):
+    def _publicar(self, contenedor_id, intentos=4):
         self._esperar(contenedor_id)
-        return self._req("POST", f"{self.user_id}/media_publish", creation_id=contenedor_id)["id"]
+        for n in range(intentos):
+            try:
+                return self._req("POST", f"{self.user_id}/media_publish", creation_id=contenedor_id)["id"]
+            except ErrorInstagram as e:
+                # Instagram a veces responde "The requested resource does not exist" (code 24) si se publica
+                # apenas el contenedor quedó listo: esperamos y reintentamos.
+                if "'code': 24" not in str(e) or n == intentos - 1:
+                    raise
+                time.sleep(15 * (n + 1))
 
     def publicar_imagen(self, url, caption):
         c = self._req("POST", f"{self.user_id}/media", image_url=url, caption=caption)["id"]

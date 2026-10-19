@@ -2,11 +2,9 @@ name: Publicar en Instagram
 
 on:
   schedule:
-    # Horarios en UTC (Argentina = UTC-3). Deben quedar unos minutos después de config.yaml > horarios.
-    - cron: "7 13 * * *"    # 10:07  historia-1
-    - cron: "37 15 * * *"   # 12:37  post
-    - cron: "7 19 * * *"    # 16:07  historia-2
-    - cron: "37 23 * * *"   # 20:37  historia-3
+    # Cada 15 minutos publica lo pendiente de hoy cuya hora (config.yaml > horarios) ya pasó.
+    # Así, si GitHub atrasa o se saltea una ejecución (pasa seguido en cuentas gratis), la siguiente la cubre.
+    - cron: "4,19,34,49 * * * *"
   workflow_dispatch:
     inputs:
       modo:
