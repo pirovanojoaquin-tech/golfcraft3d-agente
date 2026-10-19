@@ -21,7 +21,9 @@
     "imagenes": [
       "contenido/media/2026-10-19/historia-1.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "pendiente",
+    "intentos": 1,
+    "error": "POST 17841445495228241/media_publish -> 400: {'message': 'The requested resource does not exist', 'type': 'OAuthException', 'code': 24, 'error_subcode': 2207006, 'is_transient': False, 'error_user_title': 'Media Not Found', 'error_user_msg': 'The media with 18,083,713,931,516,508 cannot be found.', 'fbtrace_id': 'A9P75XHQZnTUowoO0IY4Grj'}"
   },
   {
     "id": "2026-10-19-post",
@@ -37,7 +39,9 @@
       "contenido/media/2026-10-19/post-5.jpg"
     ],
     "caption": "¿Un día le pegás bárbaro con el driver y al otro no sabés qué pasó? A veces es el tee 👀\n\nEl regulador de altura te marca la medida exacta para clavar el tee siempre igual. Lo llevás en el bolsillo y repetís tu salida en cada hoyo.\n\nElegí tu color entre 10 opciones de PLA. Escribinos por DM y te lo hacemos 📩\n#drive #teedegolf #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18116020070274207",
+    "publicado_en": "2026-10-19T16:14:07-03:00"
   },
   {
     "id": "2026-10-19-historia-2",
@@ -48,7 +52,9 @@
     "imagenes": [
       "contenido/media/2026-10-19/historia-2.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18112289752889654",
+    "publicado_en": "2026-10-19T16:14:13-03:00"
   },
   {
     "id": "2026-10-19-historia-3",
