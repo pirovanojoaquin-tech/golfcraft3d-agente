@@ -28,10 +28,16 @@ def tarjeta(n, ficha, carpeta, sha):
         f'style="border-radius:10px;margin:0 6px 6px 0;vertical-align:top">' for f in ficha["fotos"])
     colores = ", ".join(f["color"] for f in ficha["fotos"])
     e = html.escape
+    propio = ficha.get("origen") == "propio"
+    insignia = (f'<span style="background:{VERDE};color:#fff;font-size:12px;padding:3px 8px;border-radius:10px;'
+                f'margin-left:6px">🛠️ Diseño propio</span>') if propio else ""
+    licencia = ("Diseño propio de GolfCraft3D · sin restricciones" if propio else
+                f'{e(ficha["licencia"])} · autor {e(ficha["autor"])} · '
+                f'<a href="{ficha["url"]}" style="color:{VERDE}">ver modelo</a>')
     return f"""
 <div style="background:#fff;border-radius:14px;padding:18px;margin:0 0 18px;border:1px solid #e3ded2">
   <div style="font-size:13px;color:{VERDE};font-weight:bold;letter-spacing:.5px">PRODUCTO {n}</div>
-  <div style="font-size:20px;font-weight:bold;margin:2px 0 6px">{e(ficha["nombre"])}</div>
+  <div style="font-size:20px;font-weight:bold;margin:2px 0 6px">{e(ficha["nombre"])}{insignia}</div>
   <div style="color:#55625b;font-size:14px;margin-bottom:12px">{e(ficha.get("descripcion_es") or ficha["descripcion"])}</div>
   <div>{fotos}</div>
   <table style="font-size:14px;border-collapse:collapse;margin-top:8px">
@@ -39,7 +45,7 @@ def tarjeta(n, ficha, carpeta, sha):
     <tr><td style="padding:3px 14px 3px 0;color:#55625b">Filamento</td><td>{ficha["gramos"]} g de {e(ficha["material"])}</td></tr>
     <tr><td style="padding:3px 14px 3px 0;color:#55625b">Tiempo estimado</td><td>{e(ficha["tiempo"])}</td></tr>
     <tr><td style="padding:3px 14px 3px 0;color:#55625b">Colores sugeridos</td><td>{e(colores)}</td></tr>
-    <tr><td style="padding:3px 14px 3px 0;color:#55625b">Licencia</td><td>{e(ficha["licencia"])} · autor {e(ficha["autor"])} · <a href="{ficha["url"]}" style="color:{VERDE}">ver modelo</a></td></tr>
+    <tr><td style="padding:3px 14px 3px 0;color:#55625b">Licencia</td><td>{licencia}</td></tr>
   </table>
   {f'<div style="margin-top:8px;font-size:13px;color:#7a5a00">⚠️ {e(ficha["aviso"])}</div>' if ficha.get("aviso") else ""}
 </div>"""

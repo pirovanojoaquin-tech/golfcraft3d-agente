@@ -29,6 +29,9 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
    nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
    izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
+3b. **Diseño propio de la semana (1 por semana):** sumá a la propuesta un producto de
+   **entrenamiento de golf** diseñado por nosotros (ver "Diseños propios" abajo). Va en el mismo JSON
+   de `preparar.yml` con `"id": "propio:<carpeta>"` (sin `nombre` ni `archivos`; sí `colores`).
 4. Lanzá el workflow `preparar.yml` (inputs `fecha` = hoy y `productos` = JSON) y esperá que termine
    (consultá su estado cada 60 s con un loop de bash, sin gastar mensajes).
 5. `git pull`, mirá los renders (una hoja de contacto por producto alcanza). En cada `ficha.yaml`
@@ -54,6 +57,28 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 5. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
    y hay productos en `productos/`, planificá **7 días más** a partir del último día programado
    (ver abajo). Revisá las imágenes con una hoja de contacto por día. Commit + push.
+
+## Diseños propios (entrenamiento de golf)
+
+Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terceros.
+
+1. **Investigá** (WebSearch, 1-2 búsquedas) qué ayudas de entrenamiento de golf se usan: gates de putting,
+   guías de alineación, entrenadores de muñeca o de plano de swing, marcadores de distancia para chipping,
+   soportes para varillas de alineación, etc. Elegí **una idea que no esté ya en `disenos/`** y que se
+   pueda imprimir bien en FDM.
+2. **Inspirate en la función, no copies el producto.** Nada de logos, nombres comerciales ni la forma
+   exacta de un producto de otra marca (muchos tienen diseño registrado o patente). Diseño nuestro,
+   simple y funcional, con `GOLFCRAFT3D` grabado en alguna cara visible.
+3. Creá `disenos/<carpeta>/modelo.scad` (OpenSCAD, con parámetros arriba y comentarios) e
+   `disenos/<carpeta>/info.yaml` con `nombre`, `descripcion` (español, verdadera), `inspiracion` y
+   `piezas: [modelo.scad]`. Mirá `disenos/arco-de-putting/` como ejemplo.
+4. Reglas de diseño: base plana y ancha, **sin soportes** (voladizos ≤ 45°, puentes ≤ 60 mm), paredes
+   ≥ 1,6 mm, cabe en 250 × 250 × 250 mm, medidas reales del golf (bola Ø 42,67 mm; varilla de alineación
+   Ø ~8-10 mm; tee Ø ~5-6 mm). Preferí piezas de menos de 60 g.
+5. Si tenés `openscad` a mano, compilá antes de commitear para no gastar una corrida de GitHub en un
+   error de sintaxis. Commit + push de la carpeta **antes** de lanzar `preparar.yml`.
+6. Al revisar los renders, si el diseño se ve mal o no se entiende para qué sirve, corregí el `.scad`
+   y volvé a preparar solo ese producto, o sacalo de la propuesta.
 
 ## Tu tarea semanal (planificar contenido)
 
@@ -115,6 +140,7 @@ Al menos 1 de las 3 historias del día tiene que ser de producto.
 - Los textos que van **dentro de las imágenes** (títulos, etiquetas, items) sin emojis: la
   tipografía no los tiene y se quitan solos. Los emojis van en el caption.
 - Usá solo fotos que estén en `productos/<producto>/fotos/`. No inventes productos ni características.
+- En los productos con `origen: propio` podés destacar "Diseño exclusivo GolfCraft3D" en el caption.
 - No pongas precios en las publicaciones: los clientes consultan por DM (los precios de `info.yaml`
   son para que el dueño responda). Si el dueño pide lo contrario, respetalo.
 - En el slide `cta`, `nombre_corto` va **con artículo**: "el regulador de tee", "la pelota secreta".

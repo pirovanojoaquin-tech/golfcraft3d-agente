@@ -17,7 +17,8 @@ from .buscar import PROPUESTOS
 from .calendario import RAIZ
 
 CAMPOS = ["nombre", "descripcion", "personalizable", "precio", "gramos", "tiempo", "colores",
-          "destacado", "notas", "printables_id", "url", "autor", "licencia", "piezas"]
+          "destacado", "notas", "origen", "diseno", "inspiracion", "printables_id", "url", "autor", "licencia",
+          "piezas"]
 
 
 def main():

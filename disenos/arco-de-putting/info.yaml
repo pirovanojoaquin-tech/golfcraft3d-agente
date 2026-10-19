@@ -1,0 +1,5 @@
+nombre: Arco de putting
+descripcion: Arco de entrenamiento para el putt. La bola tiene que pasar por debajo sin tocarlo, así practicás la línea de salida y la dirección del golpe.
+inspiracion: Los "putting gates" que usan los profesionales para entrenar la línea de salida. Diseño propio, sin copiar ningún producto en particular.
+piezas:
+  - modelo.scad

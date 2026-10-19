@@ -24,10 +24,18 @@ PROPUESTOS = RAIZ / "productos" / "propuestos.json"
 CABECERAS = {"User-Agent": "Mozilla/5.0 (compatible; GolfCraft3D-agente/1.0)", "Accept": "application/json"}
 
 BUSQUEDAS = [
-    "golf", "golf ball", "golf ball marker", "golf tee", "golf tee holder", "divot tool",
-    "golf ball holder", "golf bag", "golf club", "golf scorecard", "golf putter",
-    "golf training", "golf alignment", "golf glove", "golf cart", "golf gift",
-    "golf ball display", "golf pencil", "golf towel", "putting",
+    # accesorios
+    "golf", "golf ball", "golf ball marker", "golf tee", "golf tee holder", "divot tool", "pitch mark repair",
+    "golf ball holder", "golf ball clip", "golf glove holder", "golf towel clip", "golf scorecard",
+    "golf pencil", "golf bag", "golf bag tag", "golf club", "golf headcover", "golf shoe", "golf hat clip",
+    "golf cart", "golf cart holder", "golf cup holder",
+    # entrenamiento
+    "golf training", "golf training aid", "golf alignment", "alignment stick", "putting", "putting gate",
+    "putting trainer", "putting cup", "golf swing trainer", "golf grip trainer", "golf chipping",
+    "golf practice", "golf impact", "golf wrist",
+    # regalos, decoración y organización
+    "golf gift", "golf ball display", "golf ball stand", "golf trophy", "golf keychain", "golf ornament",
+    "golf storage", "golf organizer", "golf bottle opener", "golf coaster",
 ]
 
 # Licencias que permiten vender las impresiones (con atribución al autor cuando corresponde)

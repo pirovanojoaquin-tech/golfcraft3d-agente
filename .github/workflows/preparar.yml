@@ -10,7 +10,7 @@ on:
         description: "Fecha de la propuesta (AAAA-MM-DD)"
         required: true
       productos:
-        description: 'JSON: [{"id":"320193","nombre":"Tee","archivos":"golf tee.stl","colores":"verde,blanco"}]'
+        description: 'JSON: [{"id":"320193","nombre":"Tee","archivos":"golf tee.stl","colores":"verde,blanco"}] (diseño propio: "id":"propio:<carpeta de disenos/>")'
         required: true
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
       - name: Instalar laminador y Blender
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender openscad
           pip install -r requirements.txt
 
       - name: Preparar ficha
@@ -53,8 +53,10 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: propuesta-${{ matrix.p.id }}
-          path: propuestas/
+          name: propuesta-${{ strategy.job-index }}
+          path: |
+            propuestas/
+            disenos/
 
   guardar:
     needs: producto
@@ -66,14 +68,14 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: propuesta-*
-          path: propuestas/
+          path: .
           merge-multiple: true
 
       - name: Subir fichas al repo
         run: |
           git config user.name "golfcraft3d-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add propuestas/
+          git add propuestas/ disenos/
           if ! git diff --cached --quiet; then
             git commit -m "Propuesta de productos ${{ inputs.fecha }}"
             git pull --rebase origin "${GITHUB_REF_NAME}"

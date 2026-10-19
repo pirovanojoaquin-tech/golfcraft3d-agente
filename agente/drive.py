@@ -14,6 +14,7 @@ import requests
 import yaml
 
 from .calendario import RAIZ
+from .mail import REPO
 from .preparar import link_descarga
 
 
@@ -33,18 +34,38 @@ Personalizable: {info.get('personalizable') or '-'}
 Archivos:
 {piezas}
 
-Modelo original: {info['url']}
-Autor: {info['autor']} — Licencia: {info['licencia']}
-(La licencia permite vender impresiones; si la pide, dar crédito al autor.)
+{origen_ficha(info)}
 """
+
+
+def origen_ficha(info):
+    if info.get("origen") == "propio":
+        return "Diseño propio de GolfCraft3D (sin restricciones de uso)."
+    return (f"Modelo original: {info['url']}\nAutor: {info['autor']} — Licencia: {info['licencia']}\n"
+            "(La licencia permite vender impresiones; si la pide, dar crédito al autor.)")
 
 
 def guardar(slug, url_app):
     info = yaml.safe_load((RAIZ / "productos" / slug / "info.yaml").read_text(encoding="utf-8"))
-    archivos = [{"nombre": p["archivo"], "url": link_descarga(info["printables_id"], p["printables_file_id"])}
-                for p in info.get("piezas") or []]
-    r = requests.post(url_app, json={"carpeta": info["nombre"], "archivos": archivos, "ficha": texto_ficha(info)},
-                      timeout=300)
+    archivos = [{"nombre": p["archivo"], "url": url_archivo(info, p)} for p in info.get("piezas") or []]
+    datos = _enviar(url_app, info["nombre"], archivos, texto_ficha(info))
+    if not datos.get("ok") and "Sitio no permitido" in str(datos.get("error")):
+        # el script de Drive del dueño solo acepta Printables/Thingiverse: guardamos la ficha con los links
+        links = "\n".join(f"  {a['nombre']}: {a['url']}" for a in archivos)
+        datos = _enviar(url_app, info["nombre"], [], texto_ficha(info) + f"\nDescargá los archivos desde:\n{links}\n")
+    if not datos.get("ok"):
+        raise RuntimeError(datos.get("error"))
+    return datos
+
+
+def url_archivo(info, pieza):
+    if pieza.get("ruta"):  # diseño propio: el STL está en el repo
+        return f"https://raw.githubusercontent.com/{REPO}/main/{pieza['ruta']}"
+    return link_descarga(info["printables_id"], pieza["printables_file_id"])
+
+
+def _enviar(url_app, carpeta, archivos, ficha):
+    r = requests.post(url_app, json={"carpeta": carpeta, "archivos": archivos, "ficha": ficha}, timeout=300)
     r.raise_for_status()
     try:
         datos = r.json()
@@ -55,8 +76,6 @@ def guardar(slug, url_app):
         cuerpo = re.sub(r"<[^>]+>", " ", r.text)
         raise RuntimeError(f"Drive no devolvió JSON (HTTP {r.status_code}, url final {r.url.split('?')[0]}): "
                            f"{titulo.group(1).strip() if titulo else ''} | {' '.join(cuerpo.split())[:300]}")
-    if not datos.get("ok"):
-        raise RuntimeError(datos.get("error"))
     return datos
 
 

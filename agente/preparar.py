@@ -3,8 +3,9 @@
 Uso:
     python -m agente.preparar 320193 --fecha 2026-10-19 --nombre "Tee de altura fija" \
         --archivos "golf tee.stl" --colores verde,blanco,rojo
+    python -m agente.preparar propio:gate-de-putting --fecha 2026-10-26 --colores verde,blanco
 
-Necesita `prusa-slicer` y `blender` instalados (el workflow de GitHub los instala).
+Necesita `prusa-slicer`, `blender` y (para diseños propios) `openscad` instalados (el workflow de GitHub los instala).
 Deja todo en propuestas/<fecha>/<slug>/:
     ficha.yaml        datos del producto (lo que va al mail y luego a productos/)
     fotos/1.jpg ...   renders (1 = vertical para portada, resto cuadradas)
@@ -152,11 +153,26 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
         g, m = laminar(local if local.suffix.lower() == ".3mf" else stl)
         gramos, minutos = gramos + g, minutos + m
         piezas.append({"archivo": s["name"], "printables_file_id": s["id"], "gramos": round(g, 1)})
-    costo, final = precio(gramos)
 
+    modelo_render = a_stl(DESCARGAS / str(d["id"]) / elegidos[0]["name"])
+    return terminar(carpeta, piezas, gramos, minutos, modelo_render, colores, muestras, {
+        "nombre": nombre,
+        "nombre_original": d["name"],
+        "descripcion": (d.get("summary") or "").strip(),
+        "origen": "printables",
+        "printables_id": d["id"],
+        "url": f"https://www.printables.com/model/{d['id']}-{d['slug']}",
+        "autor": d["user"]["publicUsername"],
+        "licencia": d["license"]["abbreviation"],
+        "licencia_nombre": d["license"]["name"],
+    })
+
+
+def terminar(carpeta, piezas, gramos, minutos, modelo_render, colores, muestras, datos):
+    """Renderiza en los colores pedidos y escribe ficha.yaml (común a Printables y diseños propios)."""
+    costo, final = precio(gramos)
     paleta = CONFIG["colores"]
     colores = colores or ["negro", "blanco", "verde"]
-    modelo_render = a_stl(DESCARGAS / str(d["id"]) / elegidos[0]["name"])
     fotos = []
     for n, color in enumerate(colores[:len(ANGULOS)], 1):
         angulo, giro = ANGULOS[n - 1]
@@ -165,14 +181,7 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
         fotos.append({"archivo": f"{n}.jpg", "color": color})
 
     ficha = {
-        "nombre": nombre,
-        "nombre_original": d["name"],
-        "descripcion": (d.get("summary") or "").strip(),
-        "printables_id": d["id"],
-        "url": f"https://www.printables.com/model/{d['id']}-{d['slug']}",
-        "autor": d["user"]["publicUsername"],
-        "licencia": d["license"]["abbreviation"],
-        "licencia_nombre": d["license"]["name"],
+        **datos,
         "piezas": piezas,
         "gramos": round(gramos, 1),
         "tiempo_min": round(minutos),
@@ -189,9 +198,45 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
     return carpeta, ficha
 
 
+def preparar_propio(slug_diseno, fecha, colores=None, muestras=64):
+    """Diseño propio de disenos/<slug>/: compila los .scad con OpenSCAD, lamina y renderiza.
+
+    disenos/<slug>/info.yaml tiene: nombre, descripcion, inspiracion y piezas (lista de .scad o .stl).
+    Los STL generados quedan en disenos/<slug>/ (se suben al repo: son nuestros).
+    """
+    base = RAIZ / "disenos" / slug_diseno
+    info = yaml.safe_load((base / "info.yaml").read_text(encoding="utf-8"))
+    carpeta = RAIZ / "propuestas" / fecha / slug(info["nombre"])
+    (carpeta / "fotos").mkdir(parents=True, exist_ok=True)
+    piezas, gramos, minutos, stls = [], 0.0, 0.0, []
+    for archivo in info["piezas"]:
+        fuente = base / archivo
+        stl = fuente.with_suffix(".stl")
+        if fuente.suffix.lower() == ".scad":
+            r = subprocess.run(["openscad", "-o", str(stl), str(fuente)], capture_output=True, text=True)
+            if r.returncode != 0 or not stl.exists():
+                raise RuntimeError(f"OpenSCAD falló con {archivo}: {r.stderr[-600:]}")
+        g, m = laminar(stl)
+        gramos, minutos = gramos + g, minutos + m
+        stls.append(stl)
+        piezas.append({"archivo": stl.name, "ruta": stl.relative_to(RAIZ).as_posix(), "gramos": round(g, 1)})
+    return terminar(carpeta, piezas, gramos, minutos, stls[0], colores, muestras, {
+        "nombre": info["nombre"],
+        "descripcion": info.get("descripcion", ""),
+        "inspiracion": info.get("inspiracion", ""),
+        "origen": "propio",
+        "printables_id": None,
+        "url": None,
+        "autor": "GolfCraft3D",
+        "licencia": "Diseño propio",
+        "licencia_nombre": "Diseño propio de GolfCraft3D (sin restricciones)",
+        "diseno": slug_diseno,
+    })
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("printables_id")
+    ap.add_argument("printables_id", help="id de Printables, o propio:<carpeta de disenos/>")
     ap.add_argument("--fecha", required=True)
     ap.add_argument("--nombre")
     ap.add_argument("--archivos", help="nombres de archivo separados por | (por defecto el primer STL)")
@@ -203,8 +248,11 @@ def main():
         malos = [c for c in colores if c not in CONFIG["colores"]]
         if malos:
             sys.exit(f"Colores que no están en el stock: {malos}")
-    carpeta, ficha = preparar(a.printables_id, a.fecha, a.nombre,
-                              a.archivos.split("|") if a.archivos else None, colores, a.muestras)
+    if a.printables_id.startswith("propio:"):
+        carpeta, ficha = preparar_propio(a.printables_id.split(":", 1)[1], a.fecha, colores, a.muestras)
+    else:
+        carpeta, ficha = preparar(a.printables_id, a.fecha, a.nombre,
+                                  a.archivos.split("|") if a.archivos else None, colores, a.muestras)
     print(f"{carpeta.relative_to(RAIZ)}: {ficha['gramos']} g, {ficha['tiempo']}, precio ${ficha['precio']}")
 
 
