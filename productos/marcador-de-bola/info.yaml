@@ -20,8 +20,8 @@ piezas:
   gramos: 0.3
 medidas_mm:
   largo: 18
-  ancho: 7
-  alto: 18
+  ancho: 18
+  alto: 7
 colores_png:
 - rojo
 - azul

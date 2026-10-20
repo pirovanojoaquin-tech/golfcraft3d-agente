@@ -403,7 +403,7 @@ def slide_medidas(png, medidas, gramos, tono="crema", titulo="Medidas reales"):
     texto_bloque(d, (60, 80), titulo, fuente(80, 800), c_tit, 960, 1.1, centrado=True)
     pegar(im, png, (90, 220, 900, 760))
     datos = [("Largo", f"{medidas['largo']} mm"), ("Ancho", f"{medidas['ancho']} mm"),
-             ("Alto", f"{medidas['alto']} mm"), ("Peso", f"{round(gramos)} g")]
+             ("Alto", f"{medidas['alto']} mm"), ("Peso", f"{round(gramos)} g" if gramos >= 1 else f"{gramos:.1f} g".replace(".", ","))]
     cw, gap = 225, 20
     x = (1080 - (cw * 4 + gap * 3)) / 2
     for etiqueta, valor in datos:

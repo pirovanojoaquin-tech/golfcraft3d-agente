@@ -14,7 +14,6 @@ dias:
       slides:
         - {tipo: "hero", titulo: "Un agarre que se repite", subtitulo: "Guía de agarre para el palo", etiqueta: "Entrenamiento"}
         - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Colocala en el grip de tu palo", "Apoyá las manos siguiendo la guía", "Repetí hasta que te salga solo"], tono: "verde"}
-        - {tipo: "foto", foto: "2.jpg"}
         - {tipo: "colores"}
         - {tipo: "medidas"}
         - {tipo: "cta_producto", nombre_corto: "la guía de agarre", png: "blanco.png"}
@@ -36,7 +35,6 @@ dias:
       slides:
         - {tipo: "hero", titulo: "El tee siempre a mano", subtitulo: "Clip de gorra para tee", etiqueta: "Nuevo"}
         - {tipo: "pasos", titulo: "Así de simple", pasos: ["Enganchá el clip en la visera", "Poné el tee en el clip", "Sacalo cuando llegues a la salida"], tono: "crema"}
-        - {tipo: "foto", foto: "2.jpg"}
         - {tipo: "colores"}
         - {tipo: "medidas", titulo: "Chiquito pero útil"}
         - {tipo: "cta_producto", nombre_corto: "el clip de gorra", png: "blanco.png"}
@@ -60,7 +58,6 @@ dias:
         - {tipo: "colores"}
         - {tipo: "pasos", titulo: "En el green", pasos: ["Marcá detrás de la bola", "Levantala y limpiala", "Usá la flecha para alinear tu putt"], tono: "verde"}
         - {tipo: "medidas"}
-        - {tipo: "foto", foto: "2.jpg"}
         - {tipo: "cta_producto", nombre_corto: "el marcador de bola"}
     historias:
       - {tipo: "hero", producto: "marcador-de-bola", etiqueta: "Nuevo", titulo: "Marcador de bola", subtitulo: "En el color que quieras"}
@@ -82,7 +79,7 @@ dias:
         - {tipo: "hero", producto: "marcador-de-bola", titulo: "Marcador de bola", subtitulo: "Para marcar en el green", sellos: ["Liviano", "Flecha calada", "10 colores"]}
         - {tipo: "hero", producto: "regulador-de-altura-de-tee", png: "amarillo.png", tono: "verde", titulo: "Regulador de altura de tee", subtitulo: "Tu salida siempre igual", sellos: ["Entra en el bolsillo", "10 colores"]}
         - {tipo: "info", titulo: "El kit incluye", items: ["Clip de gorra para tee", "Marcador de bola", "Regulador de altura de tee"]}
-        - {tipo: "cta"}
+        - {tipo: "cta_producto", nombre_corto: "tu kit", png: "blanco.png"}
     historias:
       - {tipo: "texto", etiqueta: "Combo", titulo: "Armá tu kit", texto: "Clip para la gorra, marcador de bola y regulador de tee en los colores que elijas."}
       - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Arreglá tus piques", texto: "En el green podés reparar las marcas que deja la bola al caer. Tu compañero de atrás te lo va a agradecer."}
@@ -100,7 +97,6 @@ dias:
         #regalosgolf #regalooriginal #pelotadegolf #golfistas
       slides:
         - {tipo: "hero", titulo: "El regalo con sorpresa", subtitulo: "Pelota con compartimento secreto", etiqueta: "Ideal para regalar"}
-        - {tipo: "foto", foto: "1.jpg"}
         - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Abrí las dos mitades", "Guardá una nota o un regalito", "Cerrala y sorprendé"], png: "amarillo.png", tono: "verde"}
         - {tipo: "colores"}
         - {tipo: "info", titulo: "Ideas para el compartimento", items: ["Una nota o una dedicatoria", "Tees o marcadores de regalo", "Lo que se te ocurra"]}
