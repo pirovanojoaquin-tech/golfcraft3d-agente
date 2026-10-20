@@ -19,7 +19,17 @@ class Instagram:
         self.base = f"{HOST}/{api_version}"
         self._user_id = None
 
-    def _req(self, metodo, ruta, **params):
+    def _req(self, metodo, ruta, intentos=3, **params):
+        """Llama a la API; reintenta los errores temporales de Instagram (is_transient / 5xx)."""
+        for n in range(intentos):
+            try:
+                return self._req_una_vez(metodo, ruta, **params)
+            except ErrorInstagram as e:
+                if ("'is_transient': True" not in str(e) and "-> 5" not in str(e)) or n == intentos - 1:
+                    raise
+                time.sleep(20 * (n + 1))
+
+    def _req_una_vez(self, metodo, ruta, **params):
         params["access_token"] = self.token
         if metodo == "GET":
             r = requests.get(f"{self.base}/{ruta}", params=params, timeout=60)
