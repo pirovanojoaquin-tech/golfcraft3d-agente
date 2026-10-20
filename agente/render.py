@@ -121,12 +121,12 @@ def pelota_de_golf(obj):
     # hoyuelos: Voronoi (distancia a la celda) -> relieve
     coord = nodos.new("ShaderNodeTexCoord")
     vor = nodos.new("ShaderNodeTexVoronoi")
-    vor.inputs["Scale"].default_value = 18 / (r * 2)
+    vor.inputs["Scale"].default_value = 9 / (r * 2)
     rampa = nodos.new("ShaderNodeMapRange")
     rampa.inputs["From Min"].default_value = 0.0
     rampa.inputs["From Max"].default_value = 0.5
     relieve = nodos.new("ShaderNodeBump")
-    relieve.inputs["Strength"].default_value = 1.0
+    relieve.inputs["Strength"].default_value = 0.6
     relieve.inputs["Distance"].default_value = r * 0.08
     enlaces.new(coord.outputs["Object"], vor.inputs["Vector"])
     enlaces.new(vor.outputs["Distance"], rampa.inputs["Value"])
@@ -138,8 +138,16 @@ def pelota_de_golf(obj):
 
 def escenario(fondo, transparente=False):
     # Piso curvo tipo estudio (sin horizonte visible)
-    bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
+    bpy.ops.mesh.primitive_plane_add(size=60 if transparente else 20, location=(0, 0, 0))
     piso = bpy.context.active_object
+    if transparente:
+        # sin fondo: piso plano y grande, para que la sombra se desvanezca sin cortes
+        piso.is_shadow_catcher = True  # solo deja la sombra; el fondo lo pone la plantilla
+        bpy.context.scene.render.film_transparent = True
+        bpy.context.scene.world = bpy.context.scene.world or bpy.data.worlds.new("Mundo")
+        bpy.context.scene.world.use_nodes = True
+        bpy.context.scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.45
+        return
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.subdivide(number_cuts=40)
     bpy.ops.object.mode_set(mode="OBJECT")
@@ -147,9 +155,6 @@ def escenario(fondo, transparente=False):
         if v.co.y > 1.5:
             v.co.z = (v.co.y - 1.5) ** 2 * 0.35
     bpy.ops.object.shade_smooth()
-    if transparente:
-        piso.is_shadow_catcher = True  # solo deja la sombra; el fondo lo pone la plantilla
-        bpy.context.scene.render.film_transparent = True
     m = bpy.data.materials.new("Fondo")
     m.use_nodes = True
     p = m.node_tree.nodes["Principled BSDF"]
@@ -176,12 +181,12 @@ def luz(nombre, pos, energia, tam):
     o.rotation_euler = direccion.to_track_quat("-Z", "Y").to_euler()
 
 
-def camara(objetos, angulo, giro):
+def camara(objetos, angulo, giro, margen=1.02):
     pts = [o.matrix_world @ Vector(c) for o in objetos for c in o.bound_box]
     mins = Vector([min(p[i] for p in pts) for i in range(3)])
     maxs = Vector([max(p[i] for p in pts) for i in range(3)])
     centro = (mins + maxs) / 2
-    radio = (maxs - mins).length * 0.5 * 1.02
+    radio = (maxs - mins).length * 0.5 * margen
     cam_d = bpy.data.cameras.new("Cam")
     cam_d.lens = 85
     cam_d.sensor_fit = "HORIZONTAL"  # el encuadre se calcula sobre el ancho, también en vertical
@@ -210,7 +215,7 @@ def main():
     luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
     luz("Relleno", (3, -2, 1.5), 140, 4)
     luz("Contra", (0.5, 3, 2.5), 260, 2)
-    camara(visibles, a.angulo, a.giro)
+    camara(visibles, a.angulo, a.giro, 1.3 if a.transparente else 1.02)
 
     esc = bpy.context.scene
     esc.render.engine = "CYCLES"

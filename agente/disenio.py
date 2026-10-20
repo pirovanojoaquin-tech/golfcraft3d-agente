@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 RAIZ = Path(__file__).resolve().parent.parent
 ASSETS = RAIZ / "assets"
@@ -307,19 +307,35 @@ def fondo(tamanio, tono="verde"):
 
 def recortar(png):
     """Recorta el PNG transparente al contorno del producto (y su sombra)."""
-    im = Image.open(png).convert("RGBA") if not isinstance(png, Image.Image) else png
+    im = Image.open(png).convert("RGBA") if not isinstance(png, Image.Image) else png.copy()
+    # desvanece los bordes del render para que una sombra que llega al borde no quede cortada
+    w, h = im.size
+    borde = max(1, w // 12)
+    mascara = Image.new("L", (w, h), 255)
+    d = ImageDraw.Draw(mascara)
+    for i in range(borde):
+        d.rectangle((i, i, w - 1 - i, h - 1 - i), outline=round(255 * i / borde))
+    im.putalpha(ImageChops.multiply(im.getchannel("A"), mascara))
     caja = im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()
     return im.crop(caja) if caja else im
 
 
 def pegar(lienzo, png, caja, abajo=False):
-    """Pega el producto escalado dentro de caja=(x, y, w, h), centrado (o apoyado abajo)."""
+    """Pega el producto escalado dentro de caja=(x, y, w, h), centrado (o apoyado abajo).
+
+    Se encuadra por el contorno del producto; la sombra suave puede salirse un poco de la caja.
+    """
     prod = recortar(png)
+    nucleo = prod.getchannel("A").point(lambda a: 255 if a > 150 else 0).getbbox() or (0, 0, *prod.size)
+    nx, ny, nw, nh = nucleo[0], nucleo[1], nucleo[2] - nucleo[0], nucleo[3] - nucleo[1]
     x, y, w, h = caja
-    esc = min(w / prod.width, h / prod.height)
+    esc = min(w / nw, h / nh)
     prod = prod.resize((round(prod.width * esc), round(prod.height * esc)), Image.LANCZOS)
-    py = y + h - prod.height if abajo else y + (h - prod.height) // 2
-    lienzo.alpha_composite(prod, (x + (w - prod.width) // 2, py))
+    px = x + (w - nw * esc) / 2 - nx * esc
+    py = (y + h - nh * esc if abajo else y + (h - nh * esc) / 2) - ny * esc
+    capa = Image.new("RGBA", lienzo.size, (0, 0, 0, 0))
+    capa.paste(prod, (round(px), round(py)))
+    lienzo.alpha_composite(capa)
 
 
 def _colores_texto(tono):

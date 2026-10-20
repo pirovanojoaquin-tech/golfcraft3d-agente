@@ -1,0 +1,72 @@
+name: Renders de catálogo
+
+# Imágenes sin fondo de productos aprobados (para las plantillas de estilo catálogo):
+# hero con pelota a escala, vista de arriba y 6 colores. Un producto por máquina.
+
+on:
+  workflow_dispatch:
+    inputs:
+      productos:
+        description: 'JSON con carpetas de productos/: ["regulador-de-altura-de-tee","marcador-de-bola"]'
+        required: true
+      muestras:
+        description: "Calidad del render (muestras de Cycles)"
+        default: "48"
+
+permissions:
+  contents: write
+
+jobs:
+  producto:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: ${{ fromJSON(inputs.productos) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar laminador y Blender
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender
+          pip install -r requirements.txt
+
+      - name: Renderizar
+        run: |
+          python -m agente.renders "${{ matrix.slug }}" --muestras "${{ inputs.muestras }}"
+          tar czf renders.tgz "productos/${{ matrix.slug }}/info.yaml" "productos/${{ matrix.slug }}/fotos/png"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: renders-${{ strategy.job-index }}
+          path: renders.tgz
+
+  guardar:
+    needs: producto
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: renders-*
+          path: artefactos
+
+      - name: Subir renders al repo
+        run: |
+          for t in artefactos/*/renders.tgz; do tar xzf "$t"; done
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add productos/
+          if ! git diff --cached --quiet; then
+            git commit -m "Renders de catálogo"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
