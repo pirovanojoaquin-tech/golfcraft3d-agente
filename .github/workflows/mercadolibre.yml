@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       accion:
-        description: "proponer | publicar | evento | revisar | autorizar"
+        description: "proponer | publicar | evento | revisar | autorizar | link"
         required: true
         default: revisar
       producto:
@@ -90,6 +90,10 @@ jobs:
       - name: Revisar
         if: env.ACCION == 'revisar'
         run: python -m agente.mercadolibre revisar
+
+      - name: Link para autorizar
+        if: env.ACCION == 'link'
+        run: python -m agente.mercadolibre link
 
       - name: Autorizar
         if: env.ACCION == 'autorizar'

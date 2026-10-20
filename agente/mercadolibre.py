@@ -104,6 +104,16 @@ def autorizar(codigo):
                     "Desde ahora, cada producto nuevo que salga en Instagram te lo propongo para ML por acá.")
 
 
+def link_autorizacion():
+    """Manda por Telegram el link para que el dueño autorice la app (la URL de vuelta es el Apps Script)."""
+    from urllib.parse import urlencode
+    url = "https://auth.mercadolibre.com.ar/authorization?" + urlencode(
+        {"response_type": "code", "client_id": app_id(), "redirect_uri": os.environ["DRIVE_WEBAPP_URL"]})
+    telegram.enviar("🔗 <b>Conectar Mercado Libre</b>\nTocá este link (con tu cuenta de vendedor abierta), "
+                    f"aceptá con <b>Permitir</b> y en un minuto te confirmo por acá:\n<a href=\"{url}\">Autorizar GolfCraft3D Agente</a>")
+    print("link enviado por Telegram")
+
+
 def token(margen=1800):
     """Access token vigente; lo renueva si vence en menos de `margen` segundos."""
     actual = os.environ.get("ML_ACCESS_TOKEN", "")
@@ -557,7 +567,7 @@ def revisar():
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("pendientes", "aprobaciones", "revisar"):
+    for c in ("pendientes", "aprobaciones", "revisar", "link"):
         sub.add_parser(c)
     for c in ("proponer", "publicar"):
         sub.add_parser(c).add_argument("slug")
@@ -569,7 +579,9 @@ def main():
     e.add_argument("recurso")
     sub.add_parser("autorizar").add_argument("codigo")
     a = ap.parse_args()
-    if a.cmd in ("pendientes", "aprobaciones", "revisar"):
+    if a.cmd == "link":
+        link_autorizacion()
+    elif a.cmd in ("pendientes", "aprobaciones", "revisar"):
         globals()[a.cmd]()
     elif a.cmd in ("proponer", "publicar"):
         globals()[a.cmd](a.slug)

@@ -54,7 +54,7 @@ colores:
 # se propone por Telegram para publicarlo en ML; se publica cuando el dueño responde "ML SI <código>".
 mercadolibre:
   activo: false                  # pasa a true cuando la app de ML está autorizada
-  app_id: ""                     # App ID de la app de ML (no es secreto; la clave secreta va en ML_CLIENT_SECRET)
+  app_id: "6256774709273005"                  # App ID de la app de ML (no es secreto; la clave secreta va en ML_CLIENT_SECRET)
   sitio: MLA
   tipo_publicacion: gold_special # Clásica
   ganancia_minima: 5000          # ARS limpios por venta (después de comisión, cargo fijo, envío y filamento)
