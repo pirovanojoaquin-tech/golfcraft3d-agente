@@ -32,6 +32,9 @@ def args():
     ap.add_argument("--transparente", action="store_true",
                     help="PNG sin fondo (solo producto + sombra) para montar sobre fondos de marca")
     ap.add_argument("--pelota", action="store_true", help="agrega una pelota de golf a escala real al lado")
+    ap.add_argument("--escena", help="escena en uso de agente/escenas.py (ej: gorra)")
+    ap.add_argument("--escena-params", default="{}", help="parámetros de la escena en JSON")
+    ap.add_argument("--margen", type=float, help="aire alrededor de lo encuadrado (1 = justo)")
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     return ap.parse_args(argv)
 
@@ -216,12 +219,18 @@ def main():
     visibles = [obj]
     if a.pelota:
         visibles.append(pelota_de_golf(obj))
+    if a.escena:
+        import json
+        import os
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import escenas
+        visibles, _ = escenas.construir(a.escena, obj, **json.loads(a.escena_params))
     # con colores claros (blanco, amarillo, piel) el fondo pasa a gris verdoso para que contraste
     escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD", a.transparente)
     luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
     luz("Relleno", (3, -2, 1.5), 140, 4)
     luz("Contra", (0.5, 3, 2.5), 260, 2)
-    camara(visibles, a.angulo, a.giro, 1.3 if a.transparente else 1.02)
+    camara(visibles, a.angulo, a.giro, a.margen or (1.3 if a.transparente else 1.02))
 
     esc = bpy.context.scene
     esc.render.engine = "CYCLES"
