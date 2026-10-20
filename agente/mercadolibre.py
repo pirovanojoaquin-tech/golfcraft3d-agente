@@ -84,8 +84,16 @@ def _oauth(**datos):
         raise ErrorML(f"oauth {datos['grant_type']} -> {r.status_code}: {r.json().get('message', '')}")
     t = r.json()
     if "refresh_token" not in t:
-        telegram.enviar("⚠️ <b>Falta un permiso en la app de Mercado Libre</b>: activá <b>offline access</b> "
-                        "(acceso sin conexión) en la configuración de la app y volvé a autorizar.")
+        if datos["grant_type"] == "authorization_code" and t.get("user_id"):
+            # ML reusó una autorización vieja sin offline_access: la revocamos para que la próxima vez
+            # muestre la pantalla de permisos completa
+            requests.delete(f"{API}/users/{t['user_id']}/applications/{app_id()}",
+                            headers={"Authorization": f"Bearer {t['access_token']}"}, timeout=60)
+            link_autorizacion("Casi: Mercado Libre usó la autorización vieja (sin acceso offline). Ya la borré. "
+                              "Tocá este link <b>una vez más</b> y aceptá todos los permisos:")
+        else:
+            telegram.enviar("⚠️ <b>Falta un permiso en la app de Mercado Libre</b>: activá <b>offline access</b> "
+                            "(acceso sin conexión) en la configuración de la app y volvé a autorizar.")
         raise ErrorML("La app de ML no tiene el permiso offline_access: no devolvió refresh_token")
     if os.environ.get("GITHUB_ACTIONS"):  # que nunca aparezcan en los logs públicos
         print(f"::add-mask::{t['access_token']}")
@@ -108,14 +116,15 @@ def autorizar(codigo):
                     "Desde ahora, cada producto nuevo que salga en Instagram te lo propongo para ML por acá.")
 
 
-def link_autorizacion():
+def link_autorizacion(texto=None):
     """Manda por Telegram el link para que el dueño autorice la app (la URL de vuelta es el Apps Script)."""
     from urllib.parse import urlencode
     url = "https://auth.mercadolibre.com.ar/authorization?" + urlencode(
         {"response_type": "code", "client_id": app_id(), "redirect_uri": os.environ["DRIVE_WEBAPP_URL"],
          "scope": "offline_access read write"})
-    telegram.enviar("🔗 <b>Conectar Mercado Libre</b>\nTocá este link (con tu cuenta de vendedor abierta), "
-                    f"aceptá con <b>Permitir</b> y en un minuto te confirmo por acá:\n<a href=\"{url}\">Autorizar GolfCraft3D Agente</a>")
+    texto = texto or ("Tocá este link (con tu cuenta de vendedor abierta), aceptá con <b>Permitir</b> "
+                      "y en un minuto te confirmo por acá:")
+    telegram.enviar(f"🔗 <b>Conectar Mercado Libre</b>\n{texto}\n<a href=\"{url}\">Autorizar GolfCraft3D Agente</a>")
     print("link enviado por Telegram")
 
 
