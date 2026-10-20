@@ -35,6 +35,9 @@ def args():
     ap.add_argument("--escena", help="escena en uso de agente/escenas.py (ej: gorra)")
     ap.add_argument("--escena-params", default="{}", help="parámetros de la escena en JSON")
     ap.add_argument("--margen", type=float, help="aire alrededor de lo encuadrado (1 = justo)")
+    ap.add_argument("--sin-piso", action="store_true", help="sin piso (para montar sobre una foto)")
+    ap.add_argument("--luz-relativa", action="store_true",
+                    help="las luces giran con la cámara (misma iluminación que la vista normal, desde cualquier giro)")
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     return ap.parse_args(argv)
 
@@ -226,10 +229,18 @@ def main():
         import escenas
         visibles, _ = escenas.construir(a.escena, obj, **json.loads(a.escena_params))
     # con colores claros (blanco, amarillo, piel) el fondo pasa a gris verdoso para que contraste
-    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD", a.transparente)
-    luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
-    luz("Relleno", (3, -2, 1.5), 140, 4)
-    luz("Contra", (0.5, 3, 2.5), 260, 2)
+    if a.sin_piso:
+        esc_ = bpy.context.scene
+        esc_.render.film_transparent = True
+        esc_.world = esc_.world or bpy.data.worlds.new("Mundo")
+        esc_.world.use_nodes = True
+        esc_.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.45
+    else:
+        escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD", a.transparente)
+    rot = Matrix.Rotation(math.radians(a.giro - 35), 3, "Z") if a.luz_relativa else Matrix.Identity(3)
+    luz("Principal", rot @ Vector((-2.5, -2.5, 3.5)), 520, 3)
+    luz("Relleno", rot @ Vector((3, -2, 1.5)), 140, 4)
+    luz("Contra", rot @ Vector((0.5, 3, 2.5)), 260, 2)
     camara(visibles, a.angulo, a.giro, a.margen or (1.3 if a.transparente else 1.02))
 
     esc = bpy.context.scene
@@ -248,6 +259,15 @@ def main():
     esc.render.image_settings.file_format = "PNG"
     esc.render.image_settings.color_mode = "RGBA" if a.transparente else "RGB"
     esc.render.filepath = a.salida
+    if "ancla" in obj:
+        # dónde cae el punto de apoyo en la imagen (para montarla sobre una foto)
+        import json
+        from bpy_extras.object_utils import world_to_camera_view
+        bpy.context.view_layer.update()
+        v = world_to_camera_view(esc, esc.camera, Vector(obj["ancla"]))
+        alto = a.alto or a.tam
+        with open(a.salida + ".json", "w") as f:
+            json.dump({"ancla": [v.x * a.tam, (1 - v.y) * alto]}, f)
     bpy.ops.render.render(write_still=True)
 
 

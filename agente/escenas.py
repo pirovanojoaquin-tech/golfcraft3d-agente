@@ -103,7 +103,7 @@ def tee(desde, hacia, mm, color="#E2C9A0"):
 # ---------- escenas ----------
 
 def gorra(obj, color_gorra="#1F2A44", color_tee="#E2C9A0", ranura_z=5.6, ranura_x=-3.2, agujero=(-8.2, 5.6),
-          lado_tee=-20):
+          lado_tee=-20, para_foto=False):
     """Clip de tee calzado en la visera de una gorra, con un tee puesto.
 
     ranura_z: altura (mm) del plano medio de la ranura del clip; ranura_x: fondo de la ranura (mm, eje x del
@@ -130,6 +130,15 @@ def gorra(obj, color_gorra="#1F2A44", color_tee="#E2C9A0", ranura_z=5.6, ranura_
             a = i * (anillos + 1) + j
             caras.append((a, a + 1, a + anillos + 2, a + anillos + 1))
     visera = solidificar(malla("Visera", verts, caras, tela(color_gorra)), 2.6 * mm)
+    # punto del borde de la visera dentro de la ranura: ahí se apoya el clip sobre la foto
+    obj["ancla"] = (ranura_x * mm, 0, ranura_z * mm)
+    if para_foto:
+        # para montar sobre una foto real: la visera es invisible, solo recibe la sombra y tapa
+        # la parte del clip que queda debajo de la tela
+        visera.is_shadow_catcher = True
+        ax, az = agujero
+        t = tee(Vector((ax * mm, lado_tee * mm, az * mm)), Vector((ax * mm, -lado_tee * mm, az * mm)), mm, color_tee)
+        return [obj, t], [obj, t, visera]
 
     # costuras: 5 pespuntes paralelos al borde de la visera
     hilo = tela(color_gorra)

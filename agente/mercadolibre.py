@@ -246,7 +246,7 @@ def pendientes():
     for slug in sorted(publicados - set(estado["productos"])):
         if not (RAIZ / "productos" / slug / "info.yaml").exists():
             continue
-        subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO,
+        subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
                         "-f", "accion=proponer", "-f", f"producto={slug}"], check=True)
         estado["productos"][slug] = {"estado": "preparando"}
         print(f"{slug}: propuesta en preparación")
@@ -329,7 +329,7 @@ def aprobaciones():
             if not slug or estado["productos"][slug]["estado"] not in ("propuesto", "no_conviene"):
                 continue
             if si:
-                subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO,
+                subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
                                 "-f", "accion=publicar", "-f", f"producto={slug}"], check=True)
                 estado["productos"][slug]["estado"] = "aprobado"
             else:
