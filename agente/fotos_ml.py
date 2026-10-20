@@ -132,6 +132,13 @@ def generar(slug, pack=1):
     principal = (info.get("colores") or ["verde"])[0]
     lista = info.get("colores_png") or [principal]
     rutas = [guardar(portada(png / f"{principal}.png", pack), salida / "1-portada.jpg")]
+    en_uso = carpeta / "fotos" / "en-uso.jpg"
+    if en_uso.exists():
+        # la foto en uso va segunda: ML pide la portada con fondo blanco
+        im = Image.open(en_uso).convert("RGB")
+        lado = min(im.size)
+        im = im.crop(((im.width - lado) // 2, (im.height - lado) // 2, (im.width + lado) // 2, (im.height + lado) // 2))
+        rutas.append(guardar(im.resize((TAM, TAM), Image.LANCZOS), salida / "1b-en-uso.jpg"))
     for n, vista in enumerate(VISTAS, 2):
         rutas.append(guardar(portada(png / f"ml-{vista}.png"), salida / f"{n}-{vista}.jpg"))
     if info.get("medidas_mm") and len(info.get("piezas", [])) == 1:

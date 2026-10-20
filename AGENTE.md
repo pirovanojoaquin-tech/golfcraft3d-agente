@@ -54,7 +54,7 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
    `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs
    y `renders.yml` con `productos` = JSON de los slugs (genera las imágenes sin fondo del estilo catálogo;
-   esperá que termine y hacé `git pull` antes de planificar).
+   esperá que termine y hacé `git pull` antes de planificar). Después armá su **imagen en uso** (ver abajo).
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
 5. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
@@ -82,6 +82,26 @@ Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terc
    error de sintaxis. Commit + push de la carpeta **antes** de lanzar `preparar.yml`.
 6. Al revisar los renders, si el diseño se ve mal o no se entiende para qué sirve, corregí el `.scad`
    y volvé a preparar solo ese producto, o sacalo de la propuesta.
+
+## Imagen en uso (una vez por producto)
+
+La portada de los carruseles y la 2ª foto de Mercado Libre muestran el producto **usándose** sobre una foto
+real (licencia Unsplash: uso comercial gratis). Todo lo pesado lo hace GitHub; vos solo armás la receta:
+
+1. Buscá fotos: workflow `banco.yml` con `accion=buscar` y 2-4 consultas en inglés separadas por `|`
+   (ej: `golf tee grass|golf ball on grass`). Mirá las miniaturas de `fondos/busquedas/*.json` con una
+   hoja de contacto. Elegí una foto **sin logos de marcas ni caras**, con el lugar donde va el producto
+   bien visible y espacio libre. Bajala con `accion=descargar` y `consultas=<id>:<nombre>`.
+2. Si hace falta, sumá una escena a `agente/escenas.py` (ver `gorra`): el producto con `para_foto: true`,
+   las piezas reales que sostiene (ej: tee) y una superficie invisible (`is_shadow_catcher`) donde se apoya,
+   que recibe la sombra y tapa lo que queda debajo. Guardá `obj["ancla"]` = punto de apoyo.
+3. Probá local en baja calidad (`blender ... --muestras 12 --tam 600`) hasta acertar `angulo`/`giro` para
+   que coincida la perspectiva con la foto, y `punto`/`escala` con `python -m agente.montaje`. Ejemplo:
+   `productos/clip-de-gorra-para-tee/info.yaml > en_uso`.
+4. Guardá la receta `en_uso` en el `info.yaml`, commit + push y lanzá `en-uso.yml` con el producto.
+   Queda `productos/<slug>/fotos/en-uso.jpg`. En los planes usala como slide 1:
+   `{tipo: "portada", foto: "en-uso.jpg", titulo: ..., subtitulo: ..., etiqueta: ...}` y el `hero` va 2º.
+5. No gastes más de ~4 pruebas por producto: si no queda creíble, dejá el producto sin imagen en uso.
 
 ## Tu tarea semanal (planificar contenido)
 

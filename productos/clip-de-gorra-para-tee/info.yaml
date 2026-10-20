@@ -30,3 +30,13 @@ colores_png:
 - blanco
 - azul
 - amarillo
+en_uso:
+  foto: {id: gcZcCqpGEw0, nombre: gorra-beige}
+  escena: gorra
+  params: {para_foto: true}
+  angulo: 40
+  giro: -160
+  margen: 1.25
+  punto: [2075, 1900]
+  escala: 1.1
+  recorte: [300, 500, 2400, 3125]

@@ -33,7 +33,8 @@ dias:
         Ideal para sumarlo a cualquier pedido o regalar en pack. Escribinos por DM 📩
         #gorradegolf #teedegolf #accesoriosdegolf #golfistas
       slides:
-        - {tipo: "hero", titulo: "El tee siempre a mano", subtitulo: "Clip de gorra para tee", etiqueta: "Nuevo"}
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "El tee siempre a mano", subtitulo: "Clip de gorra para tee", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Chiquito y liviano", subtitulo: "Al lado de una pelota, a escala real", etiqueta: "Tamaño real"}
         - {tipo: "pasos", titulo: "Así de simple", pasos: ["Enganchá el clip en la visera", "Poné el tee en el clip", "Sacalo cuando llegues a la salida"], tono: "crema"}
         - {tipo: "colores"}
         - {tipo: "medidas", titulo: "Chiquito pero útil"}

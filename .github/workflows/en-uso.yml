@@ -1,0 +1,76 @@
+name: Imagen en uso
+
+# Monta cada producto sobre su foto real de Unsplash según la receta en_uso de su info.yaml.
+# Un producto por máquina.
+
+on:
+  workflow_dispatch:
+    inputs:
+      productos:
+        description: 'JSON con carpetas de productos/: ["clip-de-gorra-para-tee"]'
+        required: true
+      color:
+        description: "(Opcional) color distinto al principal"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  producto:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: ${{ fromJSON(inputs.productos) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar laminador y Blender
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender
+          pip install -r requirements.txt
+
+      - name: Montar
+        env:
+          COLOR: ${{ inputs.color }}
+        run: |
+          ARGS=()
+          [ -n "$COLOR" ] && ARGS+=(--color "$COLOR")
+          python -m agente.en_uso "${{ matrix.slug }}" "${ARGS[@]}"
+          tar czf en-uso.tgz productos/${{ matrix.slug }}/fotos/en-uso*.jpg
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: en-uso-${{ strategy.job-index }}
+          path: en-uso.tgz
+
+  guardar:
+    needs: producto
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: en-uso-*
+          path: artefactos
+
+      - name: Subir al repo
+        run: |
+          for t in artefactos/*/en-uso.tgz; do tar xzf "$t"; done
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add productos/
+          if ! git diff --cached --quiet; then
+            git commit -m "Imágenes en uso"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
