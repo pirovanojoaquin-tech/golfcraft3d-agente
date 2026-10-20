@@ -29,6 +29,9 @@ def args():
     ap.add_argument("--tam", type=int, default=1080, help="ancho en píxeles")
     ap.add_argument("--alto", type=int, help="alto en píxeles (por defecto, cuadrado)")
     ap.add_argument("--muestras", type=int, default=96)
+    ap.add_argument("--transparente", action="store_true",
+                    help="PNG sin fondo (solo producto + sombra) para montar sobre fondos de marca")
+    ap.add_argument("--pelota", action="store_true", help="agrega una pelota de golf a escala real al lado")
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     return ap.parse_args(argv)
 
@@ -71,6 +74,7 @@ def normalizar(obj):
     escala = 1.0 / max(maxs - mins)
     centro = Vector(((mins.x + maxs.x) / 2, (mins.y + maxs.y) / 2, mins.z))
     obj.data.transform(Matrix.Scale(escala, 4) @ Matrix.Translation(-centro))
+    obj["escala"] = escala
     obj.data.update()
     bpy.context.view_layer.update()
     obj.data.shade_smooth()
@@ -101,7 +105,38 @@ def material_pla(obj, color):
     obj.data.materials.append(m)
 
 
-def escenario(fondo):
+def pelota_de_golf(obj):
+    """Pelota de golf (Ø 42,67 mm) a escala real, al costado del producto."""
+    r = 42.67 / 2 * obj["escala"]
+    x = obj.dimensions.x / 2 + r * 1.25
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=96, ring_count=48, radius=r, location=(x, -obj.dimensions.y * 0.2, r))
+    bola = bpy.context.active_object
+    bpy.ops.object.shade_smooth()
+    m = bpy.data.materials.new("Pelota")
+    m.use_nodes = True
+    nodos, enlaces = m.node_tree.nodes, m.node_tree.links
+    p = nodos["Principled BSDF"]
+    p.inputs["Base Color"].default_value = (0.82, 0.82, 0.8, 1)
+    p.inputs["Roughness"].default_value = 0.35
+    # hoyuelos: Voronoi (distancia a la celda) -> relieve
+    coord = nodos.new("ShaderNodeTexCoord")
+    vor = nodos.new("ShaderNodeTexVoronoi")
+    vor.inputs["Scale"].default_value = 26 / (r * 2)
+    rampa = nodos.new("ShaderNodeMapRange")
+    rampa.inputs["From Min"].default_value = 0.0
+    rampa.inputs["From Max"].default_value = 0.42
+    relieve = nodos.new("ShaderNodeBump")
+    relieve.inputs["Strength"].default_value = 0.6
+    relieve.inputs["Distance"].default_value = r * 0.04
+    enlaces.new(coord.outputs["Object"], vor.inputs["Vector"])
+    enlaces.new(vor.outputs["Distance"], rampa.inputs["Value"])
+    enlaces.new(rampa.outputs["Result"], relieve.inputs["Height"])
+    enlaces.new(relieve.outputs["Normal"], p.inputs["Normal"])
+    bola.data.materials.append(m)
+    return bola
+
+
+def escenario(fondo, transparente=False):
     # Piso curvo tipo estudio (sin horizonte visible)
     bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
     piso = bpy.context.active_object
@@ -112,6 +147,9 @@ def escenario(fondo):
         if v.co.y > 1.5:
             v.co.z = (v.co.y - 1.5) ** 2 * 0.35
     bpy.ops.object.shade_smooth()
+    if transparente:
+        piso.is_shadow_catcher = True  # solo deja la sombra; el fondo lo pone la plantilla
+        bpy.context.scene.render.film_transparent = True
     m = bpy.data.materials.new("Fondo")
     m.use_nodes = True
     p = m.node_tree.nodes["Principled BSDF"]
@@ -138,9 +176,12 @@ def luz(nombre, pos, energia, tam):
     o.rotation_euler = direccion.to_track_quat("-Z", "Y").to_euler()
 
 
-def camara(obj, angulo, giro):
-    centro = Vector((0, 0, obj.dimensions.z / 2))
-    radio = obj.dimensions.length * 0.5 * 1.02
+def camara(objetos, angulo, giro):
+    pts = [o.matrix_world @ Vector(c) for o in objetos for c in o.bound_box]
+    mins = Vector([min(p[i] for p in pts) for i in range(3)])
+    maxs = Vector([max(p[i] for p in pts) for i in range(3)])
+    centro = (mins + maxs) / 2
+    radio = (maxs - mins).length * 0.5 * 1.02
     cam_d = bpy.data.cameras.new("Cam")
     cam_d.lens = 85
     cam_d.sensor_fit = "HORIZONTAL"  # el encuadre se calcula sobre el ancho, también en vertical
@@ -161,12 +202,15 @@ def main():
     obj = importar(a.modelo)
     normalizar(obj)
     material_pla(obj, a.color)
+    visibles = [obj]
+    if a.pelota:
+        visibles.append(pelota_de_golf(obj))
     # con colores claros (blanco, amarillo, piel) el fondo pasa a gris verdoso para que contraste
-    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD")
+    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD", a.transparente)
     luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
     luz("Relleno", (3, -2, 1.5), 140, 4)
     luz("Contra", (0.5, 3, 2.5), 260, 2)
-    camara(obj, a.angulo, a.giro)
+    camara(visibles, a.angulo, a.giro)
 
     esc = bpy.context.scene
     esc.render.engine = "CYCLES"
@@ -182,6 +226,7 @@ def main():
     esc.view_settings.look = "None"
     esc.view_settings.exposure = -1.0
     esc.render.image_settings.file_format = "PNG"
+    esc.render.image_settings.color_mode = "RGBA" if a.transparente else "RGB"
     esc.render.filepath = a.salida
     bpy.ops.render.render(write_still=True)
 
