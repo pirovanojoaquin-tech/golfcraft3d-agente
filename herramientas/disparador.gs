@@ -5,8 +5,6 @@
  * activador de Google cada 15 minutos, le pide a GitHub que corra "Publicar en Instagram".
  * Va en el mismo proyecto de Apps Script que guardar_en_drive.gs (archivo aparte).
  *
- * dispararML_ lo usa guardar_en_drive.gs para avisarle a GitHub de una venta o pregunta de Mercado Libre.
- *
  * GITHUB_TOKEN: token fine-grained de GitHub con acceso SOLO al repo golfcraft3d-agente y
  * permiso "Actions: Read and write". No lo compartas.
  */
@@ -25,16 +23,4 @@ function dispararPublicacion() {
   if (r.getResponseCode() !== 204) {
     throw new Error('GitHub respondió ' + r.getResponseCode() + ': ' + r.getContentText());
   }
-}
-
-function dispararML_(inputs) {
-  const url = WORKFLOW.replace('publicar.yml', 'mercadolibre.yml');
-  const r = UrlFetchApp.fetch(url, {
-    method: 'post',
-    contentType: 'application/json',
-    headers: { Authorization: 'Bearer ' + GITHUB_TOKEN, Accept: 'application/vnd.github+json' },
-    payload: JSON.stringify({ ref: 'main', inputs: inputs }),
-    muteHttpExceptions: true,
-  });
-  if (r.getResponseCode() !== 204) console.error('GitHub respondió ' + r.getResponseCode());
 }

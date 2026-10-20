@@ -9,7 +9,7 @@
  *  - escribe la planilla "GolfCraft3D · Mercado Libre" (la crea sola en la carpeta la primera vez);
  *  - recibe las notificaciones de Mercado Libre (ventas, preguntas) y despierta a GitHub al instante;
  *  - es la página a la que vuelve Mercado Libre cuando autorizás la app (doGet).
- * Usa GITHUB_TOKEN y dispararML_ de disparador.gs (mismo proyecto).
+ * Usa GITHUB_TOKEN y WORKFLOW de disparador.gs (mismo proyecto).
  */
 
 const CARPETA_ID = '1d7j56w2Qh00IbWcfqnolZ9tt-Goz-UY5';  // PRODUCTOS 3D GOLF
@@ -115,4 +115,17 @@ function libroML_() {
   DriveApp.getFileById(libro.getId()).moveTo(DriveApp.getFolderById(CARPETA_ID));
   props.setProperty('PLANILLA_ML', libro.getId());
   return libro;
+}
+
+// Despierta al workflow mercadolibre.yml de GitHub (con el token de disparador.gs).
+function dispararML_(inputs) {
+  const url = WORKFLOW.replace('publicar.yml', 'mercadolibre.yml');
+  const r = UrlFetchApp.fetch(url, {
+    method: 'post',
+    contentType: 'application/json',
+    headers: { Authorization: 'Bearer ' + GITHUB_TOKEN, Accept: 'application/vnd.github+json' },
+    payload: JSON.stringify({ ref: 'main', inputs: inputs }),
+    muteHttpExceptions: true,
+  });
+  if (r.getResponseCode() !== 204) console.error('GitHub respondió ' + r.getResponseCode());
 }
