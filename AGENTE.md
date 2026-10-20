@@ -52,7 +52,9 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si es ambigua, respondé en
    el mismo hilo preguntando y no hagas nada más con esa propuesta. Si no respondió, seguí al paso 5.
 3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
-   `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs.
+   `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs
+   y `renders.yml` con `productos` = JSON de los slugs (genera las imágenes sin fondo del estilo catálogo;
+   esperá que termine y hacé `git pull` antes de planificar).
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
 5. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
@@ -111,16 +113,25 @@ Estructura:
 
 Máximo ~600 caracteres antes de los hashtags.
 
-## Carrusel (3 a 5 slides)
+## Carrusel (5 o 6 slides, estilo catálogo)
 
-- Slide 1: `portada` con la mejor foto y un título corto (máx. ~6 palabras) que venda el beneficio.
-- Slides del medio: `foto` (otras fotos del producto) y/o `info` (3 beneficios, cortos).
-- Último slide: siempre `cta`.
+Usá las plantillas de estilo catálogo (renders sin fondo de `productos/<slug>/fotos/png/`, ver
+`planes/2026-10-21.yaml`). Cada carrusel tiene que mostrar el producto de formas distintas:
+- Slide 1: `hero` (producto con una pelota de golf a escala, título corto de máx. ~6 palabras que venda
+  el beneficio, `subtitulo`, `etiqueta` y opcional `sellos`, lista de hasta 3 textos cortos).
+- Del medio, combiná: `pasos` (cómo se usa, 3 pasos cortos y verdaderos), `colores` (tabla de colores),
+  `medidas` (medidas reales y peso; no la uses en productos de varias piezas), `foto` (fotos de
+  `fotos/*.jpg`) e `info` (3 beneficios).
+- Último slide: `cta_producto` con `nombre_corto` (o `cta` en carruseles de varios productos).
+- Opcionales: `png` elige otro render (`hero.png`, `detalle.png`, `<color>.png`) y `tono` el fondo
+  (`verde` o `crema`). Evitá producto verde sobre fondo verde: en `cta_producto` (fondo verde) usá
+  `png: "blanco.png"` o `"amarillo.png"` si el color principal es verde u oscuro.
+- Las plantillas viejas (`portada`, `foto`, `info`, `cta`) siguen funcionando si falta algún render.
 
 ## Historias (3 por día)
 
 Variá los tipos a lo largo de la semana:
-- **Producto** (`foto`): el producto del post del día u otro del catálogo, con etiqueta tipo
+- **Producto** (`hero`, o `foto` si no hay renders): el producto del post del día u otro del catálogo, con etiqueta tipo
   "NUEVO", "PERSONALIZABLE", "IDEAL PARA REGALAR", "MIRÁ ESTO".
 - **Tip o dato de golf** (`texto`): reglas, etiqueta en la cancha, curiosidades. Tienen que ser
   correctos; ante la duda, no lo publiques.

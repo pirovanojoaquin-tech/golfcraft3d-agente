@@ -1,0 +1,111 @@
+# Estilo catálogo (renders sin fondo): 21 al 25 de octubre de 2026.
+# Reemplaza esos días de planes/2026-10-19.yaml (mismos productos y captions, slides nuevos).
+dias:
+  - fecha: 2026-10-21
+    post:
+      producto: guia-de-agarre-para-el-palo
+      caption: |
+        El swing empieza en las manos 🏌️‍♂️
+
+        Esta guía de agarre te ayuda a poner las manos en la posición correcta sobre el grip, para que practiques el agarre en casa o en el driving hasta que te salga solo.
+
+        Hay versión para diestros y para zurdos. Escribinos por DM y te la hacemos 📩
+        #agarre #swing #entrenamientogolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Un agarre que se repite", subtitulo: "Guía de agarre para el palo", etiqueta: "Entrenamiento"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Colocala en el grip de tu palo", "Apoyá las manos siguiendo la guía", "Repetí hasta que te salga solo"], tono: "verde"}
+        - {tipo: "foto", foto: "2.jpg"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "la guía de agarre", png: "blanco.png"}
+    historias:
+      - {tipo: "hero", producto: "guia-de-agarre-para-el-palo", etiqueta: "Entrenamiento", titulo: "Mejorá tu agarre", subtitulo: "Para diestros y zurdos"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "La V de las manos", texto: "Una referencia común para el agarre es que la V entre pulgar e índice de cada mano apunte hacia tu hombro de atrás."}
+      - {tipo: "hero", producto: "regulador-de-altura-de-tee", png: "amarillo.png", tono: "verde", etiqueta: "Mirá esto", titulo: "Tu tee siempre a la misma altura", subtitulo: "Elegí entre 10 colores"}
+
+  - fecha: 2026-10-22
+    post:
+      producto: clip-de-gorra-para-tee
+      caption: |
+        ¿Dónde dejaste el tee? Sí, otra vez 😅
+
+        Este clip se engancha en la visera de la gorra y te deja el tee siempre a mano. Es chiquito, liviano y no molesta para nada.
+
+        Ideal para sumarlo a cualquier pedido o regalar en pack. Escribinos por DM 📩
+        #gorradegolf #teedegolf #accesoriosdegolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "El tee siempre a mano", subtitulo: "Clip de gorra para tee", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Así de simple", pasos: ["Enganchá el clip en la visera", "Poné el tee en el clip", "Sacalo cuando llegues a la salida"], tono: "crema"}
+        - {tipo: "foto", foto: "2.jpg"}
+        - {tipo: "colores"}
+        - {tipo: "medidas", titulo: "Chiquito pero útil"}
+        - {tipo: "cta_producto", nombre_corto: "el clip de gorra", png: "blanco.png"}
+    historias:
+      - {tipo: "hero", producto: "clip-de-gorra-para-tee", etiqueta: "Nuevo", titulo: "Nunca más sin tee", subtitulo: "Se engancha en tu gorra"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "¿Sabías que...?", texto: "En la bolsa podés llevar como máximo 14 palos durante una vuelta."}
+      - {tipo: "hero", producto: "pelota-de-golf-con-compartimento-secreto", etiqueta: "Ideal para regalar", titulo: "La pelota con secreto", subtitulo: "Se abre en dos mitades"}
+
+  - fecha: 2026-10-23
+    post:
+      producto: marcador-de-bola
+      caption: |
+        Llegaste al green: marcá, levantá y limpiá la bola con estilo ⛳
+
+        Nuestro marcador de bola es liviano, tiene una flecha calada y lo hacemos en el color que quieras. Perfecto para combinar con otros accesorios.
+
+        Pedilo en pack o sumalo a tu pedido. Escribinos por DM 📩
+        #marcadordebola #green #accesoriosdegolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Tu marca en el green", subtitulo: "Marcador de bola", etiqueta: "Nuevo"}
+        - {tipo: "colores"}
+        - {tipo: "pasos", titulo: "En el green", pasos: ["Marcá detrás de la bola", "Levantala y limpiala", "Usá la flecha para alinear tu putt"], tono: "verde"}
+        - {tipo: "medidas"}
+        - {tipo: "foto", foto: "2.jpg"}
+        - {tipo: "cta_producto", nombre_corto: "el marcador de bola"}
+    historias:
+      - {tipo: "hero", producto: "marcador-de-bola", etiqueta: "Nuevo", titulo: "Marcador de bola", subtitulo: "En el color que quieras"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Regla del green", texto: "Antes de levantar la bola en el green tenés que marcar su posición."}
+      - {tipo: "texto", etiqueta: "Impreso en 3D", titulo: "Hecho con PLA", texto: "Imprimimos en PLA, un plástico que se fabrica a partir de fuentes vegetales como el maíz."}
+
+  - fecha: 2026-10-24
+    post:
+      producto: clip-de-gorra-para-tee
+      caption: |
+        El kit que todo golfista quiere tener a mano 🏌️
+
+        Clip de gorra para el tee, marcador de bola y regulador de altura: tres accesorios chicos que te hacen la vuelta más cómoda. Los armamos en los colores que elijas.
+
+        ¿Te armamos el tuyo? Escribinos por DM 📩
+        #kitdegolf #accesoriosdegolf #regalosgolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Armá tu kit de golf", subtitulo: "Tres accesorios en tus colores", etiqueta: "Combo"}
+        - {tipo: "hero", producto: "marcador-de-bola", titulo: "Marcador de bola", subtitulo: "Para marcar en el green", sellos: ["Liviano", "Flecha calada", "10 colores"]}
+        - {tipo: "hero", producto: "regulador-de-altura-de-tee", png: "amarillo.png", tono: "verde", titulo: "Regulador de altura de tee", subtitulo: "Tu salida siempre igual", sellos: ["Entra en el bolsillo", "10 colores"]}
+        - {tipo: "info", titulo: "El kit incluye", items: ["Clip de gorra para tee", "Marcador de bola", "Regulador de altura de tee"]}
+        - {tipo: "cta"}
+    historias:
+      - {tipo: "texto", etiqueta: "Combo", titulo: "Armá tu kit", texto: "Clip para la gorra, marcador de bola y regulador de tee en los colores que elijas."}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Arreglá tus piques", texto: "En el green podés reparar las marcas que deja la bola al caer. Tu compañero de atrás te lo va a agradecer."}
+      - {tipo: "hero", producto: "guia-de-agarre-para-el-palo", etiqueta: "Entrenamiento", titulo: "Guía de agarre", subtitulo: "Practicá en casa o en el driving"}
+
+  - fecha: 2026-10-25
+    post:
+      producto: pelota-de-golf-con-compartimento-secreto
+      caption: |
+        ¿Buscás un regalo para un golfista y no sabés qué? 🎁
+
+        Esta pelota se abre en dos y esconde un compartimento adentro: ahí podés poner una nota, una entrada o lo que se te ocurra. Sorpresa asegurada.
+
+        La hacemos en el color que quieras. Escribinos por DM 📩
+        #regalosgolf #regalooriginal #pelotadegolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "El regalo con sorpresa", subtitulo: "Pelota con compartimento secreto", etiqueta: "Ideal para regalar"}
+        - {tipo: "foto", foto: "1.jpg"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Abrí las dos mitades", "Guardá una nota o un regalito", "Cerrala y sorprendé"], png: "amarillo.png", tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "info", titulo: "Ideas para el compartimento", items: ["Una nota o una dedicatoria", "Tees o marcadores de regalo", "Lo que se te ocurra"]}
+        - {tipo: "cta_producto", nombre_corto: "la pelota secreta"}
+    historias:
+      - {tipo: "hero", producto: "pelota-de-golf-con-compartimento-secreto", etiqueta: "Ideal para regalar", titulo: "Regalá una sorpresa", subtitulo: "Se abre y guarda lo que quieras"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "¿Sabías que...?", texto: "En el tee de salida podés ubicar la bola hasta dos palos de largo detrás de las marcas."}
+      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Gracias por estar", texto: "Cada semana sumamos productos nuevos. Activá las notificaciones para no perderte ninguno."}

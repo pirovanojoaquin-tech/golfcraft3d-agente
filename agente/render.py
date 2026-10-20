@@ -106,33 +106,39 @@ def material_pla(obj, color):
 
 
 def pelota_de_golf(obj):
-    """Pelota de golf (Ø 42,67 mm) a escala real, al costado del producto."""
+    """Pelota de golf real (Ø 42,67 mm, ~330 hoyuelos tallados en la malla), al costado del producto."""
+    from mathutils.kdtree import KDTree
     r = 42.67 / 2 * obj["escala"]
     x = obj.dimensions.x / 2 + r * 1.7
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=96, ring_count=48, radius=r, location=(x, obj.dimensions.y * 0.25, r))
+    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=7, radius=1, location=(x, obj.dimensions.y * 0.25, r))
     bola = bpy.context.active_object
+    malla = bola.data
+    # centros de los hoyuelos repartidos parejo (espiral de Fibonacci)
+    total = 332
+    arbol = KDTree(total)
+    for k in range(total):
+        fi = math.acos(1 - 2 * (k + 0.5) / total)
+        th = math.pi * (1 + 5 ** 0.5) * (k + 0.5)
+        arbol.insert((math.cos(th) * math.sin(fi), math.sin(th) * math.sin(fi), math.cos(fi)), k)
+    arbol.balance()
+    radio_h, prof = 0.092, 0.014  # radio angular del hoyuelo y profundidad (relativa al radio)
+    for vert in malla.vertices:
+        d = vert.co.normalized()
+        _, _, dist = arbol.find(d)
+        ang = 2 * math.asin(min(1.0, dist / 2))
+        hundido = prof * (1 - (ang / radio_h) ** 2) if ang < radio_h else 0
+        vert.co = d * r * (1 - hundido)
+    malla.update()
     bpy.ops.object.shade_smooth()
     m = bpy.data.materials.new("Pelota")
     m.use_nodes = True
-    nodos, enlaces = m.node_tree.nodes, m.node_tree.links
-    p = nodos["Principled BSDF"]
-    p.inputs["Base Color"].default_value = (0.7, 0.7, 0.68, 1)
-    p.inputs["Roughness"].default_value = 0.35
-    # hoyuelos: Voronoi (distancia a la celda) -> relieve
-    coord = nodos.new("ShaderNodeTexCoord")
-    vor = nodos.new("ShaderNodeTexVoronoi")
-    vor.inputs["Scale"].default_value = 9 / (r * 2)
-    rampa = nodos.new("ShaderNodeMapRange")
-    rampa.inputs["From Min"].default_value = 0.0
-    rampa.inputs["From Max"].default_value = 0.5
-    relieve = nodos.new("ShaderNodeBump")
-    relieve.inputs["Strength"].default_value = 0.6
-    relieve.inputs["Distance"].default_value = r * 0.08
-    enlaces.new(coord.outputs["Object"], vor.inputs["Vector"])
-    enlaces.new(vor.outputs["Distance"], rampa.inputs["Value"])
-    enlaces.new(rampa.outputs["Result"], relieve.inputs["Height"])
-    enlaces.new(relieve.outputs["Normal"], p.inputs["Normal"])
-    bola.data.materials.append(m)
+    p = m.node_tree.nodes["Principled BSDF"]
+    p.inputs["Base Color"].default_value = (0.82, 0.82, 0.8, 1)
+    p.inputs["Roughness"].default_value = 0.28
+    for nombre, valor in (("Coat Weight", 0.6), ("Coat Roughness", 0.08), ("Clearcoat", 0.6)):
+        if nombre in p.inputs:
+            p.inputs[nombre].default_value = valor
+    malla.materials.append(m)
     return bola
 
 
