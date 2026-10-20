@@ -83,6 +83,10 @@ def _oauth(**datos):
     if r.status_code != 200:
         raise ErrorML(f"oauth {datos['grant_type']} -> {r.status_code}: {r.json().get('message', '')}")
     t = r.json()
+    if "refresh_token" not in t:
+        telegram.enviar("⚠️ <b>Falta un permiso en la app de Mercado Libre</b>: activá <b>offline access</b> "
+                        "(acceso sin conexión) en la configuración de la app y volvé a autorizar.")
+        raise ErrorML("La app de ML no tiene el permiso offline_access: no devolvió refresh_token")
     if os.environ.get("GITHUB_ACTIONS"):  # que nunca aparezcan en los logs públicos
         print(f"::add-mask::{t['access_token']}")
         print(f"::add-mask::{t['refresh_token']}")
