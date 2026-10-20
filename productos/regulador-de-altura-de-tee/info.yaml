@@ -19,3 +19,14 @@ piezas:
 - archivo: Tee-adjuster v2 w-Large Numbers.stl
   printables_file_id: '4674103'
   gramos: 8.9
+medidas_mm:
+  largo: 94
+  ancho: 20
+  alto: 10
+colores_png:
+- verde
+- amarillo
+- negro
+- blanco
+- rojo
+- azul

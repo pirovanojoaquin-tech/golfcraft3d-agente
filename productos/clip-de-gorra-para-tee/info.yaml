@@ -19,3 +19,14 @@ piezas:
 - archivo: hat tee clip.stl
   printables_file_id: '326037'
   gramos: 2.8
+medidas_mm:
+  largo: 28
+  ancho: 15
+  alto: 11
+colores_png:
+- verde
+- negro
+- rojo
+- blanco
+- azul
+- amarillo

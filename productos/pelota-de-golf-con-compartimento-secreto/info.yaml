@@ -22,3 +22,14 @@ piezas:
 - archivo: golf 1.3mf
   printables_file_id: '2042704'
   gramos: 8.8
+medidas_mm:
+  largo: 42
+  ancho: 42
+  alto: 21
+colores_png:
+- blanco
+- amarillo
+- cian
+- negro
+- rojo
+- azul

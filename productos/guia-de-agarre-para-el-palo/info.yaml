@@ -19,3 +19,14 @@ piezas:
 - archivo: Golfgrip v4.stl
   printables_file_id: '3134208'
   gramos: 16.2
+medidas_mm:
+  largo: 135
+  ancho: 35
+  alto: 27
+colores_png:
+- negro
+- verde
+- azul
+- blanco
+- rojo
+- amarillo
