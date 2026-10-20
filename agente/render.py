@@ -108,26 +108,26 @@ def material_pla(obj, color):
 def pelota_de_golf(obj):
     """Pelota de golf (Ø 42,67 mm) a escala real, al costado del producto."""
     r = 42.67 / 2 * obj["escala"]
-    x = obj.dimensions.x / 2 + r * 1.25
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=96, ring_count=48, radius=r, location=(x, -obj.dimensions.y * 0.2, r))
+    x = obj.dimensions.x / 2 + r * 1.7
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=96, ring_count=48, radius=r, location=(x, obj.dimensions.y * 0.25, r))
     bola = bpy.context.active_object
     bpy.ops.object.shade_smooth()
     m = bpy.data.materials.new("Pelota")
     m.use_nodes = True
     nodos, enlaces = m.node_tree.nodes, m.node_tree.links
     p = nodos["Principled BSDF"]
-    p.inputs["Base Color"].default_value = (0.82, 0.82, 0.8, 1)
+    p.inputs["Base Color"].default_value = (0.7, 0.7, 0.68, 1)
     p.inputs["Roughness"].default_value = 0.35
     # hoyuelos: Voronoi (distancia a la celda) -> relieve
     coord = nodos.new("ShaderNodeTexCoord")
     vor = nodos.new("ShaderNodeTexVoronoi")
-    vor.inputs["Scale"].default_value = 26 / (r * 2)
+    vor.inputs["Scale"].default_value = 18 / (r * 2)
     rampa = nodos.new("ShaderNodeMapRange")
     rampa.inputs["From Min"].default_value = 0.0
-    rampa.inputs["From Max"].default_value = 0.42
+    rampa.inputs["From Max"].default_value = 0.5
     relieve = nodos.new("ShaderNodeBump")
-    relieve.inputs["Strength"].default_value = 0.6
-    relieve.inputs["Distance"].default_value = r * 0.04
+    relieve.inputs["Strength"].default_value = 1.0
+    relieve.inputs["Distance"].default_value = r * 0.08
     enlaces.new(coord.outputs["Object"], vor.inputs["Vector"])
     enlaces.new(vor.outputs["Distance"], rampa.inputs["Value"])
     enlaces.new(rampa.outputs["Result"], relieve.inputs["Height"])

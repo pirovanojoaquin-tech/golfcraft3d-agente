@@ -265,3 +265,188 @@ def guardar(im, ruta):
     ruta.parent.mkdir(parents=True, exist_ok=True)
     im.convert("RGB").save(ruta, "JPEG", quality=92, optimize=True, progressive=False)
     return ruta
+
+
+# ---------- Estilo "catálogo": producto sin fondo sobre fondos de marca ----------
+# Usa los PNG transparentes de productos/<slug>/fotos/png/ (los genera agente/renders.py).
+
+VERDE_CLARO = (12, 128, 82)
+VERDE_OSCURO = (1, 52, 35)
+CREMA_CLARO = (252, 249, 242)
+CREMA_OSCURO = (232, 224, 208)
+CLAROS = {"blanco", "amarillo", "cian", "piel", "gris"}
+
+
+def tono_para(color):
+    """Fondo que contrasta con el color del producto."""
+    return "verde" if color in CLAROS else "crema"
+
+
+def fondo(tamanio, tono="verde"):
+    """Degradé radial de marca con textura sutil de hoyuelos de pelota de golf."""
+    w, h = tamanio
+    claro, oscuro = (VERDE_CLARO, VERDE_OSCURO) if tono == "verde" else (CREMA_CLARO, CREMA_OSCURO)
+    chico = Image.new("RGB", (w // 8, h // 8))
+    cx, cy, rmax = chico.width / 2, chico.height * 0.42, (chico.width ** 2 + chico.height ** 2) ** 0.5 / 1.6
+    px = chico.load()
+    for y in range(chico.height):
+        for x in range(chico.width):
+            t = min(1.0, ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5 / rmax)
+            px[x, y] = tuple(round(claro[i] + (oscuro[i] - claro[i]) * t) for i in range(3))
+    im = chico.resize(tamanio, Image.BICUBIC).convert("RGBA")
+    capa = Image.new("RGBA", tamanio, (0, 0, 0, 0))
+    d = ImageDraw.Draw(capa)
+    tinta = (255, 255, 255, 14) if tono == "verde" else (1, 96, 64, 12)
+    paso = 46
+    for j, y in enumerate(range(-paso, h + paso, paso)):
+        for x in range(-paso + (paso // 2 if j % 2 else 0), w + paso, paso):
+            d.ellipse((x - 9, y - 9, x + 9, y + 9), fill=tinta)
+    im.alpha_composite(capa)
+    return im
+
+
+def recortar(png):
+    """Recorta el PNG transparente al contorno del producto (y su sombra)."""
+    im = Image.open(png).convert("RGBA") if not isinstance(png, Image.Image) else png
+    caja = im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()
+    return im.crop(caja) if caja else im
+
+
+def pegar(lienzo, png, caja, abajo=False):
+    """Pega el producto escalado dentro de caja=(x, y, w, h), centrado (o apoyado abajo)."""
+    prod = recortar(png)
+    x, y, w, h = caja
+    esc = min(w / prod.width, h / prod.height)
+    prod = prod.resize((round(prod.width * esc), round(prod.height * esc)), Image.LANCZOS)
+    py = y + h - prod.height if abajo else y + (h - prod.height) // 2
+    lienzo.alpha_composite(prod, (x + (w - prod.width) // 2, py))
+
+
+def _colores_texto(tono):
+    return (BLANCO, (214, 236, 224)) if tono == "verde" else (VERDE, (70, 85, 78))
+
+
+def sellos(d, y, textos, tono, ancho=1080):
+    """Fila de sellos centrada (ej: IMPRESO EN 3D · 10 COLORES · A PEDIDO)."""
+    f = fuente(28, 800)
+    fondo_s, letra = ((255, 255, 255), VERDE) if tono == "verde" else (VERDE, BLANCO)
+    anchos = [d.textlength(limpiar(t).upper(), font=f) + 52 for t in textos]
+    x = (ancho - sum(anchos) - 16 * (len(textos) - 1)) / 2
+    for t, a in zip(textos, anchos):
+        pastilla(d, (x, y), t.upper(), f, fondo_s, letra, pad=(26, 14))
+        x += a + 16
+
+
+SELLOS = ["Impreso en 3D", "10 colores", "A pedido"]
+
+
+def slide_hero(png, titulo, subtitulo=None, etiqueta=None, tono="verde", sellos_txt=SELLOS):
+    im = fondo(POST, tono)
+    d = ImageDraw.Draw(im)
+    c_tit, c_sub = _colores_texto(tono)
+    l = logo(86, blanco=(tono == "verde"))
+    im.alpha_composite(l, (60, 56))
+    if etiqueta:
+        f = fuente(30, 800)
+        w = d.textlength(limpiar(etiqueta).upper(), font=f) + 56
+        pastilla(d, (1020 - w, 70), etiqueta.upper(), f, (255, 255, 255) if tono == "verde" else VERDE,
+                 VERDE if tono == "verde" else BLANCO)
+    f_tit = ajustar_fuente(d, titulo, 960, 230, 96)
+    y = texto_bloque(d, (60, 190), titulo, f_tit, c_tit, 960, 1.05, centrado=True)
+    if subtitulo:
+        y = texto_bloque(d, (60, y + 6), subtitulo, fuente(38, 500), c_sub, 960, 1.25, centrado=True)
+    pegar(im, png, (70, y + 30, 940, 1350 - 150 - (y + 30)))
+    sellos(d, 1350 - 120, sellos_txt, tono)
+    return im.convert("RGB")
+
+
+def slide_colores(items, titulo="Elegí tu color"):
+    """items: [(png, nombre_color), ...] hasta 6."""
+    im = fondo(POST, "crema")
+    d = ImageDraw.Draw(im)
+    texto_bloque(d, (60, 70), titulo, fuente(76, 800), VERDE, 960, 1.1, centrado=True)
+    texto_bloque(d, (60, 170), "10 colores de PLA disponibles", fuente(34, 500), (70, 85, 78), 960, 1.2,
+                 centrado=True)
+    cols, filas = 3, 2
+    cw, ch, gap, x0, y0 = 300, 440, 30, 60, 260
+    for n, (png, nombre) in enumerate(items[:6]):
+        cx, cy = x0 + (n % cols) * (cw + gap), y0 + (n // cols) * (ch + gap)
+        tarjeta = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
+        ImageDraw.Draw(tarjeta).rounded_rectangle((0, 0, cw, ch), radius=28, fill=(255, 255, 255, 235))
+        im.alpha_composite(tarjeta, (cx, cy))
+        pegar(im, png, (cx + 20, cy + 20, cw - 40, ch - 110))
+        d.text((cx + cw / 2, cy + ch - 48), nombre.capitalize(), font=fuente(34, 700), fill=VERDE, anchor="mm")
+    d.text((540, 1350 - 70), USUARIO, font=fuente(34, 700), fill=VERDE, anchor="mm")
+    return im.convert("RGB")
+
+
+def slide_medidas(png, medidas, gramos, tono="crema", titulo="Medidas reales"):
+    im = fondo(POST, tono)
+    d = ImageDraw.Draw(im)
+    c_tit, c_sub = _colores_texto(tono)
+    texto_bloque(d, (60, 80), titulo, fuente(80, 800), c_tit, 960, 1.1, centrado=True)
+    pegar(im, png, (90, 220, 900, 760))
+    datos = [("Largo", f"{medidas['largo']} mm"), ("Ancho", f"{medidas['ancho']} mm"),
+             ("Alto", f"{medidas['alto']} mm"), ("Peso", f"{round(gramos)} g")]
+    cw, gap = 225, 20
+    x = (1080 - (cw * 4 + gap * 3)) / 2
+    for etiqueta, valor in datos:
+        caja = Image.new("RGBA", (cw, 170), (0, 0, 0, 0))
+        ImageDraw.Draw(caja).rounded_rectangle((0, 0, cw, 170), radius=24,
+                                               fill=(255, 255, 255, 40) if tono == "verde" else (1, 96, 64, 235))
+        im.alpha_composite(caja, (round(x), 1030))
+        d.text((x + cw / 2, 1080), etiqueta.upper(), font=fuente(26, 700), fill=(214, 236, 224), anchor="mm")
+        d.text((x + cw / 2, 1140), valor, font=fuente(44, 800), fill=BLANCO, anchor="mm")
+        x += cw + gap
+    d.text((540, 1350 - 70), "Medidas aproximadas · " + USUARIO, font=fuente(28, 600), fill=c_sub, anchor="mm")
+    return im.convert("RGB")
+
+
+def slide_pasos(titulo, pasos, png, tono="verde"):
+    im = fondo(POST, tono)
+    d = ImageDraw.Draw(im)
+    c_tit, c_sub = _colores_texto(tono)
+    texto_bloque(d, (60, 80), titulo, ajustar_fuente(d, titulo, 960, 200, 80), c_tit, 960, 1.1)
+    y = 300
+    for n, paso in enumerate(pasos[:3], 1):
+        d.ellipse((60, y, 140, y + 80), fill=BLANCO if tono == "verde" else VERDE)
+        d.text((100, y + 40), str(n), font=fuente(48, 800), fill=VERDE if tono == "verde" else BLANCO, anchor="mm")
+        y = max(texto_bloque(d, (170, y + 10), paso, fuente(42, 600), c_tit, 850, 1.25), y + 90) + 40
+    pegar(im, png, (300, y, 740, 1350 - 80 - y), abajo=True)
+    return im.convert("RGB")
+
+
+def slide_cta_producto(png, producto=None):
+    im = fondo(POST, "verde")
+    d = ImageDraw.Draw(im)
+    pegar(im, png, (140, 110, 800, 560))
+    titulo = f"¿Querés {producto}?" if producto else "¿Lo querés?"
+    y = texto_bloque(d, (70, 720), titulo, ajustar_fuente(d, titulo, 940, 220, 84), BLANCO, 940, 1.1,
+                     centrado=True) + 40
+    y = pastilla(d, (540, y), CTA, fuente(46, 800), BLANCO, VERDE, pad=(44, 22), centro=True) + 50
+    texto_bloque(d, (70, y), "Diseños únicos y personalizados · Impreso en 3D", fuente(32, 500), (214, 236, 224),
+                 940, 1.3, centrado=True)
+    l = logo(70, blanco=True)
+    im.alpha_composite(l, ((1080 - l.width) // 2, 1350 - 120))
+    return im.convert("RGB")
+
+
+def historia_hero(png, titulo, subtitulo=None, etiqueta=None, tono="verde"):
+    im = fondo(HISTORIA, tono)
+    d = ImageDraw.Draw(im)
+    c_tit, c_sub = _colores_texto(tono)
+    l = logo(90, blanco=(tono == "verde"))
+    im.alpha_composite(l, (70, 260))
+    d.text((180, 305), "GolfCraft3D", font=fuente(40, 800), fill=c_tit, anchor="lm")
+    if etiqueta:
+        f = fuente(30, 800)
+        w = d.textlength(limpiar(etiqueta).upper(), font=f) + 56
+        pastilla(d, (1010 - w, 280), etiqueta.upper(), f, (255, 255, 255) if tono == "verde" else VERDE,
+                 VERDE if tono == "verde" else BLANCO)
+    pegar(im, png, (60, 400, 960, 860))
+    y = texto_bloque(d, (70, 1300), titulo, ajustar_fuente(d, titulo, 940, 170, 80), c_tit, 940, 1.08, centrado=True)
+    if subtitulo:
+        y = texto_bloque(d, (70, y + 8), subtitulo, fuente(38, 500), c_sub, 940, 1.25, centrado=True)
+    pastilla(d, (540, min(y + 34, 1920 - 300 - 84)), f"{CTA} → {USUARIO}", fuente(34, 800),
+             BLANCO if tono == "verde" else VERDE, VERDE if tono == "verde" else BLANCO, pad=(40, 22), centro=True)
+    return im.convert("RGB")
