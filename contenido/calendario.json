@@ -80,7 +80,9 @@
     "imagenes": [
       "contenido/media/2026-10-20/historia-1.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18107988953618936",
+    "publicado_en": "2026-10-20T10:12:53-03:00"
   },
   {
     "id": "2026-10-20-post",
