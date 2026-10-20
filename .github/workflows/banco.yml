@@ -1,0 +1,60 @@
+name: Fotos de Unsplash
+
+# Busca fotos de fondo (licencia gratis para uso comercial) o descarga una elegida.
+# buscar: consultas separadas por "|"  ->  fondos/busquedas/*.json
+# descargar: "id:nombre|id:nombre"     ->  fondos/<nombre>.jpg + fondos/creditos.yaml
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: "buscar | descargar"
+        required: true
+        default: buscar
+      consultas:
+        description: 'buscar: "baseball cap|golf tee grass"  ·  descargar: "abc123:gorra-azul"'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  banco:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Unsplash
+        env:
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          ACCION: ${{ inputs.accion }}
+          CONSULTAS: ${{ inputs.consultas }}
+        run: |
+          IFS='|' read -ra ITEMS <<< "$CONSULTAS"
+          for c in "${ITEMS[@]}"; do
+            if [ "$ACCION" = descargar ]; then
+              python -m agente.banco descargar "${c%%:*}" "${c#*:}"
+            else
+              python -m agente.banco buscar "$c"
+            fi
+          done
+
+      - name: Guardar
+        run: |
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fondos/
+          if ! git diff --cached --quiet; then
+            git commit -m "Fotos de Unsplash ($ACCION)"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+        env:
+          ACCION: ${{ inputs.accion }}
