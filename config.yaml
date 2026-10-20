@@ -49,3 +49,21 @@ colores:
   piel: "#E8C4A0"
   marroncito: "#A0784A"
   gris: "#8A8D91"
+
+# Mercado Libre (ver agente/mercadolibre.py). Cada producto que sale por primera vez en Instagram
+# se propone por Telegram para publicarlo en ML; se publica cuando el dueño responde "ML SI <código>".
+mercadolibre:
+  activo: false                  # pasa a true cuando la app de ML está autorizada
+  sitio: MLA
+  tipo_publicacion: gold_special # Clásica
+  ganancia_minima: 5000          # ARS limpios por venta (después de comisión, cargo fijo, envío y filamento)
+  multiplicador_precio: 2        # precio por unidad en ML = precio de Instagram x esto...
+  precio_minimo_unidad: 1500     # ...pero nunca menos que esto por unidad
+  packs: [1, 2, 3, 5, 10]        # se elige el más chico que deje la ganancia mínima
+  descuento_pack: {3: 0.05, 5: 0.10, 10: 0.15}
+  umbral_envio_gratis: 33000     # desde este precio el envío gratis es obligatorio y lo paga el vendedor (verificar)
+  stock: 5                       # unidades a la venta por publicación (se imprime a pedido)
+  dias_preparacion: 2            # "disponibilidad de stock": días para imprimir antes de despachar
+  embalaje_g: 30                 # peso extra del sobre/caja
+  categoria_defecto: MLA1347     # Deportes y Fitness > Golf > Otros
+  categoria_golf: MLA1342        # solo se usan categorías dentro de Golf

@@ -1,0 +1,118 @@
+name: Mercado Libre
+
+# - proponer: arma el pack que conviene y las fotos de ML, y lo propone por Telegram (lo lanza publicar.yml
+#   cuando un producto sale por primera vez en Instagram).
+# - publicar: publica lo aprobado con "ML SI <código>" (lo lanza telegram.yml).
+# - evento: venta, pregunta o cambio en un aviso (lo lanza el Apps Script al instante).
+# - revisar: cada hora, renueva el permiso y repasa ventas y preguntas por si se perdió un aviso.
+# - autorizar: la primera vez, cuando el dueño autoriza la app (lo lanza el Apps Script).
+# El repo es público: los datos de compradores nunca se imprimen ni se guardan acá.
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: "proponer | publicar | evento | revisar | autorizar"
+        required: true
+        default: revisar
+      producto:
+        description: "Carpeta de productos/ (proponer, publicar)"
+        required: false
+      topic:
+        description: "Tema de la notificación (evento)"
+        required: false
+      recurso:
+        description: "Recurso de la notificación (evento)"
+        required: false
+      codigo:
+        description: "Código de autorización (autorizar)"
+        required: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  ml:
+    runs-on: ubuntu-24.04
+    env:
+      ACCION: ${{ inputs.accion || 'revisar' }}
+      PRODUCTO: ${{ inputs.producto }}
+      ML_APP_ID: ${{ secrets.ML_APP_ID }}
+      ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+      ML_REFRESH_TOKEN: ${{ secrets.ML_REFRESH_TOKEN }}
+      ML_ACCESS_TOKEN: ${{ secrets.ML_ACCESS_TOKEN }}
+      DRIVE_WEBAPP_URL: ${{ secrets.DRIVE_WEBAPP_URL }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Instalar Blender (fotos de ML)
+        if: env.ACCION == 'proponer'
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender
+
+      - name: Proponer
+        if: env.ACCION == 'proponer'
+        run: |
+          python -m agente.renders "$PRODUCTO" --solo-ml
+          python -m agente.mercadolibre proponer "$PRODUCTO"
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "productos/$PRODUCTO" contenido/mercadolibre.json
+          git commit -m "Mercado Libre: propuesta de $PRODUCTO" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          python -m agente.mercadolibre avisar "$PRODUCTO" --sha "$(git rev-parse HEAD)"
+
+      - name: Publicar
+        if: env.ACCION == 'publicar'
+        run: python -m agente.mercadolibre publicar "$PRODUCTO"
+
+      - name: Evento
+        if: env.ACCION == 'evento'
+        env:
+          TOPIC: ${{ inputs.topic }}
+          RECURSO: ${{ inputs.recurso }}
+        run: python -m agente.mercadolibre evento "$TOPIC" "$RECURSO"
+
+      - name: Revisar
+        if: env.ACCION == 'revisar'
+        run: python -m agente.mercadolibre revisar
+
+      - name: Autorizar
+        if: env.ACCION == 'autorizar'
+        env:
+          CODIGO: ${{ inputs.codigo }}
+        run: python -m agente.mercadolibre autorizar "$CODIGO"
+
+      - name: Guardar estado
+        if: always()
+        run: |
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contenido/mercadolibre.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Mercado Libre: estado ($ACCION)"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Avisar si falló
+        if: failure()
+        run: |
+          # la revisión horaria avisa una sola vez por día para no llenar el chat
+          if [ "$ACCION" != revisar ] || [ "$(date -u +%H)" = 13 ]; then
+            python -m agente.telegram enviar --texto "⚠️ Falló el workflow de Mercado Libre (${ACCION}). Lo reviso en la rutina semanal." || true
+          fi
