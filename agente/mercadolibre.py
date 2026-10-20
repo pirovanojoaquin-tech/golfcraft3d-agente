@@ -84,11 +84,22 @@ def _oauth(**datos):
         raise ErrorML(f"oauth {datos['grant_type']} -> {r.status_code}: {r.json().get('message', '')}")
     t = r.json()
     if "refresh_token" not in t:
+        # diagnóstico (sin claves): qué scopes dio ML y cuáles tiene registrados la app
+        print(f"scope del token: {t.get('scope')!r}")
+        app = requests.get(f"{API}/applications/{app_id()}", timeout=60,
+                           headers={"Authorization": f"Bearer {t['access_token']}"})
+        if app.status_code == 200:
+            datos_app = app.json()
+            print(f"scopes de la app: {datos_app.get('scopes')!r}")
+            print("campos de la app:", sorted(datos_app))
+        else:
+            print(f"GET applications -> {app.status_code}")
         if datos["grant_type"] == "authorization_code" and t.get("user_id"):
             # ML reusó una autorización vieja sin offline_access: la revocamos para que la próxima vez
             # muestre la pantalla de permisos completa
-            requests.delete(f"{API}/users/{t['user_id']}/applications/{app_id()}",
-                            headers={"Authorization": f"Bearer {t['access_token']}"}, timeout=60)
+            rev = requests.delete(f"{API}/users/{t['user_id']}/applications/{app_id()}",
+                                  headers={"Authorization": f"Bearer {t['access_token']}"}, timeout=60)
+            print(f"revocar autorización -> {rev.status_code} {rev.text[:150]}")
             link_autorizacion("Casi: Mercado Libre usó la autorización vieja (sin acceso offline). Ya la borré. "
                               "Tocá este link <b>una vez más</b> y aceptá todos los permisos:")
         else:
