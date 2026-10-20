@@ -112,7 +112,8 @@ def link_autorizacion():
     """Manda por Telegram el link para que el dueño autorice la app (la URL de vuelta es el Apps Script)."""
     from urllib.parse import urlencode
     url = "https://auth.mercadolibre.com.ar/authorization?" + urlencode(
-        {"response_type": "code", "client_id": app_id(), "redirect_uri": os.environ["DRIVE_WEBAPP_URL"]})
+        {"response_type": "code", "client_id": app_id(), "redirect_uri": os.environ["DRIVE_WEBAPP_URL"],
+         "scope": "offline_access read write"})
     telegram.enviar("🔗 <b>Conectar Mercado Libre</b>\nTocá este link (con tu cuenta de vendedor abierta), "
                     f"aceptá con <b>Permitir</b> y en un minuto te confirmo por acá:\n<a href=\"{url}\">Autorizar GolfCraft3D Agente</a>")
     print("link enviado por Telegram")
