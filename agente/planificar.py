@@ -36,6 +36,18 @@ def foto(slug, nombre):
     return disenio.cargar_foto(ruta)
 
 
+def png(slug, nombre):
+    """Render sin fondo de productos/<slug>/fotos/png/ (lo genera agente/renders.py)."""
+    ruta = PRODUCTOS / slug / "fotos" / "png" / nombre
+    if not ruta.exists():
+        sys.exit(f"No existe {ruta.relative_to(RAIZ)} (corré el workflow renders.yml para ese producto)")
+    return ruta
+
+
+def color_principal(slug):
+    return (producto(slug).get("colores") or ["verde"])[0]
+
+
 def armar_caption(texto):
     texto = texto.strip()
     existentes = {h.lower() for h in re.findall(r"#\w+", texto)}
@@ -60,6 +72,26 @@ def render_slide(s, slug_default):
         return disenio.slide_info(s["titulo"], s["items"])
     if tipo == "cta":
         return disenio.slide_cta(s.get("nombre_corto"))
+    # estilo catálogo (renders sin fondo de fotos/png/)
+    tono = s.get("tono") or disenio.tono_para(color_principal(slug))
+    if tipo == "hero":
+        return disenio.slide_hero(png(slug, s.get("png", "hero.png")), s["titulo"], s.get("subtitulo"),
+                                  s.get("etiqueta"), tono, s.get("sellos", disenio.SELLOS))
+    if tipo == "colores":
+        info = producto(slug)
+        colores = info.get("colores_png") or sys.exit(f"{slug} no tiene renders por color (renders.yml)")
+        return disenio.slide_colores([(png(slug, f"{c}.png"), c) for c in colores], s.get("titulo", "Elegí tu color"))
+    if tipo == "medidas":
+        info = producto(slug)
+        if "medidas_mm" not in info:
+            sys.exit(f"{slug} no tiene medidas_mm (renders.yml)")
+        return disenio.slide_medidas(png(slug, s.get("png", "detalle.png")), info["medidas_mm"], info["gramos"],
+                                     s.get("tono", "crema"), s.get("titulo", "Medidas reales"))
+    if tipo == "pasos":
+        return disenio.slide_pasos(s["titulo"], s["pasos"], png(slug, s.get("png", "hero.png")),
+                                   s.get("tono", "verde"))
+    if tipo == "cta_producto":
+        return disenio.slide_cta_producto(png(slug, s.get("png", "hero.png")), s.get("nombre_corto"))
     sys.exit(f"Tipo de slide desconocido: {tipo}")
 
 
@@ -69,6 +101,10 @@ def render_historia(h):
         return disenio.historia_foto(foto(h["producto"], h["foto"]), h["titulo"], h.get("subtitulo"), h.get("etiqueta"))
     if tipo == "texto":
         return disenio.historia_texto(h["titulo"], h["texto"], h.get("etiqueta"))
+    if tipo == "hero":
+        tono = h.get("tono") or disenio.tono_para(color_principal(h["producto"]))
+        return disenio.historia_hero(png(h["producto"], h.get("png", "hero.png")), h["titulo"], h.get("subtitulo"),
+                                     h.get("etiqueta"), tono)
     sys.exit(f"Tipo de historia desconocido: {tipo}")
 
 

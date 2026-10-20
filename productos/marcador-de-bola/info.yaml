@@ -18,3 +18,14 @@ piezas:
 - archivo: BallMark.STL
   printables_file_id: '875725'
   gramos: 0.3
+medidas_mm:
+  largo: 18
+  ancho: 18
+  alto: 7
+colores_png:
+- rojo
+- azul
+- negro
+- blanco
+- verde
+- amarillo

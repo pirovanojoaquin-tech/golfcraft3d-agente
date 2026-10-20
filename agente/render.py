@@ -29,6 +29,12 @@ def args():
     ap.add_argument("--tam", type=int, default=1080, help="ancho en píxeles")
     ap.add_argument("--alto", type=int, help="alto en píxeles (por defecto, cuadrado)")
     ap.add_argument("--muestras", type=int, default=96)
+    ap.add_argument("--transparente", action="store_true",
+                    help="PNG sin fondo (solo producto + sombra) para montar sobre fondos de marca")
+    ap.add_argument("--pelota", action="store_true", help="agrega una pelota de golf a escala real al lado")
+    ap.add_argument("--escena", help="escena en uso de agente/escenas.py (ej: gorra)")
+    ap.add_argument("--escena-params", default="{}", help="parámetros de la escena en JSON")
+    ap.add_argument("--margen", type=float, help="aire alrededor de lo encuadrado (1 = justo)")
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     return ap.parse_args(argv)
 
@@ -71,6 +77,7 @@ def normalizar(obj):
     escala = 1.0 / max(maxs - mins)
     centro = Vector(((mins.x + maxs.x) / 2, (mins.y + maxs.y) / 2, mins.z))
     obj.data.transform(Matrix.Scale(escala, 4) @ Matrix.Translation(-centro))
+    obj["escala"] = escala
     obj.data.update()
     bpy.context.view_layer.update()
     obj.data.shade_smooth()
@@ -101,10 +108,55 @@ def material_pla(obj, color):
     obj.data.materials.append(m)
 
 
-def escenario(fondo):
+def pelota_de_golf(obj):
+    """Pelota de golf real (Ø 42,67 mm, ~330 hoyuelos tallados en la malla), al costado del producto."""
+    from mathutils.kdtree import KDTree
+    r = 42.67 / 2 * obj["escala"]
+    x = obj.dimensions.x / 2 + r * 1.7
+    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=7, radius=1, location=(x, obj.dimensions.y * 0.25, r))
+    bola = bpy.context.active_object
+    malla = bola.data
+    # centros de los hoyuelos repartidos parejo (espiral de Fibonacci)
+    total = 332
+    arbol = KDTree(total)
+    for k in range(total):
+        fi = math.acos(1 - 2 * (k + 0.5) / total)
+        th = math.pi * (1 + 5 ** 0.5) * (k + 0.5)
+        arbol.insert((math.cos(th) * math.sin(fi), math.sin(th) * math.sin(fi), math.cos(fi)), k)
+    arbol.balance()
+    radio_h, prof = 0.092, 0.014  # radio angular del hoyuelo y profundidad (relativa al radio)
+    for vert in malla.vertices:
+        d = vert.co.normalized()
+        _, _, dist = arbol.find(d)
+        ang = 2 * math.asin(min(1.0, dist / 2))
+        hundido = prof * (1 - (ang / radio_h) ** 2) if ang < radio_h else 0
+        vert.co = d * r * (1 - hundido)
+    malla.update()
+    bpy.ops.object.shade_smooth()
+    m = bpy.data.materials.new("Pelota")
+    m.use_nodes = True
+    p = m.node_tree.nodes["Principled BSDF"]
+    p.inputs["Base Color"].default_value = (0.82, 0.82, 0.8, 1)
+    p.inputs["Roughness"].default_value = 0.28
+    for nombre, valor in (("Coat Weight", 0.6), ("Coat Roughness", 0.08), ("Clearcoat", 0.6)):
+        if nombre in p.inputs:
+            p.inputs[nombre].default_value = valor
+    malla.materials.append(m)
+    return bola
+
+
+def escenario(fondo, transparente=False):
     # Piso curvo tipo estudio (sin horizonte visible)
-    bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
+    bpy.ops.mesh.primitive_plane_add(size=60 if transparente else 20, location=(0, 0, 0))
     piso = bpy.context.active_object
+    if transparente:
+        # sin fondo: piso plano y grande, para que la sombra se desvanezca sin cortes
+        piso.is_shadow_catcher = True  # solo deja la sombra; el fondo lo pone la plantilla
+        bpy.context.scene.render.film_transparent = True
+        bpy.context.scene.world = bpy.context.scene.world or bpy.data.worlds.new("Mundo")
+        bpy.context.scene.world.use_nodes = True
+        bpy.context.scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.45
+        return
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.subdivide(number_cuts=40)
     bpy.ops.object.mode_set(mode="OBJECT")
@@ -138,9 +190,12 @@ def luz(nombre, pos, energia, tam):
     o.rotation_euler = direccion.to_track_quat("-Z", "Y").to_euler()
 
 
-def camara(obj, angulo, giro):
-    centro = Vector((0, 0, obj.dimensions.z / 2))
-    radio = obj.dimensions.length * 0.5 * 1.02
+def camara(objetos, angulo, giro, margen=1.02):
+    pts = [o.matrix_world @ Vector(c) for o in objetos for c in o.bound_box]
+    mins = Vector([min(p[i] for p in pts) for i in range(3)])
+    maxs = Vector([max(p[i] for p in pts) for i in range(3)])
+    centro = (mins + maxs) / 2
+    radio = (maxs - mins).length * 0.5 * margen
     cam_d = bpy.data.cameras.new("Cam")
     cam_d.lens = 85
     cam_d.sensor_fit = "HORIZONTAL"  # el encuadre se calcula sobre el ancho, también en vertical
@@ -161,12 +216,21 @@ def main():
     obj = importar(a.modelo)
     normalizar(obj)
     material_pla(obj, a.color)
+    visibles = [obj]
+    if a.pelota:
+        visibles.append(pelota_de_golf(obj))
+    if a.escena:
+        import json
+        import os
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import escenas
+        visibles, _ = escenas.construir(a.escena, obj, **json.loads(a.escena_params))
     # con colores claros (blanco, amarillo, piel) el fondo pasa a gris verdoso para que contraste
-    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD")
+    escenario(a.fondo if not es_claro(a.color) or a.fondo != "#F4F1EA" else "#B9C4BD", a.transparente)
     luz("Principal", (-2.5, -2.5, 3.5), 520, 3)
     luz("Relleno", (3, -2, 1.5), 140, 4)
     luz("Contra", (0.5, 3, 2.5), 260, 2)
-    camara(obj, a.angulo, a.giro)
+    camara(visibles, a.angulo, a.giro, a.margen or (1.3 if a.transparente else 1.02))
 
     esc = bpy.context.scene
     esc.render.engine = "CYCLES"
@@ -182,6 +246,7 @@ def main():
     esc.view_settings.look = "None"
     esc.view_settings.exposure = -1.0
     esc.render.image_settings.file_format = "PNG"
+    esc.render.image_settings.color_mode = "RGBA" if a.transparente else "RGB"
     esc.render.filepath = a.salida
     bpy.ops.render.render(write_still=True)
 
