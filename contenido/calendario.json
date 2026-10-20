@@ -66,7 +66,9 @@
     "imagenes": [
       "contenido/media/2026-10-19/historia-3.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "pendiente",
+    "intentos": 1,
+    "error": "POST 17841445495228241/media -> 500: {'message': 'An unexpected error has occurred. Please retry your request later.', 'type': 'OAuthException', 'is_transient': True, 'code': 2, 'fbtrace_id': 'Ab0tKT1cJzw4w9h53nQErUo'}"
   },
   {
     "id": "2026-10-20-historia-1",
