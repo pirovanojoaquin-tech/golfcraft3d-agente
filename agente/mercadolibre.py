@@ -277,10 +277,10 @@ def calcular(info, user_id):
 
 def pendientes():
     """Productos que ya salieron en un post de Instagram y todavía no se propusieron en ML."""
-    if not CFG["activo"]:
-        print("Mercado Libre desactivado (config.yaml > mercadolibre.activo)")
-        return
     estado = cargar()
+    if not CFG["activo"] or not estado.get("user_id"):
+        print("Mercado Libre todavía no está conectado (o está apagado en config.yaml)")
+        return
     publicados = {i["producto"] for i in calendario.cargar()
                   if i["estado"] == "publicado" and i["tipo"] != "STORY" and i.get("producto")}
     for slug in sorted(publicados - set(estado["productos"])):
@@ -569,7 +569,7 @@ def evento(topic, recurso):
 
 def revisar():
     """Red de seguridad por si se pierde una notificación: renueva el permiso y repasa ventas y preguntas."""
-    if not CFG["activo"] or not os.environ.get("ML_REFRESH_TOKEN"):
+    if not CFG["activo"] or not os.environ.get("ML_REFRESH_TOKEN") or not cargar().get("user_id"):
         print("Mercado Libre no está activo")
         return
     token(margen=3 * 3600)
