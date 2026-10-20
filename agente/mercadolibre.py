@@ -72,8 +72,13 @@ def _guardar_secreto(nombre, valor):
         raise ErrorML(f"No se pudo guardar el secreto {nombre} (revisá GH_PAT)")
 
 
+def app_id():
+    """El App ID no es secreto (va en el link de autorización): está en config.yaml o en el secreto ML_APP_ID."""
+    return os.environ.get("ML_APP_ID") or str(CFG.get("app_id") or "")
+
+
 def _oauth(**datos):
-    r = requests.post(f"{API}/oauth/token", data={"client_id": os.environ["ML_APP_ID"],
+    r = requests.post(f"{API}/oauth/token", data={"client_id": app_id(),
                                                  "client_secret": os.environ["ML_CLIENT_SECRET"], **datos}, timeout=60)
     if r.status_code != 200:
         raise ErrorML(f"oauth {datos['grant_type']} -> {r.status_code}: {r.json().get('message', '')}")
