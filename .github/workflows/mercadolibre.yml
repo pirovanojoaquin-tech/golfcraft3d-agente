@@ -118,6 +118,10 @@ jobs:
         run: |
           python -m agente.mercadolibre subir "Mercado Libre - estado ($ACCION)"
 
+      - name: Actualizar la tienda web
+        if: success() && (env.ACCION == 'publicar' || env.ACCION == 'evento')
+        run: gh workflow run tienda.yml --repo "$GITHUB_REPOSITORY" --ref main
+
       - name: Avisar si falló
         if: failure()
         run: |
