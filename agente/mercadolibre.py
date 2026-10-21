@@ -41,6 +41,7 @@ ESTADO = RAIZ / "contenido" / "mercadolibre.json"
 REPO = os.environ.get("GITHUB_REPOSITORY", "pirovanojoaquin-tech/golfcraft3d-agente")
 ARG = timezone(timedelta(hours=-3))
 GTIN_SIN_CODIGO, GTIN_PACK = "17055160", "17055159"
+ENVIO_ESTIMADO = set()  # packs cuyo envío no se pudo cotizar (falta activar Mercado Envíos)
 
 
 class ErrorML(Exception):
@@ -227,8 +228,14 @@ def comision(precio, categoria):
 def envio_a_cargo(precio, info, n, user_id):
     if precio < CFG["umbral_envio_gratis"]:
         return 0  # lo paga el comprador
-    d = api("GET", f"/users/{user_id}/shipping_options/free", params={"dimensions": dimensiones(info, n)})
-    return d.get("coverage", {}).get("all_country", {}).get("list_cost", 0)
+    try:
+        d = api("GET", f"/users/{user_id}/shipping_options/free", params={"dimensions": dimensiones(info, n)})
+        return d.get("coverage", {}).get("all_country", {}).get("list_cost", 0)
+    except ErrorML as e:
+        # sin Mercado Envíos activado ML no cotiza: usamos un estimado y lo avisamos en la propuesta
+        print(f"Envío no cotizado ({e}); se usa el estimado de config.yaml")
+        ENVIO_ESTIMADO.add(n)
+        return CFG.get("envio_estimado", 9000)
 
 
 def categoria(info):
@@ -304,6 +311,7 @@ def proponer(slug):
     p.update({"codigo": p.get("codigo") or estado["siguiente"], "estado": "propuesto" if calc["elegido"] else "no_conviene",
               "pack": pack, "categoria": calc["categoria"], "categoria_nombre": calc["categoria_nombre"],
               "calculo": calc["filas"], "referencia": calc["referencia"],
+              "envio_estimado": sorted(ENVIO_ESTIMADO),
               "fecha": datetime.now(ARG).strftime("%Y-%m-%d")})
     if p["codigo"] == estado["siguiente"]:
         estado["siguiente"] += 1
@@ -322,6 +330,8 @@ def avisar(slug, sha):
     info = info_producto(slug)
     f = next(x for x in p["calculo"] if x["pack"] == p["pack"])
     envio = plata(f["envio"]) if f["envio"] else "$0 (lo paga el comprador)"
+    if f["pack"] in p.get("envio_estimado", []):
+        envio += " (estimado: activá Mercado Envíos para el valor real)"
     otras = "\n".join(f"• x{x['pack']}: {plata(x['precio'])} → te quedan {plata(x['ganancia'])}"
                       for x in p["calculo"] if x["pack"] != p["pack"])
     ref = f" (avisos parecidos en ML: ~{plata(p['referencia'])})" if p.get("referencia") else ""
