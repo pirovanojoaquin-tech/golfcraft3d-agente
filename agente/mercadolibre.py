@@ -599,10 +599,27 @@ def revisar():
     print("revisión ok")
 
 
+def diagnostico():
+    """Datos técnicos de la cuenta (sin datos personales) para ver qué falta habilitar."""
+    estado = cargar()
+    uid = estado["user_id"]
+    yo = api("GET", "/users/me")
+    print("site_status:", yo.get("status", {}).get("site_status"),
+          "| sell:", (yo.get("status", {}).get("sell") or {}).get("allow"),
+          "| codes:", (yo.get("status", {}).get("sell") or {}).get("codes"))
+    print("shipping_modes:", yo.get("shipping_modes"))
+    try:
+        pref = api("GET", f"/users/{uid}/shipping_preferences")
+        print("modos de envío:", pref.get("modes"))
+        print("logísticas:", [(l.get("mode"), [t.get("type") for t in l.get("types", [])]) for l in pref.get("logistics", [])])
+    except ErrorML as e:
+        print("shipping_preferences:", e)
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("pendientes", "aprobaciones", "revisar", "link"):
+    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico"):
         sub.add_parser(c)
     for c in ("proponer", "publicar"):
         sub.add_parser(c).add_argument("slug")
@@ -616,6 +633,8 @@ def main():
     a = ap.parse_args()
     if a.cmd == "link":
         link_autorizacion()
+    elif a.cmd == "diagnostico":
+        diagnostico()
     elif a.cmd in ("pendientes", "aprobaciones", "revisar"):
         globals()[a.cmd]()
     elif a.cmd in ("proponer", "publicar"):

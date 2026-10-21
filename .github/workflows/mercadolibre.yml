@@ -91,6 +91,10 @@ jobs:
         if: env.ACCION == 'revisar'
         run: python -m agente.mercadolibre revisar
 
+      - name: Diagnóstico
+        if: env.ACCION == 'diagnostico'
+        run: python -m agente.mercadolibre diagnostico
+
       - name: Link para autorizar
         if: env.ACCION == 'link'
         run: python -m agente.mercadolibre link
