@@ -1,5 +1,58 @@
 {
   "user_id": 173697484,
-  "siguiente": 1,
-  "productos": {}
+  "siguiente": 2,
+  "productos": {
+    "guia-de-agarre-para-el-palo": {
+      "codigo": 1,
+      "estado": "propuesto",
+      "pack": 5,
+      "categoria": "MLA2548",
+      "categoria_nombre": "Golf > Bolsas",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 4000,
+          "comision": 3300,
+          "envio": 0,
+          "filamento": 648,
+          "ganancia": 52
+        },
+        {
+          "pack": 2,
+          "precio": 8000,
+          "comision": 3940,
+          "envio": 0,
+          "filamento": 1296,
+          "ganancia": 2764
+        },
+        {
+          "pack": 3,
+          "precio": 11400,
+          "comision": 4484,
+          "envio": 0,
+          "filamento": 1944,
+          "ganancia": 4972
+        },
+        {
+          "pack": 5,
+          "precio": 18000,
+          "comision": 8360,
+          "envio": 0,
+          "filamento": 3240,
+          "ganancia": 6400
+        },
+        {
+          "pack": 10,
+          "precio": 34000,
+          "comision": 5440,
+          "envio": 0,
+          "filamento": 6480,
+          "ganancia": 22080
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-21"
+    }
+  }
 }
