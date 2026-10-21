@@ -22,3 +22,14 @@ piezas:
 - archivo: Pack_of_8_different_golf_tees_1.stl
   printables_file_id: '790575'
   gramos: 12.3
+medidas_mm:
+  largo: 152
+  ancho: 70
+  alto: 12
+colores_png:
+- blanco
+- rojo
+- amarillo
+- negro
+- azul
+- verde

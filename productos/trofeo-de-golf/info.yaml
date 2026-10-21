@@ -22,3 +22,14 @@ piezas:
 - archivo: golf-trophy.stl
   printables_file_id: '27807'
   gramos: 229.2
+medidas_mm:
+  largo: 255
+  ancho: 209
+  alto: 98
+colores_png:
+- amarillo
+- gris
+- blanco
+- negro
+- rojo
+- azul

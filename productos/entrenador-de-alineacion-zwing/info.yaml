@@ -31,3 +31,14 @@ piezas:
 - archivo: Zwing Trainer Stick Connectors.stl
   printables_file_id: '5224064'
   gramos: 22.2
+medidas_mm:
+  largo: 190
+  ancho: 115
+  alto: 30
+colores_png:
+- verde
+- negro
+- amarillo
+- blanco
+- rojo
+- azul

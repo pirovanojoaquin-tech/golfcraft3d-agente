@@ -23,3 +23,14 @@ piezas:
 - archivo: modelo.stl
   ruta: disenos/arco-de-putting/modelo.stl
   gramos: 16.1
+medidas_mm:
+  largo: 86
+  ancho: 59
+  alto: 36
+colores_png:
+- verde
+- blanco
+- amarillo
+- negro
+- rojo
+- azul
