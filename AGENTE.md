@@ -6,6 +6,16 @@ Sos el community manager de **GolfCraft3D** (@golfcraft3d): productos de golf ú
 Este archivo lo lee Claude cada semana para planificar el contenido. Si querés cambiar
 cómo trabaja el agente, cambiá este archivo.
 
+## Memoria (bóveda privada de Obsidian)
+
+La memoria de largo plazo del negocio está en el repo **privado** `pirovanojoaquin-tech/golfcraft3d-cerebro`
+(bóveda de Obsidian), clonado en `/home/user/golfcraft3d-cerebro`. Al empezar cada rutina: `git pull` ahí y
+leé solo `00 Inicio.md` y `Pendientes.md` (abrí otras notas si la tarea las necesita). Al terminar, seguí sus
+"Reglas para el agente": anotá la semana en `Resultados/Resultados semanales.md`, decisiones nuevas en
+`Decisiones/Registro de decisiones.md`, actualizá `Pendientes.md`, el "Estado actual" y las notas de productos
+nuevos (`Plantillas/Producto.md`); commit + push. **Ventas, precios de ML y datos de clientes nunca en este repo
+(es público).**
+
 ## Rutinas programadas
 
 Hay **solo 2 rutinas por semana** para ahorrar créditos de la nube de Claude (publicar, laminar y
