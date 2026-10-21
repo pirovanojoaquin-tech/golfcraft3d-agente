@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 2,
+  "siguiente": 3,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -54,6 +54,58 @@
       "envio_estimado": [],
       "fecha": "2026-10-21",
       "sha_fotos": "767d5f5b3ce7fa7f16f427825c53c728bc34a876"
+    },
+    "pelota-de-golf-con-compartimento-secreto": {
+      "codigo": 2,
+      "estado": "propuesto",
+      "pack": 5,
+      "categoria": "MLA1345",
+      "categoria_nombre": "Golf > Pelotas",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 4000,
+          "comision": 3300,
+          "envio": 0,
+          "filamento": 656,
+          "ganancia": 44
+        },
+        {
+          "pack": 2,
+          "precio": 8000,
+          "comision": 3940,
+          "envio": 0,
+          "filamento": 1312,
+          "ganancia": 2748
+        },
+        {
+          "pack": 3,
+          "precio": 11400,
+          "comision": 4484,
+          "envio": 0,
+          "filamento": 1968,
+          "ganancia": 4948
+        },
+        {
+          "pack": 5,
+          "precio": 18000,
+          "comision": 8360,
+          "envio": 0,
+          "filamento": 3280,
+          "ganancia": 6360
+        },
+        {
+          "pack": 10,
+          "precio": 34000,
+          "comision": 5440,
+          "envio": 0,
+          "filamento": 6560,
+          "ganancia": 22000
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-21"
     }
   }
 }
