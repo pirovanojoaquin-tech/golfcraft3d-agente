@@ -168,7 +168,9 @@
     "imagenes": [
       "contenido/media/2026-10-21/historia-2.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18034035857907566",
+    "publicado_en": "2026-10-21T16:12:46-03:00"
   },
   {
     "id": "2026-10-21-historia-3",
