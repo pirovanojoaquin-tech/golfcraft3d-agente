@@ -60,6 +60,68 @@ def guardar(estado):
     ESTADO.write_text(json.dumps(estado, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def _git(*args, check=True):
+    return subprocess.run(["git", *args], capture_output=True, text=True, check=check).stdout
+
+
+def subir(mensaje, rutas=()):
+    """Guarda el estado en el repo sin chocar con otros workflows que corren a la vez.
+
+    Toma lo último de GitHub, le aplica solo los productos que cambió esta corrida y reintenta si alguien
+    subió algo justo antes. Devuelve el commit (para armar links a las fotos).
+    """
+    vacio = {"user_id": None, "siguiente": 1, "productos": {}}
+    rel = ESTADO.relative_to(RAIZ).as_posix()
+
+    def leer(ref):
+        try:
+            return json.loads(_git("show", f"{ref}:{rel}"))
+        except (subprocess.CalledProcessError, ValueError):
+            return dict(vacio)
+
+    base, mio = leer("HEAD"), cargar()
+    cambiados = {s for s in set(base["productos"]) | set(mio["productos"])
+                 if base["productos"].get(s) != mio["productos"].get(s)}
+    for intento in range(6):
+        _git("fetch", "-q", "origin", "main")
+        suyo = leer("origin/main")
+        for s in cambiados:
+            if s in mio["productos"]:
+                suyo["productos"][s] = mio["productos"][s]
+            else:
+                suyo["productos"].pop(s, None)
+        if mio.get("user_id") != base.get("user_id"):
+            suyo["user_id"] = mio.get("user_id")
+        suyo["siguiente"] = max(suyo.get("siguiente", 1), mio.get("siguiente", 1))
+        _git("reset", "-q", "--mixed", "origin/main")
+        guardar(suyo)
+        _git("add", "-A", rel, *rutas)
+        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode == 0:
+            return _git("rev-parse", "HEAD").strip()
+        _git("commit", "-q", "-m", mensaje)
+        if subprocess.run(["git", "push", "-q", "origin", "HEAD:main"], capture_output=True).returncode == 0:
+            return _git("rev-parse", "HEAD").strip()
+        time.sleep(3 * (intento + 1))
+    raise ErrorML("No se pudo guardar el estado en GitHub después de 6 intentos")
+
+
+def fallo(slug):
+    """Marca una propuesta fallida: se reintenta sola más tarde (hasta 3 veces)."""
+    estado = cargar()
+    p = estado["productos"].get(slug, {})
+    if p.get("estado") in (None, "preparando", "error"):
+        estado["productos"][slug] = {**p, "estado": "error", "intentos": p.get("intentos", 0) + 1,
+                                     "desde": int(time.time())}
+        guardar(estado)
+
+
+def rechazar(slug):
+    estado = cargar()
+    if slug in estado["productos"]:
+        estado["productos"][slug]["estado"] = "rechazado"
+        guardar(estado)
+
+
 def info_producto(slug):
     return yaml.safe_load((RAIZ / "productos" / slug / "info.yaml").read_text(encoding="utf-8"))
 
@@ -285,31 +347,34 @@ def calcular(info, user_id):
 def pendientes():
     """Productos que ya salieron en un post de Instagram y todavía no se propusieron en ML.
 
-    Lanza de a UNA propuesta por vez (cada corrida del publicador, cada 15 min): si corren varias juntas
-    chocan al guardar el estado. Una propuesta "preparando" de hace más de 2 horas se considera trabada y se reintenta.
+    Lo corre el publicador de Instagram: lanza de a UNA propuesta por vez y no escribe nada (así nunca puede
+    trabar una publicación). Si hay un workflow de ML en curso, espera a la próxima corrida. Las propuestas
+    que fallaron se reintentan a las 6 horas, hasta 3 veces.
     """
     estado = cargar()
     if not CFG["activo"] or not estado.get("user_id"):
         print("Mercado Libre todavía no está conectado (o está apagado en config.yaml)")
         return
-    ahora = time.time()
-    preparando = {s: p for s, p in estado["productos"].items() if p.get("estado") == "preparando"}
-    if any(ahora - p.get("desde", 0) < 2 * 3600 for p in preparando.values()):
-        print("Hay una propuesta en preparación; la próxima sale en la siguiente corrida")
+    en_curso = json.loads(subprocess.run(
+        ["gh", "run", "list", "--workflow", "mercadolibre.yml", "--repo", REPO, "--limit", "10", "--json", "status"],
+        capture_output=True, text=True, check=True).stdout)
+    if any(r["status"] in ("queued", "in_progress", "waiting", "pending", "requested") for r in en_curso):
+        print("Hay un workflow de Mercado Libre en curso; la próxima propuesta sale en la siguiente corrida")
         return
+    ahora = time.time()
     publicados = {i["producto"] for i in calendario.cargar()
                   if i["estado"] == "publicado" and i["tipo"] != "STORY" and i.get("producto")}
-    candidatos = sorted((publicados - set(estado["productos"])) | set(preparando))
+    reintentar = {s for s, p in estado["productos"].items()
+                  if p.get("estado") in ("error", "preparando") and p.get("intentos", 0) < 3
+                  and ahora - p.get("desde", 0) > 6 * 3600}
+    candidatos = sorted((publicados - set(estado["productos"])) | reintentar)
     candidatos = [s for s in candidatos if (RAIZ / "productos" / s / "info.yaml").exists()]
     if not candidatos:
         print("Nada nuevo para proponer")
         return
-    slug = candidatos[0]
     subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
-                    "-f", "accion=proponer", "-f", f"producto={slug}"], check=True)
-    estado["productos"][slug] = {**estado["productos"].get(slug, {}), "estado": "preparando", "desde": int(ahora)}
-    guardar(estado)
-    print(f"{slug}: propuesta en preparación ({len(candidatos) - 1} más en cola)")
+                    "-f", "accion=proponer", "-f", f"producto={candidatos[0]}"], check=True)
+    print(f"{candidatos[0]}: propuesta en preparación ({len(candidatos) - 1} más en cola)")
 
 
 def proponer(slug):
@@ -390,15 +455,11 @@ def aprobaciones():
             slug = por_codigo.get(codigo)
             if not slug or estado["productos"][slug]["estado"] not in ("propuesto", "no_conviene"):
                 continue
-            if si:
-                subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
-                                "-f", "accion=publicar", "-f", f"producto={slug}"], check=True)
-                estado["productos"][slug]["estado"] = "aprobado"
-            else:
-                estado["productos"][slug]["estado"] = "rechazado"
-            print(f"#{codigo} {slug}: {estado['productos'][slug]['estado']}")
+            accion = "publicar" if si else "rechazar"
+            subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
+                            "-f", f"accion={accion}", "-f", f"producto={slug}"], check=True)
+            print(f"#{codigo} {slug}: {accion}")
         m["procesado"] = True
-    guardar(estado)
     telegram.guardar(tg)
 
 
@@ -633,8 +694,11 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico"):
         sub.add_parser(c)
-    for c in ("proponer", "publicar"):
+    for c in ("proponer", "publicar", "fallo", "rechazar"):
         sub.add_parser(c).add_argument("slug")
+    sb = sub.add_parser("subir")
+    sb.add_argument("mensaje")
+    sb.add_argument("rutas", nargs="*")
     a_ = sub.add_parser("avisar")
     a_.add_argument("slug")
     a_.add_argument("--sha", required=True)
@@ -649,8 +713,10 @@ def main():
         diagnostico()
     elif a.cmd in ("pendientes", "aprobaciones", "revisar"):
         globals()[a.cmd]()
-    elif a.cmd in ("proponer", "publicar"):
+    elif a.cmd in ("proponer", "publicar", "fallo", "rechazar"):
         globals()[a.cmd](a.slug)
+    elif a.cmd == "subir":
+        print(subir(a.mensaje, a.rutas))
     elif a.cmd == "avisar":
         avisar(a.slug, a.sha)
     elif a.cmd == "evento":

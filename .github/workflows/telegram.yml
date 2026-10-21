@@ -61,7 +61,6 @@ jobs:
           git config user.name "golfcraft3d-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add contenido/telegram.json 2>/dev/null || true
-          git add contenido/mercadolibre.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "Mensajes de Telegram $(date -u +'%F %H:%M') UTC"
             git pull --rebase origin "${GITHUB_REF_NAME}"

@@ -1,10 +1,5 @@
 {
   "user_id": 173697484,
   "siguiente": 1,
-  "productos": {
-    "guia-de-agarre-para-el-palo": {
-      "estado": "preparando",
-      "desde": 1792622387
-    }
-  }
+  "productos": {}
 }

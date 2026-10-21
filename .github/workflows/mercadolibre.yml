@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       accion:
-        description: "proponer | publicar | evento | revisar | autorizar | link"
+        description: "proponer | publicar | rechazar | evento | revisar | autorizar | link | diagnostico"
         required: true
         default: revisar
       producto:
@@ -57,6 +57,11 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Configurar git
+        run: |
+          git config user.name "golfcraft3d-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Instalar Blender (fotos de ML)
         if: env.ACCION == 'proponer'
         run: |
@@ -68,17 +73,16 @@ jobs:
         run: |
           python -m agente.renders "$PRODUCTO" --solo-ml
           python -m agente.mercadolibre proponer "$PRODUCTO"
-          git config user.name "golfcraft3d-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "productos/$PRODUCTO" contenido/mercadolibre.json
-          git commit -m "Mercado Libre: propuesta de $PRODUCTO" || true
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
-          python -m agente.mercadolibre avisar "$PRODUCTO" --sha "$(git rev-parse HEAD)"
+          SHA=$(python -m agente.mercadolibre subir "Mercado Libre: propuesta de $PRODUCTO" "productos/$PRODUCTO" | tail -1)
+          python -m agente.mercadolibre avisar "$PRODUCTO" --sha "$SHA"
 
       - name: Publicar
         if: env.ACCION == 'publicar'
         run: python -m agente.mercadolibre publicar "$PRODUCTO"
+
+      - name: Rechazar
+        if: env.ACCION == 'rechazar'
+        run: python -m agente.mercadolibre rechazar "$PRODUCTO"
 
       - name: Evento
         if: env.ACCION == 'evento'
@@ -105,17 +109,14 @@ jobs:
           CODIGO: ${{ inputs.codigo }}
         run: python -m agente.mercadolibre autorizar "$CODIGO"
 
+      - name: Marcar propuesta fallida
+        if: failure() && env.ACCION == 'proponer'
+        run: python -m agente.mercadolibre fallo "$PRODUCTO"
+
       - name: Guardar estado
         if: always()
         run: |
-          git config user.name "golfcraft3d-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add contenido/mercadolibre.json 2>/dev/null || true
-          if ! git diff --cached --quiet; then
-            git commit -m "Mercado Libre: estado ($ACCION)"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
+          python -m agente.mercadolibre subir "Mercado Libre - estado ($ACCION)"
 
       - name: Avisar si falló
         if: failure()
