@@ -5,17 +5,17 @@
     {
       "fecha": "2026-10-19T19:32:02+00:00",
       "texto": "Hola",
-      "procesado": false
+      "procesado": true
     },
     {
       "fecha": "2026-10-19T19:34:09+00:00",
       "texto": "SI 1,2,3",
-      "procesado": false
+      "procesado": true
     },
     {
       "fecha": "2026-10-19T20:56:20+00:00",
       "texto": "SI 4",
-      "procesado": false
+      "procesado": true
     }
   ]
 }

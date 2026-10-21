@@ -1,0 +1,25 @@
+nombre: Arco de putting
+descripcion: Arco de entrenamiento para el putt. La bola tiene que pasar por debajo
+  sin tocarlo, así practicás la línea de salida y la dirección del golpe.
+personalizable: Color a elección (10 colores de PLA)
+precio: 2000
+gramos: 16.1
+tiempo: 42 min
+colores:
+- verde
+- blanco
+- amarillo
+destacado: false
+notas: null
+origen: propio
+diseno: arco-de-putting
+inspiracion: Los "putting gates" que usan los profesionales para entrenar la línea
+  de salida. Diseño propio, sin copiar ningún producto en particular.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/arco-de-putting/modelo.stl
+  gramos: 16.1

@@ -38,5 +38,37 @@
     "propuesto": "2026-10-18",
     "estado": "aprobado",
     "respondido": "2026-10-18"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Arco de putting",
+    "slug": "arco-de-putting",
+    "propuesto": "2026-10-19",
+    "estado": "aprobado",
+    "respondido": "2026-10-21"
+  },
+  {
+    "printables_id": "1163073",
+    "nombre": "Entrenador de alineación Zwing",
+    "slug": "entrenador-de-alineacion-zwing",
+    "propuesto": "2026-10-19",
+    "estado": "aprobado",
+    "respondido": "2026-10-21"
+  },
+  {
+    "printables_id": "187377",
+    "nombre": "Pack de 8 tees de golf",
+    "slug": "pack-de-8-tees-de-golf",
+    "propuesto": "2026-10-19",
+    "estado": "aprobado",
+    "respondido": "2026-10-21"
+  },
+  {
+    "printables_id": "7870",
+    "nombre": "Trofeo de golf",
+    "slug": "trofeo-de-golf",
+    "propuesto": "2026-10-19",
+    "estado": "aprobado",
+    "respondido": "2026-10-21"
   }
 ]

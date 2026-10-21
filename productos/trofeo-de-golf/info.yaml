@@ -1,0 +1,24 @@
+nombre: Trofeo de golf
+descripcion: Trofeo con temática de golf para premiar al ganador del torneo entre
+  amigos.
+personalizable: Color a elección (10 colores de PLA)
+precio: 27600
+gramos: 229.2
+tiempo: 8 h 24 min
+colores:
+- amarillo
+- gris
+- blanco
+destacado: false
+notas: null
+origen: null
+diseno: null
+inspiracion: null
+printables_id: '7870'
+url: https://www.printables.com/model/7870-golf-themed-trophy
+autor: Lukáš Foukal
+licencia: CC-BY-SA
+piezas:
+- archivo: golf-trophy.stl
+  printables_file_id: '27807'
+  gramos: 229.2

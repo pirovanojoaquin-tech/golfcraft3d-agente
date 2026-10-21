@@ -1,0 +1,24 @@
+nombre: Pack de 8 tees de golf
+descripcion: Pack de 8 tees de golf de distintas alturas. Para no quedarte nunca sin
+  tee cuando se rompe uno.
+personalizable: Color a elección (10 colores de PLA)
+precio: 1500
+gramos: 12.3
+tiempo: 54 min
+colores:
+- blanco
+- rojo
+- amarillo
+destacado: false
+notas: null
+origen: null
+diseno: null
+inspiracion: null
+printables_id: '187377'
+url: https://www.printables.com/model/187377-golf-tees
+autor: Ender3Knight4
+licencia: CC-BY
+piezas:
+- archivo: Pack_of_8_different_golf_tees_1.stl
+  printables_file_id: '790575'
+  gramos: 12.3
