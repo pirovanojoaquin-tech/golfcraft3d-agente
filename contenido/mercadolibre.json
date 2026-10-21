@@ -1,5 +1,15 @@
 {
   "user_id": 1748526832,
   "siguiente": 1,
-  "productos": {}
+  "productos": {
+    "guia-de-agarre-para-el-palo": {
+      "estado": "preparando"
+    },
+    "pelota-de-golf-con-compartimento-secreto": {
+      "estado": "preparando"
+    },
+    "regulador-de-altura-de-tee": {
+      "estado": "preparando"
+    }
+  }
 }
