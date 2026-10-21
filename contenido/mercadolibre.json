@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 3,
+  "siguiente": 4,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -107,6 +107,58 @@
       "envio_estimado": [],
       "fecha": "2026-10-21",
       "sha_fotos": "0d56ab1982c369f4807877b9d7fe9f4048ebf855"
+    },
+    "regulador-de-altura-de-tee": {
+      "codigo": 3,
+      "estado": "propuesto",
+      "pack": 10,
+      "categoria": "MLA412580",
+      "categoria_nombre": "Golf > Tees",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 2200,
+          "comision": 3012,
+          "envio": 0,
+          "filamento": 356,
+          "ganancia": -1168
+        },
+        {
+          "pack": 2,
+          "precio": 4400,
+          "comision": 3364,
+          "envio": 0,
+          "filamento": 712,
+          "ganancia": 324
+        },
+        {
+          "pack": 3,
+          "precio": 6300,
+          "comision": 3668,
+          "envio": 0,
+          "filamento": 1068,
+          "ganancia": 1564
+        },
+        {
+          "pack": 5,
+          "precio": 9900,
+          "comision": 4244,
+          "envio": 0,
+          "filamento": 1780,
+          "ganancia": 3876
+        },
+        {
+          "pack": 10,
+          "precio": 18700,
+          "comision": 8472,
+          "envio": 0,
+          "filamento": 3560,
+          "ganancia": 6668
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-21"
     }
   }
 }
