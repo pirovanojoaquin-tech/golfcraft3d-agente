@@ -283,21 +283,33 @@ def calcular(info, user_id):
 # ---------- propuesta ----------
 
 def pendientes():
-    """Productos que ya salieron en un post de Instagram y todavía no se propusieron en ML."""
+    """Productos que ya salieron en un post de Instagram y todavía no se propusieron en ML.
+
+    Lanza de a UNA propuesta por vez (cada corrida del publicador, cada 15 min): si corren varias juntas
+    chocan al guardar el estado. Una propuesta "preparando" de hace más de 2 horas se considera trabada y se reintenta.
+    """
     estado = cargar()
     if not CFG["activo"] or not estado.get("user_id"):
         print("Mercado Libre todavía no está conectado (o está apagado en config.yaml)")
         return
+    ahora = time.time()
+    preparando = {s: p for s, p in estado["productos"].items() if p.get("estado") == "preparando"}
+    if any(ahora - p.get("desde", 0) < 2 * 3600 for p in preparando.values()):
+        print("Hay una propuesta en preparación; la próxima sale en la siguiente corrida")
+        return
     publicados = {i["producto"] for i in calendario.cargar()
                   if i["estado"] == "publicado" and i["tipo"] != "STORY" and i.get("producto")}
-    for slug in sorted(publicados - set(estado["productos"])):
-        if not (RAIZ / "productos" / slug / "info.yaml").exists():
-            continue
-        subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
-                        "-f", "accion=proponer", "-f", f"producto={slug}"], check=True)
-        estado["productos"][slug] = {"estado": "preparando"}
-        print(f"{slug}: propuesta en preparación")
+    candidatos = sorted((publicados - set(estado["productos"])) | set(preparando))
+    candidatos = [s for s in candidatos if (RAIZ / "productos" / s / "info.yaml").exists()]
+    if not candidatos:
+        print("Nada nuevo para proponer")
+        return
+    slug = candidatos[0]
+    subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
+                    "-f", "accion=proponer", "-f", f"producto={slug}"], check=True)
+    estado["productos"][slug] = {**estado["productos"].get(slug, {}), "estado": "preparando", "desde": int(ahora)}
     guardar(estado)
+    print(f"{slug}: propuesta en preparación ({len(candidatos) - 1} más en cola)")
 
 
 def proponer(slug):
