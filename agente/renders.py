@@ -37,9 +37,9 @@ def stl_del_producto(info):
 def medidas(stl):
     r = subprocess.run(["prusa-slicer", "--info", str(stl)], capture_output=True, text=True)
     m = {k: float(v) for k, v in re.findall(r"size_([xyz]) = ([\d.]+)", r.stdout)}
-    # de mayor a menor: así un producto que viene parado en el archivo (ej: el marcador) se mide acostado
-    largo, ancho, alto = sorted([m.get("x", 0), m.get("y", 0), m.get("z", 0)], reverse=True)
-    return {"largo": round(largo), "ancho": round(ancho), "alto": round(alto)}
+    # alto = z, tal como se ve el producto en los renders (un trofeo parado mide de alto lo que mide)
+    largo, ancho = sorted([m.get("x", 0), m.get("y", 0)], reverse=True)
+    return {"largo": round(largo), "ancho": round(ancho), "alto": round(m.get("z", 0))}
 
 
 def render(stl, destino, color, angulo, giro, muestras, pelota=False):

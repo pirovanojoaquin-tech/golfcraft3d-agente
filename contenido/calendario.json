@@ -379,5 +379,348 @@
       "contenido/media/2026-10-25/historia-3.jpg"
     ],
     "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-26-historia-1",
+    "fecha": "2026-10-26",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "arco-de-putting",
+    "imagenes": [
+      "contenido/media/2026-10-26/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-26-post",
+    "fecha": "2026-10-26",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "arco-de-putting",
+    "imagenes": [
+      "contenido/media/2026-10-26/post-1.jpg",
+      "contenido/media/2026-10-26/post-2.jpg",
+      "contenido/media/2026-10-26/post-3.jpg",
+      "contenido/media/2026-10-26/post-4.jpg",
+      "contenido/media/2026-10-26/post-5.jpg"
+    ],
+    "caption": "¿Cuántos putts cortos se te escapan por la línea de salida? 🤔\n\nEl arco de putting es un diseño exclusivo GolfCraft3D: la bola tiene que pasar por debajo sin tocarlo. Si pasa limpio, saliste en línea. Lo ponés en el green o en la alfombra de casa y a practicar.\n\nHecho por nosotros, con el nombre grabado. Escribinos por DM y te lo hacemos en tu color 📩\n#putting #putt #entrenamientogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-26-historia-2",
+    "fecha": "2026-10-26",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-26/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-26-historia-3",
+    "fecha": "2026-10-26",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-26/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-27-historia-1",
+    "fecha": "2026-10-27",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "pack-de-8-tees-de-golf",
+    "imagenes": [
+      "contenido/media/2026-10-27/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-27-post",
+    "fecha": "2026-10-27",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "pack-de-8-tees-de-golf",
+    "imagenes": [
+      "contenido/media/2026-10-27/post-1.jpg",
+      "contenido/media/2026-10-27/post-2.jpg",
+      "contenido/media/2026-10-27/post-3.jpg",
+      "contenido/media/2026-10-27/post-4.jpg",
+      "contenido/media/2026-10-27/post-5.jpg"
+    ],
+    "caption": "Rompiste otro tee en la salida. Clásico 😅\n\nEste pack trae 8 tees de distintas alturas, para el driver, las maderas y los hierros. Livianos y en el color que quieras, así los encontrás fácil en el pasto.\n\nPedí tu pack por DM 📩\n#teedegolf #tees #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-27-historia-2",
+    "fecha": "2026-10-27",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-27/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-27-historia-3",
+    "fecha": "2026-10-27",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "clip-de-gorra-para-tee",
+    "imagenes": [
+      "contenido/media/2026-10-27/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-28-historia-1",
+    "fecha": "2026-10-28",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "regulador-de-altura-de-tee",
+    "imagenes": [
+      "contenido/media/2026-10-28/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-28-post",
+    "fecha": "2026-10-28",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "regulador-de-altura-de-tee",
+    "imagenes": [
+      "contenido/media/2026-10-28/post-1.jpg",
+      "contenido/media/2026-10-28/post-2.jpg",
+      "contenido/media/2026-10-28/post-3.jpg",
+      "contenido/media/2026-10-28/post-4.jpg",
+      "contenido/media/2026-10-28/post-5.jpg"
+    ],
+    "caption": "Si el tee cambia de altura en cada salida, tu drive también 🏌️‍♂️\n\nEl regulador tiene las alturas marcadas para clavar el tee siempre igual. Entra en el bolsillo y lo usás en cada hoyo.\n\nElegí tu color y escribinos por DM 📩\n#drive #teedegolf #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-28-historia-2",
+    "fecha": "2026-10-28",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-28/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-28-historia-3",
+    "fecha": "2026-10-28",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-28/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-29-historia-1",
+    "fecha": "2026-10-29",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "entrenador-de-alineacion-zwing",
+    "imagenes": [
+      "contenido/media/2026-10-29/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-29-post",
+    "fecha": "2026-10-29",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "entrenador-de-alineacion-zwing",
+    "imagenes": [
+      "contenido/media/2026-10-29/post-1.jpg",
+      "contenido/media/2026-10-29/post-2.jpg",
+      "contenido/media/2026-10-29/post-3.jpg",
+      "contenido/media/2026-10-29/post-4.jpg",
+      "contenido/media/2026-10-29/post-5.jpg"
+    ],
+    "caption": "¿Apuntás a la bandera y la bola sale para otro lado? Puede ser la alineación 🎯\n\nEste entrenador de alineación sirve para diestros y zurdos. Tiene agujeros para varillas de alineación y lastre interno para que quede firme en el piso del driving.\n\nEscribinos por DM y te lo hacemos en tu color 📩\n#alineacion #swing #entrenamientogolf #drivingrange\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-29-historia-2",
+    "fecha": "2026-10-29",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-29/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-29-historia-3",
+    "fecha": "2026-10-29",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "arco-de-putting",
+    "imagenes": [
+      "contenido/media/2026-10-29/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-30-historia-1",
+    "fecha": "2026-10-30",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-30/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-30-post",
+    "fecha": "2026-10-30",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "pelota-de-golf-con-compartimento-secreto",
+    "imagenes": [
+      "contenido/media/2026-10-30/post-1.jpg",
+      "contenido/media/2026-10-30/post-2.jpg",
+      "contenido/media/2026-10-30/post-3.jpg",
+      "contenido/media/2026-10-30/post-4.jpg",
+      "contenido/media/2026-10-30/post-5.jpg"
+    ],
+    "caption": "Un regalo para el golfista que ya tiene todo 🎁\n\nPor fuera es una pelota de golf. Por dentro, un compartimento secreto para una nota, una entrada o lo que se te ocurra.\n\nLa hacemos en el color que quieras. Escribinos por DM 📩\n#regalosgolf #regalooriginal #pelotadegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-30-historia-2",
+    "fecha": "2026-10-30",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-30/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-30-historia-3",
+    "fecha": "2026-10-30",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "trofeo-de-golf",
+    "imagenes": [
+      "contenido/media/2026-10-30/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-31-historia-1",
+    "fecha": "2026-10-31",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "trofeo-de-golf",
+    "imagenes": [
+      "contenido/media/2026-10-31/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-31-post",
+    "fecha": "2026-10-31",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "trofeo-de-golf",
+    "imagenes": [
+      "contenido/media/2026-10-31/post-1.jpg",
+      "contenido/media/2026-10-31/post-2.jpg",
+      "contenido/media/2026-10-31/post-3.jpg",
+      "contenido/media/2026-10-31/post-4.jpg",
+      "contenido/media/2026-10-31/post-5.jpg"
+    ],
+    "caption": "¿Organizás un torneo entre amigos? El ganador se merece algo más que el asado 🏆\n\nEste trofeo con temática de golf mide más de 25 cm de alto y lo hacemos en el color que quieras. Ideal para el campeón del grupo o para un regalo especial.\n\nEscribinos por DM y lo armamos 📩\n#trofeo #torneodegolf #regalosgolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-31-historia-2",
+    "fecha": "2026-10-31",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-31/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-31-historia-3",
+    "fecha": "2026-10-31",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-31/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-01-historia-1",
+    "fecha": "2026-11-01",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "marcador-de-bola",
+    "imagenes": [
+      "contenido/media/2026-11-01/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-01-post",
+    "fecha": "2026-11-01",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "marcador-de-bola",
+    "imagenes": [
+      "contenido/media/2026-11-01/post-1.jpg",
+      "contenido/media/2026-11-01/post-2.jpg",
+      "contenido/media/2026-11-01/post-3.jpg",
+      "contenido/media/2026-11-01/post-4.jpg",
+      "contenido/media/2026-11-01/post-5.jpg"
+    ],
+    "caption": "En el green, cada detalle cuenta ⛳\n\nNuestro marcador de bola es liviano y tiene una flecha calada para alinear el putt. Lo hacemos en el color que quieras y queda perfecto combinado con el resto de tus accesorios.\n\nPedilo por DM 📩\n#marcadordebola #green #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-01-historia-2",
+    "fecha": "2026-11-01",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-01/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-01-historia-3",
+    "fecha": "2026-11-01",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": "guia-de-agarre-para-el-palo",
+    "imagenes": [
+      "contenido/media/2026-11-01/historia-3.jpg"
+    ],
+    "estado": "pendiente"
   }
 ]

@@ -23,9 +23,9 @@ piezas:
   printables_file_id: '27807'
   gramos: 229.2
 medidas_mm:
-  largo: 255
-  ancho: 209
-  alto: 98
+  largo: 209
+  ancho: 98
+  alto: 255
 colores_png:
 - amarillo
 - gris
