@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649416,
+  "offset": 242649417,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -15,6 +15,11 @@
     {
       "fecha": "2026-10-19T20:56:20+00:00",
       "texto": "SI 4",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-10-21T23:04:15+00:00",
+      "texto": "ML SI 1",
       "procesado": true
     }
   ]
