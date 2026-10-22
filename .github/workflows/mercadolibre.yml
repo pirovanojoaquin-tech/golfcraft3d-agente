@@ -130,6 +130,8 @@ jobs:
         if: failure()
         run: |
           # la revisión horaria avisa una sola vez por día para no llenar el chat
+          # publicar ya manda su propio aviso con el motivo; la revisión horaria avisa una sola vez por día
+          if [ "$ACCION" = publicar ] || [ "$ACCION" = probar ]; then exit 0; fi
           if [ "$ACCION" != revisar ] || [ "$(date -u +%H)" = 13 ]; then
             python -m agente.telegram enviar --texto "⚠️ Falló el workflow de Mercado Libre (${ACCION}). Lo reviso en la rutina semanal." || true
           fi
