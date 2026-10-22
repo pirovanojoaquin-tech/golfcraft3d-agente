@@ -67,5 +67,7 @@ mercadolibre:
   stock: 5                       # unidades a la venta por publicación (se imprime a pedido)
   dias_preparacion: 2            # "disponibilidad de stock": días para imprimir antes de despachar
   embalaje_g: 30                 # peso extra del sobre/caja
+  iva: ""                        # IVA del producto para ML (ej: "21 %"); lo confirma el dueño según su situación fiscal
+  impuesto_interno: "0 %"        # impuestos internos: no aplican a estos productos
   categoria_defecto: MLA1347     # Deportes y Fitness > Golf > Otros
   categoria_golf: MLA1342        # solo se usan categorías dentro de Golf

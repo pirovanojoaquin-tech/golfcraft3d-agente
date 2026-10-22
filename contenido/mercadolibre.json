@@ -6,8 +6,8 @@
       "codigo": 1,
       "estado": "error",
       "pack": 5,
-      "categoria": "MLA2548",
-      "categoria_nombre": "Golf > Bolsas",
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
       "calculo": [
         {
           "pack": 1,
@@ -59,8 +59,8 @@
       "codigo": 2,
       "estado": "propuesto",
       "pack": 5,
-      "categoria": "MLA1345",
-      "categoria_nombre": "Golf > Pelotas",
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
       "calculo": [
         {
           "pack": 1,

@@ -523,6 +523,10 @@ def armar_item(slug, p, info, up=False):
     else:
         item["pictures"] = [{"source": url_foto(slug, x, sha)} for x in fotos][:12]
         item["attributes"].append(gtin)
+    # datos fiscales que ML pide en algunas categorías
+    for attr, valor in (("VALUE_ADDED_TAX", CFG.get("iva")), ("IMPORT_DUTY", CFG.get("impuesto_interno"))):
+        if attr in atributos and valor:
+            item["attributes"].append({"id": attr, "value_name": valor})
     if up:
         item["family_name"] = item.pop("title")
     return item, descripcion(info, n, colores, con_variantes)
