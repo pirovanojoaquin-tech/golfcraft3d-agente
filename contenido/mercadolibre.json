@@ -110,7 +110,7 @@
     },
     "regulador-de-altura-de-tee": {
       "codigo": 3,
-      "estado": "propuesto",
+      "estado": "error",
       "pack": 10,
       "categoria": "MLA412580",
       "categoria_nombre": "Golf > Tees",
