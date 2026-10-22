@@ -99,6 +99,10 @@ jobs:
         if: env.ACCION == 'diagnostico'
         run: python -m agente.mercadolibre diagnostico
 
+      - name: Probar aviso (solo valida)
+        if: env.ACCION == 'probar'
+        run: python -m agente.mercadolibre probar "$PRODUCTO"
+
       - name: Link para autorizar
         if: env.ACCION == 'link'
         run: python -m agente.mercadolibre link

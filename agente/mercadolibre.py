@@ -694,6 +694,34 @@ def revisar():
     print("revisión ok")
 
 
+def probar(slug):
+    """Valida el aviso con distintas variantes de envío, sin publicar nada (para diagnosticar errores de ML)."""
+    import copy
+    estado = cargar()
+    p, info = estado["productos"][slug], info_producto(slug)
+    dims = dimensiones(info, p["pack"])
+    for up in (False, True):
+        base, _ = armar_item(slug, p, info, up=up)
+        variantes = {
+            "actual": base["shipping"],
+            "sin shipping": None,
+            "me2 + dimensions": {**base["shipping"], "dimensions": dims},
+            "me2 + drop_off": {**base["shipping"], "logistic_type": "drop_off"},
+            "me2 + dimensions + drop_off": {**base["shipping"], "dimensions": dims, "logistic_type": "drop_off"},
+        }
+        for nombre, envio in variantes.items():
+            item = copy.deepcopy(base)
+            if envio is None:
+                item.pop("shipping")
+            else:
+                item["shipping"] = envio
+            try:
+                api("POST", "/items/validate", json=item)
+                print(f"[up={up}] {nombre}: OK")
+            except ErrorML as e:
+                print(f"[up={up}] {nombre}: {str(e)[-160:]}")
+
+
 def diagnostico():
     """Datos técnicos de la cuenta (sin datos personales) para ver qué falta habilitar."""
     estado = cargar()
@@ -716,7 +744,7 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico"):
         sub.add_parser(c)
-    for c in ("proponer", "publicar", "fallo", "rechazar"):
+    for c in ("proponer", "publicar", "fallo", "rechazar", "probar"):
         sub.add_parser(c).add_argument("slug")
     sb = sub.add_parser("subir")
     sb.add_argument("mensaje")
@@ -735,7 +763,7 @@ def main():
         diagnostico()
     elif a.cmd in ("pendientes", "aprobaciones", "revisar"):
         globals()[a.cmd]()
-    elif a.cmd in ("proponer", "publicar", "fallo", "rechazar"):
+    elif a.cmd in ("proponer", "publicar", "fallo", "rechazar", "probar"):
         globals()[a.cmd](a.slug)
     elif a.cmd == "subir":
         print(subir(a.mensaje, a.rutas))
