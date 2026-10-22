@@ -44,6 +44,14 @@ def png(slug, nombre):
     return ruta
 
 
+def en_ml(slug):
+    """True si el producto ya se vende en Mercado Libre (el cierre manda a la tienda de la bio)."""
+    import json
+    estado = RAIZ / "contenido" / "mercadolibre.json"
+    p = json.loads(estado.read_text(encoding="utf-8")).get("productos", {}).get(slug, {}) if estado.exists() else {}
+    return p.get("estado") == "publicado" and bool(p.get("link"))
+
+
 def color_principal(slug):
     return (producto(slug).get("colores") or ["verde"])[0]
 
@@ -91,7 +99,7 @@ def render_slide(s, slug_default):
         return disenio.slide_pasos(s["titulo"], s["pasos"], png(slug, s.get("png", "hero.png")),
                                    s.get("tono", "verde"))
     if tipo == "cta_producto":
-        return disenio.slide_cta_producto(png(slug, s.get("png", "hero.png")), s.get("nombre_corto"))
+        return disenio.slide_cta_producto(png(slug, s.get("png", "hero.png")), s.get("nombre_corto"), en_ml(slug))
     sys.exit(f"Tipo de slide desconocido: {tipo}")
 
 

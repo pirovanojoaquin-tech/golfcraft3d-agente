@@ -67,7 +67,9 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    esperá que termine y hacé `git pull` antes de planificar). Después armá su **imagen en uso** (ver abajo).
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
-5. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
+5. **Mercado Libre en los slides:** si se publicó algún producto en ML desde la última rutina, regenerá los días
+   pendientes con `python -m agente.planificar <plan> --reemplazar` para que su cierre diga "Comprá en Mercado Libre".
+6. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
    y hay productos en `productos/`, planificá **7 días más** a partir del último día programado
    (ver abajo). Revisá las imágenes con una hoja de contacto por día. Commit + push.
 
@@ -131,14 +133,19 @@ real (licencia Unsplash: uso comercial gratis). Todo lo pesado lo hace GitHub; v
 - Humor liviano de golfista (el slice, la bola perdida, el 19° hoyo), sin burlarse de nadie.
 - Seguro de la calidad, sin exagerar: nada de "el mejor del mundo".
 - Textos cortos. Emojis con moderación (1 a 3 por caption): ⛳🏌️‍♂️🔥✅
-- Siempre cerrar con el llamado a la acción: **"Escribinos por DM"** (no hay link de compra).
+- **Venta por Mercado Libre, personalizados por DM.** La bio de Instagram tiene el link a la tienda web
+  (https://pirovanojoaquin-tech.github.io/golfcraft3d-agente/, la arma `tienda.yml` sola), que manda a cada
+  publicación de Mercado Libre. Al publicar, el agente agrega solo al caption "🛒 Está en Mercado Libre: link en
+  la bio" (si el producto ya está en ML) y "✍️ ¿Lo querés distinto? Recreamos productos y diseñamos a tu
+  medida. Escribinos por DM." — no los escribas vos en el plan.
+- El DM queda para pedidos personalizados, productos que todavía no están en ML y consultas.
 
 ## Caption del carrusel
 
 Estructura:
 1. **Gancho** en la primera línea (pregunta o situación que el golfista reconoce).
 2. 2 a 4 líneas sobre el producto: qué problema resuelve, cómo se usa, qué se puede personalizar.
-3. Llamado a la acción: "Escribinos por DM y te lo hacemos a tu medida 📩".
+3. Llamado a la acción corto ("Pedilo en tu color 📩"); el cierre con Mercado Libre y personalizados lo agrega el publicador.
 4. 3 a 5 hashtags específicos del producto (los fijos de `config.yaml` se agregan solos).
 
 Máximo ~600 caracteres antes de los hashtags.
@@ -166,7 +173,9 @@ Variá los tipos a lo largo de la semana:
 - **Tip o dato de golf** (`texto`): reglas, etiqueta en la cancha, curiosidades. Tienen que ser
   correctos; ante la duda, no lo publiques.
 - **Impresión 3D** (`texto`): cómo se fabrica, materiales, por qué se puede personalizar.
-- **Recordatorio** (`texto`): "¿Querés el tuyo? Escribinos por DM".
+- **Recordatorio** (`texto`): "Comprá en Mercado Libre: link en la bio".
+- **Personalizados** (`texto`, **al menos 1 por semana**): "¿Tenés una idea? La diseñamos e imprimimos: recreamos
+  productos, cambiamos medidas, grabamos nombres o logos. Escribinos por DM".
 
 Al menos 1 de las 3 historias del día tiene que ser de producto.
 

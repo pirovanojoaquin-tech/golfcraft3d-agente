@@ -432,16 +432,22 @@ def slide_pasos(titulo, pasos, png, tono="verde"):
     return im.convert("RGB")
 
 
-def slide_cta_producto(png, producto=None):
+def slide_cta_producto(png, producto=None, en_ml=False):
+    """Cierre del carrusel. en_ml: el producto ya se vende en Mercado Libre (link en la bio)."""
     im = fondo(POST, "verde")
     d = ImageDraw.Draw(im)
     pegar(im, png, (140, 110, 800, 560))
     titulo = f"¿Querés {producto}?" if producto else "¿Lo querés?"
     y = texto_bloque(d, (70, 720), titulo, ajustar_fuente(d, titulo, 940, 220, 84), BLANCO, 940, 1.1,
                      centrado=True) + 40
-    y = pastilla(d, (540, y), CTA, fuente(46, 800), BLANCO, VERDE, pad=(44, 22), centro=True) + 50
-    texto_bloque(d, (70, y), "Diseños únicos y personalizados · Impreso en 3D", fuente(32, 500), (214, 236, 224),
-                 940, 1.3, centrado=True)
+    if en_ml:
+        y = pastilla(d, (540, y), "Comprá en Mercado Libre", fuente(44, 800), (255, 230, 0), (45, 50, 119),
+                     pad=(44, 22), centro=True) + 50
+        abajo = "Link en la bio · Personalizados por DM"
+    else:
+        y = pastilla(d, (540, y), CTA, fuente(46, 800), BLANCO, VERDE, pad=(44, 22), centro=True) + 50
+        abajo = "Diseños únicos y personalizados · Impreso en 3D"
+    texto_bloque(d, (70, y), abajo, fuente(32, 500), (214, 236, 224), 940, 1.3, centrado=True)
     l = logo(70, blanco=True)
     im.alpha_composite(l, ((1080 - l.width) // 2, 1350 - 120))
     return im.convert("RGB")

@@ -12,6 +12,7 @@ Variables de entorno:
                       se arma sola con GITHUB_REPOSITORY y GITHUB_SHA.
 """
 import argparse
+import json
 import os
 import sys
 from datetime import datetime
@@ -41,12 +42,32 @@ def pendientes(items, ahora):
     return [i for i in items if i["estado"] == "pendiente" and i["fecha"] == hoy and i["hora"] <= hora]
 
 
+PERSONALIZADOS = "✍️ ¿Lo querés distinto? Recreamos productos y diseñamos a tu medida. Escribinos por DM."
+EN_ML = "🛒 Está en Mercado Libre: link en la bio 🔗"
+
+
+def con_cierre(caption, producto):
+    """Suma al caption, antes de los hashtags, el link a Mercado Libre (si el producto ya está publicado ahí,
+    se decide al momento de publicar) y la invitación a pedir personalizados por DM."""
+    estado = RAIZ / "contenido" / "mercadolibre.json"
+    ml = json.loads(estado.read_text(encoding="utf-8")).get("productos", {}) if estado.exists() else {}
+    p = ml.get(producto or "", {})
+    lineas = ([EN_ML] if p.get("estado") == "publicado" and p.get("link") else []) + [PERSONALIZADOS]
+    renglones = caption.rstrip().split("\n")
+    hashtags = []
+    while renglones and (renglones[-1].lstrip().startswith("#") or not renglones[-1].strip()):
+        hashtags.insert(0, renglones.pop())
+    cuerpo = "\n".join(renglones).rstrip()
+    nuevo = cuerpo + "\n\n" + "\n".join(lineas) + ("\n\n" + "\n".join(h for h in hashtags if h.strip()) if hashtags else "")
+    return nuevo if len(nuevo) <= 2200 else caption
+
+
 def publicar_item(ig, item, base):
     urls = [base + r for r in item["imagenes"]]
     if item["tipo"] == "CAROUSEL":
-        return ig.publicar_carrusel(urls, item["caption"])
+        return ig.publicar_carrusel(urls, con_cierre(item["caption"], item.get("producto")))
     if item["tipo"] == "IMAGE":
-        return ig.publicar_imagen(urls[0], item["caption"])
+        return ig.publicar_imagen(urls[0], con_cierre(item["caption"], item.get("producto")))
     if item["tipo"] == "STORY":
         return ig.publicar_historia(urls[0])
     raise ValueError(f"Tipo desconocido: {item['tipo']}")
