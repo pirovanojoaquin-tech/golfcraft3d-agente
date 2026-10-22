@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 4,
+  "siguiente": 5,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -160,6 +160,58 @@
       "envio_estimado": [],
       "fecha": "2026-10-21",
       "sha_fotos": "fb072dcf8665f1d3079d71ca31f9764d1cb082ca"
+    },
+    "clip-de-gorra-para-tee": {
+      "codigo": 4,
+      "estado": "propuesto",
+      "pack": 10,
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 1500,
+          "comision": 2900,
+          "envio": 0,
+          "filamento": 112,
+          "ganancia": -1512
+        },
+        {
+          "pack": 2,
+          "precio": 3000,
+          "comision": 3140,
+          "envio": 0,
+          "filamento": 224,
+          "ganancia": -364
+        },
+        {
+          "pack": 3,
+          "precio": 4300,
+          "comision": 3348,
+          "envio": 0,
+          "filamento": 336,
+          "ganancia": 616
+        },
+        {
+          "pack": 5,
+          "precio": 6800,
+          "comision": 3748,
+          "envio": 0,
+          "filamento": 560,
+          "ganancia": 2492
+        },
+        {
+          "pack": 10,
+          "precio": 12800,
+          "comision": 4708,
+          "envio": 0,
+          "filamento": 1120,
+          "ganancia": 6972
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-22"
     }
   }
 }
