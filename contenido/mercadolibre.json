@@ -163,10 +163,10 @@
     },
     "clip-de-gorra-para-tee": {
       "codigo": 4,
-      "estado": "error",
+      "estado": "propuesto",
       "pack": 10,
-      "categoria": "MLA1347",
-      "categoria_nombre": "Golf > Otros",
+      "categoria": "MLA412580",
+      "categoria_nombre": "Golf > Tees",
       "calculo": [
         {
           "pack": 1,
