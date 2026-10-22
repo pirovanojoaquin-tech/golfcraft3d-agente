@@ -447,13 +447,14 @@ def aprobaciones():
     estado, tg = cargar(), telegram.cargar()
     por_codigo = {p.get("codigo"): s for s, p in estado["productos"].items()}
     for m in tg["mensajes"]:
-        r = re.match(r"\s*ML\s+(SI|SÍ|NO)\s+([\d,\sy]+)$", m["texto"], re.I)
+        # acepta "ML SI 3", "SI ML 3", "si ml3", "ML NO 2, 4"
+        r = re.match(r"\s*(?:ML\s*(SI|SÍ|NO)|(SI|SÍ|NO)\s*ML)\s*([\d,\sy]+)$", m["texto"], re.I)
         if m["procesado"] or not r:
             continue
-        si = r.group(1).upper() != "NO"
-        for codigo in map(int, re.findall(r"\d+", r.group(2))):
+        si = (r.group(1) or r.group(2)).upper() != "NO"
+        for codigo in map(int, re.findall(r"\d+", r.group(3))):
             slug = por_codigo.get(codigo)
-            if not slug or estado["productos"][slug]["estado"] not in ("propuesto", "no_conviene"):
+            if not slug or estado["productos"][slug]["estado"] not in ("propuesto", "no_conviene", "error"):
                 continue
             accion = "publicar" if si else "rechazar"
             subprocess.run(["gh", "workflow", "run", "mercadolibre.yml", "--repo", REPO, "--ref", "main",
@@ -494,7 +495,8 @@ def descripcion(info, n, colores, con_variantes):
     return "\n".join(lineas)
 
 
-def armar_item(slug, p, info):
+def armar_item(slug, p, info, up=False):
+    """up=True: cuentas en el modelo "productos de usuario" de ML (piden family_name y no aceptan variantes)."""
     sha = p["sha_fotos"]
     f = next(x for x in p["calculo"] if x["pack"] == p["pack"])
     n, precio = p["pack"], f["precio"]
@@ -502,7 +504,7 @@ def armar_item(slug, p, info):
     fotos = sorted(x.name for x in carpeta.glob("[0-9]-*.jpg"))
     colores = info.get("colores_png") or info.get("colores") or []
     atributos = {a["id"]: a for a in api("GET", f"/categories/{p['categoria']}/attributes", auth=False)}
-    con_variantes = "COLOR" in atributos and atributos["COLOR"].get("tags", {}).get("allow_variations")
+    con_variantes = not up and "COLOR" in atributos and atributos["COLOR"].get("tags", {}).get("allow_variations")
     gtin = {"id": "EMPTY_GTIN_REASON", "value_id": GTIN_PACK if n > 1 else GTIN_SIN_CODIGO}
     item = {
         "title": titulo(info, n), "category_id": p["categoria"], "price": precio, "currency_id": "ARS",
@@ -521,6 +523,8 @@ def armar_item(slug, p, info):
     else:
         item["pictures"] = [{"source": url_foto(slug, x, sha)} for x in fotos][:12]
         item["attributes"].append(gtin)
+    if up:
+        item["family_name"] = item.pop("title")
     return item, descripcion(info, n, colores, con_variantes)
 
 
@@ -533,7 +537,14 @@ def publicar(slug):
     info = info_producto(slug)
     item, texto = armar_item(slug, p, info)
     try:
-        api("POST", "/items/validate", json=item)
+        try:
+            api("POST", "/items/validate", json=item)
+        except ErrorML as e:
+            if "family_name" not in str(e):
+                raise
+            # la cuenta usa el modelo "productos de usuario": nombre de familia y sin variantes de color
+            item, texto = armar_item(slug, p, info, up=True)
+            api("POST", "/items/validate", json=item)
         nuevo = api("POST", "/items", json=item)
     except ErrorML as e:
         p["estado"] = "error"
@@ -547,7 +558,7 @@ def publicar(slug):
     guardar(estado)
     f = next(x for x in p["calculo"] if x["pack"] == p["pack"])
     planilla("Publicaciones", p["codigo"], fila_publicacion(slug, p, f))
-    telegram.enviar(f"✅ <b>Publicado en Mercado Libre</b>: {item['title']}\n{plata(item['price'])} · "
+    telegram.enviar(f"✅ <b>Publicado en Mercado Libre</b>: {item.get('title') or item.get('family_name')}\n{plata(item['price'])} · "
                     f"te quedan ~{plata(f['ganancia'])} por venta\n<a href=\"{p['link']}\">Ver publicación</a>")
 
 
