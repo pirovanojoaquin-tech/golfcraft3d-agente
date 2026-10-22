@@ -523,6 +523,13 @@ def armar_item(slug, p, info, up=False):
     else:
         item["pictures"] = [{"source": url_foto(slug, x, sha)} for x in fotos][:12]
         item["attributes"].append(gtin)
+    # medidas y peso del paquete: sin esto ML no habilita Mercado Envíos (me2) para la publicación
+    medidas, peso = dimensiones(info, n).split(",")
+    largo, ancho, alto = medidas.split("x")
+    item["attributes"] += [{"id": "SELLER_PACKAGE_LENGTH", "value_name": f"{largo} cm"},
+                           {"id": "SELLER_PACKAGE_WIDTH", "value_name": f"{ancho} cm"},
+                           {"id": "SELLER_PACKAGE_HEIGHT", "value_name": f"{alto} cm"},
+                           {"id": "SELLER_PACKAGE_WEIGHT", "value_name": f"{peso} g"}]
     # datos fiscales que ML pide en algunas categorías
     for attr, valor in (("VALUE_ADDED_TAX", CFG.get("iva")), ("IMPORT_DUTY", CFG.get("impuesto_interno"))):
         if attr in atributos and valor:
