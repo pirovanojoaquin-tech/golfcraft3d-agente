@@ -4,7 +4,7 @@
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
-      "estado": "error",
+      "estado": "propuesto",
       "pack": 5,
       "categoria": "MLA2548",
       "categoria_nombre": "Golf > Bolsas",
