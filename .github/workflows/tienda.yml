@@ -1,7 +1,7 @@
 name: Tienda web
 
 # Publica la página de tienda (GitHub Pages) cada vez que cambia un producto o una publicación de Mercado Libre.
-# Es el link que va en la bio de Instagram.
+# También dispara la copia de golfcraft3d.github.io (repo de la organización), que es el link de la bio.
 
 on:
   push:
@@ -48,3 +48,9 @@ jobs:
 
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      - name: Actualizar golfcraft3d.github.io
+        continue-on-error: true  # ese repo igual se rearma solo cada hora
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: gh workflow run tienda.yml --repo golfcraft3d/golfcraft3d.github.io
