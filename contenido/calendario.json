@@ -331,6 +331,32 @@
     "estado": "pendiente"
   },
   {
+    "id": "2026-10-24-post-web",
+    "fecha": "2026-10-24",
+    "hora": "19:00",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-24/web-1.jpg",
+      "contenido/media/2026-10-24/web-2.jpg",
+      "contenido/media/2026-10-24/web-3.jpg",
+      "contenido/media/2026-10-24/web-4.jpg"
+    ],
+    "caption": "¡Estrenamos web! ⛳\n\nAhora tenés todo GolfCraft3D en un solo lugar: cada producto, en todos sus colores, para que elijas el tuyo con calma. La web se va a ir actualizando a medida que lancemos productos nuevos.\n\n📲 El link está en nuestra bio.\n\nPor ahora los pedidos se hacen por DM: elegís el producto y el color, nos escribís y lo coordinamos. Muy pronto vas a poder comprar también por Mercado Libre 🛒\n#webnueva #tiendaonline #accesoriosdegolf #golfistas\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-10-24-historia-web",
+    "fecha": "2026-10-24",
+    "hora": "19:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-10-24/web-historia.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
     "id": "2026-10-24-historia-3",
     "fecha": "2026-10-24",
     "hora": "20:30",
