@@ -4,7 +4,7 @@
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
-      "estado": "error",
+      "estado": "propuesto",
       "pack": 5,
       "categoria": "MLA1347",
       "categoria_nombre": "Golf > Otros",
@@ -52,7 +52,7 @@
       ],
       "referencia": null,
       "envio_estimado": [],
-      "fecha": "2026-10-21",
+      "fecha": "2026-10-22",
       "sha_fotos": "6ca9f212d292544ff1cde565502c762c2f357690"
     },
     "pelota-de-golf-con-compartimento-secreto": {
