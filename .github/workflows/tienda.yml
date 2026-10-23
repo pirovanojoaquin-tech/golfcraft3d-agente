@@ -1,7 +1,7 @@
 name: Tienda web
 
 # Publica la página de tienda (GitHub Pages) cada vez que cambia un producto o una publicación de Mercado Libre.
-# También dispara la copia de golfcraft3d.github.io (repo de la organización), que es el link de la bio.
+# También dispara https://golfcraft3d.github.io (repo de la organización), que es el link de la bio.
 
 on:
   push:

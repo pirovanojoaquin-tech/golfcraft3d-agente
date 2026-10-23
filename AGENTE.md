@@ -134,7 +134,8 @@ real (licencia Unsplash: uso comercial gratis). Todo lo pesado lo hace GitHub; v
 - Seguro de la calidad, sin exagerar: nada de "el mejor del mundo".
 - Textos cortos. Emojis con moderación (1 a 3 por caption): ⛳🏌️‍♂️🔥✅
 - **Venta por Mercado Libre, personalizados por DM.** La bio de Instagram tiene el link a la tienda web
-  (https://pirovanojoaquin-tech.github.io/golfcraft3d-agente/, la arma `tienda.yml` sola), que manda a cada
+  (https://golfcraft3d.github.io, la arma sola el repo `golfcraft3d/golfcraft3d.github.io` cada hora y cuando
+  `tienda.yml` de este repo la dispara), que manda a cada
   publicación de Mercado Libre. Al publicar, el agente agrega solo al caption "🛒 Está en Mercado Libre: link en
   la bio" (si el producto ya está en ML) y "✍️ ¿Lo querés distinto? Recreamos productos y diseñamos a tu
   medida. Escribinos por DM." — no los escribas vos en el plan.
