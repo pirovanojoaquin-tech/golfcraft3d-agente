@@ -737,6 +737,15 @@ def diagnostico():
         print("logísticas:", [(l.get("mode"), [t.get("type") for t in l.get("types", [])]) for l in pref.get("logistics", [])])
     except ErrorML as e:
         print("shipping_preferences:", e)
+    # avisos de la cuenta (ej: uno publicado a mano en la web): cómo quedó su envío, para copiarlo
+    ids = api("GET", f"/users/{uid}/items/search", params={"limit": 20}).get("results") or []
+    print("avisos en la cuenta:", len(ids))
+    for item_id in ids:
+        it = api("GET", f"/items/{item_id}")
+        print(f"- {item_id} [{it.get('status')}] {it.get('title')} | {it.get('category_id')} {it.get('listing_type_id')}"
+              f" | ${it.get('price')} | family_name: {it.get('family_name')} | user_product: {it.get('user_product_id')}")
+        print("  shipping:", json.dumps(it.get("shipping"), ensure_ascii=False))
+        print("  atributos:", [(a["id"], a.get("value_name")) for a in it.get("attributes") or []])
 
 
 def main():
