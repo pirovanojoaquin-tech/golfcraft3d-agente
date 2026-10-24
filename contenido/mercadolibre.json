@@ -166,7 +166,7 @@
     },
     "clip-de-gorra-para-tee": {
       "codigo": 4,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 10,
       "categoria": "MLA412580",
       "categoria_nombre": "Golf > Tees",
@@ -215,7 +215,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-22",
-      "sha_fotos": "40c19d11257e6b04410dcf571883eb7eb237fa94"
+      "sha_fotos": "40c19d11257e6b04410dcf571883eb7eb237fa94",
+      "item_id": "MLA4123281448",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4123281448-clip-de-gorra-para-tee-golf-pack-x10-impreso-3d-_JM",
+      "status_ml": "paused"
     }
   }
 }
