@@ -45,7 +45,9 @@ ENVIO_ESTIMADO = set()  # packs cuyo envío no se pudo cotizar (falta activar Me
 
 
 class ErrorML(Exception):
-    pass
+    def __init__(self, mensaje, causas=()):
+        super().__init__(mensaje)
+        self.causas = list(causas)
 
 
 # ---------- estado (solo datos de publicaciones) ----------
@@ -216,6 +218,7 @@ def api(metodo, ruta, auth=True, **kw):
     cab = {"Authorization": f"Bearer {token()}"} if auth else {}
     r = requests.request(metodo, API + ruta, headers=cab, timeout=60, **kw)
     if r.status_code >= 400:
+        d = {}
         try:
             d = r.json()
             # cada causa con su tipo (error/warning) y código: ML mezcla advertencias con el error que bloquea
@@ -226,7 +229,8 @@ def api(metodo, ruta, auth=True, **kw):
             msg = r.text[:200]
         if os.environ.get("ML_DEBUG"):
             print("respuesta de ML:", r.text[:1500])
-        raise ErrorML(f"{metodo} {ruta.split('?')[0]} -> {r.status_code}: {msg}")
+        causas = [c for c in (d.get("cause") or []) if isinstance(c, dict)] if isinstance(d, dict) else []
+        raise ErrorML(f"{metodo} {ruta.split('?')[0]} -> {r.status_code}: {msg}", causas)
     return r.json() if r.content else {}
 
 
@@ -499,6 +503,25 @@ def descripcion(info, n, colores, con_variantes):
     return "\n".join(lineas)
 
 
+SIN_MERCADO_ENVIOS = "shipping.lost_me2_by_catalog"
+
+
+def validar(item):
+    """Valida un aviso. ML responde 400 aunque solo haya advertencias (ej: "User has not mode me1", que es
+    normal en cuentas con Mercado Envíos 2): esas se ignoran. Frena si hay errores o si la categoría
+    no tiene Mercado Envíos (el aviso quedaría sin envío)."""
+    try:
+        api("POST", "/items/validate", json=item)
+        return []
+    except ErrorML as e:
+        if not e.causas or any(c.get("type") != "warning" or c.get("code") == SIN_MERCADO_ENVIOS for c in e.causas):
+            if any(c.get("code") == SIN_MERCADO_ENVIOS for c in e.causas):
+                raise ErrorML(f"La categoría {item.get('category_id')} no tiene Mercado Envíos: habría que "
+                              "publicarlo en otra categoría o con envío a convenir.", e.causas) from e
+            raise
+        return [c.get("message") for c in e.causas]
+
+
 def armar_item(slug, p, info, up=False):
     """up=True: cuentas en el modelo "productos de usuario" de ML (piden family_name y no aceptan variantes)."""
     sha = p["sha_fotos"]
@@ -553,13 +576,13 @@ def publicar(slug):
     item, texto = armar_item(slug, p, info)
     try:
         try:
-            api("POST", "/items/validate", json=item)
+            validar(item)
         except ErrorML as e:
             if "family_name" not in str(e):
                 raise
             # la cuenta usa el modelo "productos de usuario": nombre de familia y sin variantes de color
             item, texto = armar_item(slug, p, info, up=True)
-            api("POST", "/items/validate", json=item)
+            validar(item)
         nuevo = api("POST", "/items", json=item)
     except ErrorML as e:
         p["estado"] = "error"
@@ -747,8 +770,8 @@ def probar(slug):
         })
     for nombre, item in pruebas.items():
         try:
-            api("POST", "/items/validate", json=copy.deepcopy(item))
-            print(f"OK    {nombre}")
+            avisos = validar(copy.deepcopy(item))
+            print(f"OK    {nombre}" + (f" (advertencias: {'; '.join(avisos)})" if avisos else ""))
         except ErrorML as e:
             print(f"FALLA {nombre}: {str(e)[-220:]}")
     print("envío nuestro:", nuestro["shipping"], "| paquete:", [a for a in nuestro["attributes"]
