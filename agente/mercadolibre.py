@@ -218,7 +218,9 @@ def api(metodo, ruta, auth=True, **kw):
     if r.status_code >= 400:
         try:
             d = r.json()
-            causas = "; ".join(c.get("message", "") for c in d.get("cause", []) if isinstance(c, dict))
+            # cada causa con su tipo (error/warning) y código: ML mezcla advertencias con el error que bloquea
+            causas = "; ".join(f"{c.get('message', '')} [{c.get('type', '?')} {c.get('code', '')}]"
+                               for c in d.get("cause", []) if isinstance(c, dict))
             msg = d.get("message", "") + (f" ({causas})" if causas else "")
         except ValueError:
             msg = r.text[:200]
@@ -764,6 +766,7 @@ def diagnostico():
         pref = api("GET", f"/users/{uid}/shipping_preferences")
         print("modos de envío:", pref.get("modes"))
         print("logísticas:", [(l.get("mode"), [t.get("type") for t in l.get("types", [])]) for l in pref.get("logistics", [])])
+        print("preferencias completas:", json.dumps({k: v for k, v in pref.items() if k != "logistics"}, ensure_ascii=False))
     except ErrorML as e:
         print("shipping_preferences:", e)
     # avisos de la cuenta (ej: uno publicado a mano en la web): cómo quedó su envío, para copiarlo
