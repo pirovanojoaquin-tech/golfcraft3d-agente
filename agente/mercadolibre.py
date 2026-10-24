@@ -224,6 +224,8 @@ def api(metodo, ruta, auth=True, **kw):
             msg = d.get("message", "") + (f" ({causas})" if causas else "")
         except ValueError:
             msg = r.text[:200]
+        if os.environ.get("ML_DEBUG"):
+            print("respuesta de ML:", r.text[:1500])
         raise ErrorML(f"{metodo} {ruta.split('?')[0]} -> {r.status_code}: {msg}")
     return r.json() if r.content else {}
 
