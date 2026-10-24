@@ -126,6 +126,9 @@ jobs:
 
       - name: Actualizar la tienda web
         if: success() && (env.ACCION == 'publicar' || env.ACCION == 'evento')
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}  # el GH_PAT no tiene permiso para lanzar workflows
         run: gh workflow run tienda.yml --repo "$GITHUB_REPOSITORY" --ref main
 
       - name: Avisar si falló

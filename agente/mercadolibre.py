@@ -799,9 +799,10 @@ def diagnostico():
     print("avisos en la cuenta:", len(ids))
     for item_id in ids:
         it = api("GET", f"/items/{item_id}")
-        print(f"- {item_id} [{it.get('status')}] {it.get('title')} | {it.get('category_id')} {it.get('listing_type_id')}"
+        print(f"- {item_id} [{it.get('status')} {it.get('sub_status')}] {it.get('title')} | {it.get('category_id')} {it.get('listing_type_id')}"
               f" | ${it.get('price')} | family_name: {it.get('family_name')} | user_product: {it.get('user_product_id')}")
         print("  shipping:", json.dumps(it.get("shipping"), ensure_ascii=False))
+        print("  tags:", it.get("tags"), "| salud:", it.get("health"), "| channels:", it.get("channels"))
         print("  atributos:", [(a["id"], a.get("value_name")) for a in it.get("attributes") or []])
 
 
