@@ -53,7 +53,7 @@ colores:
 # Mercado Libre (ver agente/mercadolibre.py). Cada producto que sale por primera vez en Instagram
 # se propone por Telegram para publicarlo en ML; se publica cuando el dueño responde "ML SI <código>".
 mercadolibre:
-  activo: false                  # PAUSADO 23/10/2026 por fallas de envío (me1/me2); se retoma cuando el dueño avise
+  activo: true                   # retomado 24/10/2026 (las "fallas" de envío eran advertencias de ML)
   app_id: "6256774709273005"                  # App ID de la app de ML (no es secreto; la clave secreta va en ML_CLIENT_SECRET)
   sitio: MLA
   tipo_publicacion: gold_special # Clásica
