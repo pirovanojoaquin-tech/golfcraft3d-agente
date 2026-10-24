@@ -694,32 +694,61 @@ def revisar():
     print("revisión ok")
 
 
+def copia_de_aviso(item_id):
+    """Un aviso existente de la cuenta convertido en algo que se puede volver a validar."""
+    it = api("GET", f"/items/{item_id}")
+    return {
+        "family_name": it.get("family_name") or it["title"], "category_id": it["category_id"],
+        "price": it["price"], "currency_id": it["currency_id"], "available_quantity": 1,
+        "buying_mode": it["buying_mode"], "condition": it["condition"], "listing_type_id": it["listing_type_id"],
+        "pictures": [{"source": f["secure_url"]} for f in it.get("pictures") or []][:6],
+        "attributes": [{"id": a["id"], "value_name": a["value_name"]} for a in it.get("attributes") or []
+                       if a.get("value_name")],
+        "sale_terms": [{"id": t["id"], "value_name": t["value_name"]} for t in it.get("sale_terms") or []
+                       if t.get("value_name")],
+        "shipping": {k: it["shipping"][k] for k in ("mode", "local_pick_up", "free_shipping", "logistic_type")
+                     if k in it["shipping"]},
+    }
+
+
 def probar(slug):
-    """Valida el aviso con distintas variantes de envío, sin publicar nada (para diagnosticar errores de ML)."""
+    """Valida el aviso con distintas variantes, sin publicar nada (para diagnosticar errores de ML).
+
+    Compara contra un aviso que ya está activo en la cuenta (publicado a mano en la web) cambiando una cosa
+    por vez, para encontrar qué hace que ML no acepte el envío."""
     import copy
     estado = cargar()
     p, info = estado["productos"][slug], info_producto(slug)
-    dims = dimensiones(info, p["pack"])
-    for up in (False, True):
-        base, _ = armar_item(slug, p, info, up=up)
-        variantes = {
-            "actual": base["shipping"],
-            "sin shipping": None,
-            "me2 + dimensions": {**base["shipping"], "dimensions": dims},
-            "me2 + drop_off": {**base["shipping"], "logistic_type": "drop_off"},
-            "me2 + dimensions + drop_off": {**base["shipping"], "dimensions": dims, "logistic_type": "drop_off"},
-        }
-        for nombre, envio in variantes.items():
-            item = copy.deepcopy(base)
-            if envio is None:
-                item.pop("shipping")
-            else:
-                item["shipping"] = envio
-            try:
-                api("POST", "/items/validate", json=item)
-                print(f"[up={up}] {nombre}: OK")
-            except ErrorML as e:
-                print(f"[up={up}] {nombre}: {str(e)[-160:]}")
+    ids = api("GET", f"/users/{estado['user_id']}/items/search", params={"status": "active"}).get("results") or []
+    nuestro, _ = armar_item(slug, p, info, up=True)
+    pruebas = {"nuestro (up)": nuestro}
+    if ids:
+        ref = copia_de_aviso(ids[0])
+        ajenos = {"BRAND", "MODEL", "GTIN", "EMPTY_GTIN_REASON", "SELLER_PACKAGE_LENGTH", "SELLER_PACKAGE_WIDTH",
+                  "SELLER_PACKAGE_HEIGHT", "SELLER_PACKAGE_WEIGHT", "VALUE_ADDED_TAX", "IMPORT_DUTY"}
+        paquete = [a for a in ref["attributes"] if a["id"].startswith("SELLER_PACKAGE")]
+        pruebas.update({
+            f"aviso de la web ({ids[0]}) tal cual": ref,
+            "aviso de la web en nuestra categoría": {**ref, "category_id": p["categoria"],
+                                                     "attributes": [a for a in ref["attributes"] if a["id"] in ajenos]},
+            "nuestro + envío del aviso web": {**nuestro, "shipping": ref["shipping"]},
+            "nuestro + tipo del aviso web": {**nuestro, "listing_type_id": ref["listing_type_id"]},
+            "nuestro + paquete del aviso web": {**nuestro, "attributes": [a for a in nuestro["attributes"]
+                                                if not a["id"].startswith("SELLER_PACKAGE")] + paquete},
+            "nuestro + envío, tipo y paquete del web": {**nuestro, "shipping": ref["shipping"],
+                                                        "listing_type_id": ref["listing_type_id"],
+                                                        "attributes": [a for a in nuestro["attributes"]
+                                                                       if not a["id"].startswith("SELLER_PACKAGE")] + paquete},
+            "nuestro en categoría Golf > Otros (MLA1347)": {**nuestro, "category_id": "MLA1347"},
+        })
+    for nombre, item in pruebas.items():
+        try:
+            api("POST", "/items/validate", json=copy.deepcopy(item))
+            print(f"OK    {nombre}")
+        except ErrorML as e:
+            print(f"FALLA {nombre}: {str(e)[-220:]}")
+    print("envío nuestro:", nuestro["shipping"], "| paquete:", [a for a in nuestro["attributes"]
+                                                                 if a["id"].startswith("SELLER_PACKAGE")])
 
 
 def diagnostico():
