@@ -1,8 +1,13 @@
-"""Busca modelos de golf en Printables con licencia que permita vender las impresiones.
+"""Busca modelos de golf en Printables y MakerWorld (Bambu) con licencia que permita vender las impresiones.
 
 Uso:
-    python -m agente.buscar                  # imprime candidatos en JSON
+    python -m agente.buscar                  # imprime candidatos en JSON (de los dos sitios)
     python -m agente.buscar --max 20 --salida candidatos.json
+    python -m agente.buscar --fuente makerworld
+
+Cada candidato trae `origen` ("printables" o "makerworld"). De MakerWorld no se pueden bajar archivos sin
+cuenta: los gramos y el tiempo salen del perfil publicado en el sitio, y si el dueño lo aprueba, baja el
+archivo él y se lo manda al bot de Telegram (ver agente/makerworld.py).
 
 Descarta:
   - licencias no comerciales (NC) o desconocidas
@@ -19,6 +24,7 @@ import requests
 from .calendario import RAIZ
 
 API = "https://api.printables.com/graphql/"
+MW_API = "https://api.bambulab.com/v1"  # el mismo buscador que usan makerworld.com y Bambu Studio
 PROPUESTOS = RAIZ / "productos" / "propuestos.json"
 # Printables rechaza el User-Agent por defecto de requests
 CABECERAS = {"User-Agent": "Mozilla/5.0 (compatible; GolfCraft3D-agente/1.0)", "Accept": "application/json"}
@@ -40,6 +46,8 @@ BUSQUEDAS = [
 
 # Licencias que permiten vender las impresiones (con atribución al autor cuando corresponde)
 LICENCIAS_OK = {"CC-BY", "CC-BY-SA", "CC0", "PD", "GNU-GPL", "GNU-LGPL", "BSD"}
+# En MakerWorld casi todo es "Standard Digital File License", que prohíbe cobrar por las impresiones
+MW_LICENCIAS_OK = {"BY", "BY-SA", "CC0"}
 
 NO_GOLF = re.compile(r"\b(gti|volkswagen|vw|mk ?[1-8]|tdi|gtd|r32|scirocco|polo|passat|jetta|wheel ?cap|hubcap)\b", re.I)
 SI_GOLF = re.compile(r"golf|putt|divot|\btee\b|caddie|caddy|fairway|birdie|scorecard", re.I)
@@ -78,14 +86,23 @@ def detalle(print_id):
 
 
 def ya_vistos():
+    """Ids ya propuestos o cargados: "123" para Printables y "mw123" para MakerWorld."""
     vistos = set()
     if PROPUESTOS.exists():
-        vistos |= {str(p["printables_id"]) for p in json.loads(PROPUESTOS.read_text(encoding="utf-8"))}
+        for p in json.loads(PROPUESTOS.read_text(encoding="utf-8")):
+            if p.get("printables_id"):
+                vistos.add(str(p["printables_id"]))
+            if p.get("makerworld_id"):
+                vistos.add(f"mw{p['makerworld_id']}")
     # también los propuestos que todavía no tienen respuesta
     for info in list((RAIZ / "productos").glob("*/info.yaml")) + list((RAIZ / "propuestas").glob("*/*/ficha.yaml")):
-        m = re.search(r"printables_id:\s*['\"]?(\d+)", info.read_text(encoding="utf-8"))
+        texto = info.read_text(encoding="utf-8")
+        m = re.search(r"printables_id:\s*['\"]?(\d+)", texto)
         if m:
             vistos.add(m.group(1))
+        m = re.search(r"makerworld_id:\s*['\"]?(\d+)", texto)
+        if m:
+            vistos.add(f"mw{m.group(1)}")
     return vistos
 
 
@@ -118,6 +135,7 @@ def buscar(maximo=15, por_busqueda=40):
         if not archivos:
             continue
         candidatos.append({
+            "origen": "printables",
             "printables_id": d["id"],
             "nombre": d["name"],
             "resumen": (d.get("summary") or "").strip(),
@@ -134,12 +152,92 @@ def buscar(maximo=15, por_busqueda=40):
     return candidatos
 
 
+def mw(ruta, **params):
+    r = requests.get(f"{MW_API}/{ruta}", params=params, headers=CABECERAS, timeout=60)
+    r.raise_for_status()
+    return r.json()
+
+
+def detalle_mw(design_id):
+    d = mw(f"design-service/design/{design_id}")
+    if not d.get("id"):
+        raise RuntimeError(f"MakerWorld no tiene el modelo {design_id}")
+    return d
+
+
+def perfil_mw(d):
+    """El perfil de impresión publicado que se usa para gramos y tiempo (el por defecto, o el más impreso)."""
+    perfiles = [i for i in d.get("instances") or [] if i.get("weight")]
+    if not perfiles:
+        return None
+    return next((i for i in perfiles if i["id"] == d.get("defaultInstanceId")),
+                max(perfiles, key=lambda i: i.get("printCount") or 0))
+
+
+def texto_plano(html):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html or "")).strip()
+
+
+def url_mw(d):
+    return f"https://makerworld.com/es/models/{d['id']}-{d['slug']}"
+
+
+def buscar_makerworld(maximo=15, por_busqueda=50):
+    vistos = ya_vistos()
+    encontrados = {}
+    for q in BUSQUEDAS:
+        for it in mw("search-service/select/design2", keyword=q, limit=por_busqueda, offset=0).get("hits") or []:
+            clave = f"mw{it['id']}"
+            if clave in vistos or clave in encontrados or it.get("license") not in MW_LICENCIAS_OK:
+                continue
+            if it.get("nsfw") or NO_GOLF.search(it["title"]) or not SI_GOLF.search(it["title"] + " " + q):
+                continue
+            encontrados[clave] = it
+
+    orden = sorted(encontrados.values(), key=lambda i: (i["likeCount"] or 0) * 3 + (i["downloadCount"] or 0) / 10,
+                   reverse=True)
+    candidatos = []
+    for it in orden:
+        d = detalle_mw(it["id"])
+        resumen = texto_plano(d.get("summary"))
+        texto = " ".join([d["title"], resumen, " ".join(d.get("tags") or [])])
+        perfil = perfil_mw(d)
+        if NO_GOLF.search(texto) or not SI_GOLF.search(texto) or not perfil:
+            continue
+        candidatos.append({
+            "origen": "makerworld",
+            "makerworld_id": d["id"],
+            "nombre": d["title"],
+            "resumen": resumen[:600],
+            "autor": d["designCreator"]["name"],
+            "licencia": d["license"],
+            "likes": d["likeCount"],
+            "descargas": d["downloadCount"],
+            "url": url_mw(d),
+            "imagen": d.get("coverUrl"),
+            "gramos": perfil["weight"],
+            "tiempo_min": round((perfil.get("prediction") or 0) / 60),
+            "perfil": perfil.get("title"),
+        })
+        if len(candidatos) >= maximo:
+            break
+    return candidatos
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--max", type=int, default=15)
+    ap.add_argument("--max", type=int, default=15, help="máximo por sitio")
+    ap.add_argument("--fuente", choices=["todas", "printables", "makerworld"], default="todas")
     ap.add_argument("--salida")
     args = ap.parse_args()
-    candidatos = buscar(args.max)
+    candidatos = []
+    if args.fuente in ("todas", "printables"):
+        candidatos += buscar(args.max)
+    if args.fuente in ("todas", "makerworld"):
+        try:
+            candidatos += buscar_makerworld(args.max)
+        except requests.RequestException as e:  # si MakerWorld no responde, seguimos con Printables
+            print(f"MakerWorld no respondió: {e}", file=sys.stderr)
     texto = json.dumps(candidatos, ensure_ascii=False, indent=2)
     if args.salida:
         open(args.salida, "w", encoding="utf-8").write(texto + "\n")

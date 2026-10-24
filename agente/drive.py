@@ -19,7 +19,7 @@ from .preparar import link_descarga
 
 
 def texto_ficha(info):
-    piezas = "\n".join(f"  - {p['archivo']} ({p['gramos']} g)" for p in info.get("piezas") or [])
+    piezas = "\n".join(f"  - {p['archivo']} ({p.get('gramos', '?')} g)" for p in info.get("piezas") or [])
     return f"""{info['nombre']}
 {'=' * len(info['nombre'])}
 
@@ -61,6 +61,8 @@ def guardar(slug, url_app):
 def url_archivo(info, pieza):
     if pieza.get("ruta"):  # diseño propio: el STL está en el repo
         return f"https://raw.githubusercontent.com/{REPO}/main/{pieza['ruta']}"
+    if info.get("origen") == "makerworld":  # el link de Telegram lleva el token del bot: va la página del modelo
+        return info["url"]
     return link_descarga(info["printables_id"], pieza["printables_file_id"])
 
 

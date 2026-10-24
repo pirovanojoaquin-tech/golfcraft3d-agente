@@ -33,13 +33,17 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 1. **Resumen:** de `contenido/calendario.json`, qué se publicó en los últimos 7 días, qué quedó en
    `error` (reintentá vos lo que puedas con el workflow `publicar.yml` e `id`) y hasta qué día hay
    contenido programado.
-2. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (solo Printables, solo licencias
-   que permiten vender, descarta lo ya propuesto).
-3. **La propuesta es mitad y mitad: 2 modelos de Printables + 2 diseños propios** (si el dueño pide
-   más, mantené la proporción). De Printables elegí **2**: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
+2. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (Printables **y MakerWorld**, el sitio de
+   modelos de Bambu Studio; solo licencias que permiten vender, descarta lo ya propuesto). Cada candidato trae
+   `origen`. Los de MakerWorld ya traen `gramos` y `tiempo_min` del perfil publicado.
+3. **La propuesta es mitad y mitad: 2 modelos de terceros (Printables o MakerWorld) + 2 diseños propios** (si el
+   dueño pide más, mantené la proporción). Elegí los **2** mejores de los dos sitios juntos: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
    variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
    nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
    izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
+   **MakerWorld:** en el JSON de `preparar.yml` va `"id": "makerworld:<id>"` con `nombre` y `colores` (sin
+   `archivos`: no se pueden bajar sin cuenta). Su ficha usa las fotos del autor solo para la propuesta (el mail
+   ya avisa que, si lo aprueba, tiene que mandar el archivo al bot). **Nunca publiques fotos del autor.**
 3b. **Diseños propios de la semana (2 por semana):** sumá a la propuesta dos productos de
    **entrenamiento de golf** diseñados por nosotros (ver "Diseños propios" abajo). Va en el mismo JSON
    de `preparar.yml` con `"id": "propio:<carpeta>"` (sin `nombre` ni `archivos`; sí `colores`).
@@ -65,6 +69,11 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs
    y `renders.yml` con `productos` = JSON de los slugs (genera las imágenes sin fondo del estilo catálogo;
    esperá que termine y hacé `git pull` antes de planificar). Después armá su **imagen en uso** (ver abajo).
+   **Aprobados de MakerWorld:** quedan con `archivo_pendiente: true` (sin fotos, no los pases a `renders.yml`).
+   Pedile al dueño por Telegram que baje el archivo (link `url` del info.yaml; en MakerWorld: Descargar → STL, o
+   desde Bambu Studio) y se lo mande al bot como archivo, con el nombre del producto en el texto. Cada hora
+   `telegram.yml` lo asigna (`agente/makerworld.py`), lanza `renders.yml` solo y recalcula los gramos. Si una
+   semana sigue pendiente, recordáselo. Si trae piezas de más (variantes), dejá en `piezas` solo una unidad.
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
 5. **Mercado Libre en los slides:** si se publicó algún producto en ML desde la última rutina, regenerá los días

@@ -31,6 +31,11 @@ def tarjeta(n, ficha, carpeta, sha):
     propio = ficha.get("origen") == "propio"
     insignia = (f'<span style="background:{VERDE};color:#fff;font-size:12px;padding:3px 8px;border-radius:10px;'
                 f'margin-left:6px">🛠️ Diseño propio</span>') if propio else ""
+    if ficha.get("origen") == "makerworld":
+        insignia = ('<span style="background:#00ae42;color:#fff;font-size:12px;padding:3px 8px;border-radius:10px;'
+                    'margin-left:6px">MakerWorld</span>')
+        ficha = {**ficha, "aviso": ficha.get("aviso") or "Fotos del autor. Si lo aprobás, bajá el archivo de "
+                 "MakerWorld (o Bambu Studio) y mandáselo al bot de Telegram; ahí armo nuestras fotos."}
     licencia = ("Diseño propio de GolfCraft3D · sin restricciones" if propio else
                 f'{e(ficha["licencia"])} · autor {e(ficha["autor"])} · '
                 f'<a href="{ficha["url"]}" style="color:{VERDE}">ver modelo</a>')

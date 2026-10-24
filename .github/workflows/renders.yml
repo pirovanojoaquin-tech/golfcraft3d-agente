@@ -39,6 +39,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Renderizar
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  # modelos de MakerWorld (los manda el dueño al bot)
         run: |
           python -m agente.renders "${{ matrix.slug }}" --muestras "${{ inputs.muestras }}"
           tar czf renders.tgz "productos/${{ matrix.slug }}/info.yaml" "productos/${{ matrix.slug }}/fotos/png"

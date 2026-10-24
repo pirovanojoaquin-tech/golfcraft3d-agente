@@ -39,6 +39,7 @@ jobs:
 
       - name: Montar
         env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  # modelos de MakerWorld (los manda el dueño al bot)
           COLOR: ${{ inputs.color }}
         run: |
           ARGS=()

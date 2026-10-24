@@ -53,7 +53,7 @@ def leer():
     for u in _api("getUpdates", offset=estado["offset"], timeout=0):
         estado["offset"] = u["update_id"] + 1
         m = u.get("message")
-        if not m or "text" not in m:
+        if not m or ("text" not in m and "document" not in m):
             continue
         chat = m["chat"]["id"]
         if estado["chat_id"] is None:
@@ -61,10 +61,14 @@ def leer():
             _api("sendMessage", chat_id=chat, text="¡Listo! Desde ahora te aviso por acá todo lo del agente de GolfCraft3D ⛳")
         if chat != estado["chat_id"]:
             continue
-        if m["text"].strip() == "/start":
+        if m.get("text", "").strip() == "/start":
             continue
-        msg = {"fecha": datetime.fromtimestamp(m["date"], timezone.utc).isoformat(), "texto": m["text"],
-               "procesado": False}
+        msg = {"fecha": datetime.fromtimestamp(m["date"], timezone.utc).isoformat(),
+               "texto": m.get("text") or m.get("caption") or "", "procesado": False}
+        if "document" in m:  # ej: el archivo de un modelo de MakerWorld (lo usa agente/makerworld.py)
+            d = m["document"]
+            msg["archivo"] = {"file_id": d["file_id"], "nombre": d.get("file_name") or "archivo",
+                              "tamanio": d.get("file_size")}
         estado["mensajes"].append(msg)
         nuevos.append(msg)
     estado["mensajes"] = estado["mensajes"][-200:]
@@ -104,7 +108,7 @@ def main():
         print("enviado")
     else:
         for m in leer():
-            print(f"{m['fecha']}  {m['texto']}")
+            print(f"{m['fecha']}  {m['texto']}" + (f"  [archivo {m['archivo']['nombre']}]" if m.get("archivo") else ""))
 
 
 if __name__ == "__main__":

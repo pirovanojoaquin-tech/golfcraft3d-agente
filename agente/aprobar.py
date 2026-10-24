@@ -17,8 +17,17 @@ from .buscar import PROPUESTOS
 from .calendario import RAIZ
 
 CAMPOS = ["nombre", "descripcion", "personalizable", "precio", "gramos", "tiempo", "colores",
-          "destacado", "notas", "origen", "diseno", "inspiracion", "printables_id", "url", "autor", "licencia",
-          "piezas"]
+          "destacado", "notas", "origen", "diseno", "inspiracion", "printables_id", "makerworld_id", "url", "autor",
+          "licencia", "piezas", "archivo_pendiente"]
+
+
+def clave(r):
+    """Identifica un producto en productos/propuestos.json (Printables, MakerWorld o diseño propio)."""
+    if r.get("printables_id"):
+        return str(r["printables_id"])
+    if r.get("makerworld_id"):
+        return f"mw{r['makerworld_id']}"
+    return r.get("slug")
 
 
 def main():
@@ -42,23 +51,30 @@ def main():
     for slug, ruta in fichas.items():
         ficha = yaml.safe_load(ruta.read_text(encoding="utf-8"))
         aprobado = slug in a.aprobados
-        registro = [r for r in registro if str(r["printables_id"]) != str(ficha["printables_id"])]
+        nuevo = {"printables_id": ficha["printables_id"], "makerworld_id": ficha.get("makerworld_id"), "slug": slug}
+        registro = [r for r in registro if clave(r) != clave(nuevo)]
         registro.append({"printables_id": ficha["printables_id"], "nombre": ficha["nombre"], "slug": slug,
+                         **({"makerworld_id": ficha["makerworld_id"]} if ficha.get("makerworld_id") else {}),
                          "propuesto": a.fecha, "estado": "aprobado" if aprobado else "rechazado",
                          "respondido": date.today().isoformat()})
         if not aprobado:
             continue
         destino = RAIZ / "productos" / slug
         (destino / "fotos").mkdir(parents=True, exist_ok=True)
-        for f in (ruta.parent / "fotos").glob("*.jpg"):
-            shutil.copy2(f, destino / "fotos" / f.name)
+        if ficha.get("origen") != "makerworld":  # las de MakerWorld son fotos del autor: no se publican
+            for f in (ruta.parent / "fotos").glob("*.jpg"):
+                shutil.copy2(f, destino / "fotos" / f.name)
         info = {k: ficha.get(k) for k in CAMPOS}
         info["colores"] = ficha.get("colores") or ficha.get("colores_render")
         info["personalizable"] = info["personalizable"] or "Color a elección (10 colores de PLA)"
         info["destacado"] = bool(info["destacado"])
+        for k in ("makerworld_id", "archivo_pendiente"):  # solo en los de MakerWorld
+            if info[k] is None:
+                del info[k]
         (destino / "info.yaml").write_text(yaml.safe_dump(info, allow_unicode=True, sort_keys=False),
                                            encoding="utf-8")
-        print(f"aprobado  -> productos/{slug}")
+        print(f"aprobado  -> productos/{slug}" + ("  (falta el archivo: pedíselo al dueño por Telegram)"
+                                                     if info.get("archivo_pendiente") else ""))
     PROPUESTOS.write_text(json.dumps(registro, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{len(a.aprobados)} aprobados, {len(fichas) - len(a.aprobados)} descartados")
 

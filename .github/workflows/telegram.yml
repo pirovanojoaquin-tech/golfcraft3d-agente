@@ -2,6 +2,7 @@ name: Telegram
 
 # - Cada hora: guarda en contenido/telegram.json lo que el dueño le escribió al bot
 #   (ej: "SI 1, 3"); la rutina de los miércoles lo lee desde ahí.
+# - Si el dueño mandó el archivo de un modelo de MakerWorld aprobado, lo asigna al producto y lanza renders.yml.
 # - A pedido (workflow_dispatch): manda un mensaje con fotos opcionales.
 
 on:
@@ -42,6 +43,13 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python -m agente.telegram leer
 
+      - name: Archivos de MakerWorld
+        id: mw
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: echo "slugs=$(python -m agente.makerworld recibir | tail -1)" >> "$GITHUB_OUTPUT"
+
       - name: Aprobaciones de Mercado Libre ("ML SI 4")
         continue-on-error: true
         env:
@@ -60,9 +68,16 @@ jobs:
         run: |
           git config user.name "golfcraft3d-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add contenido/telegram.json 2>/dev/null || true
+          git add contenido/telegram.json productos/*/info.yaml 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "Mensajes de Telegram $(date -u +'%F %H:%M') UTC"
             git pull --rebase origin "${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
+
+      - name: Renders de los modelos de MakerWorld recibidos
+        if: steps.mw.outputs.slugs != '' && steps.mw.outputs.slugs != '[]'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLUGS: ${{ steps.mw.outputs.slugs }}
+        run: gh workflow run renders.yml --repo "$GITHUB_REPOSITORY" --ref main -f productos="$SLUGS"

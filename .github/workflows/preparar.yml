@@ -2,6 +2,7 @@ name: Preparar propuesta de productos
 
 # Lo lanza el agente cada semana. Para cada modelo de Printables: descarga, lamina
 # (gramos/tiempo/precio) y renderiza en los colores pedidos. Un producto por máquina.
+# Los de MakerWorld no se descargan (pide cuenta): usan los datos y fotos del sitio.
 
 on:
   workflow_dispatch:
@@ -10,7 +11,7 @@ on:
         description: "Fecha de la propuesta (AAAA-MM-DD)"
         required: true
       productos:
-        description: 'JSON: [{"id":"320193","nombre":"Tee","archivos":"golf tee.stl","colores":"verde,blanco"}] (diseño propio: "id":"propio:<carpeta de disenos/>")'
+        description: 'JSON: [{"id":"320193","nombre":"Tee","archivos":"golf tee.stl","colores":"verde,blanco"}] (diseño propio: "id":"propio:<carpeta de disenos/>"; MakerWorld: "id":"makerworld:<id>")'
         required: true
 
 permissions:

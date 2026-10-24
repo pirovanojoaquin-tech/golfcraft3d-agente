@@ -17,7 +17,8 @@ import subprocess
 import yaml
 
 from .calendario import RAIZ
-from .preparar import CONFIG, DESCARGAS, a_stl, descargar, link_descarga
+from .makerworld import modelo_de_pieza
+from .preparar import CONFIG, DESCARGAS, a_stl, descargar, formato_tiempo, laminar, link_descarga
 
 # (elevación, giro) de las vistas extra para las fotos de Mercado Libre
 VISTAS_ML = {"frente": (10, 0), "angulo": (45, -40), "arriba": (89, 0), "atras": (35, 215)}
@@ -28,6 +29,8 @@ def stl_del_producto(info):
     pieza = info["piezas"][0]
     if pieza.get("ruta"):
         return RAIZ / pieza["ruta"]
+    if pieza.get("telegram_file_id"):  # MakerWorld: el dueño mandó el archivo al bot
+        return a_stl(modelo_de_pieza(info, pieza))
     destino = DESCARGAS / str(info["printables_id"]) / pieza["archivo"]
     if not destino.exists():
         descargar(link_descarga(info["printables_id"], pieza["printables_file_id"]), destino)
@@ -77,6 +80,16 @@ def main():
     for c in colores:
         render(stl, salida / f"{c}.png", c, 30, 35, a.muestras)
 
+    if info.get("origen") == "makerworld" and not info.get("gramos_verificados"):
+        # los gramos de la propuesta salieron del perfil de MakerWorld: se recalculan con nuestro perfil
+        # (el precio aprobado no se toca; Mercado Libre usa estos gramos para el costo)
+        gramos = minutos = 0
+        for pieza in info["piezas"]:
+            modelo = modelo_de_pieza(info, pieza)
+            g, m = laminar(modelo if modelo.suffix.lower() == ".3mf" else a_stl(modelo))
+            pieza["gramos"] = round(g, 1)
+            gramos, minutos = gramos + g, minutos + m
+        info.update(gramos=round(gramos, 1), tiempo=formato_tiempo(minutos), gramos_verificados=True)
     info["medidas_mm"] = medidas(stl)
     info["colores_png"] = colores
     (carpeta / "info.yaml").write_text(yaml.safe_dump(info, allow_unicode=True, sort_keys=False), encoding="utf-8")

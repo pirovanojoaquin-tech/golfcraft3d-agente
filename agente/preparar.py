@@ -4,6 +4,7 @@ Uso:
     python -m agente.preparar 320193 --fecha 2026-10-19 --nombre "Tee de altura fija" \
         --archivos "golf tee.stl" --colores verde,blanco,rojo
     python -m agente.preparar propio:gate-de-putting --fecha 2026-10-26 --colores verde,blanco
+    python -m agente.preparar makerworld:497253 --fecha 2026-10-26 --nombre "Arreglapiques con marcador"
 
 Necesita `prusa-slicer`, `blender` y (para diseños propios) `openscad` instalados (el workflow de GitHub los instala).
 Deja todo en propuestas/<fecha>/<slug>/:
@@ -23,7 +24,7 @@ import requests
 import yaml
 from PIL import Image
 
-from .buscar import CABECERAS, detalle, gql
+from .buscar import CABECERAS, detalle, detalle_mw, gql, perfil_mw, texto_plano, url_mw
 from .calendario import RAIZ
 
 CONFIG = yaml.safe_load((RAIZ / "config.yaml").read_text(encoding="utf-8"))
@@ -234,9 +235,69 @@ def preparar_propio(slug_diseno, fecha, colores=None, muestras=64):
     })
 
 
+def foto_mw(url, destino, vertical):
+    """Recorta al centro una foto de MakerWorld a 1080x1350 (portada) o 1080x1080."""
+    tmp = descargar(url, destino.with_suffix(".orig"))
+    im = Image.open(tmp).convert("RGB")
+    tam = (1080, 1350) if vertical else (1080, 1080)
+    escala = max(tam[0] / im.width, tam[1] / im.height)
+    im = im.resize((round(im.width * escala), round(im.height * escala)), Image.LANCZOS)
+    x, y = (im.width - tam[0]) // 2, (im.height - tam[1]) // 2
+    im.crop((x, y, x + tam[0], y + tam[1])).save(destino, "JPEG", quality=88)
+    tmp.unlink()
+
+
+def preparar_makerworld(design_id, fecha, nombre=None, colores=None):
+    """Modelo de MakerWorld: sin descarga (pide cuenta). Gramos y tiempo del perfil publicado; las fotos son
+    las del autor y solo sirven para la propuesta privada (mail/Telegram), nunca se publican.
+    Si se aprueba, el dueño baja el archivo y se lo manda al bot (agente/makerworld.py)."""
+    d = detalle_mw(design_id)
+    perfil = perfil_mw(d)
+    if not perfil:
+        sys.exit(f"El modelo {design_id} de MakerWorld no tiene perfil con gramos")
+    nombre = nombre or d["title"]
+    carpeta = RAIZ / "propuestas" / fecha / slug(nombre)
+    (carpeta / "fotos").mkdir(parents=True, exist_ok=True)
+    urls = [d.get("coverUrl")] + [f["url"] for f in d["designExtension"].get("design_pictures") or []]
+    urls = list(dict.fromkeys(u for u in urls if u))[:4]
+    colores = colores or ["negro", "blanco", "verde"]
+    fotos = []
+    for n, url in enumerate(urls, 1):
+        foto_mw(url, carpeta / "fotos" / f"{n}.jpg", vertical=(n == 1))
+        fotos.append({"archivo": f"{n}.jpg", "color": colores[(n - 1) % len(colores)]})
+    gramos, minutos = float(perfil["weight"]), (perfil.get("prediction") or 0) / 60
+    costo, final = precio(gramos)
+    ficha = {
+        "nombre": nombre,
+        "nombre_original": d["title"],
+        "descripcion": texto_plano(d.get("summary"))[:600],
+        "origen": "makerworld",
+        "printables_id": None,
+        "makerworld_id": d["id"],
+        "url": url_mw(d),
+        "autor": d["designCreator"]["name"],
+        "licencia": d["license"],
+        "licencia_nombre": (d.get("licenseDescriptionInfo") or {}).get("title") or d["license"],
+        "piezas": [],
+        "archivo_pendiente": True,
+        "gramos": round(gramos, 1),
+        "tiempo_min": round(minutos),
+        "tiempo": formato_tiempo(minutos),
+        "costo_filamento": costo,
+        "precio": final,
+        "material": CONFIG["produccion"]["material"],
+        "colores_render": colores,
+        "fotos": fotos,
+        "estimacion": f"Gramos y tiempo del perfil publicado en MakerWorld ({perfil.get('title')}). Las fotos son "
+                      "del autor: si se aprueba, se rehacen con nuestros renders cuando llegue el archivo.",
+    }
+    (carpeta / "ficha.yaml").write_text(yaml.safe_dump(ficha, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    return carpeta, ficha
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("printables_id", help="id de Printables, o propio:<carpeta de disenos/>")
+    ap.add_argument("printables_id", help="id de Printables, propio:<carpeta de disenos/> o makerworld:<id>")
     ap.add_argument("--fecha", required=True)
     ap.add_argument("--nombre")
     ap.add_argument("--archivos", help="nombres de archivo separados por | (por defecto el primer STL)")
@@ -250,6 +311,8 @@ def main():
             sys.exit(f"Colores que no están en el stock: {malos}")
     if a.printables_id.startswith("propio:"):
         carpeta, ficha = preparar_propio(a.printables_id.split(":", 1)[1], a.fecha, colores, a.muestras)
+    elif a.printables_id.startswith("makerworld:"):
+        carpeta, ficha = preparar_makerworld(a.printables_id.split(":", 1)[1], a.fecha, a.nombre, colores)
     else:
         carpeta, ficha = preparar(a.printables_id, a.fecha, a.nombre,
                                   a.archivos.split("|") if a.archivos else None, colores, a.muestras)
