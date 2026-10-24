@@ -110,7 +110,7 @@
     },
     "regulador-de-altura-de-tee": {
       "codigo": 3,
-      "estado": "error",
+      "estado": "publicado",
       "pack": 10,
       "categoria": "MLA412580",
       "categoria_nombre": "Golf > Tees",
@@ -159,7 +159,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-21",
-      "sha_fotos": "fb072dcf8665f1d3079d71ca31f9764d1cb082ca"
+      "sha_fotos": "fb072dcf8665f1d3079d71ca31f9764d1cb082ca",
+      "item_id": "MLA4123281394",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4123281394-regulador-de-altura-de-tee-golf-pack-x10-impreso-3d-_JM",
+      "status_ml": "paused"
     },
     "clip-de-gorra-para-tee": {
       "codigo": 4,
