@@ -225,7 +225,7 @@
     },
     "marcador-de-bola": {
       "codigo": 5,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 10,
       "categoria": "MLA1345",
       "categoria_nombre": "Golf > Pelotas",
@@ -274,7 +274,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-24",
-      "sha_fotos": "5d5105cbb194742bd8f77f0a862e6ec701ab3030"
+      "sha_fotos": "5d5105cbb194742bd8f77f0a862e6ec701ab3030",
+      "item_id": "MLA2233219441",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2233219441-marcador-de-bola-golf-pack-x10-impreso-3d-_JM",
+      "status_ml": "paused"
     }
   }
 }
