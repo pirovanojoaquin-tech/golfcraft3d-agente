@@ -37,6 +37,10 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Productos que ya salieron en Instagram (antes)
+        id: antes
+        run: echo "ig=$(python -m agente.tienda --en-ig)" >> "$GITHUB_OUTPUT"
+
       - name: Publicar
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
@@ -54,6 +58,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python -m agente.mercadolibre pendientes
+
+      - name: Productos que ya salieron en Instagram (después)
+        id: despues
+        if: always()
+        run: echo "ig=$(python -m agente.tienda --en-ig)" >> "$GITHUB_OUTPUT"
 
       - name: Avisar por Telegram si algo falló
         if: failure()
@@ -75,3 +84,10 @@ jobs:
             git pull --rebase origin "${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
+
+      - name: Sumar a la tienda web el producto que se estrenó
+        # la web muestra cada producto recién cuando sale en Instagram; golfcraft3d.github.io la copia sola
+        if: always() && steps.antes.outputs.ig != steps.despues.outputs.ig
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run tienda.yml --repo "$GITHUB_REPOSITORY" --ref main

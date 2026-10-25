@@ -295,8 +295,13 @@ def comision(precio, categoria):
     return max(datos.get("sale_fee_amount", 0), det.get("gross_amount", 0) + det.get("fixed_fee", 0))
 
 
+def a_convenir(info):
+    """info.yaml > ml_envio: a_convenir — para categorías sin Mercado Envíos (ej: Golf > Otros)."""
+    return info.get("ml_envio") == "a_convenir"
+
+
 def envio_a_cargo(precio, info, n, user_id):
-    if precio < CFG["umbral_envio_gratis"]:
+    if precio < CFG["umbral_envio_gratis"] or a_convenir(info):
         return 0  # lo paga el comprador
     try:
         d = api("GET", f"/users/{user_id}/shipping_options/free", params={"dimensions": dimensiones(info, n)})
@@ -496,6 +501,9 @@ def descripcion(info, n, colores, con_variantes):
     else:
         lineas.append(f"Colores disponibles: {', '.join(c.capitalize() for c in colores)} y más. "
                       "Después de la compra indicanos por mensaje el color que querés.")
+    if a_convenir(info):
+        lineas += ["", "Envío a convenir: después de la compra coordinamos por mensaje el envío (correo o moto) "
+                   "o el retiro en persona."]
     lineas += ["", f"Se fabrica a pedido: se despacha dentro de los {CFG['dias_preparacion']} días hábiles.",
                "Diseños GolfCraft3D."]
     if info.get("autor") and info.get("licencia"):
@@ -514,10 +522,13 @@ def validar(item):
         api("POST", "/items/validate", json=item)
         return []
     except ErrorML as e:
-        if not e.causas or any(c.get("type") != "warning" or c.get("code") == SIN_MERCADO_ENVIOS for c in e.causas):
+        con_me2 = (item.get("shipping") or {}).get("mode") == "me2"
+        if not e.causas or any(c.get("type") != "warning" or (con_me2 and c.get("code") == SIN_MERCADO_ENVIOS)
+                               for c in e.causas):
             if any(c.get("code") == SIN_MERCADO_ENVIOS for c in e.causas):
                 raise ErrorML(f"La categoría {item.get('category_id')} no tiene Mercado Envíos: habría que "
-                              "publicarlo en otra categoría o con envío a convenir.", e.causas) from e
+                              "publicarlo en otra categoría o con envío a convenir (info.yaml > ml_envio: "
+                              "a_convenir).", e.causas) from e
             raise
         return [c.get("message") for c in e.causas]
 
@@ -538,7 +549,8 @@ def armar_item(slug, p, info, up=False):
         "available_quantity": CFG["stock"], "buying_mode": "buy_it_now", "condition": "new",
         "listing_type_id": CFG["tipo_publicacion"],
         "sale_terms": [{"id": "MANUFACTURING_TIME", "value_name": f"{CFG['dias_preparacion']} días"}],
-        "shipping": {"mode": "me2", "local_pick_up": False, "free_shipping": precio >= CFG["umbral_envio_gratis"]},
+        "shipping": ({"mode": "not_specified", "local_pick_up": True, "free_shipping": False} if a_convenir(info) else
+                     {"mode": "me2", "local_pick_up": False, "free_shipping": precio >= CFG["umbral_envio_gratis"]}),
         "attributes": [{"id": "BRAND", "value_name": "GolfCraft3D"}, {"id": "MODEL", "value_name": info["nombre"][:60]}],
     }
     if con_variantes:

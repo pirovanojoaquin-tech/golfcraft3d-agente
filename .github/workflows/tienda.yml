@@ -1,7 +1,7 @@
 name: Tienda web
 
 # Publica la página de tienda (GitHub Pages) cada vez que cambia un producto o una publicación de Mercado Libre.
-# También dispara https://golfcraft3d.github.io (repo de la organización), que es el link de la bio.
+# https://golfcraft3d.github.io (repo de la organización, el link de la bio) revisa cada 10 min si cambió algo y se rearma.
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
       - "productos/*/info.yaml"
       - "productos/*/fotos/png/**"
       - "contenido/mercadolibre.json"
+      - "contenido/calendario.json"
       - "agente/tienda.py"
       - "agente/plantillas/tienda.html"
   workflow_dispatch:
@@ -49,8 +50,3 @@ jobs:
       - id: deploy
         uses: actions/deploy-pages@v4
 
-      - name: Actualizar golfcraft3d.github.io
-        continue-on-error: true  # ese repo igual se rearma solo cada hora
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: gh workflow run tienda.yml --repo golfcraft3d/golfcraft3d.github.io

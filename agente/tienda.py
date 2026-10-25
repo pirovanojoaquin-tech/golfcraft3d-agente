@@ -5,6 +5,10 @@ Uso (lo corre el workflow tienda.yml cada vez que cambia un producto o una publi
 
 Lee productos/*/info.yaml, los renders sin fondo de fotos/png/ y los links de contenido/mercadolibre.json,
 y genera un sitio estático (index.html + imágenes webp) en `sitio/`. El link de esta página va en la bio de Instagram.
+
+Un producto aparece en la web recién cuando sale en un post de Instagram (contenido/calendario.json), igual que
+la propuesta de Mercado Libre: así la web, Instagram y ML se estrenan juntos.
+    python -m agente.tienda --en-ig    # imprime los productos que ya salieron en Instagram (lo usa publicar.yml)
 """
 import argparse
 import json
@@ -16,6 +20,7 @@ from pathlib import Path
 import yaml
 from PIL import Image
 
+from . import calendario
 from .calendario import RAIZ
 from .disenio import recortar
 
@@ -51,7 +56,13 @@ def precio(plata):
     return "$" + f"{round(plata):,}".replace(",", ".")
 
 
+def en_instagram():
+    return sorted({i["producto"] for i in calendario.cargar()
+                   if i["estado"] == "publicado" and i["tipo"] != "STORY" and i.get("producto")})
+
+
 def productos(salida):
+    ya_salieron = set(en_instagram())
     ml = {}
     estado_ml = RAIZ / "contenido" / "mercadolibre.json"
     if estado_ml.exists():
@@ -69,11 +80,13 @@ def productos(salida):
         png = info_yaml.parent / "fotos" / "png"
         if slug.startswith("_") or not (png / "hero.png").exists():
             continue
+        p = ml.get(slug, {})
+        if slug not in ya_salieron and p.get("estado") != "publicado":
+            continue  # todavía no se estrenó en Instagram
         info = yaml.safe_load(info_yaml.read_text(encoding="utf-8"))
         colores = [c for c in (info.get("colores_png") or []) if (png / f"{c}.png").exists()]
         for c in colores:
             webp(png / f"{c}.png", salida / "img" / slug / f"{c}.webp", 720)
-        p = ml.get(slug, {})
         en_ml = p.get("estado") == "publicado" and p.get("link")
         fila = next((x for x in p.get("calculo", []) if x["pack"] == p.get("pack")), None)
         nuevo = ultimo is not None and aprobados.get(slug) == ultimo
@@ -114,7 +127,12 @@ def generar(salida):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--salida", default=str(RAIZ / "sitio"))
-    generar(ap.parse_args().salida)
+    ap.add_argument("--en-ig", action="store_true", help="solo imprime los productos que ya salieron en Instagram")
+    a = ap.parse_args()
+    if a.en_ig:
+        print(json.dumps(en_instagram()))
+    else:
+        generar(a.salida)
 
 
 if __name__ == "__main__":
