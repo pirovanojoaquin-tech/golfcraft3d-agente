@@ -4,7 +4,7 @@
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 5,
       "categoria": "MLA1347",
       "categoria_nombre": "Golf > Otros",
@@ -53,7 +53,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-22",
-      "sha_fotos": "cd98fd201ee9ee0e0873bd6725a69ffcb7777c10"
+      "sha_fotos": "cd98fd201ee9ee0e0873bd6725a69ffcb7777c10",
+      "item_id": "MLA2232924659",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2232924659-guia-de-agarre-para-el-palo-golf-pack-x5-impreso-3d-_JM",
+      "status_ml": "paused"
     },
     "pelota-de-golf-con-compartimento-secreto": {
       "codigo": 2,
