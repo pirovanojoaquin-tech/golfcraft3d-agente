@@ -36,15 +36,15 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
 2. `python -m agente.buscar --max 15 --salida /tmp/candidatos.json` (Printables **y MakerWorld**, el sitio de
    modelos de Bambu Studio; solo licencias que permiten vender, descarta lo ya propuesto). Cada candidato trae
    `origen`. Los de MakerWorld ya traen `gramos` y `tiempo_min` del perfil publicado.
-3. **La propuesta es mitad y mitad: 2 modelos de terceros (Printables o MakerWorld) + 2 diseños propios** (si el
-   dueño pide más, mantené la proporción). Elegí los **2** mejores de los dos sitios juntos siguiendo **"Qué productos buscar"** (abajo): que se impriman bien en FDM sin soportes complicados,
+3. **La propuesta es de 7 productos por semana: 4 diseños propios + 3 modelos de terceros (Printables o
+   MakerWorld)** (pedido del dueño, 25/10/2026: la mitad hechos por el agente). Elegí los **3** mejores de los dos sitios juntos siguiendo **"Qué productos buscar"** (abajo): que se impriman bien en FDM sin soportes complicados,
    variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
    nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
    izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
    **MakerWorld:** en el JSON de `preparar.yml` va `"id": "makerworld:<id>"` con `nombre` y `colores` (sin
    `archivos`: no se pueden bajar sin cuenta). Su ficha usa las fotos del autor solo para la propuesta (el mail
    ya avisa que, si lo aprueba, tiene que mandar el archivo al bot). **Nunca publiques fotos del autor.**
-3b. **Diseños propios de la semana (2 por semana):** sumá a la propuesta dos productos de
+3b. **Diseños propios de la semana (4 por semana):** sumá a la propuesta cuatro productos de
    **entrenamiento de golf** diseñados por nosotros (ver "Diseños propios" abajo). Va en el mismo JSON
    de `preparar.yml` con `"id": "propio:<carpeta>"` (sin `nombre` ni `archivos`; sí `colores`).
 4. Lanzá el workflow `preparar.yml` (inputs `fecha` = hoy y `productos` = JSON) y esperá que termine
@@ -106,7 +106,7 @@ Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terc
 
 1. **Investigá** (WebSearch, 1-2 búsquedas) qué problemas tienen los golfistas al practicar y qué ayudas de entrenamiento se usan: gates de putting,
    guías de alineación, entrenadores de muñeca o de plano de swing, marcadores de distancia para chipping,
-   soportes para varillas de alineación, etc. Elegí **dos ideas distintas entre sí que no estén ya en `disenos/`** y que se
+   soportes para varillas de alineación, etc. Elegí **cuatro ideas distintas entre sí que no estén ya en `disenos/`** (al menos una de putt y una de juego largo) y que se
    pueda imprimir bien en FDM.
 2. **Inspirate en la función, no copies el producto.** Nada de logos, nombres comerciales ni la forma
    exacta de un producto de otra marca (muchos tienen diseño registrado o patente). Diseño nuestro,
@@ -209,7 +209,13 @@ Al menos 1 de las 3 historias del día tiene que ser de producto.
 
 ## Rotación de productos
 
-- No repitas el mismo producto en el post dos días seguidos.
+- **Un producto no se repite en carrusel antes de 14 días, ni en historia antes de 7** (cuento desde su última
+  aparición en `contenido/calendario.json`, publicada o programada).
+- **Si no alcanzan los productos, no repitas: hacé un post general** (sin `producto:` en el plan): tips de
+  entrenamiento (putt, drive, chipping; ejercicios correctos y conocidos), personalizados ("lo hacemos a tu
+  medida"), cómo comprar (tienda + Mercado Libre), proceso de impresión 3D. Usá slides `info` y `pasos` (en
+  `pasos` poné `producto:` en el slide para mostrar un render) y cerrá con `cta` (`nombre_corto` libre).
+  Ejemplos en `planes/2026-10-26.yaml` (28/10, 30/10 y 1/11).
 - Repartí los productos de forma pareja en el mes; los marcados `destacado: true` pueden aparecer más.
 - Fechas especiales: Día del Padre (3er domingo de junio en Argentina), Navidad, Reyes,
   torneos grandes (Masters en abril, Open Argentino) → enfocá en "ideal para regalar".

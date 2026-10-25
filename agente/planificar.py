@@ -127,14 +127,15 @@ def procesar(plan, reemplazar=False):
 
         if "post" in dia:
             p = dia["post"]
-            producto(p["producto"])
+            if p.get("producto"):  # sin producto: post general (tips, personalizados, cómo comprar)
+                producto(p["producto"])
             rutas = []
             for n, s in enumerate(p["slides"], 1):
-                rutas.append(rel(disenio.guardar(render_slide(s, p["producto"]), carpeta / f"post-{n}.jpg")))
+                rutas.append(rel(disenio.guardar(render_slide(s, p.get("producto")), carpeta / f"post-{n}.jpg")))
             nuevos.append({
                 "id": f"{fecha}-post", "fecha": fecha, "hora": horarios["post"],
                 "tipo": "CAROUSEL" if len(rutas) > 1 else "IMAGE",
-                "producto": p["producto"], "imagenes": rutas,
+                "producto": p.get("producto"), "imagenes": rutas,
                 "caption": armar_caption(p["caption"]), "estado": "pendiente",
             })
 

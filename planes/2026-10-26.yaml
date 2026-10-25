@@ -1,148 +1,374 @@
 # Semana del 26/10 al 1/11/2026: entran los 4 productos aprobados el 21/10 (estilo catálogo).
+# 28/10, 30/10 y 1/11: posts generales (tips de putt, personalizados, cómo comprar) para no repetir productos.
 dias:
-  - fecha: 2026-10-26
-    post:
+- fecha: 2026-10-26
+  post:
+    producto: arco-de-putting
+    caption: '¿Cuántos putts cortos se te escapan por la línea de salida? 🤔
+
+
+      El arco de putting es un diseño exclusivo GolfCraft3D: la bola tiene que pasar por debajo sin tocarlo. Si
+      pasa limpio, saliste en línea. Lo ponés en el green o en la alfombra de casa y a practicar.
+
+
+      Hecho por nosotros, con el nombre grabado. Escribinos por DM y te lo hacemos en tu color 📩
+
+      #putting #putt #entrenamientogolf #diseñopropio
+
+      '
+    slides:
+    - tipo: hero
+      titulo: Entrená tu línea de putt
+      subtitulo: Arco de putting · diseño propio
+      etiqueta: Nuevo
+      sellos:
+      - Diseño propio
+      - 10 colores
+      - A pedido
+    - tipo: pasos
+      titulo: Cómo se usa
+      pasos:
+      - Ponelo en el green o en la alfombra
+      - Apuntá a pasar la bola por debajo
+      - Si no lo tocás, saliste en línea
+      tono: verde
+      png: blanco.png
+    - tipo: colores
+    - tipo: medidas
+    - tipo: cta_producto
+      nombre_corto: el arco de putting
+      png: blanco.png
+  historias:
+  - tipo: hero
+    producto: arco-de-putting
+    etiqueta: Diseño propio
+    titulo: Pasá por debajo sin tocarlo
+    subtitulo: Así se entrena la línea de salida
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: La bandera puede quedar
+    texto: 'Desde 2019 podés embocar con la bandera puesta en el hoyo: no hay penalidad si la bola pega en el asta.'
+  - tipo: texto
+    etiqueta: GolfCraft3D
+    titulo: Diseñado por nosotros
+    texto: Además de los modelos que elegimos, cada semana diseñamos ayudas de entrenamiento propias para imprimir
+      en 3D.
+- fecha: 2026-10-27
+  post:
+    producto: pack-de-8-tees-de-golf
+    caption: 'Rompiste otro tee en la salida. Clásico 😅
+
+
+      Este pack trae 8 tees de distintas alturas, para el driver, las maderas y los hierros. Livianos y en el color
+      que quieras, así los encontrás fácil en el pasto.
+
+
+      Pedí tu pack por DM 📩
+
+      #teedegolf #tees #accesoriosdegolf #golfistas
+
+      '
+    slides:
+    - tipo: hero
+      titulo: Nunca más sin tee
+      subtitulo: Pack de 8 tees de distintas alturas
+      etiqueta: Nuevo
+    - tipo: info
+      titulo: ¿Por qué este pack?
+      items:
+      - 8 alturas distintas en un solo pack
+      - Para driver, maderas y hierros
+      - Colores que se ven en el pasto
+    - tipo: colores
+    - tipo: medidas
+      titulo: El pack completo
+    - tipo: cta_producto
+      nombre_corto: el pack de tees
+  historias:
+  - tipo: hero
+    producto: pack-de-8-tees-de-golf
+    etiqueta: Nuevo
+    titulo: 8 tees, 8 alturas
+    subtitulo: Elegí tu color
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: En el bunker, ojo
+    texto: 'En un bunker no podés apoyar el palo en la arena antes de pegarle: tocarla en la preparación o en el
+      backswing es penalidad.'
+  - tipo: texto
+    etiqueta: Personalizados
+    titulo: ¿Tenés una idea?
+    texto: 'La diseñamos e imprimimos: recreamos productos, cambiamos medidas y grabamos nombres o logos. Escribinos
+      por DM.'
+- fecha: 2026-10-28
+  post:
+    caption: '¿Se te escapan los putts de un metro? Son los golpes más fáciles de ahorrar ⛳
+
+
+      3 ejercicios para practicar en el green o en la alfombra de casa:
+
+      1️⃣ La puerta: dos tees apenas más anchos que la bola, a un palmo de la bola. Si pasa sin tocarlos, saliste
+      en línea.
+
+      2️⃣ La escalera: emboká desde 1, 2 y 3 metros. Si fallás, volvés a empezar.
+
+      3️⃣ El reloj: 4 bolas alrededor del hoyo a 1 metro. Tenés que embocar las 4 seguidas.
+
+
+      Guardalo para tu próxima práctica 📌
+
+      #putting #putt #entrenamientogolf #tipsdegolf'
+    slides:
+    - tipo: info
+      titulo: 3 ejercicios para el putt corto
+      items:
+      - 'La puerta: salir siempre en línea'
+      - 'La escalera: controlar la distancia'
+      - 'El reloj: embocar bajo presión'
+    - tipo: pasos
       producto: arco-de-putting
-      caption: |
-        ¿Cuántos putts cortos se te escapan por la línea de salida? 🤔
+      titulo: 1. La puerta
+      tono: verde
+      pasos:
+      - Poné dos tees o un arco a un palmo de la bola
+      - Apenas más ancho que la bola
+      - Si pasa sin tocar, saliste en línea
+    - tipo: info
+      titulo: 2. La escalera
+      items:
+      - Emboká desde 1 metro
+      - Después desde 2 y desde 3 metros
+      - Si fallás uno, volvés a empezar
+    - tipo: info
+      titulo: 3. El reloj
+      items:
+      - 4 bolas alrededor del hoyo a 1 metro
+      - Emboká las 4 seguidas
+      - Cuando te salga, alejate medio metro
+    - tipo: cta
+      nombre_corto: entrenar con accesorios hechos a tu medida
+  historias:
+  - tipo: hero
+    producto: regulador-de-altura-de-tee
+    png: amarillo.png
+    tono: verde
+    etiqueta: Mirá esto
+    titulo: La altura justa
+    subtitulo: En cada salida
+  - tipo: texto
+    etiqueta: Impresión 3D
+    titulo: Capa por capa
+    texto: Imprimimos cada pieza a pedido con dos impresoras Bambu Lab. Por eso podemos hacerla en el color que
+      elijas.
+  - tipo: texto
+    etiqueta: GolfCraft3D
+    titulo: ¿Querés el tuyo?
+    texto: Todos nuestros productos se hacen a pedido. Escribinos por DM y te contamos colores y combos.
+- fecha: 2026-10-29
+  post:
+    producto: entrenador-de-alineacion-zwing
+    caption: '¿Apuntás a la bandera y la bola sale para otro lado? Puede ser la alineación 🎯
 
-        El arco de putting es un diseño exclusivo GolfCraft3D: la bola tiene que pasar por debajo sin tocarlo. Si pasa limpio, saliste en línea. Lo ponés en el green o en la alfombra de casa y a practicar.
 
-        Hecho por nosotros, con el nombre grabado. Escribinos por DM y te lo hacemos en tu color 📩
-        #putting #putt #entrenamientogolf #diseñopropio
-      slides:
-        - {tipo: "hero", titulo: "Entrená tu línea de putt", subtitulo: "Arco de putting · diseño propio", etiqueta: "Nuevo", sellos: ["Diseño propio", "10 colores", "A pedido"]}
-        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Ponelo en el green o en la alfombra", "Apuntá a pasar la bola por debajo", "Si no lo tocás, saliste en línea"], tono: "verde", png: "blanco.png"}
-        - {tipo: "colores"}
-        - {tipo: "medidas"}
-        - {tipo: "cta_producto", nombre_corto: "el arco de putting", png: "blanco.png"}
-    historias:
-      - {tipo: "hero", producto: "arco-de-putting", etiqueta: "Diseño propio", titulo: "Pasá por debajo sin tocarlo", subtitulo: "Así se entrena la línea de salida"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "La bandera puede quedar", texto: "Desde 2019 podés embocar con la bandera puesta en el hoyo: no hay penalidad si la bola pega en el asta."}
-      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Diseñado por nosotros", texto: "Además de los modelos que elegimos, cada semana diseñamos ayudas de entrenamiento propias para imprimir en 3D."}
+      Este entrenador de alineación sirve para diestros y zurdos. Tiene agujeros para varillas de alineación y lastre
+      interno para que quede firme en el piso del driving.
 
-  - fecha: 2026-10-27
-    post:
-      producto: pack-de-8-tees-de-golf
-      caption: |
-        Rompiste otro tee en la salida. Clásico 😅
 
-        Este pack trae 8 tees de distintas alturas, para el driver, las maderas y los hierros. Livianos y en el color que quieras, así los encontrás fácil en el pasto.
+      Escribinos por DM y te lo hacemos en tu color 📩
 
-        Pedí tu pack por DM 📩
-        #teedegolf #tees #accesoriosdegolf #golfistas
-      slides:
-        - {tipo: "hero", titulo: "Nunca más sin tee", subtitulo: "Pack de 8 tees de distintas alturas", etiqueta: "Nuevo"}
-        - {tipo: "info", titulo: "¿Por qué este pack?", items: ["8 alturas distintas en un solo pack", "Para driver, maderas y hierros", "Colores que se ven en el pasto"]}
-        - {tipo: "colores"}
-        - {tipo: "medidas", titulo: "El pack completo"}
-        - {tipo: "cta_producto", nombre_corto: "el pack de tees"}
-    historias:
-      - {tipo: "hero", producto: "pack-de-8-tees-de-golf", etiqueta: "Nuevo", titulo: "8 tees, 8 alturas", subtitulo: "Elegí tu color"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "En el bunker, ojo", texto: "En un bunker no podés apoyar el palo en la arena antes de pegarle: tocarla en la preparación o en el backswing es penalidad."}
-      - {tipo: "hero", producto: "clip-de-gorra-para-tee", etiqueta: "Combinalo", titulo: "Y para tenerlos a mano", subtitulo: "Clip de gorra para tee"}
+      #alineacion #swing #entrenamientogolf #drivingrange
 
-  - fecha: 2026-10-28
-    post:
-      producto: regulador-de-altura-de-tee
-      caption: |
-        Si el tee cambia de altura en cada salida, tu drive también 🏌️‍♂️
+      '
+    slides:
+    - tipo: hero
+      titulo: Alineate como un pro
+      subtitulo: Entrenador de alineación
+      etiqueta: Nuevo
+      sellos:
+      - Diestros y zurdos
+      - 10 colores
+      - A pedido
+    - tipo: pasos
+      titulo: Cómo se usa
+      pasos:
+      - Apoyalo en el piso del driving
+      - Colocá las varillas en los agujeros
+      - Usalas de referencia para pies y palo
+      tono: verde
+      png: blanco.png
+    - tipo: colores
+    - tipo: info
+      titulo: Detalles
+      items:
+      - Para diestros y zurdos
+      - Agujeros de 9 mm para varillas
+      - 'Lastre interno: queda firme'
+    - tipo: cta_producto
+      nombre_corto: el entrenador de alineación
+      png: blanco.png
+  historias:
+  - tipo: hero
+    producto: entrenador-de-alineacion-zwing
+    etiqueta: Entrenamiento
+    titulo: Alineación sin dudas
+    subtitulo: Para diestros y zurdos
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: Pies, cadera y hombros
+    texto: Una forma común de practicar la alineación es dejar una varilla en el piso apuntando al objetivo y otra
+      paralela a la línea de los pies.
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: Practicá con objetivo
+    texto: 'En el driving, elegí un blanco para cada bola y armá tu rutina antes de pegar: así entrenás como jugás
+      en la cancha.'
+- fecha: 2026-10-30
+  post:
+    caption: '¿Tenés una idea para tu juego, tu club o un regalo? La hacemos realidad ✍️
 
-        El regulador tiene las alturas marcadas para clavar el tee siempre igual. Entra en el bolsillo y lo usás en cada hoyo.
 
-        Elegí tu color y escribinos por DM 📩
-        #drive #teedegolf #accesoriosdegolf #golfistas
-      slides:
-        - {tipo: "hero", titulo: "Tu salida, siempre igual", subtitulo: "Regulador de altura de tee", etiqueta: "Más pedido"}
-        - {tipo: "pasos", titulo: "Así de fácil", pasos: ["Elegí la altura en la guía", "Clavá el tee hasta la marca", "Sacá la guía y pegale"], tono: "crema"}
-        - {tipo: "colores"}
-        - {tipo: "medidas"}
-        - {tipo: "cta_producto", nombre_corto: "el regulador de tee", png: "amarillo.png"}
-    historias:
-      - {tipo: "hero", producto: "regulador-de-altura-de-tee", png: "amarillo.png", tono: "verde", etiqueta: "Mirá esto", titulo: "La altura justa", subtitulo: "En cada salida"}
-      - {tipo: "texto", etiqueta: "Impresión 3D", titulo: "Capa por capa", texto: "Imprimimos cada pieza a pedido con dos impresoras Bambu Lab. Por eso podemos hacerla en el color que elijas."}
-      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "¿Querés el tuyo?", texto: "Todos nuestros productos se hacen a pedido. Escribinos por DM y te contamos colores y combos."}
+      En GolfCraft3D no solo vendemos productos: recreamos los que ya existen, cambiamos medidas, grabamos nombres
+      o el logo de tu club y diseñamos desde cero lo que necesites.
 
-  - fecha: 2026-10-29
-    post:
-      producto: entrenador-de-alineacion-zwing
-      caption: |
-        ¿Apuntás a la bandera y la bola sale para otro lado? Puede ser la alineación 🎯
 
-        Este entrenador de alineación sirve para diestros y zurdos. Tiene agujeros para varillas de alineación y lastre interno para que quede firme en el piso del driving.
+      Contanos tu idea por DM y te pasamos diseño y precio sin compromiso 📩
 
-        Escribinos por DM y te lo hacemos en tu color 📩
-        #alineacion #swing #entrenamientogolf #drivingrange
-      slides:
-        - {tipo: "hero", titulo: "Alineate como un pro", subtitulo: "Entrenador de alineación", etiqueta: "Nuevo", sellos: ["Diestros y zurdos", "10 colores", "A pedido"]}
-        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyalo en el piso del driving", "Colocá las varillas en los agujeros", "Usalas de referencia para pies y palo"], tono: "verde", png: "blanco.png"}
-        - {tipo: "colores"}
-        - {tipo: "info", titulo: "Detalles", items: ["Para diestros y zurdos", "Agujeros de 9 mm para varillas", "Lastre interno: queda firme"]}
-        - {tipo: "cta_producto", nombre_corto: "el entrenador de alineación", png: "blanco.png"}
-    historias:
-      - {tipo: "hero", producto: "entrenador-de-alineacion-zwing", etiqueta: "Entrenamiento", titulo: "Alineación sin dudas", subtitulo: "Para diestros y zurdos"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Pies, cadera y hombros", texto: "Una forma común de practicar la alineación es dejar una varilla en el piso apuntando al objetivo y otra paralela a la línea de los pies."}
-      - {tipo: "hero", producto: "arco-de-putting", etiqueta: "Diseño propio", titulo: "Y en el green", subtitulo: "Arco de putting"}
-
-  - fecha: 2026-10-30
-    post:
-      producto: pelota-de-golf-con-compartimento-secreto
-      caption: |
-        Un regalo para el golfista que ya tiene todo 🎁
-
-        Por fuera es una pelota de golf. Por dentro, un compartimento secreto para una nota, una entrada o lo que se te ocurra.
-
-        La hacemos en el color que quieras. Escribinos por DM 📩
-        #regalosgolf #regalooriginal #pelotadegolf #golfistas
-      slides:
-        - {tipo: "hero", titulo: "Tiene un secreto adentro", subtitulo: "Pelota con compartimento", etiqueta: "Ideal para regalar"}
-        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Abrí las dos mitades", "Guardá una nota o un regalito", "Cerrala y sorprendé"], png: "amarillo.png", tono: "verde"}
-        - {tipo: "colores"}
-        - {tipo: "info", titulo: "Ideas para el compartimento", items: ["Una nota o una dedicatoria", "Tees o marcadores de regalo", "Entradas para un torneo"]}
-        - {tipo: "cta_producto", nombre_corto: "la pelota secreta"}
-    historias:
-      - {tipo: "hero", producto: "pelota-de-golf-con-compartimento-secreto", etiqueta: "Ideal para regalar", titulo: "Regalá una sorpresa", subtitulo: "Se abre en dos mitades"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "¿Sabías que...?", texto: "Una pelota de golf mide como mínimo 42,67 mm de diámetro, según las reglas."}
-      - {tipo: "hero", producto: "trofeo-de-golf", etiqueta: "Se viene", titulo: "Para el campeón", subtitulo: "Mañana te lo mostramos"}
-
-  - fecha: 2026-10-31
-    post:
-      producto: trofeo-de-golf
-      caption: |
-        ¿Organizás un torneo entre amigos? El ganador se merece algo más que el asado 🏆
-
-        Este trofeo con temática de golf mide más de 25 cm de alto y lo hacemos en el color que quieras. Ideal para el campeón del grupo o para un regalo especial.
-
-        Escribinos por DM y lo armamos 📩
-        #trofeo #torneodegolf #regalosgolf #golfistas
-      slides:
-        - {tipo: "hero", titulo: "Para el campeón del grupo", subtitulo: "Trofeo de golf", etiqueta: "Nuevo", sellos: ["Más de 25 cm", "10 colores", "A pedido"]}
-        - {tipo: "info", titulo: "Ideal para", items: ["El torneo entre amigos", "El campeón del club", "Un regalo para el que vive en la cancha"]}
-        - {tipo: "colores"}
-        - {tipo: "medidas"}
-        - {tipo: "cta_producto", nombre_corto: "el trofeo"}
-    historias:
-      - {tipo: "hero", producto: "trofeo-de-golf", etiqueta: "Nuevo", titulo: "El trofeo del torneo", subtitulo: "En el color que quieras"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Ready golf", texto: "En juego por golpes se recomienda el 'ready golf': juega el que está listo, sin esperar al que está más lejos, si es seguro."}
-      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Pedidos por DM", texto: "Contanos qué querés, en qué color y para cuándo. Te respondemos con todo el detalle."}
-
-  - fecha: 2026-11-01
-    post:
+      #personalizado #golfistas #regalosgolf #impresion3d'
+    slides:
+    - tipo: info
+      titulo: Lo hacemos a tu medida
+      items:
+      - Recreamos productos que ya existen
+      - Cambiamos medidas y colores
+      - Grabamos nombres o el logo de tu club
+    - tipo: pasos
       producto: marcador-de-bola
-      caption: |
-        En el green, cada detalle cuenta ⛳
+      titulo: Así trabajamos
+      tono: crema
+      pasos:
+      - Nos contás tu idea por DM
+      - Te mostramos el diseño en 3D
+      - Lo imprimimos y te lo enviamos
+    - tipo: info
+      titulo: Ideas que podemos hacer
+      items:
+      - Marcadores con tu inicial
+      - Trofeos para el torneo del club
+      - Regalos para el Día del Padre
+    - tipo: cta
+      nombre_corto: algo único
+  historias:
+  - tipo: hero
+    producto: marcador-de-bola
+    etiqueta: Personalizable
+    titulo: Con tu inicial
+    subtitulo: Marcador de bola
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: ¿Sabías que...?
+    texto: Una pelota de golf mide como mínimo 42,67 mm de diámetro, según las reglas.
+  - tipo: hero
+    producto: trofeo-de-golf
+    etiqueta: Se viene
+    titulo: Para el campeón
+    subtitulo: Mañana te lo mostramos
+- fecha: 2026-10-31
+  post:
+    producto: trofeo-de-golf
+    caption: '¿Organizás un torneo entre amigos? El ganador se merece algo más que el asado 🏆
 
-        Nuestro marcador de bola es liviano y tiene una flecha calada para alinear el putt. Lo hacemos en el color que quieras y queda perfecto combinado con el resto de tus accesorios.
 
-        Pedilo por DM 📩
-        #marcadordebola #green #accesoriosdegolf #golfistas
-      slides:
-        - {tipo: "hero", titulo: "Tu marca en el green", subtitulo: "Marcador de bola", etiqueta: "Clásico"}
-        - {tipo: "pasos", titulo: "En el green", pasos: ["Marcá detrás de la bola", "Levantala y limpiala", "Usá la flecha para alinear tu putt"], tono: "verde"}
-        - {tipo: "colores"}
-        - {tipo: "medidas"}
-        - {tipo: "cta_producto", nombre_corto: "el marcador de bola"}
-    historias:
-      - {tipo: "hero", producto: "marcador-de-bola", etiqueta: "Clásico", titulo: "Chiquito y útil", subtitulo: "En el color que quieras"}
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Regla del green", texto: "Antes de levantar la bola en el green tenés que marcar su posición."}
-      - {tipo: "hero", producto: "guia-de-agarre-para-el-palo", etiqueta: "Entrenamiento", titulo: "Mejorá tu agarre", subtitulo: "Para diestros y zurdos"}
+      Este trofeo con temática de golf mide más de 25 cm de alto y lo hacemos en el color que quieras. Ideal para
+      el campeón del grupo o para un regalo especial.
+
+
+      Escribinos por DM y lo armamos 📩
+
+      #trofeo #torneodegolf #regalosgolf #golfistas
+
+      '
+    slides:
+    - tipo: hero
+      titulo: Para el campeón del grupo
+      subtitulo: Trofeo de golf
+      etiqueta: Nuevo
+      sellos:
+      - Más de 25 cm
+      - 10 colores
+      - A pedido
+    - tipo: info
+      titulo: Ideal para
+      items:
+      - El torneo entre amigos
+      - El campeón del club
+      - Un regalo para el que vive en la cancha
+    - tipo: colores
+    - tipo: medidas
+    - tipo: cta_producto
+      nombre_corto: el trofeo
+  historias:
+  - tipo: hero
+    producto: trofeo-de-golf
+    etiqueta: Nuevo
+    titulo: El trofeo del torneo
+    subtitulo: En el color que quieras
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: Ready golf
+    texto: 'En juego por golpes se recomienda el ''ready golf'': juega el que está listo, sin esperar al que está
+      más lejos, si es seguro.'
+  - tipo: texto
+    etiqueta: GolfCraft3D
+    titulo: Pedidos por DM
+    texto: Contanos qué querés, en qué color y para cuándo. Te respondemos con todo el detalle.
+- fecha: 2026-11-01
+  post:
+    caption: '¿Cómo comprar en GolfCraft3D? Más fácil imposible 🛒
+
+
+      1️⃣ Entrá al link de la bio: ahí está nuestra tienda con todos los productos.
+
+      2️⃣ Si el producto está en Mercado Libre, tocás "Comprar" y lo pagás ahí con envío.
+
+      3️⃣ ¿Lo querés en otro color, con tu nombre o a medida? Escribinos por DM.
+
+
+      #golfcraft3d #accesoriosdegolf #golfistas #tiendaonline'
+    slides:
+    - tipo: info
+      titulo: Cómo comprar
+      items:
+      - Entrá al link de la bio
+      - Elegí tu producto en la tienda
+      - Comprá en Mercado Libre con envío
+    - tipo: pasos
+      producto: clip-de-gorra-para-tee
+      titulo: Ya en Mercado Libre
+      tono: verde
+      pasos:
+      - Clip de gorra para tee
+      - Regulador de altura de tee
+      - Guía de agarre para el palo
+    - tipo: info
+      titulo: ¿Lo querés distinto?
+      items:
+      - Otro color de los 10 que tenemos
+      - Tu nombre o el logo de tu club
+      - Escribinos por DM
+    - tipo: cta
+      nombre_corto: el tuyo
+  historias:
+  - tipo: hero
+    producto: pelota-de-golf-con-compartimento-secreto
+    etiqueta: Ideal para regalar
+    titulo: Un regalo con secreto
+    subtitulo: Pedila por DM
+  - tipo: texto
+    etiqueta: Tip de golf
+    titulo: Regla del green
+    texto: Antes de levantar la bola en el green tenés que marcar su posición.
+  - tipo: hero
+    producto: guia-de-agarre-para-el-palo
+    etiqueta: Entrenamiento
+    titulo: Mejorá tu agarre
+    subtitulo: Para diestros y zurdos
