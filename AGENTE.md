@@ -37,7 +37,7 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    modelos de Bambu Studio; solo licencias que permiten vender, descarta lo ya propuesto). Cada candidato trae
    `origen`. Los de MakerWorld ya traen `gramos` y `tiempo_min` del perfil publicado.
 3. **La propuesta es mitad y mitad: 2 modelos de terceros (Printables o MakerWorld) + 2 diseños propios** (si el
-   dueño pide más, mantené la proporción). Elegí los **2** mejores de los dos sitios juntos: útiles para un golfista, que se impriman bien en FDM sin soportes complicados,
+   dueño pide más, mantené la proporción). Elegí los **2** mejores de los dos sitios juntos siguiendo **"Qué productos buscar"** (abajo): que se impriman bien en FDM sin soportes complicados,
    variados entre sí y distintos a lo que ya hay en `productos/`. Para cada uno decidí:
    nombre comercial en español, qué archivos forman **una unidad** de venta (no sumes variantes
    izquierda/derecha ni versiones viejas) y 3 colores del stock (`config.yaml > colores`) que le queden bien.
@@ -84,11 +84,27 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    y hay productos en `productos/`, planificá **7 días más** a partir del último día programado
    (ver abajo). Revisá las imágenes con una hoja de contacto por día. Commit + push.
 
+## Qué productos buscar (desde 25/10/2026)
+
+El dueño quiere productos **útiles, prácticos y exclusivos, que resuelvan un problema concreto del golfista**.
+Vale para los modelos de terceros y para los diseños propios. No cambies nada de lo ya publicado o aprobado.
+
+- **Prioridad 1: entrenamiento.** Putt (gates, guías de línea y de golpe, espejos de alineación, topes de
+  distancia, hoyos de práctica), juego largo y drive (plano de swing, alineación de pies y palo, tempo,
+  posición de muñecas, tee de altura exacta), chipping y approach (blancos y marcadores de distancia).
+- **Prioridad 2: accesorios que resuelven algo en la cancha:** marcar la bola, arreglar piques, llevar tees,
+  bolas o el guante, ordenar la bolsa, medir o anotar.
+- **Prioridad 3 (de vez en cuando, como mucho 1 de cada 4 en la propuesta): decoración y regalos.**
+- **Que no sea lo de siempre:** preferí algo que no se consiga fácil en Argentina o que tenga una vuelta nuestra
+  (medidas, ajuste, personalización). En la descripción decí en una línea qué problema resuelve.
+- Descartá lo que sea solo lindo, lo que necesite piezas que no imprimimos (resortes, imanes, electrónica)
+  salvo que sean muy comunes, y lo que ya tengamos parecido en `productos/`.
+
 ## Diseños propios (entrenamiento de golf)
 
 Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terceros.
 
-1. **Investigá** (WebSearch, 1-2 búsquedas) qué ayudas de entrenamiento de golf se usan: gates de putting,
+1. **Investigá** (WebSearch, 1-2 búsquedas) qué problemas tienen los golfistas al practicar y qué ayudas de entrenamiento se usan: gates de putting,
    guías de alineación, entrenadores de muñeca o de plano de swing, marcadores de distancia para chipping,
    soportes para varillas de alineación, etc. Elegí **dos ideas distintas entre sí que no estén ya en `disenos/`** y que se
    pueda imprimir bien en FDM.

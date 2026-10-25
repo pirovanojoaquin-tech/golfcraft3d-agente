@@ -38,7 +38,9 @@ BUSQUEDAS = [
     # entrenamiento
     "golf training", "golf training aid", "golf alignment", "alignment stick", "putting", "putting gate",
     "putting trainer", "putting cup", "golf swing trainer", "golf grip trainer", "golf chipping",
-    "golf practice", "golf impact", "golf wrist",
+    "golf practice", "golf impact", "golf wrist", "putting alignment", "putting mirror", "putting stroke",
+    "putting guide", "golf swing plane", "golf tempo", "golf driving", "golf stance", "chipping target",
+    "golf distance marker",
     # regalos, decoración y organización
     "golf gift", "golf ball display", "golf ball stand", "golf trophy", "golf keychain", "golf ornament",
     "golf storage", "golf organizer", "golf bottle opener", "golf coaster",
@@ -51,6 +53,13 @@ MW_LICENCIAS_OK = {"BY", "BY-SA", "CC0"}
 
 NO_GOLF = re.compile(r"\b(gti|volkswagen|vw|mk ?[1-8]|tdi|gtd|r32|scirocco|polo|passat|jetta|wheel ?cap|hubcap)\b", re.I)
 SI_GOLF = re.compile(r"golf|putt|divot|\btee\b|caddie|caddy|fairway|birdie|scorecard", re.I)
+# Entrenamiento primero (lo que más le interesa al dueño desde 25/10/2026); decoración y regalos al final
+ENTRENAMIENTO = re.compile(r"train|practi|putt|align|swing|tempo|chip|drill|target|stance|grip|wrist|plane|aim", re.I)
+DECORACION = re.compile(r"trophy|ornament|keychain|display|coaster|gift|gag|funny|decor|figure|statue|lamp", re.I)
+
+
+def prioridad(nombre):
+    return 0 if DECORACION.search(nombre) else 2 if ENTRENAMIENTO.search(nombre) else 1
 
 CONSULTA_BUSQUEDA = """
 query($q: String!, $limit: Int!) {
@@ -123,7 +132,8 @@ def buscar(maximo=15, por_busqueda=40):
             encontrados[pid] = it
 
     # los más populares primero
-    orden = sorted(encontrados.values(), key=lambda i: (i["likesCount"] or 0) * 3 + (i["downloadCount"] or 0) / 10,
+    orden = sorted(encontrados.values(), key=lambda i: (prioridad(i["name"]),
+                                                        (i["likesCount"] or 0) * 3 + (i["downloadCount"] or 0) / 10),
                    reverse=True)
     candidatos = []
     for it in orden:
@@ -144,6 +154,7 @@ def buscar(maximo=15, por_busqueda=40):
             "likes": d["likesCount"],
             "descargas": d["downloadCount"],
             "url": f"https://www.printables.com/model/{d['id']}-{d['slug']}",
+            "tipo": ["decoración/regalo", "accesorio", "entrenamiento"][prioridad(d["name"])],
             "imagen": f"https://media.printables.com/{d['images'][0]['filePath']}" if d.get("images") else None,
             "archivos": [a["name"] for a in archivos],
         })
@@ -194,7 +205,8 @@ def buscar_makerworld(maximo=15, por_busqueda=50):
                 continue
             encontrados[clave] = it
 
-    orden = sorted(encontrados.values(), key=lambda i: (i["likeCount"] or 0) * 3 + (i["downloadCount"] or 0) / 10,
+    orden = sorted(encontrados.values(), key=lambda i: (prioridad(i["title"]),
+                                                        (i["likeCount"] or 0) * 3 + (i["downloadCount"] or 0) / 10),
                    reverse=True)
     candidatos = []
     for it in orden:
@@ -214,6 +226,7 @@ def buscar_makerworld(maximo=15, por_busqueda=50):
             "likes": d["likeCount"],
             "descargas": d["downloadCount"],
             "url": url_mw(d),
+            "tipo": ["decoración/regalo", "accesorio", "entrenamiento"][prioridad(d["title"])],
             "imagen": d.get("coverUrl"),
             "gramos": perfil["weight"],
             "tiempo_min": round((perfil.get("prediction") or 0) / 60),
