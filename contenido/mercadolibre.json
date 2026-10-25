@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 5,
+  "siguiente": 6,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -219,6 +219,58 @@
       "item_id": "MLA4123281448",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4123281448-clip-de-gorra-para-tee-golf-pack-x10-impreso-3d-_JM",
       "status_ml": "paused"
+    },
+    "marcador-de-bola": {
+      "codigo": 5,
+      "estado": "propuesto",
+      "pack": 10,
+      "categoria": "MLA1345",
+      "categoria_nombre": "Golf > Pelotas",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 1500,
+          "comision": 2900,
+          "envio": 0,
+          "filamento": 12,
+          "ganancia": -1412
+        },
+        {
+          "pack": 2,
+          "precio": 3000,
+          "comision": 3140,
+          "envio": 0,
+          "filamento": 24,
+          "ganancia": -164
+        },
+        {
+          "pack": 3,
+          "precio": 4300,
+          "comision": 3348,
+          "envio": 0,
+          "filamento": 36,
+          "ganancia": 916
+        },
+        {
+          "pack": 5,
+          "precio": 6800,
+          "comision": 3748,
+          "envio": 0,
+          "filamento": 60,
+          "ganancia": 2992
+        },
+        {
+          "pack": 10,
+          "precio": 12800,
+          "comision": 4708,
+          "envio": 0,
+          "filamento": 120,
+          "ganancia": 7972
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-24"
     }
   }
 }
