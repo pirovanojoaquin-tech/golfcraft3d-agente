@@ -76,6 +76,8 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    semana sigue pendiente, recordáselo. Si trae piezas de más (variantes), dejá en `piezas` solo una unidad.
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
+4b. **Categoría sin Mercado Envíos** (ML avisa "no tiene Mercado Envíos"; pasa en Golf > Otros): poné
+   `ml_envio: a_convenir` en su info.yaml y se publica con envío a convenir.
 5. **Mercado Libre en los slides:** si se publicó algún producto en ML desde la última rutina, regenerá los días
    pendientes con `python -m agente.planificar <plan> --reemplazar` para que su cierre diga "Comprá en Mercado Libre".
 6. **Calendario:** si quedan **menos de 7 días** con contenido pendiente en `contenido/calendario.json`
