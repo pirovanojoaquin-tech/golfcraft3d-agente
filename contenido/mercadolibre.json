@@ -56,7 +56,14 @@
       "sha_fotos": "cd98fd201ee9ee0e0873bd6725a69ffcb7777c10",
       "item_id": "MLA2232924659",
       "link": "http://articulo.mercadolibre.com.ar/MLA-2232924659-guia-de-agarre-para-el-palo-golf-pack-x5-impreso-3d-_JM",
-      "status_ml": "active"
+      "status_ml": "active",
+      "entrada": {
+        "pack": 2,
+        "item_id": "MLA4128844806",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4128844806-guia-agarre-grip-palo-golf-entrenamiento-pack-x2-impreso-3d-_JM",
+        "precio": 8000,
+        "ganancia": 2764
+      }
     },
     "pelota-de-golf-con-compartimento-secreto": {
       "codigo": 2,
