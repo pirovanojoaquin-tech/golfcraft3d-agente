@@ -757,7 +757,7 @@ def mejorar_calidad():
 
 
 def mayoristas(item_id):
-    """Precios mayoristas (B2C, "Precio por cantidad" de ML): descuento si compran varias unidades del aviso.
+    """Precios mayoristas ("Precio por cantidad" de ML, para compradores empresa): descuento si compran varias unidades.
     ML lo cuenta para la calidad. Escalas en config.yaml > descuento_mayorista ({unidades: descuento})."""
     escalas = CFG.get("descuento_mayorista") or {}
     precios = api("GET", f"/items/{item_id}/prices").get("prices") or []
@@ -769,7 +769,9 @@ def mayoristas(item_id):
               "conditions": {"context_restrictions": ["channel_marketplace"]}}]
     for unidades, desc in sorted(escalas.items()):
         lista.append({"amount": redondear(std["amount"] * (1 - desc)), "currency_id": std["currency_id"],
-                      "conditions": {"context_restrictions": ["channel_marketplace"], "min_purchase_unit": int(unidades)}})
+                      # B2B: en MLA el precio por cantidad para todos (B2C) es solo para cubiertas de auto
+                      "conditions": {"context_restrictions": ["channel_marketplace", "user_type_business"],
+                                     "min_purchase_unit": int(unidades)}})
     api("POST", f"/items/{item_id}/prices/standard/quantity", json={"prices": lista})
     return [(x["conditions"].get("min_purchase_unit", 1), x["amount"]) for x in lista]
 
