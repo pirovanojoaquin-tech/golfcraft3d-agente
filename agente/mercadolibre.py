@@ -757,13 +757,17 @@ def titulos():
     for slug, etiqueta, item_id, n in avisos_publicados(estado):
         nuevo = titulo(info_producto(slug), n)
         actual = api("GET", f"/items/{item_id}").get("title")
-        if actual == nuevo:
+        if (actual or "").lower() == nuevo.lower():  # ML capitaliza cada palabra
             continue
-        try:
-            api("PUT", f"/items/{item_id}", json={"title": nuevo})
-            print(f"{slug} {etiqueta}: {actual} -> {nuevo}")
-        except ErrorML as e:
-            print(f"{slug} {etiqueta}: ML no dejó cambiar el título ({e})")
+        for campo in ("title", "family_name"):  # en los "productos de usuario" el título sale de family_name
+            try:
+                api("PUT", f"/items/{item_id}", json={campo: nuevo})
+                print(f"{slug} {etiqueta}: {actual} -> {nuevo} ({campo})")
+                break
+            except ErrorML as e:
+                error = e
+        else:
+            print(f"{slug} {etiqueta}: ML no dejó cambiar el título ({error})")
 
 
 def reporte():
