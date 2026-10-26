@@ -223,13 +223,13 @@ def api(metodo, ruta, auth=True, **kw):
             d = r.json()
             # cada causa con su tipo (error/warning) y código: ML mezcla advertencias con el error que bloquea
             causas = "; ".join(f"{c.get('message', '')} [{c.get('type', '?')} {c.get('code', '')}]"
-                               for c in d.get("cause", []) if isinstance(c, dict))
+                               for c in (d.get("cause") if isinstance(d.get("cause"), list) else []) if isinstance(c, dict))
             msg = d.get("message", "") + (f" ({causas})" if causas else "")
         except ValueError:
             msg = r.text[:200]
         if os.environ.get("ML_DEBUG"):
             print("respuesta de ML:", r.text[:1500])
-        causas = [c for c in (d.get("cause") or []) if isinstance(c, dict)] if isinstance(d, dict) else []
+        causas = [c for c in d["cause"] if isinstance(c, dict)] if isinstance(d, dict) and isinstance(d.get("cause"), list) else []
         raise ErrorML(f"{metodo} {ruta.split('?')[0]} -> {r.status_code}: {msg}", causas)
     return r.json() if r.content else {}
 
