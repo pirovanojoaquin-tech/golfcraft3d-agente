@@ -1,0 +1,772 @@
+[
+ {
+  "producto": "guia-de-agarre-para-el-palo",
+  "pack": "x5",
+  "item_id": "MLA2232924659",
+  "performance": {
+   "entity_type": "USER_PRODUCT",
+   "entity_id": "MLAU5641120665",
+   "score": 60,
+   "level": "medium",
+   "calculated_at": "2026-10-26T22:09:32.091Z",
+   "buckets": [
+    {
+     "key": "USER_PRODUCT",
+     "type": "USER_PRODUCT",
+     "status": "COMPLETED",
+     "score": 100,
+     "title": "Datos del producto",
+     "calculated_at": "2026-10-26T22:09:31Z",
+     "variables": [
+      {
+       "key": "UP_PICTURES",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Mejorá las fotos para tener más visitas",
+       "rules": [
+        {
+         "key": "UP_PICTURES_QUANTITY_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Agregá más fotos para mostrar tu producto desde diferentes ángulos, subí 3 como mínimo.",
+          "label": "Agregar fotos",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/picture-uploader-default"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TECHNICAL_SPECIFICATIONS_MAIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Corregí las características para recibir menos preguntas y devoluciones",
+       "rules": [
+        {
+         "key": "UP_TS_MAIN_QUANTITY",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Completa las características principales.",
+          "label": "Completar",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/techspecs-primary?item_id=MLA2232924659"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_GTIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Indicá el código universal de tu producto para no perder exposición",
+       "rules": [
+        {
+         "key": "UP_HAS_GTIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Asegurate de completar el código que pertenezca a este producto para estar más arriba en los resultados de búsqueda.",
+          "label": "Completar código",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/universal-code-default?item_id=MLA2232924659"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_AVAILABILITY_TIME",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_STOCK_AVAILABILITY_TIME",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+          "label": "Quitar tiempo",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/stock-availability-default?item_id=MLA2232924659"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TITLE",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Mejorá el título o usá nuestra sugerencia para atraer a más compradores",
+       "rules": [
+        {
+         "key": "UP_TITLE_LENGTH_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Sumá más detalles, el título debe tener al menos 3 palabras.",
+          "label": "Agregar detalles",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/title-default?item_id=MLA2232924659"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_DEPOSITO",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Agregá más stock y evitá perder ventas",
+       "rules": [
+        {
+         "key": "UP_HAS_STOCK_DEPOSITO",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Asegurate de que tu publicación tenga 2 o más unidades disponibles.",
+          "label": "Agregar stock",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641120665/modificar/omni/variation/dominio/stock-sku-default?item_id=MLA2232924659"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "MLA2232924659",
+     "type": "ITEM",
+     "status": "PENDING",
+     "score": 0,
+     "title": "Condiciones de venta",
+     "calculated_at": "2026-10-26T22:09:31Z",
+     "variables": [
+      {
+       "key": "UP_FINANCING",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:31Z",
+       "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_FINANCING",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:31Z",
+         "wordings": {
+          "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+          "label": "Agregar cuotas",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=listing_types_task&itemId=MLA2232924659"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_PRICE",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:32Z",
+       "title": "Optimizá el precio para que sea más competitivo",
+       "rules": [
+        {
+         "key": "UP_PRICE_PER_QUANTITY",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:32Z",
+         "wordings": {
+          "title": "Agregá precios mayoristas",
+          "label": "Agregar precios mayoristas",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=prices_task&itemId=MLA2232924659"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "level_wording": "Estándar"
+  }
+ },
+ {
+  "producto": "regulador-de-altura-de-tee",
+  "pack": "x10",
+  "item_id": "MLA4123281394",
+  "performance": {
+   "entity_type": "USER_PRODUCT",
+   "entity_id": "MLAU5689159702",
+   "score": 60,
+   "level": "medium",
+   "calculated_at": "2026-10-26T22:09:33.837Z",
+   "buckets": [
+    {
+     "key": "USER_PRODUCT",
+     "type": "USER_PRODUCT",
+     "status": "COMPLETED",
+     "score": 100,
+     "title": "Datos del producto",
+     "calculated_at": "2026-10-26T22:09:33Z",
+     "variables": [
+      {
+       "key": "UP_PICTURES",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Mejorá las fotos para tener más visitas",
+       "rules": [
+        {
+         "key": "UP_PICTURES_QUANTITY_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Agregá más fotos para mostrar tu producto desde diferentes ángulos, subí 3 como mínimo.",
+          "label": "Agregar fotos",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/picture-uploader-default"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TECHNICAL_SPECIFICATIONS_MAIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Corregí las características para recibir menos preguntas y devoluciones",
+       "rules": [
+        {
+         "key": "UP_TS_MAIN_QUANTITY",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Completa las características principales.",
+          "label": "Completar",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/techspecs-primary?item_id=MLA4123281394"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_GTIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Indicá el código universal de tu producto para no perder exposición",
+       "rules": [
+        {
+         "key": "UP_HAS_GTIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Asegurate de completar el código que pertenezca a este producto para estar más arriba en los resultados de búsqueda.",
+          "label": "Completar código",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/universal-code-default?item_id=MLA4123281394"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_AVAILABILITY_TIME",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_STOCK_AVAILABILITY_TIME",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+          "label": "Quitar tiempo",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/stock-availability-default?item_id=MLA4123281394"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TITLE",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Mejorá el título o usá nuestra sugerencia para atraer a más compradores",
+       "rules": [
+        {
+         "key": "UP_TITLE_LENGTH_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Sumá más detalles, el título debe tener al menos 3 palabras.",
+          "label": "Agregar detalles",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/title-default?item_id=MLA4123281394"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_DEPOSITO",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Agregá más stock y evitá perder ventas",
+       "rules": [
+        {
+         "key": "UP_HAS_STOCK_DEPOSITO",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Asegurate de que tu publicación tenga 2 o más unidades disponibles.",
+          "label": "Agregar stock",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5689159702/modificar/omni/variation/dominio/stock-sku-default?item_id=MLA4123281394"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "MLA4123281394",
+     "type": "ITEM",
+     "status": "PENDING",
+     "score": 0,
+     "title": "Condiciones de venta",
+     "calculated_at": "2026-10-26T22:09:33Z",
+     "variables": [
+      {
+       "key": "UP_FINANCING",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_FINANCING",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+          "label": "Agregar cuotas",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=listing_types_task&itemId=MLA4123281394"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_FREE_SHIPPING",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Ofrecé envío gratis para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_HAS_FREE_SHIPPING",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Ofrecé envío gratis para que tu publicación sea más competitiva",
+          "label": "Ofrecer envío",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=shipping_task&itemId=MLA4123281394"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "level_wording": "Estándar"
+  }
+ },
+ {
+  "producto": "clip-de-gorra-para-tee",
+  "pack": "x10",
+  "item_id": "MLA4123281448",
+  "performance": {
+   "entity_type": "USER_PRODUCT",
+   "entity_id": "MLAU5641033987",
+   "score": 60,
+   "level": "medium",
+   "calculated_at": "2026-10-26T22:09:34.221Z",
+   "buckets": [
+    {
+     "key": "USER_PRODUCT",
+     "type": "USER_PRODUCT",
+     "status": "COMPLETED",
+     "score": 100,
+     "title": "Datos del producto",
+     "calculated_at": "2026-10-26T22:09:33Z",
+     "variables": [
+      {
+       "key": "UP_TITLE",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Mejorá el título o usá nuestra sugerencia para atraer a más compradores",
+       "rules": [
+        {
+         "key": "UP_TITLE_LENGTH_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Sumá más detalles, el título debe tener al menos 3 palabras.",
+          "label": "Agregar detalles",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/title-default?item_id=MLA4123281448"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TECHNICAL_SPECIFICATIONS_MAIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Corregí las características para recibir menos preguntas y devoluciones",
+       "rules": [
+        {
+         "key": "UP_TS_MAIN_QUANTITY",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Completa las características principales.",
+          "label": "Completar",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/techspecs-primary?item_id=MLA4123281448"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_DEPOSITO",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Agregá más stock y evitá perder ventas",
+       "rules": [
+        {
+         "key": "UP_HAS_STOCK_DEPOSITO",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Asegurate de que tu publicación tenga 2 o más unidades disponibles.",
+          "label": "Agregar stock",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/stock-sku-default?item_id=MLA4123281448"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_PICTURES",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Mejorá las fotos para tener más visitas",
+       "rules": [
+        {
+         "key": "UP_PICTURES_QUANTITY_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Agregá más fotos para mostrar tu producto desde diferentes ángulos, subí 3 como mínimo.",
+          "label": "Agregar fotos",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/picture-uploader-default"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_GTIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Indicá el código universal de tu producto para no perder exposición",
+       "rules": [
+        {
+         "key": "UP_HAS_GTIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Asegurate de completar el código que pertenezca a este producto para estar más arriba en los resultados de búsqueda.",
+          "label": "Completar código",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/universal-code-default?item_id=MLA4123281448"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_AVAILABILITY_TIME",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_STOCK_AVAILABILITY_TIME",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+          "label": "Quitar tiempo",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5641033987/modificar/omni/variation/dominio/stock-availability-default?item_id=MLA4123281448"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "MLA4123281448",
+     "type": "ITEM",
+     "status": "PENDING",
+     "score": 0,
+     "title": "Condiciones de venta",
+     "calculated_at": "2026-10-26T22:09:33Z",
+     "variables": [
+      {
+       "key": "UP_FINANCING",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:33Z",
+       "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_FINANCING",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:33Z",
+         "wordings": {
+          "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+          "label": "Agregar cuotas",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=listing_types_task&itemId=MLA4123281448"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "level_wording": "Estándar"
+  }
+ },
+ {
+  "producto": "marcador-de-bola",
+  "pack": "x10",
+  "item_id": "MLA2233219441",
+  "performance": {
+   "entity_type": "USER_PRODUCT",
+   "entity_id": "MLAU5642940237",
+   "score": 60,
+   "level": "medium",
+   "calculated_at": "2026-10-26T22:09:35.936Z",
+   "buckets": [
+    {
+     "key": "USER_PRODUCT",
+     "type": "USER_PRODUCT",
+     "status": "COMPLETED",
+     "score": 100,
+     "title": "Datos del producto",
+     "calculated_at": "2026-10-26T22:09:35Z",
+     "variables": [
+      {
+       "key": "UP_TITLE",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Mejorá el título o usá nuestra sugerencia para atraer a más compradores",
+       "rules": [
+        {
+         "key": "UP_TITLE_LENGTH_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Sumá más detalles, el título debe tener al menos 3 palabras.",
+          "label": "Agregar detalles",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/title-default?item_id=MLA2233219441"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_TECHNICAL_SPECIFICATIONS_MAIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Corregí las características para recibir menos preguntas y devoluciones",
+       "rules": [
+        {
+         "key": "UP_TS_MAIN_QUANTITY",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Completa las características principales.",
+          "label": "Completar",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/techspecs-primary?item_id=MLA2233219441"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_DEPOSITO",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Agregá más stock y evitá perder ventas",
+       "rules": [
+        {
+         "key": "UP_HAS_STOCK_DEPOSITO",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Asegurate de que tu publicación tenga 2 o más unidades disponibles.",
+          "label": "Agregar stock",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/stock-sku-default?item_id=MLA2233219441"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_PICTURES",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Mejorá las fotos para tener más visitas",
+       "rules": [
+        {
+         "key": "UP_PICTURES_QUANTITY_MIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Agregá más fotos para mostrar tu producto desde diferentes ángulos, subí 3 como mínimo.",
+          "label": "Agregar fotos",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/picture-uploader-default"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_GTIN",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Indicá el código universal de tu producto para no perder exposición",
+       "rules": [
+        {
+         "key": "UP_HAS_GTIN",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Asegurate de completar el código que pertenezca a este producto para estar más arriba en los resultados de búsqueda.",
+          "label": "Completar código",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/universal-code-default?item_id=MLA2233219441"
+         }
+        }
+       ]
+      },
+      {
+       "key": "UP_STOCK_AVAILABILITY_TIME",
+       "status": "COMPLETED",
+       "score": 100,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_STOCK_AVAILABILITY_TIME",
+         "status": "COMPLETED",
+         "progress": 1,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Quitá el tiempo de disponibilidad para que tu publicación sea más competitiva",
+          "label": "Quitar tiempo",
+          "link": "https://www.mercadolibre.com.ar/publicaciones/MLAU5642940237/modificar/omni/variation/dominio/stock-availability-default?item_id=MLA2233219441"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "MLA2233219441",
+     "type": "ITEM",
+     "status": "PENDING",
+     "score": 0,
+     "title": "Condiciones de venta",
+     "calculated_at": "2026-10-26T22:09:35Z",
+     "variables": [
+      {
+       "key": "UP_FINANCING",
+       "status": "PENDING",
+       "score": 0,
+       "calculated_at": "2026-10-26T22:09:35Z",
+       "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+       "rules": [
+        {
+         "key": "UP_BEST_FINANCING",
+         "status": "PENDING",
+         "progress": 0,
+         "mode": "OPPORTUNITY",
+         "calculated_at": "2026-10-26T22:09:35Z",
+         "wordings": {
+          "title": "Agregá cuotas al mismo precio que publicaste para que tu publicación sea más competitiva",
+          "label": "Agregar cuotas",
+          "link": "https://www.mercadolibre.com.ar/syi/core/modify?taskId=listing_types_task&itemId=MLA2233219441"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "level_wording": "Estándar"
+  }
+ }
+]
