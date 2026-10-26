@@ -86,7 +86,7 @@ def main():
         gramos = minutos = 0
         for pieza in info["piezas"]:
             modelo = modelo_de_pieza(info, pieza)
-            g, m = laminar(modelo if modelo.suffix.lower() == ".3mf" else a_stl(modelo))
+            g, m = laminar(a_stl(modelo))  # los .3mf de Bambu no los abre PrusaSlicer
             pieza["gramos"] = round(g, 1)
             gramos, minutos = gramos + g, minutos + m
         info.update(gramos=round(gramos, 1), tiempo=formato_tiempo(minutos), gramos_verificados=True)

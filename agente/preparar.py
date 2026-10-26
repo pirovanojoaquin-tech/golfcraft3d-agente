@@ -65,13 +65,81 @@ def descargar(url, destino):
 
 
 def a_stl(ruta):
-    """El render necesita STL/OBJ: los 3MF se convierten con PrusaSlicer."""
+    """El render necesita STL/OBJ: los 3MF se convierten con PrusaSlicer (o a mano si PrusaSlicer no los abre,
+    como los proyectos de Bambu Studio que vienen de MakerWorld)."""
     if ruta.suffix.lower() in (".stl", ".obj"):
         return ruta
     salida = ruta.with_suffix(".stl")
-    subprocess.run(["prusa-slicer", "--export-stl", "-o", str(salida), str(ruta)],
-                   check=True, capture_output=True)
+    r = subprocess.run(["prusa-slicer", "--export-stl", "-o", str(salida), str(ruta)], capture_output=True)
+    if r.returncode != 0 or not salida.exists():
+        tmf_a_stl(ruta, salida)
     return salida
+
+
+def tmf_a_stl(ruta, salida):
+    """Junta todas las mallas de un .3mf (incluye los 3D/Objects/*.model de Bambu) en un STL binario.
+    Aplica la transformación de cada componente y de cada pieza de la placa."""
+    import struct
+    import zipfile
+    import xml.etree.ElementTree as ET
+
+    def local(tag):
+        return tag.rsplit("}", 1)[-1]
+
+    def matriz(texto):
+        if not texto:
+            return None
+        v = [float(x) for x in texto.split()]  # 3MF: m00 m01 m02 m10 m11 m12 m20 m21 m22 m30 m31 m32
+        return [[v[0], v[3], v[6], v[9]], [v[1], v[4], v[7], v[10]], [v[2], v[5], v[8], v[11]]]
+
+    def aplicar(m, p):
+        return p if m is None else tuple(m[i][0] * p[0] + m[i][1] * p[1] + m[i][2] * p[2] + m[i][3] for i in range(3))
+
+    def componer(a, b):  # primero b, después a
+        if a is None or b is None:
+            return a or b
+        return [[sum(a[i][k] * b[k][j] for k in range(3)) + (a[i][3] if j == 3 else 0) for j in range(4)]
+                for i in range(3)]
+
+    with zipfile.ZipFile(ruta) as z:
+        modelos = {"/" + n: ET.fromstring(z.read(n)) for n in z.namelist() if n.lower().endswith(".model")}
+    objetos = {}  # (archivo, id) -> elemento <object>
+    for archivo, raiz in modelos.items():
+        for o in raiz.iter():
+            if local(o.tag) == "object":
+                objetos[(archivo, o.get("id"))] = o
+
+    triangulos = []
+
+    def volcar(archivo, oid, m, profundidad=0):
+        o = objetos.get((archivo, oid))
+        if o is None or profundidad > 8:
+            return
+        for hijo in o:
+            if local(hijo.tag) == "mesh":
+                vertices, tris = [], []
+                for e in hijo.iter():
+                    if local(e.tag) == "vertex":
+                        vertices.append(aplicar(m, (float(e.get("x")), float(e.get("y")), float(e.get("z")))))
+                    elif local(e.tag) == "triangle":
+                        tris.append((int(e.get("v1")), int(e.get("v2")), int(e.get("v3"))))
+                triangulos.extend((vertices[a], vertices[b], vertices[c]) for a, b, c in tris)
+            elif local(hijo.tag) == "components":
+                for c in hijo:
+                    destino = next((v for k, v in c.attrib.items() if local(k) == "path"), None) or archivo
+                    volcar(destino, c.get("objectid"), componer(m, matriz(c.get("transform"))), profundidad + 1)
+
+    principal = next((a for a in modelos if a.lower().endswith("3dmodel.model")), next(iter(modelos)))
+    items = [e for e in modelos[principal].iter() if local(e.tag) == "item"]
+    for it in items:
+        volcar(principal, it.get("objectid"), matriz(it.get("transform")))
+    if not triangulos:
+        raise RuntimeError(f"No encontré mallas en {ruta.name}")
+    with open(salida, "wb") as f:
+        f.write(b"GolfCraft3D".ljust(80, b" "))
+        f.write(struct.pack("<I", len(triangulos)))
+        for t in triangulos:
+            f.write(struct.pack("<12fH", 0, 0, 0, *t[0], *t[1], *t[2], 0))
 
 
 def medidas(ruta):
