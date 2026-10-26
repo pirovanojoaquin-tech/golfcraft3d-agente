@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 6,
+  "siguiente": 7,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -278,6 +278,58 @@
       "item_id": "MLA2233219441",
       "link": "http://articulo.mercadolibre.com.ar/MLA-2233219441-marcador-de-bola-golf-pack-x10-impreso-3d-_JM",
       "status_ml": "active"
+    },
+    "arco-de-putting": {
+      "codigo": 6,
+      "estado": "propuesto",
+      "pack": 5,
+      "categoria": "MLA2549",
+      "categoria_nombre": "Golf > Palos y Sets > Putters",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 4000,
+          "comision": 3300,
+          "envio": 0,
+          "filamento": 644,
+          "ganancia": 56
+        },
+        {
+          "pack": 2,
+          "precio": 8000,
+          "comision": 3940,
+          "envio": 0,
+          "filamento": 1288,
+          "ganancia": 2772
+        },
+        {
+          "pack": 3,
+          "precio": 11400,
+          "comision": 4484,
+          "envio": 0,
+          "filamento": 1932,
+          "ganancia": 4984
+        },
+        {
+          "pack": 5,
+          "precio": 18000,
+          "comision": 8360,
+          "envio": 0,
+          "filamento": 3220,
+          "ganancia": 6420
+        },
+        {
+          "pack": 10,
+          "precio": 34000,
+          "comision": 5440,
+          "envio": 0,
+          "filamento": 6440,
+          "ganancia": 22120
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-26"
     }
   }
 }
