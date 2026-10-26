@@ -22,3 +22,14 @@ piezas:
 - archivo: stick_phone_clip.STL
   printables_file_id: '629071'
   gramos: 15.7
+medidas_mm:
+  largo: 84
+  ancho: 50
+  alto: 24
+colores_png:
+- negro
+- verde
+- blanco
+- rojo
+- azul
+- amarillo

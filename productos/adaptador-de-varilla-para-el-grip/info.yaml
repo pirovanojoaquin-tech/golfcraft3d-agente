@@ -22,3 +22,14 @@ piezas:
 - archivo: Golf club training aid.stl
   printables_file_id: '2042504'
   gramos: 7.6
+medidas_mm:
+  largo: 31
+  ancho: 30
+  alto: 31
+colores_png:
+- rojo
+- negro
+- amarillo
+- blanco
+- azul
+- verde

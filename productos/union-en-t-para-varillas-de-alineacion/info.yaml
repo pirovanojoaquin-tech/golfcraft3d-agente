@@ -23,3 +23,14 @@ piezas:
 - archivo: modelo.stl
   ruta: disenos/union-t-para-varillas/modelo.stl
   gramos: 22.9
+medidas_mm:
+  largo: 70
+  ancho: 34
+  alto: 26
+colores_png:
+- amarillo
+- negro
+- verde
+- blanco
+- rojo
+- azul

@@ -23,3 +23,14 @@ piezas:
 - archivo: modelo.stl
   ruta: disenos/riel-de-golpe-para-putt/modelo.stl
   gramos: 27.1
+medidas_mm:
+  largo: 214
+  ancho: 139
+  alto: 12
+colores_png:
+- blanco
+- verde
+- rojo
+- negro
+- azul
+- amarillo

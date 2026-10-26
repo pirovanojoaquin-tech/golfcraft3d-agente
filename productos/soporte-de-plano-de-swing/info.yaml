@@ -24,3 +24,14 @@ piezas:
 - archivo: modelo.stl
   ruta: disenos/soporte-de-plano-de-swing/modelo.stl
   gramos: 37.2
+medidas_mm:
+  largo: 110
+  ancho: 70
+  alto: 40
+colores_png:
+- verde
+- negro
+- blanco
+- rojo
+- azul
+- amarillo

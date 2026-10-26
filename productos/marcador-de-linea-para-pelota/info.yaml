@@ -24,3 +24,14 @@ piezas:
 - archivo: modelo.stl
   ruta: disenos/marcador-de-linea-para-pelota/modelo.stl
   gramos: 18.8
+medidas_mm:
+  largo: 64
+  ancho: 46
+  alto: 52
+colores_png:
+- verde
+- blanco
+- azul
+- negro
+- rojo
+- amarillo
