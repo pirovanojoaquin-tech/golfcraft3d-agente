@@ -20,5 +20,7 @@ makerworld_id: 1383663
 url: https://makerworld.com/es/models/1383663-golf-putting-accuracy-trainer-ring
 autor: nosferatu
 licencia: CC0
-piezas: []
-archivo_pendiente: true
+piezas:
+- archivo: Putting-hole-8mm_PLA.3mf
+  telegram_file_id: BQACAgEAAxkBAAN1at-clVlEXT0uSYBUQKMb4uj4nJkAAjEIAAJZJwABR99qgHCI9CKfPQQ
+archivo_pendiente: false
