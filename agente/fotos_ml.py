@@ -124,11 +124,12 @@ def colores(items):
     return im
 
 
-def generar(slug, pack=1):
+def generar(slug, pack=1, carpeta_salida="ml"):
+    """carpeta_salida: fotos/ml (aviso principal) o fotos/ml-x<N> (aviso del pack chico de entrada)."""
     carpeta = RAIZ / "productos" / slug
     info = yaml.safe_load((carpeta / "info.yaml").read_text(encoding="utf-8"))
     png = carpeta / "fotos" / "png"
-    salida = carpeta / "fotos" / "ml"
+    salida = carpeta / "fotos" / carpeta_salida
     principal = (info.get("colores") or ["verde"])[0]
     lista = info.get("colores_png") or [principal]
     rutas = [guardar(portada(png / f"{principal}.png", pack), salida / "1-portada.jpg")]

@@ -58,6 +58,7 @@ mercadolibre:
   sitio: MLA
   tipo_publicacion: gold_special # Clásica
   ganancia_minima: 5000          # ARS limpios por venta (después de comisión, cargo fijo, envío y filamento)
+  ganancia_minima_entrada: 2000  # pack chico de entrada (2do aviso) para conseguir las primeras ventas
   multiplicador_precio: 2        # precio por unidad en ML = precio de Instagram x esto...
   precio_minimo_unidad: 1500     # ...pero nunca menos que esto por unidad
   packs: [1, 2, 3, 5, 10]        # se elige el más chico que deje la ganancia mínima

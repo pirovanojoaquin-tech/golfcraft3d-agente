@@ -410,8 +410,8 @@ def proponer(slug):
     print(f"{slug}: pack x{pack} ({p['estado']})")
 
 
-def url_foto(slug, nombre, sha):
-    return f"https://raw.githubusercontent.com/{REPO}/{sha}/productos/{slug}/fotos/ml/{nombre}"
+def url_foto(slug, nombre, sha, carpeta="ml"):
+    return f"https://raw.githubusercontent.com/{REPO}/{sha}/productos/{slug}/fotos/{carpeta}/{nombre}"
 
 
 def avisar(slug, sha):
@@ -538,8 +538,9 @@ def armar_item(slug, p, info, up=False):
     sha = p["sha_fotos"]
     f = next(x for x in p["calculo"] if x["pack"] == p["pack"])
     n, precio = p["pack"], f["precio"]
-    carpeta = RAIZ / "productos" / slug / "fotos" / "ml"
-    fotos = sorted(x.name for x in carpeta.glob("[0-9]-*.jpg"))
+    dir_fotos = p.get("carpeta_fotos", "ml")
+    carpeta = RAIZ / "productos" / slug / "fotos" / dir_fotos
+    fotos = sorted(x.name for x in carpeta.glob("[0-9]*-*.jpg"))
     colores = info.get("colores_png") or info.get("colores") or []
     atributos = {a["id"]: a for a in api("GET", f"/categories/{p['categoria']}/attributes", auth=False)}
     con_variantes = not up and "COLOR" in atributos and atributos["COLOR"].get("tags", {}).get("allow_variations")
@@ -554,13 +555,13 @@ def armar_item(slug, p, info, up=False):
         "attributes": [{"id": "BRAND", "value_name": "GolfCraft3D"}, {"id": "MODEL", "value_name": info["nombre"][:60]}],
     }
     if con_variantes:
-        variantes = [url_foto(slug, f"color-{c}.jpg", sha) for c in colores]
-        item["pictures"] = [{"source": u} for u in [url_foto(slug, x, sha) for x in fotos][:12 - len(variantes)] + variantes]
+        variantes = [url_foto(slug, f"color-{c}.jpg", sha, dir_fotos) for c in colores]
+        item["pictures"] = [{"source": u} for u in [url_foto(slug, x, sha, dir_fotos) for x in fotos][:12 - len(variantes)] + variantes]
         item["variations"] = [{"attribute_combinations": [{"id": "COLOR", "value_name": c.capitalize()}],
                                "price": precio, "available_quantity": CFG["stock"], "picture_ids": [u],
                                "attributes": [gtin]} for c, u in zip(colores, variantes)]
     else:
-        item["pictures"] = [{"source": url_foto(slug, x, sha)} for x in fotos][:12]
+        item["pictures"] = [{"source": url_foto(slug, x, sha, dir_fotos)} for x in fotos][:12]
         item["attributes"].append(gtin)
     # medidas y peso del paquete: sin esto ML no habilita Mercado Envíos (me2) para la publicación
     medidas, peso = dimensiones(info, n).split(",")
@@ -610,6 +611,113 @@ def publicar(slug):
     planilla("Publicaciones", p["codigo"], fila_publicacion(slug, p, f))
     telegram.enviar(f"✅ <b>Publicado en Mercado Libre</b>: {item.get('title') or item.get('family_name')}\n{plata(item['price'])} · "
                     f"te quedan ~{plata(f['ganancia'])} por venta\n<a href=\"{p['link']}\">Ver publicación</a>")
+    try:
+        entrada(slug)
+    except Exception as e:  # el aviso principal ya quedó publicado: esto no lo frena
+        print(f"Pack de entrada de {slug}: {e}")
+
+
+def entrada(slug):
+    """Segundo aviso con un pack chico (más barato) para que sea fácil la primera compra.
+
+    Elige el pack más chico, menor al principal, que deje al menos `ganancia_minima_entrada` (config.yaml).
+    Las primeras ventas y calificaciones son las que hacen que ML muestre más los avisos."""
+    from . import fotos_ml
+    estado = cargar()
+    p = estado["productos"].get(slug) or {}
+    if p.get("estado") != "publicado" or (p.get("entrada") or {}).get("item_id"):
+        print(f"{slug}: no publicado o ya tiene pack de entrada")
+        return
+    filas = [f for f in p["calculo"] if f["pack"] < p["pack"] and f["ganancia"] >= CFG.get("ganancia_minima_entrada", 2000)]
+    if not filas:
+        print(f"{slug}: ningún pack chico deja la ganancia mínima de entrada")
+        return
+    f = filas[0]
+    n, carpeta = f["pack"], f"ml-x{f['pack']}"
+    fotos_ml.generar(slug, n, carpeta)
+    sha = subir(f"Mercado Libre: fotos del pack x{n} de {slug}", [f"productos/{slug}/fotos/{carpeta}"])
+    info = info_producto(slug)
+    item, texto = armar_item(slug, {**p, "pack": n, "sha_fotos": sha, "carpeta_fotos": carpeta}, info, up=True)
+    validar(item)
+    nuevo = api("POST", "/items", json=item)
+    api("POST", f"/items/{nuevo['id']}/description", json={"plain_text": texto})
+    estado = cargar()
+    estado["productos"][slug]["entrada"] = {"pack": n, "item_id": nuevo["id"], "link": nuevo.get("permalink", ""),
+                                             "precio": f["precio"], "ganancia": f["ganancia"]}
+    guardar(estado)
+    telegram.enviar(f"🆕 <b>Pack de entrada en Mercado Libre</b>: {info['nombre']} x{n} a {plata(f['precio'])} "
+                    f"(te quedan ~{plata(f['ganancia'])})\n<a href=\"{nuevo.get('permalink', '')}\">Ver publicación</a>")
+
+
+def avisos_publicados(estado):
+    """(slug, etiqueta, item_id) de todos los avisos: el principal y el pack de entrada."""
+    for slug, p in estado["productos"].items():
+        if p.get("estado") == "publicado" and p.get("item_id"):
+            yield slug, f"x{p['pack']}", p["item_id"], p["pack"]
+            if (p.get("entrada") or {}).get("item_id"):
+                yield slug, f"x{p['entrada']['pack']}", p["entrada"]["item_id"], p["entrada"]["pack"]
+
+
+def calidad():
+    """Puntaje de calidad de cada aviso (el "53 · 3 objetivos" de la web de ML) y qué objetivos faltan."""
+    estado = cargar()
+    salida = []
+    for slug, etiqueta, item_id, n in avisos_publicados(estado):
+        try:
+            d = api("GET", f"/item/{item_id}/performance")
+        except ErrorML as e:
+            print(f"{slug} {etiqueta}: {e}")
+            continue
+        salida.append({"producto": slug, "pack": etiqueta, "item_id": item_id, "performance": d})
+        print(f"\n== {slug} {etiqueta} ({item_id}): puntaje {d.get('score')} nivel {d.get('level_wording') or d.get('level')}")
+        for b in d.get("buckets") or []:
+            for v in b.get("variables") or []:
+                for r in v.get("rules") or []:
+                    if r.get("status") != "COMPLETED":
+                        w = r.get("wordings") or {}
+                        print(f"  [{b.get('key')}/{v.get('key')}] {r.get('key')} {r.get('status')}: {w.get('title')} — {w.get('label')}")
+    (RAIZ / "contenido" / "ml-calidad.json").write_text(json.dumps(salida, ensure_ascii=False, indent=1) + "\n",
+                                                       encoding="utf-8")
+
+
+def titulos():
+    """Actualiza el título de los avisos con `ml_titulo` (palabras que más se buscan) si cambió."""
+    estado = cargar()
+    for slug, etiqueta, item_id, n in avisos_publicados(estado):
+        nuevo = titulo(info_producto(slug), n)
+        actual = api("GET", f"/items/{item_id}").get("title")
+        if actual == nuevo:
+            continue
+        try:
+            api("PUT", f"/items/{item_id}", json={"title": nuevo})
+            print(f"{slug} {etiqueta}: {actual} -> {nuevo}")
+        except ErrorML as e:
+            print(f"{slug} {etiqueta}: ML no dejó cambiar el título ({e})")
+
+
+def reporte():
+    """Visitas (7 días), preguntas y ventas de cada aviso: va al Telegram y a contenido/ml-reporte.json
+    (lo usa el resumen de los lunes). Solo números, sin datos de compradores."""
+    estado = cargar()
+    filas = []
+    for slug, etiqueta, item_id, n in avisos_publicados(estado):
+        fila = {"producto": slug, "pack": etiqueta, "item_id": item_id}
+        try:
+            it = api("GET", f"/items/{item_id}")
+            fila.update(estado_ml=it.get("status"), precio=it.get("price"), vendidos=it.get("sold_quantity", 0))
+            fila["visitas_7d"] = api("GET", f"/items/{item_id}/visits/time_window",
+                                     params={"last": 7, "unit": "day"}).get("total_visits", 0)
+            fila["preguntas"] = api("GET", "/questions/search", params={"item": item_id, "api_version": 4}).get("total", 0)
+        except ErrorML as e:
+            fila["error"] = str(e)[-120:]
+        filas.append(fila)
+    (RAIZ / "contenido" / "ml-reporte.json").write_text(json.dumps(
+        {"fecha": datetime.now(ARG).strftime("%Y-%m-%d"), "avisos": filas}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8")
+    lineas = [f"• {info_producto(f['producto'])['nombre']} {f['pack']}: {f.get('visitas_7d', '?')} visitas, "
+              f"{f.get('preguntas', '?')} preguntas, {f.get('vendidos', '?')} vendidos" for f in filas]
+    total = sum(f.get("visitas_7d") or 0 for f in filas)
+    telegram.enviar("📊 <b>Mercado Libre, últimos 7 días</b>\n" + "\n".join(lineas) + f"\n\nTotal: {total} visitas")
 
 
 # ---------- ventas, preguntas y avisos ----------
@@ -821,9 +929,9 @@ def diagnostico():
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico"):
+    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico", "titulos", "reporte", "calidad"):
         sub.add_parser(c)
-    for c in ("proponer", "publicar", "fallo", "rechazar", "probar"):
+    for c in ("proponer", "publicar", "fallo", "rechazar", "probar", "entrada"):
         sub.add_parser(c).add_argument("slug")
     sb = sub.add_parser("subir")
     sb.add_argument("mensaje")
@@ -840,9 +948,15 @@ def main():
         link_autorizacion()
     elif a.cmd == "diagnostico":
         diagnostico()
-    elif a.cmd in ("pendientes", "aprobaciones", "revisar"):
+    elif a.cmd in ("pendientes", "aprobaciones", "revisar", "titulos", "reporte", "calidad"):
         globals()[a.cmd]()
-    elif a.cmd in ("proponer", "publicar", "fallo", "rechazar", "probar"):
+    elif a.cmd == "entrada" and a.slug == "todos":
+        for slug in [s for s, p in cargar()["productos"].items() if p.get("estado") == "publicado"]:
+            try:
+                entrada(slug)
+            except ErrorML as e:
+                print(f"{slug}: {e}")
+    elif a.cmd in ("proponer", "publicar", "fallo", "rechazar", "probar", "entrada"):
         globals()[a.cmd](a.slug)
     elif a.cmd == "subir":
         print(subir(a.mensaje, a.rutas))

@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       accion:
-        description: "proponer | publicar | rechazar | evento | revisar | autorizar | link | diagnostico"
+        description: "proponer | publicar | rechazar | evento | revisar | autorizar | link | diagnostico | calidad | titulos | entrada | reporte"
         required: true
         default: revisar
       producto:
@@ -99,6 +99,12 @@ jobs:
         if: env.ACCION == 'diagnostico'
         run: python -m agente.mercadolibre diagnostico
 
+      - name: Calidad, títulos, pack de entrada y reporte
+        if: contains(fromJSON('["calidad","titulos","reporte","entrada"]'), env.ACCION)
+        run: |
+          if [ "$ACCION" = entrada ]; then python -m agente.mercadolibre entrada "${PRODUCTO:-todos}"
+          else python -m agente.mercadolibre "$ACCION"; fi
+
       - name: Probar aviso (solo valida)
         if: env.ACCION == 'probar'
         env:
@@ -122,7 +128,7 @@ jobs:
       - name: Guardar estado
         if: always()
         run: |
-          python -m agente.mercadolibre subir "Mercado Libre - estado ($ACCION)"
+          python -m agente.mercadolibre subir "Mercado Libre - estado ($ACCION)" contenido/ml-reporte.json contenido/ml-calidad.json
 
       - name: Actualizar la tienda web
         if: success() && (env.ACCION == 'publicar' || env.ACCION == 'evento')
