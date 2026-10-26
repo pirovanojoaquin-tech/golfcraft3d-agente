@@ -1,0 +1,33 @@
+nombre: Soporte de celular para varilla
+nombre_original: Golf Alignment Stick Phone Clip
+descripcion: At the range working on your swing? Need a buddy to get a video? Not
+  if you have an alignment stick and a printer!
+origen: printables
+printables_id: '152912'
+url: https://www.printables.com/model/152912-golf-alignment-stick-phone-clip
+autor: Willis Works
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: stick_phone_clip.STL
+  printables_file_id: '629071'
+  gramos: 15.7
+gramos: 15.7
+tiempo_min: 26
+tiempo: 26 min
+costo_filamento: 628
+precio: 1900
+material: PLA
+colores_render:
+- negro
+- verde
+- blanco
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: blanco
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

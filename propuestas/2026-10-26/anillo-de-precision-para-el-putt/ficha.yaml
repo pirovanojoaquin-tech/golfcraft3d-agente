@@ -1,0 +1,37 @@
+nombre: Anillo de precisión para el putt
+nombre_original: Golf Putting Accuracy Trainer Ring
+descripcion: This golf putting practice ring is designed to simulate the challenge
+  of a real golf hole. The inner hole has a diameter of 108 mm , matching the regulation
+  size of a standard golf cup. The outer diameter is 133 mm , with a tapered, sloped
+  design that rewards precise speed control. &nbsp; If your putt is too soft , the
+  ball will fall short and not reach the center hole. If your putt is too strong ,
+  it will overshoot and exit out the far side. This design encourages precise control
+  of both aim and speed, helping you develop more consistent putting under pressure.
+  &nbsp; Ideal for indoor and out
+origen: makerworld
+printables_id: null
+makerworld_id: 1383663
+url: https://makerworld.com/es/models/1383663-golf-putting-accuracy-trainer-ring
+autor: nosferatu
+licencia: CC0
+licencia_nombre: CC0
+piezas: []
+archivo_pendiente: true
+gramos: 30.0
+tiempo_min: 59
+tiempo: 59 min
+costo_filamento: 1200
+precio: 3600
+material: PLA
+colores_render:
+- verde
+- blanco
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: blanco
+estimacion: 'Gramos y tiempo del perfil publicado en MakerWorld (0.2mm layer, 2 walls,
+  15% infill). Las fotos son del autor: si se aprueba, se rehacen con nuestros renders
+  cuando llegue el archivo.'

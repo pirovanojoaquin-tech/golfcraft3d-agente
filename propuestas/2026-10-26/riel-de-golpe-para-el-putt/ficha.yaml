@@ -1,0 +1,36 @@
+nombre: Riel de golpe para el putt
+descripcion: Dos rieles paralelos para practicar un golpe de putt derecho. Si el putter
+  toca un riel, la trayectoria se desvió. Tiene marcas cada 5 cm para controlar el
+  largo del backswing.
+inspiracion: Las guías de trayectoria de putt (putting rails) que se usan para entrenar
+  el recorrido del palo. Diseño propio, sin copiar ningún producto en particular.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: riel-de-golpe-para-putt
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/riel-de-golpe-para-putt/modelo.stl
+  gramos: 27.1
+gramos: 27.1
+tiempo_min: 46
+tiempo: 46 min
+costo_filamento: 1084
+precio: 3300
+material: PLA
+colores_render:
+- blanco
+- verde
+- rojo
+fotos:
+- archivo: 1.jpg
+  color: blanco
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: rojo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

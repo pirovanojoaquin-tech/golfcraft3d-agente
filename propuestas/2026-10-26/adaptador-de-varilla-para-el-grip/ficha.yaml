@@ -1,0 +1,33 @@
+nombre: Adaptador de varilla para el grip
+nombre_original: Golf club training aid
+descripcion: Training aid to attach an alignment stick to the butt of a golf club
+  grip
+origen: printables
+printables_id: '472512'
+url: https://www.printables.com/model/472512-golf-club-training-aid
+autor: Donkey Jon
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: Golf club training aid.stl
+  printables_file_id: '2042504'
+  gramos: 7.6
+gramos: 7.6
+tiempo_min: 18
+tiempo: 18 min
+costo_filamento: 303
+precio: 1000
+material: PLA
+colores_render:
+- rojo
+- negro
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: rojo
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: amarillo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

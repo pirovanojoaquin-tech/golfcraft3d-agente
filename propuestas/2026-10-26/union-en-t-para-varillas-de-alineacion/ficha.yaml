@@ -1,0 +1,35 @@
+nombre: Unión en T para varillas de alineación
+descripcion: Une dos varillas de alineación a 90°. Una marca la línea de los pies
+  y la otra la posición de la bola, para entrenar la postura en el driving.
+inspiracion: El ejercicio clásico de varillas en "T" para alinear pies y posición
+  de bola. Diseño propio para varillas estándar de 3/8".
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: union-t-para-varillas
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/union-t-para-varillas/modelo.stl
+  gramos: 22.9
+gramos: 22.9
+tiempo_min: 43
+tiempo: 43 min
+costo_filamento: 914
+precio: 2800
+material: PLA
+colores_render:
+- amarillo
+- negro
+- verde
+fotos:
+- archivo: 1.jpg
+  color: amarillo
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: verde
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
