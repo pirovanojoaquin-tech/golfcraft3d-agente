@@ -76,6 +76,12 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    semana sigue pendiente, recordáselo. Si trae piezas de más (variantes), dejá en `piezas` solo una unidad.
 4. Confirmale qué se aprobó y que ya está en Drive (o el error si falló): en el hilo de Gmail y por
    Telegram (mensaje corto).
+4c. **Mercado Libre: calidad y ventas.** Cada aviso nuevo sale con las características principales completas y sin
+   "tiempo de disponibilidad", y con un **segundo aviso de pack chico** (`entrada`: el pack más chico que deje
+   `ganancia_minima_entrada`) para conseguir las primeras ventas. Si un producto no tiene `ml_titulo` en su info.yaml,
+   agregalo antes de proponerlo (palabras que más se buscan, ej: "Guía Altura Tee Golf Regulador Drive"); ML no deja
+   cambiar el título después. Lunes 8:07 sale solo el reporte (`contenido/ml-reporte.json`): sumalo al resumen.
+   Para revisar el puntaje: workflow `mercadolibre.yml` con `accion=calidad` (y `mejorar_calidad` para corregir).
 4b. **Categoría sin Mercado Envíos** (ML avisa "no tiene Mercado Envíos"; pasa en Golf > Otros): poné
    `ml_envio: a_convenir` en su info.yaml y se publica con envío a convenir.
 5. **Mercado Libre en los slides:** si se publicó algún producto en ML desde la última rutina, regenerá los días
