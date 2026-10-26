@@ -655,6 +655,7 @@ def publicar(slug):
     telegram.enviar(f"✅ <b>Publicado en Mercado Libre</b>: {item.get('title') or item.get('family_name')}\n{plata(item['price'])} · "
                     f"te quedan ~{plata(f['ganancia'])} por venta\n<a href=\"{p['link']}\">Ver publicación</a>")
     try:
+        mayoristas(nuevo["id"])
         entrada(slug)
     except Exception as e:  # el aviso principal ya quedó publicado: esto no lo frena
         print(f"Pack de entrada de {slug}: {e}")
@@ -684,6 +685,10 @@ def entrada(slug):
     validar(item)
     nuevo = api("POST", "/items", json=item)
     api("POST", f"/items/{nuevo['id']}/description", json={"plain_text": texto})
+    try:
+        mayoristas(nuevo["id"])
+    except ErrorML as e:
+        print(f"Precios mayoristas del pack de entrada: {e}")
     estado = cargar()
     estado["productos"][slug]["entrada"] = {"pack": n, "item_id": nuevo["id"], "link": nuevo.get("permalink", ""),
                                              "precio": f["precio"], "ganancia": f["ganancia"]}
@@ -749,6 +754,32 @@ def mejorar_calidad():
                 api("PUT", f"/items/{item_id}/description", json={"plain_text": texto})
             except ErrorML as e:
                 print(f"{slug} {etiqueta}: descripción no se pudo ({e})")
+
+
+def mayoristas(item_id):
+    """Precios mayoristas (B2C, "Precio por cantidad" de ML): descuento si compran varias unidades del aviso.
+    ML lo cuenta para la calidad. Escalas en config.yaml > descuento_mayorista ({unidades: descuento})."""
+    escalas = CFG.get("descuento_mayorista") or {}
+    precios = api("GET", f"/items/{item_id}/prices").get("prices") or []
+    std = next((x for x in precios if x.get("type") == "standard"
+                and not (x.get("conditions") or {}).get("min_purchase_unit")), None)
+    if not std or not escalas:
+        return
+    lista = [{"id": std["id"], "amount": std["amount"], "currency_id": std["currency_id"],
+              "conditions": {"context_restrictions": ["channel_marketplace"]}}]
+    for unidades, desc in sorted(escalas.items()):
+        lista.append({"amount": redondear(std["amount"] * (1 - desc)), "currency_id": std["currency_id"],
+                      "conditions": {"context_restrictions": ["channel_marketplace"], "min_purchase_unit": int(unidades)}})
+    api("POST", f"/items/{item_id}/prices/standard/quantity", json={"prices": lista})
+    return [(x["conditions"].get("min_purchase_unit", 1), x["amount"]) for x in lista]
+
+
+def mayoristas_todos():
+    for slug, etiqueta, item_id, n in avisos_publicados(cargar()):
+        try:
+            print(f"{slug} {etiqueta}: {mayoristas(item_id)}")
+        except ErrorML as e:
+            print(f"{slug} {etiqueta}: precios mayoristas no se pudo ({e})")
 
 
 def titulos():
@@ -1004,7 +1035,7 @@ def diagnostico():
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico", "titulos", "reporte", "calidad", "mejorar_calidad"):
+    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico", "titulos", "reporte", "calidad", "mejorar_calidad", "mayoristas_todos"):
         sub.add_parser(c)
     for c in ("proponer", "publicar", "fallo", "rechazar", "probar", "entrada"):
         sub.add_parser(c).add_argument("slug")
@@ -1023,7 +1054,8 @@ def main():
         link_autorizacion()
     elif a.cmd == "diagnostico":
         diagnostico()
-    elif a.cmd in ("pendientes", "aprobaciones", "revisar", "titulos", "reporte", "calidad", "mejorar_calidad"):
+    elif a.cmd in ("pendientes", "aprobaciones", "revisar", "titulos", "reporte", "calidad", "mejorar_calidad",
+                   "mayoristas_todos"):
         globals()[a.cmd]()
     elif a.cmd == "entrada" and a.slug == "todos":
         for slug in [s for s, p in cargar()["productos"].items() if p.get("estado") == "publicado"]:

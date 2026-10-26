@@ -62,6 +62,7 @@ mercadolibre:
   multiplicador_precio: 2        # precio por unidad en ML = precio de Instagram x esto...
   precio_minimo_unidad: 1500     # ...pero nunca menos que esto por unidad
   packs: [1, 2, 3, 5, 10]        # se elige el más chico que deje la ganancia mínima
+  descuento_mayorista: {2: 0.05, 4: 0.10}   # precio por cantidad en cada aviso (llevando 2+ o 4+ unidades)
   descuento_pack: {3: 0.05, 5: 0.10, 10: 0.15}
   envio_estimado: 9000           # ARS, si ML no puede cotizar el envío gratis (sin Mercado Envíos)
   umbral_envio_gratis: 33000     # desde este precio el envío gratis es obligatorio y lo paga el vendedor (verificar)

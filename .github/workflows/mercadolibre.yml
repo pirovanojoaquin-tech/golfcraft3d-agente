@@ -100,8 +100,10 @@ jobs:
         if: env.ACCION == 'diagnostico'
         run: python -m agente.mercadolibre diagnostico
 
-      - name: Calidad, títulos, pack de entrada y reporte
-        if: contains(fromJSON('["calidad","mejorar_calidad","titulos","reporte","entrada"]'), env.ACCION)
+      - name: Calidad, títulos, pack de entrada, mayoristas y reporte
+        env:
+          ML_DEBUG: "1"
+        if: contains(fromJSON('["calidad","mejorar_calidad","mayoristas_todos","titulos","reporte","entrada"]'), env.ACCION)
         run: |
           if [ "$ACCION" = entrada ]; then python -m agente.mercadolibre entrada "${PRODUCTO:-todos}"
           else python -m agente.mercadolibre "$ACCION"; fi
