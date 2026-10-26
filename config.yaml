@@ -66,7 +66,7 @@ mercadolibre:
   envio_estimado: 9000           # ARS, si ML no puede cotizar el envío gratis (sin Mercado Envíos)
   umbral_envio_gratis: 33000     # desde este precio el envío gratis es obligatorio y lo paga el vendedor (verificar)
   stock: 5                       # unidades a la venta por publicación (se imprime a pedido)
-  dias_preparacion: 2            # "disponibilidad de stock": días para imprimir antes de despachar
+  dias_preparacion: 0            # 0 = sin "tiempo de disponibilidad" (ML baja la calidad del aviso si lo tiene); se despacha en 24 h
   embalaje_g: 30                 # peso extra del sobre/caja
   iva: "21 %"                    # IVA del producto para ML (dueño monotributista: 21 %, decidido el 22/10/2026)
   impuesto_interno: "0 %"        # impuestos internos: no aplican a estos productos

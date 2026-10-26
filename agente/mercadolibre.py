@@ -97,7 +97,7 @@ def subir(mensaje, rutas=()):
         suyo["siguiente"] = max(suyo.get("siguiente", 1), mio.get("siguiente", 1))
         _git("reset", "-q", "--mixed", "origin/main")
         guardar(suyo)
-        _git("add", "-A", rel, *rutas)
+        _git("add", "-A", rel, *[r for r in rutas if (RAIZ / r).exists()])
         if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode == 0:
             return _git("rev-parse", "HEAD").strip()
         _git("commit", "-q", "-m", mensaje)
@@ -504,7 +504,8 @@ def descripcion(info, n, colores, con_variantes):
     if a_convenir(info):
         lineas += ["", "Envío a convenir: después de la compra coordinamos por mensaje el envío (correo o moto) "
                    "o el retiro en persona."]
-    lineas += ["", f"Se fabrica a pedido: se despacha dentro de los {CFG['dias_preparacion']} días hábiles.",
+    lineas += ["", f"Se fabrica a pedido: se despacha dentro de los {CFG['dias_preparacion']} días hábiles."
+               if CFG["dias_preparacion"] else "Stock disponible: se despacha en 24 horas hábiles.",
                "Diseños GolfCraft3D."]
     if info.get("autor") and info.get("licencia"):
         lineas.append(f"Diseño original: {info['autor']} (licencia {info['licencia']}).")
@@ -533,6 +534,44 @@ def validar(item):
         return [c.get("message") for c in e.causas]
 
 
+COLORES_ML = {"negro": "Negro", "blanco": "Blanco", "rojo": "Rojo", "azul": "Azul", "verde": "Verde",
+              "amarillo": "Amarillo", "cian": "Celeste", "gris": "Gris", "piel": "Beige", "marroncito": "Marrón"}
+
+
+def atributos_principales(info, n, atributos, ya):
+    """Completa las características principales (relevance 1) de la categoría que todavía no tienen valor.
+    Lo que no aplica al producto va como "No aplica" (value_id -1), que ML cuenta como completo."""
+    m = info.get("medidas_mm") or {}
+    color = (info.get("colores") or ["verde"])[0]
+    conocidos = {
+        "COLOR": COLORES_ML.get(color, color.capitalize()), "MAIN_COLOR": COLORES_ML.get(color),
+        "MATERIAL": "Plástico", "MATERIALS": "Plástico", "SHAPE": "Sin forma", "WITH_LED_LIGHT": "No",
+        "SALE_FORMAT": "Pack" if n > 1 else "Unidad", "PACKS_NUMBER": "1",
+        "UNITS_PER_PACK": str(n), "UNITS_PER_PACKAGE": str(n),
+        "LENGTH": f"{m['largo']} mm" if m.get("largo") else None,
+        "WIDTH": f"{m['ancho']} mm" if m.get("ancho") else None,
+        "HEIGHT": f"{m['alto']} mm" if m.get("alto") else None,
+        "WEIGHT": f"{round(info['gramos'])} g" if info.get("gramos") else None,
+    }
+    extra = []
+    for a in atributos.values():
+        tags = a.get("tags") or {}
+        if a.get("relevance") != 1 or a["id"] in ya or tags.get("read_only") or tags.get("hidden") \
+                or a["id"] in ("GTIN", "VALUE_ADDED_TAX", "IMPORT_DUTY"):
+            continue
+        valor = conocidos.get(a["id"])
+        if valor and a.get("values") and a.get("value_type") == "list" and \
+                valor not in [v["name"] for v in a["values"]]:
+            valor = None
+        if valor:
+            extra.append({"id": a["id"], "value_name": valor})
+        elif a.get("value_type") == "boolean":
+            extra.append({"id": a["id"], "value_name": "No"})
+        else:
+            extra.append({"id": a["id"], "value_id": "-1", "value_name": None})  # no aplica
+    return extra
+
+
 def armar_item(slug, p, info, up=False):
     """up=True: cuentas en el modelo "productos de usuario" de ML (piden family_name y no aceptan variantes)."""
     sha = p["sha_fotos"]
@@ -549,7 +588,9 @@ def armar_item(slug, p, info, up=False):
         "title": titulo(info, n), "category_id": p["categoria"], "price": precio, "currency_id": "ARS",
         "available_quantity": CFG["stock"], "buying_mode": "buy_it_now", "condition": "new",
         "listing_type_id": CFG["tipo_publicacion"],
-        "sale_terms": [{"id": "MANUFACTURING_TIME", "value_name": f"{CFG['dias_preparacion']} días"}],
+        # sin "tiempo de disponibilidad" (ML lo pide para la calidad): las piezas se imprimen en menos de un día
+        "sale_terms": ([{"id": "MANUFACTURING_TIME", "value_name": f"{CFG['dias_preparacion']} días"}]
+                       if CFG["dias_preparacion"] else []),
         "shipping": ({"mode": "not_specified", "local_pick_up": True, "free_shipping": False} if a_convenir(info) else
                      {"mode": "me2", "local_pick_up": False, "free_shipping": precio >= CFG["umbral_envio_gratis"]}),
         "attributes": [{"id": "BRAND", "value_name": "GolfCraft3D"}, {"id": "MODEL", "value_name": info["nombre"][:60]}],
@@ -570,6 +611,8 @@ def armar_item(slug, p, info, up=False):
                            {"id": "SELLER_PACKAGE_WIDTH", "value_name": f"{ancho} cm"},
                            {"id": "SELLER_PACKAGE_HEIGHT", "value_name": f"{alto} cm"},
                            {"id": "SELLER_PACKAGE_WEIGHT", "value_name": f"{peso} g"}]
+    # características principales de la categoría (suben la calidad del aviso)
+    item["attributes"] += atributos_principales(info, n, atributos, {a["id"] for a in item["attributes"]})
     # datos fiscales que ML pide en algunas categorías
     for attr, valor in (("VALUE_ADDED_TAX", CFG.get("iva")), ("IMPORT_DUTY", CFG.get("impuesto_interno"))):
         if attr in atributos and valor:
@@ -680,6 +723,34 @@ def calidad():
                                                        encoding="utf-8")
 
 
+def mejorar_calidad():
+    """Aplica a los avisos ya publicados lo que ML pide para la calidad y se puede hacer gratis:
+    completar las características principales y sacar el tiempo de disponibilidad."""
+    estado = cargar()
+    for slug, etiqueta, item_id, n in avisos_publicados(estado):
+        it = api("GET", f"/items/{item_id}")
+        atributos = {a["id"]: a for a in api("GET", f"/categories/{it['category_id']}/attributes", auth=False)}
+        ya = {a["id"] for a in it.get("attributes") or [] if a.get("value_name") or a.get("value_id")}
+        cambios = {}
+        extra = atributos_principales(info_producto(slug), n, atributos, ya)
+        if extra:
+            cambios["attributes"] = extra
+        if any(t["id"] == "MANUFACTURING_TIME" for t in it.get("sale_terms") or []) and not CFG["dias_preparacion"]:
+            cambios["sale_terms"] = [{"id": "MANUFACTURING_TIME", "value_name": None}]
+        for clave, valor in cambios.items():
+            try:
+                api("PUT", f"/items/{item_id}", json={clave: valor})
+                print(f"{slug} {etiqueta}: {clave} OK ({[a['id'] for a in valor] if clave == 'attributes' else 'sin tiempo'})")
+            except ErrorML as e:
+                print(f"{slug} {etiqueta}: {clave} no se pudo ({e})")
+        if (RAIZ / "productos" / slug / "info.yaml").exists():
+            texto = descripcion(info_producto(slug), n, info_producto(slug).get("colores_png") or [], False)
+            try:
+                api("PUT", f"/items/{item_id}/description", json={"plain_text": texto})
+            except ErrorML as e:
+                print(f"{slug} {etiqueta}: descripción no se pudo ({e})")
+
+
 def titulos():
     """Actualiza el título de los avisos con `ml_titulo` (palabras que más se buscan) si cambió."""
     estado = cargar()
@@ -741,7 +812,7 @@ def procesar_orden(orden_id, avisar_nueva=True):
     if o.get("status") not in ("paid", "confirmed"):
         return
     fecha = datetime.fromisoformat(o["date_created"]).astimezone(ARG)
-    limite = dias_habiles(fecha, CFG["dias_preparacion"])
+    limite = dias_habiles(fecha, max(CFG["dias_preparacion"], 1))
     lineas, productos, colores = [], [], []
     comision_total = filamento = 0
     for it in o.get("order_items", []):
@@ -929,7 +1000,7 @@ def diagnostico():
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico", "titulos", "reporte", "calidad"):
+    for c in ("pendientes", "aprobaciones", "revisar", "link", "diagnostico", "titulos", "reporte", "calidad", "mejorar_calidad"):
         sub.add_parser(c)
     for c in ("proponer", "publicar", "fallo", "rechazar", "probar", "entrada"):
         sub.add_parser(c).add_argument("slug")
@@ -948,7 +1019,7 @@ def main():
         link_autorizacion()
     elif a.cmd == "diagnostico":
         diagnostico()
-    elif a.cmd in ("pendientes", "aprobaciones", "revisar", "titulos", "reporte", "calidad"):
+    elif a.cmd in ("pendientes", "aprobaciones", "revisar", "titulos", "reporte", "calidad", "mejorar_calidad"):
         globals()[a.cmd]()
     elif a.cmd == "entrada" and a.slug == "todos":
         for slug in [s for s, p in cargar()["productos"].items() if p.get("estado") == "publicado"]:
