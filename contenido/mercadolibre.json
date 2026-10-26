@@ -235,7 +235,14 @@
       "sha_fotos": "40c19d11257e6b04410dcf571883eb7eb237fa94",
       "item_id": "MLA4123281448",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4123281448-clip-de-gorra-para-tee-golf-pack-x10-impreso-3d-_JM",
-      "status_ml": "active"
+      "status_ml": "active",
+      "entrada": {
+        "pack": 5,
+        "item_id": "MLA4128894236",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4128894236-porta-tee-clip-gorra-golf-pack-x5-impreso-3d-verde-_JM",
+        "precio": 6800,
+        "ganancia": 2492
+      }
     },
     "marcador-de-bola": {
       "codigo": 5,
