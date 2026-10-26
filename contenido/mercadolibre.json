@@ -298,7 +298,14 @@
       "sha_fotos": "5d5105cbb194742bd8f77f0a862e6ec701ab3030",
       "item_id": "MLA2233219441",
       "link": "http://articulo.mercadolibre.com.ar/MLA-2233219441-marcador-de-bola-golf-pack-x10-impreso-3d-_JM",
-      "status_ml": "active"
+      "status_ml": "active",
+      "entrada": {
+        "pack": 5,
+        "item_id": "MLA4128968448",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4128968448-marcador-pelota-golf-ball-marker-green-pack-x5-impreso-3d-rojo-_JM",
+        "precio": 6800,
+        "ganancia": 2992
+      }
     },
     "arco-de-putting": {
       "codigo": 6,
