@@ -11,6 +11,7 @@ name: Mercado Libre
 on:
   schedule:
     - cron: "17 * * * *"
+    - cron: "7 11 * * 1"   # lunes 8:07 (Argentina): reporte semanal de visitas, preguntas y ventas
   workflow_dispatch:
     inputs:
       accion:
@@ -38,7 +39,7 @@ jobs:
   ml:
     runs-on: ubuntu-24.04
     env:
-      ACCION: ${{ inputs.accion || 'revisar' }}
+      ACCION: ${{ inputs.accion || (github.event.schedule == '7 11 * * 1' && 'reporte') || 'revisar' }}
       PRODUCTO: ${{ inputs.producto }}
       ML_APP_ID: ${{ secrets.ML_APP_ID }}
       ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
