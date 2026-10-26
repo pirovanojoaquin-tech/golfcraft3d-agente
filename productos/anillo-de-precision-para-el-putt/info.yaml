@@ -4,8 +4,8 @@ descripcion: 'Anillo con rampa alrededor de un hoyo de medida reglamentaria (108
   y velocidad.'
 personalizable: Color a elección (10 colores de PLA)
 precio: 3600
-gramos: 30.0
-tiempo: 59 min
+gramos: 30.5
+tiempo: 53 min
 colores:
 - verde
 - blanco
@@ -23,4 +23,17 @@ licencia: CC0
 piezas:
 - archivo: Putting-hole-8mm_PLA.3mf
   telegram_file_id: BQACAgEAAxkBAAN1at-clVlEXT0uSYBUQKMb4uj4nJkAAjEIAAJZJwABR99qgHCI9CKfPQQ
+  gramos: 30.5
 archivo_pendiente: false
+gramos_verificados: true
+medidas_mm:
+  largo: 156
+  ancho: 156
+  alto: 8
+colores_png:
+- verde
+- blanco
+- amarillo
+- negro
+- rojo
+- azul
