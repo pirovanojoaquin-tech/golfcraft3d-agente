@@ -172,7 +172,14 @@
       "sha_fotos": "fb072dcf8665f1d3079d71ca31f9764d1cb082ca",
       "item_id": "MLA4123281394",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4123281394-regulador-de-altura-de-tee-golf-pack-x10-impreso-3d-_JM",
-      "status_ml": "active"
+      "status_ml": "active",
+      "entrada": {
+        "pack": 5,
+        "item_id": "MLA4128844830",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4128844830-guia-altura-tee-golf-regulador-drive-pack-x5-impreso-3d-verde-_JM",
+        "precio": 9900,
+        "ganancia": 3876
+      }
     },
     "clip-de-gorra-para-tee": {
       "codigo": 4,
