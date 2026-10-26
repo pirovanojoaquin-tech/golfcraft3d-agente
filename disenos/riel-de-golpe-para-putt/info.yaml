@@ -1,0 +1,5 @@
+nombre: Riel de golpe para el putt
+descripcion: Dos rieles paralelos para practicar un golpe de putt derecho. Si el putter toca un riel, la trayectoria se desvió. Tiene marcas cada 5 cm para controlar el largo del backswing.
+inspiracion: Las guías de trayectoria de putt (putting rails) que se usan para entrenar el recorrido del palo. Diseño propio, sin copiar ningún producto en particular.
+piezas:
+  - modelo.scad

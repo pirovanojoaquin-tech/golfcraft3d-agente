@@ -1,0 +1,5 @@
+nombre: Unión en T para varillas de alineación
+descripcion: Une dos varillas de alineación a 90°. Una marca la línea de los pies y la otra la posición de la bola, para entrenar la postura en el driving.
+inspiracion: El ejercicio clásico de varillas en "T" para alinear pies y posición de bola. Diseño propio para varillas estándar de 3/8".
+piezas:
+  - modelo.scad

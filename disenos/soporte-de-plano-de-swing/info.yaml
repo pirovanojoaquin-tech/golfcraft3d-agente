@@ -1,0 +1,5 @@
+nombre: Soporte de plano de swing
+descripcion: Sostiene una varilla de alineación inclinada (45° o 55°) detrás de la bola para marcar el plano del swing. Ideal para practicar en el driving o en casa con alfombra.
+inspiracion: Los ejercicios de plano de swing con una varilla clavada en ángulo en el pasto. Este soporte lo hace posible en alfombras y tapetes donde no se puede clavar. Diseño propio.
+piezas:
+  - modelo.scad

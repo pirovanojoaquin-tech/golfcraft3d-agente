@@ -1,0 +1,5 @@
+nombre: Marcador de línea para pelota
+descripcion: Apoyás la pelota en la cuna y pasás el fibrón por la ranura del arco. Queda una línea recta y prolija para apuntar el putt y alinear la salida.
+inspiracion: Las guías para marcar una línea en la pelota que usan muchos jugadores para apuntar en el green. Diseño propio (cuna + arco con ranura), sin copiar ningún producto en particular.
+piezas:
+  - modelo.scad
