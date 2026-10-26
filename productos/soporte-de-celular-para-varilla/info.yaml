@@ -1,0 +1,24 @@
+nombre: Soporte de celular para varilla
+descripcion: Se engancha en una varilla de alineación clavada en el pasto y sostiene
+  el celular para filmarte el swing en el driving, sin depender de nadie.
+personalizable: Color a elección (10 colores de PLA)
+precio: 1900
+gramos: 15.7
+tiempo: 26 min
+colores:
+- negro
+- verde
+- blanco
+destacado: false
+notas: null
+origen: printables
+diseno: null
+inspiracion: null
+printables_id: '152912'
+url: https://www.printables.com/model/152912-golf-alignment-stick-phone-clip
+autor: Willis Works
+licencia: CC-BY
+piezas:
+- archivo: stick_phone_clip.STL
+  printables_file_id: '629071'
+  gramos: 15.7

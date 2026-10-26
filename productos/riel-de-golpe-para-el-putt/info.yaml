@@ -1,0 +1,25 @@
+nombre: Riel de golpe para el putt
+descripcion: Dos rieles para entrenar un golpe de putt derecho, con marcas cada 5
+  cm para medir el backswing. Para putters de hasta 12,5 cm. Diseño propio.
+personalizable: Color a elección (10 colores de PLA)
+precio: 3300
+gramos: 27.1
+tiempo: 46 min
+colores:
+- blanco
+- verde
+- rojo
+destacado: false
+notas: null
+origen: propio
+diseno: riel-de-golpe-para-putt
+inspiracion: Las guías de trayectoria de putt (putting rails) que se usan para entrenar
+  el recorrido del palo. Diseño propio, sin copiar ningún producto en particular.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/riel-de-golpe-para-putt/modelo.stl
+  gramos: 27.1

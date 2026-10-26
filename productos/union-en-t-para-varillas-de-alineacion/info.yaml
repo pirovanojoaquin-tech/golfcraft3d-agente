@@ -1,0 +1,25 @@
+nombre: Unión en T para varillas de alineación
+descripcion: 'Une dos varillas de alineación en T: una para los pies y otra para la
+  posición de la bola. Para varillas estándar de 3/8". Diseño propio.'
+personalizable: Color a elección (10 colores de PLA)
+precio: 2800
+gramos: 22.9
+tiempo: 43 min
+colores:
+- amarillo
+- negro
+- verde
+destacado: false
+notas: null
+origen: propio
+diseno: union-t-para-varillas
+inspiracion: El ejercicio clásico de varillas en "T" para alinear pies y posición
+  de bola. Diseño propio para varillas estándar de 3/8".
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/union-t-para-varillas/modelo.stl
+  gramos: 22.9

@@ -1,0 +1,24 @@
+nombre: Anillo de precisión para el putt
+descripcion: 'Anillo con rampa alrededor de un hoyo de medida reglamentaria (108 mm):
+  si le pegás corto no sube y si le pegás fuerte pasa de largo. Entrena dirección
+  y velocidad.'
+personalizable: Color a elección (10 colores de PLA)
+precio: 3600
+gramos: 30.0
+tiempo: 59 min
+colores:
+- verde
+- blanco
+- amarillo
+destacado: false
+notas: null
+origen: makerworld
+diseno: null
+inspiracion: null
+printables_id: null
+makerworld_id: 1383663
+url: https://makerworld.com/es/models/1383663-golf-putting-accuracy-trainer-ring
+autor: nosferatu
+licencia: CC0
+piezas: []
+archivo_pendiente: true

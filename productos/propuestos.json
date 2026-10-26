@@ -70,5 +70,62 @@
     "propuesto": "2026-10-19",
     "estado": "aprobado",
     "respondido": "2026-10-21"
+  },
+  {
+    "printables_id": "472512",
+    "nombre": "Adaptador de varilla para el grip",
+    "slug": "adaptador-de-varilla-para-el-grip",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Anillo de precisión para el putt",
+    "slug": "anillo-de-precision-para-el-putt",
+    "makerworld_id": 1383663,
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Marcador de línea para pelota",
+    "slug": "marcador-de-linea-para-pelota",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Riel de golpe para el putt",
+    "slug": "riel-de-golpe-para-el-putt",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": "152912",
+    "nombre": "Soporte de celular para varilla",
+    "slug": "soporte-de-celular-para-varilla",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Soporte de plano de swing",
+    "slug": "soporte-de-plano-de-swing",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Unión en T para varillas de alineación",
+    "slug": "union-en-t-para-varillas-de-alineacion",
+    "propuesto": "2026-10-26",
+    "estado": "aprobado",
+    "respondido": "2026-10-26"
   }
 ]

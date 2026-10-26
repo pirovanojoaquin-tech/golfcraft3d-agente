@@ -1,0 +1,26 @@
+nombre: Marcador de línea para pelota
+descripcion: 'Apoyás la pelota y pasás el fibrón por la ranura: una línea recta y
+  prolija para apuntar el putt. Diseño propio.'
+personalizable: Color a elección (10 colores de PLA)
+precio: 2300
+gramos: 18.8
+tiempo: 52 min
+colores:
+- verde
+- blanco
+- azul
+destacado: false
+notas: null
+origen: propio
+diseno: marcador-de-linea-para-pelota
+inspiracion: Las guías para marcar una línea en la pelota que usan muchos jugadores
+  para apuntar en el green. Diseño propio (cuna + arco con ranura), sin copiar ningún
+  producto en particular.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/marcador-de-linea-para-pelota/modelo.stl
+  gramos: 18.8

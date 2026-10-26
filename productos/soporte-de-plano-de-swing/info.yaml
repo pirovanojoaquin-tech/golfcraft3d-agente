@@ -1,0 +1,26 @@
+nombre: Soporte de plano de swing
+descripcion: Sostiene una varilla inclinada a 45° o 55° para marcar el plano del swing,
+  en alfombras o tapetes donde no se puede clavar. Diseño propio.
+personalizable: Color a elección (10 colores de PLA)
+precio: 4500
+gramos: 37.2
+tiempo: 1 h 22 min
+colores:
+- verde
+- negro
+- blanco
+destacado: false
+notas: null
+origen: propio
+diseno: soporte-de-plano-de-swing
+inspiracion: Los ejercicios de plano de swing con una varilla clavada en ángulo en
+  el pasto. Este soporte lo hace posible en alfombras y tapetes donde no se puede
+  clavar. Diseño propio.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/soporte-de-plano-de-swing/modelo.stl
+  gramos: 37.2

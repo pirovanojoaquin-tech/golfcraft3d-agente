@@ -1,0 +1,24 @@
+nombre: Adaptador de varilla para el grip
+descripcion: 'Se pone en la punta del grip y sostiene una varilla de alineación: si
+  en el chip o el putt la varilla te toca el costado, quebraste las muñecas.'
+personalizable: Color a elección (10 colores de PLA)
+precio: 1000
+gramos: 7.6
+tiempo: 18 min
+colores:
+- rojo
+- negro
+- amarillo
+destacado: false
+notas: null
+origen: printables
+diseno: null
+inspiracion: null
+printables_id: '472512'
+url: https://www.printables.com/model/472512-golf-club-training-aid
+autor: Donkey Jon
+licencia: CC-BY
+piezas:
+- archivo: Golf club training aid.stl
+  printables_file_id: '2042504'
+  gramos: 7.6

@@ -30,6 +30,7 @@ difference() {
     // ángulos grabados en la base
     for (i = [0, 1]) translate([i == 0 ? -24 : 24, -base[1] / 2 + 7, base[2] - 0.8]) linear_extrude(1)
         text(str(angulos[i], "°"), size = 6, font = "Liberation Sans:style=Bold", halign = "center", valign = "center");
-    translate([0, base[1] / 2 - 7, base[2] - 0.8]) linear_extrude(1)
-        text(texto, size = 4.6, font = "Liberation Sans:style=Bold", halign = "center", valign = "center");
+    // marca en el canto de adelante de la base (arriba la tapaban las torres)
+    translate([0, -base[1] / 2 + 0.6, base[2] / 2]) rotate([90, 0, 0]) linear_extrude(1)
+        text(texto, size = 4.2, font = "Liberation Sans:style=Bold", halign = "center", valign = "center");
 }
