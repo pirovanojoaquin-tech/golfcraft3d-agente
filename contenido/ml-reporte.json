@@ -1,0 +1,85 @@
+{
+  "fecha": "2026-10-26",
+  "avisos": [
+    {
+      "producto": "guia-de-agarre-para-el-palo",
+      "pack": "x5",
+      "item_id": "MLA2232924659",
+      "estado_ml": "active",
+      "precio": 18000,
+      "vendidos": 0,
+      "visitas_7d": 3,
+      "preguntas": 0
+    },
+    {
+      "producto": "guia-de-agarre-para-el-palo",
+      "pack": "x2",
+      "item_id": "MLA4128844806",
+      "estado_ml": "paused",
+      "precio": 8000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "regulador-de-altura-de-tee",
+      "pack": "x10",
+      "item_id": "MLA4123281394",
+      "estado_ml": "active",
+      "precio": 18700,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "regulador-de-altura-de-tee",
+      "pack": "x5",
+      "item_id": "MLA4128844830",
+      "estado_ml": "paused",
+      "precio": 9900,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "clip-de-gorra-para-tee",
+      "pack": "x10",
+      "item_id": "MLA4123281448",
+      "estado_ml": "active",
+      "precio": 12800,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "clip-de-gorra-para-tee",
+      "pack": "x5",
+      "item_id": "MLA4128894236",
+      "estado_ml": "paused",
+      "precio": 6800,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "marcador-de-bola",
+      "pack": "x10",
+      "item_id": "MLA2233219441",
+      "estado_ml": "active",
+      "precio": 12800,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "marcador-de-bola",
+      "pack": "x5",
+      "item_id": "MLA4128968448",
+      "estado_ml": "paused",
+      "precio": 6800,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    }
+  ]
+}
