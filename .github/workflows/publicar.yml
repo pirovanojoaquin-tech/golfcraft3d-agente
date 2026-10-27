@@ -64,6 +64,17 @@ jobs:
         if: always()
         run: echo "ig=$(python -m agente.tienda --en-ig)" >> "$GITHUB_OUTPUT"
 
+      - name: Leer Telegram una vez por hora
+        # el cron de telegram.yml en GitHub gratis a veces se saltea horas; el despertador de Apps Script
+        # corre este workflow cada 15 min, así que de paso lanzamos la lectura de Telegram (aprobaciones,
+        # "ML SI n" y archivos de MakerWorld) en el primer cuarto de cada hora
+        if: always() && github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ "$(date -u +%M)" -lt 15 ] && gh workflow run telegram.yml --repo "$GITHUB_REPOSITORY" --ref main || true
+
       - name: Avisar por Telegram si algo falló
         if: failure()
         env:
