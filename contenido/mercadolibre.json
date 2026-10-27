@@ -414,7 +414,14 @@
       "sha_fotos": "9551bc19d7ef3d750cca4b14f35d0e36ffd31cc5",
       "item_id": "MLA4132643832",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4132643832-pack-de-8-tees-de-golf-pack-x5-impreso-3d-blanco-_JM",
-      "status_ml": "paused"
+      "status_ml": "paused",
+      "entrada": {
+        "pack": 3,
+        "item_id": "MLA4132599748",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4132599748-pack-de-8-tees-de-golf-pack-x3-impreso-3d-blanco-_JM",
+        "precio": 8600,
+        "ganancia": 3088
+      }
     }
   }
 }
