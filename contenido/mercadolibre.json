@@ -361,7 +361,7 @@
       "sha_fotos": "fbdf1f28bbe1fa7648482b13e2bbf8b3ad7534b2",
       "item_id": "MLA4132599720",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4132599720-arco-de-putting-golf-pack-x5-impreso-3d-verde-_JM",
-      "status_ml": "paused"
+      "status_ml": "active"
     },
     "pack-de-8-tees-de-golf": {
       "codigo": 7,
@@ -417,7 +417,7 @@
       "sha_fotos": "9551bc19d7ef3d750cca4b14f35d0e36ffd31cc5",
       "item_id": "MLA4132643832",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4132643832-pack-de-8-tees-de-golf-pack-x5-impreso-3d-blanco-_JM",
-      "status_ml": "paused",
+      "status_ml": "active",
       "entrada": {
         "pack": 3,
         "item_id": "MLA4132599748",
