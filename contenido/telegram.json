@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649424,
+  "offset": 242649426,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -56,6 +56,16 @@
         "nombre": "Putting-hole-8mm_PLA.3mf",
         "tamanio": 1221955
       }
+    },
+    {
+      "fecha": "2026-10-27T16:14:40+00:00",
+      "texto": "ML SI 7",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-10-27T18:03:00+00:00",
+      "texto": "ML SI 6",
+      "procesado": true
     }
   ]
 }
