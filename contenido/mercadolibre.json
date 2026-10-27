@@ -309,7 +309,7 @@
     },
     "arco-de-putting": {
       "codigo": 6,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 5,
       "categoria": "MLA2549",
       "categoria_nombre": "Golf > Palos y Sets > Putters",
@@ -358,7 +358,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-26",
-      "sha_fotos": "fbdf1f28bbe1fa7648482b13e2bbf8b3ad7534b2"
+      "sha_fotos": "fbdf1f28bbe1fa7648482b13e2bbf8b3ad7534b2",
+      "item_id": "MLA4132599720",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4132599720-arco-de-putting-golf-pack-x5-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     },
     "pack-de-8-tees-de-golf": {
       "codigo": 7,
