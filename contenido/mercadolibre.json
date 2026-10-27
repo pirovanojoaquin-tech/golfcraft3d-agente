@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 7,
+  "siguiente": 8,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -359,6 +359,58 @@
       "envio_estimado": [],
       "fecha": "2026-10-26",
       "sha_fotos": "fbdf1f28bbe1fa7648482b13e2bbf8b3ad7534b2"
+    },
+    "pack-de-8-tees-de-golf": {
+      "codigo": 7,
+      "estado": "propuesto",
+      "pack": 5,
+      "categoria": "MLA412580",
+      "categoria_nombre": "Golf > Tees",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 3000,
+          "comision": 3140,
+          "envio": 0,
+          "filamento": 492,
+          "ganancia": -632
+        },
+        {
+          "pack": 2,
+          "precio": 6000,
+          "comision": 3620,
+          "envio": 0,
+          "filamento": 984,
+          "ganancia": 1396
+        },
+        {
+          "pack": 3,
+          "precio": 8600,
+          "comision": 4036,
+          "envio": 0,
+          "filamento": 1476,
+          "ganancia": 3088
+        },
+        {
+          "pack": 5,
+          "precio": 13500,
+          "comision": 4820,
+          "envio": 0,
+          "filamento": 2460,
+          "ganancia": 6220
+        },
+        {
+          "pack": 10,
+          "precio": 25500,
+          "comision": 10720,
+          "envio": 0,
+          "filamento": 4920,
+          "ganancia": 9860
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-27"
     }
   }
 }
