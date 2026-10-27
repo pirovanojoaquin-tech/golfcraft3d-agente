@@ -554,7 +554,9 @@
     "imagenes": [
       "contenido/media/2026-10-27/historia-3.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18054035819598485",
+    "publicado_en": "2026-10-27T20:43:06-03:00"
   },
   {
     "id": "2026-10-28-historia-1",
