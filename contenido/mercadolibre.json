@@ -362,7 +362,7 @@
     },
     "pack-de-8-tees-de-golf": {
       "codigo": 7,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 5,
       "categoria": "MLA412580",
       "categoria_nombre": "Golf > Tees",
@@ -411,7 +411,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-27",
-      "sha_fotos": "9551bc19d7ef3d750cca4b14f35d0e36ffd31cc5"
+      "sha_fotos": "9551bc19d7ef3d750cca4b14f35d0e36ffd31cc5",
+      "item_id": "MLA4132643832",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4132643832-pack-de-8-tees-de-golf-pack-x5-impreso-3d-blanco-_JM",
+      "status_ml": "paused"
     }
   }
 }
