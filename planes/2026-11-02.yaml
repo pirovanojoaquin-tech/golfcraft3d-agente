@@ -1,0 +1,148 @@
+# Semana del 2 al 8/11/2026: un producto nuevo por día (los 7 aprobados el 26/10), estilo catálogo.
+dias:
+  - fecha: 2026-11-02
+    post:
+      producto: riel-de-golpe-para-el-putt
+      caption: |
+        ¿Tu putt sale torcido aunque apuntes bien? Puede ser el recorrido del palo 🎯
+
+        El riel de golpe es un diseño exclusivo GolfCraft3D: dos rieles paralelos que te avisan si el putter se va para afuera o para adentro. Tiene marcas cada 5 cm para controlar el largo del backswing.
+
+        Lo ponés en la alfombra de casa o en el green de práctica y a entrenar.
+        #putting #putt #entrenamientogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Un putt derecho, siempre", subtitulo: "Riel de golpe para el putt", etiqueta: "Nuevo", sellos: ["Diseño propio", "10 colores", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Poné la bola en la boca del riel", "Pegale sin tocar los rieles", "Usá las marcas para medir el backswing"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el riel de putt"}
+    historias:
+      - {tipo: "hero", producto: "riel-de-golpe-para-el-putt", etiqueta: "Nuevo", titulo: "Entrená tu putt", subtitulo: "Riel de golpe · diseño propio"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Backswing y follow-through", texto: "En el putt, un recorrido parejo hacia atrás y hacia adelante ayuda a controlar la distancia. Practicalo con marcas en el piso."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Tenés una idea?", texto: "La diseñamos e imprimimos: recreamos productos, cambiamos medidas y grabamos nombres o logos. Escribinos por DM."}
+
+  - fecha: 2026-11-03
+    post:
+      producto: soporte-de-celular-para-varilla
+      caption: |
+        ¿Querés ver tu swing pero no tenés a nadie que te filme? 📱
+
+        Este soporte se engancha en una varilla de alineación clavada en el pasto y sostiene el celular a la altura justa. Grabás, mirás y corregís, todo solo.
+
+        Ideal para el driving range. Lo hacemos en tu color.
+        #swing #drivingrange #entrenamientogolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Filmate el swing solo", subtitulo: "Soporte de celular para varilla", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Así de fácil", pasos: ["Clavá la varilla en el pasto", "Enganchá el soporte y el celular", "Grabá y revisá tu swing"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el soporte de celular"}
+    historias:
+      - {tipo: "hero", producto: "soporte-de-celular-para-varilla", etiqueta: "Nuevo", titulo: "Tu swing en video", subtitulo: "Sin depender de nadie"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Filmate de dos lados", texto: "Grabá el swing de frente y desde atrás, en la línea de la bola al objetivo: así ves la postura y el plano del palo."}
+      - {tipo: "texto", etiqueta: "Mercado Libre", titulo: "Comprá online", texto: "Varios de nuestros productos ya están en Mercado Libre, con envío. Link en la bio."}
+
+  - fecha: 2026-11-04
+    post:
+      producto: marcador-de-linea-para-pelota
+      caption: |
+        Una línea en la pelota y apuntar el putt se vuelve mucho más fácil 🏌️‍♂️
+
+        Apoyás la bola en la cuna y pasás el fibrón por la ranura del arco: queda una línea recta y prolija. Media vuelta, girás la bola y la completás.
+
+        Diseño exclusivo GolfCraft3D, en el color que elijas.
+        #putt #pelotadegolf #accesoriosdegolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Una línea perfecta", subtitulo: "Marcador de línea para pelota", etiqueta: "Nuevo", sellos: ["Diseño propio", "10 colores", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyá la pelota en la cuna", "Pasá el fibrón por la ranura", "Girá la bola y completá la línea"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el marcador de línea"}
+    historias:
+      - {tipo: "hero", producto: "marcador-de-linea-para-pelota", etiqueta: "Nuevo", titulo: "Apuntá mejor", subtitulo: "Con una línea en la bola"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "¿Para qué sirve la línea?", texto: "En el green, alineá la línea de la bola con el lugar al que querés apuntar. Te ayuda a salir derecho."}
+      - {tipo: "texto", etiqueta: "Impresión 3D", titulo: "Capa por capa", texto: "Imprimimos cada pieza a pedido con impresoras Bambu Lab. Por eso podemos hacerla en el color que elijas."}
+
+  - fecha: 2026-11-05
+    post:
+      producto: soporte-de-plano-de-swing
+      caption: |
+        ¿Practicás en alfombra y no podés clavar la varilla? Este soporte lo resuelve ⛳
+
+        Sostiene una varilla de alineación inclinada a 45° o 55° detrás de la bola para marcar el plano del swing. Base ancha y firme para el driving o para casa.
+
+        Diseño exclusivo GolfCraft3D.
+        #swing #planodeswing #entrenamientogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "El plano, siempre a la vista", subtitulo: "Soporte de plano de swing", etiqueta: "Nuevo", sellos: ["Diseño propio", "45° y 55°", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Poné el soporte detrás de la bola", "Elegí 45° o 55° y metés la varilla", "Swingueá siguiendo la línea"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el soporte de plano de swing"}
+    historias:
+      - {tipo: "hero", producto: "soporte-de-plano-de-swing", etiqueta: "Nuevo", titulo: "Marcá tu plano", subtitulo: "En alfombra o tapete"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Practicá con objetivo", texto: "En el driving, elegí un blanco para cada bola y armá tu rutina antes de pegar: entrenás como jugás en la cancha."}
+      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Todo se hace a pedido", texto: "Elegís el color y lo imprimimos para vos. Escribinos por DM y te contamos colores y combos."}
+
+  - fecha: 2026-11-06
+    post:
+      producto: anillo-de-precision-para-el-putt
+      caption: |
+        Dirección y velocidad, en un solo ejercicio 🎯
+
+        El anillo de precisión rodea un hoyo de medida reglamentaria (108 mm) con una rampa: si le pegás corto, la bola no sube; si le pegás fuerte, pasa de largo. Solo entra el putt justo.
+
+        Para la alfombra de casa o el green de práctica.
+        #putting #putt #entrenamientogolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Solo entra el putt justo", subtitulo: "Anillo de precisión para el putt", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyalo en la alfombra o el green", "Pegale desde 1, 2 y 3 metros", "Si queda en el centro, fue perfecto"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el anillo de precisión"}
+    historias:
+      - {tipo: "hero", producto: "anillo-de-precision-para-el-putt", etiqueta: "Nuevo", titulo: "Velocidad justa", subtitulo: "Anillo de precisión"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "¿Sabías que...?", texto: "El hoyo reglamentario mide 108 mm de diámetro: un poco más de dos pelotas y media."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "Lo hacemos a tu medida", texto: "¿Lo querés en otro tamaño o con el logo de tu club? Escribinos por DM."}
+
+  - fecha: 2026-11-07
+    post:
+      producto: union-en-t-para-varillas-de-alineacion
+      caption: |
+        El ejercicio clásico de las varillas en "T", ahora sin que se te desarmen 🏌️
+
+        La unión en T junta dos varillas de alineación a 90°: una marca la línea de los pies y la otra la posición de la bola. La armás en segundos en el driving.
+
+        Para varillas estándar de 3/8". Diseño exclusivo GolfCraft3D.
+        #alineacion #varillasdealineacion #entrenamientogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Tus varillas en T", subtitulo: "Unión para varillas de alineación", etiqueta: "Nuevo", sellos: ["Diseño propio", "Varillas 3/8\"", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Pasá una varilla de lado a lado", "Encastrá la otra de frente", "Una para los pies, otra para la bola"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "la unión en T"}
+    historias:
+      - {tipo: "hero", producto: "union-en-t-para-varillas-de-alineacion", etiqueta: "Nuevo", titulo: "Pies y bola alineados", subtitulo: "Unión en T"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Posición de la bola", texto: "Con los hierros cortos la bola va más al centro de la postura; con el driver, más cerca del pie de adelante."}
+      - {tipo: "texto", etiqueta: "Mercado Libre", titulo: "Comprá online", texto: "Muchos de nuestros productos ya están en Mercado Libre, con envío. Link en la bio."}
+
+  - fecha: 2026-11-08
+    post:
+      producto: adaptador-de-varilla-para-el-grip
+      caption: |
+        ¿Quebrás las muñecas en el chip? Este truco te lo muestra al instante 👀
+
+        El adaptador se pone en la punta del grip y sostiene una varilla de alineación. Si en el chip o en el putt la varilla te toca el costado, quebraste las muñecas.
+
+        Simple, liviano y en tu color.
+        #chipping #putt #entrenamientogolf #golfistas
+      slides:
+        - {tipo: "hero", titulo: "Muñecas firmes", subtitulo: "Adaptador de varilla para el grip", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Poné el adaptador en la punta del grip", "Metés una varilla de alineación", "Si te toca el costado, corregí"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el adaptador de varilla"}
+    historias:
+      - {tipo: "hero", producto: "adaptador-de-varilla-para-el-grip", etiqueta: "Nuevo", titulo: "Chip sin quebrar", subtitulo: "Adaptador de varilla"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Chip con muñecas quietas", texto: "En el chip, mové hombros y brazos juntos y mantené las muñecas firmes: el contacto sale más limpio."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Tenés una idea?", texto: "Recreamos productos y diseñamos a tu medida: cambiamos medidas, colores o grabamos tu nombre. Escribinos por DM."}
