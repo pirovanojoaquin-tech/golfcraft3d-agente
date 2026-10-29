@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 8,
+  "siguiente": 9,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -425,6 +425,58 @@
         "precio": 8600,
         "ganancia": 3088
       }
+    },
+    "entrenador-de-alineacion-zwing": {
+      "codigo": 8,
+      "estado": "propuesto",
+      "pack": 1,
+      "categoria": "MLA2550",
+      "categoria_nombre": "Golf > Carros Eléctricos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 81200,
+          "comision": 12992,
+          "envio": 0,
+          "filamento": 13528,
+          "ganancia": 54680
+        },
+        {
+          "pack": 2,
+          "precio": 162400,
+          "comision": 25984,
+          "envio": 0,
+          "filamento": 27056,
+          "ganancia": 109360
+        },
+        {
+          "pack": 3,
+          "precio": 231500,
+          "comision": 37040,
+          "envio": 0,
+          "filamento": 40584,
+          "ganancia": 153876
+        },
+        {
+          "pack": 5,
+          "precio": 365400,
+          "comision": 58464,
+          "envio": 0,
+          "filamento": 67640,
+          "ganancia": 239296
+        },
+        {
+          "pack": 10,
+          "precio": 690200,
+          "comision": 110432,
+          "envio": 0,
+          "filamento": 135280,
+          "ganancia": 444488
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-29"
     }
   }
 }
