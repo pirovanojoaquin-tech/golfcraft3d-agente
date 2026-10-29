@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-10-26",
+  "fecha": "2026-10-28",
   "avisos": [
     {
       "producto": "guia-de-agarre-para-el-palo",
@@ -15,7 +15,7 @@
       "producto": "guia-de-agarre-para-el-palo",
       "pack": "x2",
       "item_id": "MLA4128844806",
-      "estado_ml": "paused",
+      "estado_ml": "active",
       "precio": 8000,
       "vendidos": 0,
       "visitas_7d": 0,
@@ -35,7 +35,7 @@
       "producto": "regulador-de-altura-de-tee",
       "pack": "x5",
       "item_id": "MLA4128844830",
-      "estado_ml": "paused",
+      "estado_ml": "active",
       "precio": 9900,
       "vendidos": 0,
       "visitas_7d": 0,
@@ -48,14 +48,14 @@
       "estado_ml": "active",
       "precio": 12800,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 2,
       "preguntas": 0
     },
     {
       "producto": "clip-de-gorra-para-tee",
       "pack": "x5",
       "item_id": "MLA4128894236",
-      "estado_ml": "paused",
+      "estado_ml": "active",
       "precio": 6800,
       "vendidos": 0,
       "visitas_7d": 0,
@@ -75,8 +75,38 @@
       "producto": "marcador-de-bola",
       "pack": "x5",
       "item_id": "MLA4128968448",
-      "estado_ml": "paused",
+      "estado_ml": "active",
       "precio": 6800,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "arco-de-putting",
+      "pack": "x5",
+      "item_id": "MLA4132599720",
+      "estado_ml": "active",
+      "precio": 18000,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "pack-de-8-tees-de-golf",
+      "pack": "x5",
+      "item_id": "MLA4132643832",
+      "estado_ml": "active",
+      "precio": 13500,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "pack-de-8-tees-de-golf",
+      "pack": "x3",
+      "item_id": "MLA4132599748",
+      "estado_ml": "active",
+      "precio": 8600,
       "vendidos": 0,
       "visitas_7d": 0,
       "preguntas": 0
