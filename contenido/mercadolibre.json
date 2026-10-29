@@ -428,7 +428,7 @@
     },
     "entrenador-de-alineacion-zwing": {
       "codigo": 8,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 1,
       "categoria": "MLA2550",
       "categoria_nombre": "Golf > Carros Eléctricos",
@@ -477,7 +477,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-10-29",
-      "sha_fotos": "4f88d7d8afbeb8dac9db9076b217ff582a36b265"
+      "sha_fotos": "4f88d7d8afbeb8dac9db9076b217ff582a36b265",
+      "item_id": "MLA4139817578",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4139817578-entrenador-de-alineacion-zwing-golf-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     }
   }
 }
