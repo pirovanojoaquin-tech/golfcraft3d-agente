@@ -681,7 +681,9 @@
     "imagenes": [
       "contenido/media/2026-10-30/historia-1.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "17961533859253648",
+    "publicado_en": "2026-10-30T10:12:56-03:00"
   },
   {
     "id": "2026-10-30-post",
