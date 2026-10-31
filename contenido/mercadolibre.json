@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 9,
+  "siguiente": 10,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -481,6 +481,58 @@
       "item_id": "MLA4139817578",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4139817578-entrenador-de-alineacion-zwing-golf-impreso-3d-verde-_JM",
       "status_ml": "active"
+    },
+    "trofeo-de-golf": {
+      "codigo": 9,
+      "estado": "propuesto",
+      "pack": 1,
+      "categoria": "MLA1344",
+      "categoria_nombre": "Golf > Palos y Sets > Sets Completos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 55200,
+          "comision": 8832,
+          "envio": 0,
+          "filamento": 9168,
+          "ganancia": 37200
+        },
+        {
+          "pack": 2,
+          "precio": 110400,
+          "comision": 17664,
+          "envio": 0,
+          "filamento": 18336,
+          "ganancia": 74400
+        },
+        {
+          "pack": 3,
+          "precio": 157400,
+          "comision": 25184,
+          "envio": 0,
+          "filamento": 27504,
+          "ganancia": 104712
+        },
+        {
+          "pack": 5,
+          "precio": 248400,
+          "comision": 39744,
+          "envio": 0,
+          "filamento": 45840,
+          "ganancia": 162816
+        },
+        {
+          "pack": 10,
+          "precio": 469200,
+          "comision": 75072,
+          "envio": 0,
+          "filamento": 91680,
+          "ganancia": 302448
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-10-31"
     }
   }
 }
