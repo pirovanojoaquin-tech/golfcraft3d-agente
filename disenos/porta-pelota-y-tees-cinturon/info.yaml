@@ -1,0 +1,5 @@
+nombre: Porta pelota y tees para el cinturón
+descripcion: Va en el cinturón y lleva una pelota y 3 tees siempre a mano, sin llenar los bolsillos. El cinturón pasa por las dos ranuras de la placa.
+inspiracion: Los porta bolas de cinturón. Diseño propio, simple y sin piezas extra.
+piezas:
+  - modelo.scad

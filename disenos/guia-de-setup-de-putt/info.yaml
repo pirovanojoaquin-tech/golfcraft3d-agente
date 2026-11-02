@@ -1,0 +1,5 @@
+nombre: Guía de setup para el putt
+descripcion: Placa para armar el putt siempre igual. La bola va en el hueco, la línea larga marca hacia dónde apuntás y la línea corta, detrás de la bola, es donde va la cara del putter.
+inspiracion: Las plantillas de alineación de putt que se usan para chequear la postura y la cara del palo. Diseño propio, sin copiar ningún producto en particular.
+piezas:
+  - modelo.scad

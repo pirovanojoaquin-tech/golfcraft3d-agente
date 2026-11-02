@@ -1,0 +1,5 @@
+nombre: Banderines de distancia para chipping (x3)
+descripcion: Juego de 3 banderines (5, 10 y 15 metros) que se clavan en el pasto para marcar dónde tiene que picar la bola. Entrenás el control de distancia en el chip.
+inspiracion: Los marcadores de distancia que se usan en el área de approach. Diseño propio.
+piezas:
+  - modelo.scad

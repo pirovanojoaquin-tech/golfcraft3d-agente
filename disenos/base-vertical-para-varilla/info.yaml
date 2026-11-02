@@ -1,0 +1,5 @@
+nombre: Base vertical para varilla de alineación
+descripcion: Deja una varilla de alineación parada en la alfombra o el piso del driving. Con dos armás una puerta para entrenar el recorrido del palo o marcás un blanco.
+inspiracion: Los ejercicios de "puerta" con varillas clavadas para entrenar el path del swing. Esta base lo permite donde no se puede clavar. Diseño propio.
+piezas:
+  - modelo.scad
