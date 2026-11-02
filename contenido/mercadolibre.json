@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 10,
+  "siguiente": 11,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -537,6 +537,58 @@
       "item_id": "MLA4145712510",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4145712510-trofeo-de-golf-impreso-3d-amarillo-_JM",
       "status_ml": "active"
+    },
+    "riel-de-golpe-para-el-putt": {
+      "codigo": 10,
+      "estado": "propuesto",
+      "pack": 2,
+      "categoria": "MLA2549",
+      "categoria_nombre": "Golf > Palos y Sets > Putters",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 6600,
+          "comision": 3716,
+          "envio": 0,
+          "filamento": 1084,
+          "ganancia": 1800
+        },
+        {
+          "pack": 2,
+          "precio": 13200,
+          "comision": 4772,
+          "envio": 0,
+          "filamento": 2168,
+          "ganancia": 6260
+        },
+        {
+          "pack": 3,
+          "precio": 18900,
+          "comision": 8504,
+          "envio": 0,
+          "filamento": 3252,
+          "ganancia": 7144
+        },
+        {
+          "pack": 5,
+          "precio": 29700,
+          "comision": 11392,
+          "envio": 0,
+          "filamento": 5420,
+          "ganancia": 12888
+        },
+        {
+          "pack": 10,
+          "precio": 56100,
+          "comision": 8976,
+          "envio": 0,
+          "filamento": 10840,
+          "ganancia": 36284
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-02"
     }
   }
 }
