@@ -1,0 +1,32 @@
+nombre: Devolución de bola para el putt
+nombre_original: Golf putting ball return
+descripcion: if you miss the hole the ball will roll back to you
+origen: printables
+printables_id: '1253423'
+url: https://www.printables.com/model/1253423-golf-putting-ball-return
+autor: zevisullivan
+licencia: CC0
+licencia_nombre: Creative Commons — Public Domain
+piezas:
+- archivo: golf putting ball return.stl
+  printables_file_id: '5222285'
+  gramos: 258.2
+gramos: 258.2
+tiempo_min: 487
+tiempo: 8 h 07 min
+costo_filamento: 10330
+precio: 31000
+material: PLA
+colores_render:
+- verde
+- blanco
+- negro
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: blanco
+- archivo: 3.jpg
+  color: negro
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

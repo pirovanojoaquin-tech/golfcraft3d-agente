@@ -1,0 +1,36 @@
+nombre: Guía de setup para el putt
+descripcion: Placa para armar el putt siempre igual. La bola va en el hueco, la línea
+  larga marca hacia dónde apuntás y la línea corta, detrás de la bola, es donde va
+  la cara del putter.
+inspiracion: Las plantillas de alineación de putt que se usan para chequear la postura
+  y la cara del palo. Diseño propio, sin copiar ningún producto en particular.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: guia-de-setup-de-putt
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/guia-de-setup-de-putt/modelo.stl
+  gramos: 24.5
+gramos: 24.5
+tiempo_min: 40
+tiempo: 40 min
+costo_filamento: 980
+precio: 3000
+material: PLA
+colores_render:
+- verde
+- blanco
+- negro
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: blanco
+- archivo: 3.jpg
+  color: negro
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

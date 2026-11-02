@@ -1,0 +1,35 @@
+nombre: Banderines de distancia para chipping (x3)
+descripcion: Juego de 3 banderines (5, 10 y 15 metros) que se clavan en el pasto para
+  marcar dónde tiene que picar la bola. Entrenás el control de distancia en el chip.
+inspiracion: Los marcadores de distancia que se usan en el área de approach. Diseño
+  propio.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: banderines-de-distancia-chipping
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/banderines-de-distancia-chipping/modelo.stl
+  gramos: 14.8
+gramos: 14.8
+tiempo_min: 29
+tiempo: 29 min
+costo_filamento: 591
+precio: 1800
+material: PLA
+colores_render:
+- rojo
+- amarillo
+- blanco
+fotos:
+- archivo: 1.jpg
+  color: rojo
+- archivo: 2.jpg
+  color: amarillo
+- archivo: 3.jpg
+  color: blanco
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

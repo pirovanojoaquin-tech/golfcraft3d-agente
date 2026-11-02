@@ -1,0 +1,34 @@
+nombre: Porta pelota y tees para el cinturón
+descripcion: Va en el cinturón y lleva una pelota y 3 tees siempre a mano, sin llenar
+  los bolsillos. El cinturón pasa por las dos ranuras de la placa.
+inspiracion: Los porta bolas de cinturón. Diseño propio, simple y sin piezas extra.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: porta-pelota-y-tees-cinturon
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/porta-pelota-y-tees-cinturon/modelo.stl
+  gramos: 14.8
+gramos: 14.8
+tiempo_min: 30
+tiempo: 30 min
+costo_filamento: 592
+precio: 1800
+material: PLA
+colores_render:
+- negro
+- verde
+- azul
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

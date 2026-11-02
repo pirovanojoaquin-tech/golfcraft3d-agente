@@ -1,0 +1,35 @@
+nombre: Base vertical para varilla de alineación
+descripcion: Deja una varilla de alineación parada en la alfombra o el piso del driving.
+  Con dos armás una puerta para entrenar el recorrido del palo o marcás un blanco.
+inspiracion: Los ejercicios de "puerta" con varillas clavadas para entrenar el path
+  del swing. Esta base lo permite donde no se puede clavar. Diseño propio.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: base-vertical-para-varilla
+piezas:
+- archivo: modelo.stl
+  ruta: disenos/base-vertical-para-varilla/modelo.stl
+  gramos: 32.0
+gramos: 32.0
+tiempo_min: 68
+tiempo: 1 h 08 min
+costo_filamento: 1280
+precio: 3900
+material: PLA
+colores_render:
+- amarillo
+- negro
+- verde
+fotos:
+- archivo: 1.jpg
+  color: amarillo
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: verde
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
