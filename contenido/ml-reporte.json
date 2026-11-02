@@ -130,6 +130,16 @@
       "vendidos": 0,
       "visitas_7d": 1,
       "preguntas": 0
+    },
+    {
+      "producto": "riel-de-golpe-para-el-putt",
+      "pack": "x2",
+      "item_id": "MLA2255796127",
+      "estado_ml": "active",
+      "precio": 13200,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
     }
   ]
 }
