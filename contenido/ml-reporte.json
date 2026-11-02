@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-10-28",
+  "fecha": "2026-11-02",
   "avisos": [
     {
       "producto": "guia-de-agarre-para-el-palo",
@@ -8,7 +8,7 @@
       "estado_ml": "active",
       "precio": 18000,
       "vendidos": 0,
-      "visitas_7d": 3,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -28,7 +28,7 @@
       "estado_ml": "active",
       "precio": 18700,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -48,7 +48,7 @@
       "estado_ml": "active",
       "precio": 12800,
       "vendidos": 0,
-      "visitas_7d": 2,
+      "visitas_7d": 3,
       "preguntas": 0
     },
     {
@@ -78,7 +78,7 @@
       "estado_ml": "active",
       "precio": 6800,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 2,
       "preguntas": 0
     },
     {
@@ -109,6 +109,26 @@
       "precio": 8600,
       "vendidos": 0,
       "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "entrenador-de-alineacion-zwing",
+      "pack": "x1",
+      "item_id": "MLA4139817578",
+      "estado_ml": "active",
+      "precio": 81200,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "trofeo-de-golf",
+      "pack": "x1",
+      "item_id": "MLA4145712510",
+      "estado_ml": "active",
+      "precio": 55200,
+      "vendidos": 0,
+      "visitas_7d": 1,
       "preguntas": 0
     }
   ]
