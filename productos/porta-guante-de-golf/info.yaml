@@ -1,0 +1,29 @@
+nombre: Porta guante de golf
+descripcion: Mano de 15 cm donde ponés el guante después de jugar para que seque estirado
+  y no se arrugue ni se endurezca. Tiene ojal para colgarlo de la bolsa. El nombre
+  en relieve se personaliza.
+personalizable: Color a elección (10 colores de PLA)
+precio: 2800
+gramos: 23.2
+tiempo: 40 min
+colores:
+- negro
+- blanco
+- azul
+destacado: false
+notas: null
+origen: propio
+diseno: porta-guante-de-golf
+inspiracion: Los "glove holders" que se venden para cuidar el guante. Diseño propio.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/porta-guante-de-golf/cuerpo.stl
+  gramos: 22.6
+- archivo: acento.stl
+  ruta: disenos/porta-guante-de-golf/acento.stl
+  gramos: 0.7
+  color: verde

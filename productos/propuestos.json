@@ -127,5 +127,54 @@
     "propuesto": "2026-10-26",
     "estado": "aprobado",
     "respondido": "2026-10-26"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Arreglapiques con marcador",
+    "slug": "arreglapiques-con-marcador",
+    "makerworld_id": 497253,
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": "1253423",
+    "nombre": "Devolución de bola para el putt",
+    "slug": "devolucion-de-bola-para-el-putt",
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Entrenador de presión para el putt",
+    "slug": "entrenador-de-presion-para-el-putt",
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Exhibidor de pared para 12 pelotas",
+    "slug": "exhibidor-de-pared-para-12-pelotas",
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Marcadores de bola con tu inicial (x4)",
+    "slug": "marcadores-de-bola-con-tu-inicial-x4",
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Porta guante de golf",
+    "slug": "porta-guante-de-golf",
+    "propuesto": "2026-11-03",
+    "estado": "aprobado",
+    "respondido": "2026-11-03"
   }
 ]

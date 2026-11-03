@@ -1,0 +1,23 @@
+nombre: Devolución de bola para el putt
+descripcion: if you miss the hole the ball will roll back to you
+personalizable: Color a elección (10 colores de PLA)
+precio: 31000
+gramos: 258.2
+tiempo: 8 h 07 min
+colores:
+- verde
+- blanco
+- negro
+destacado: false
+notas: null
+origen: printables
+diseno: null
+inspiracion: null
+printables_id: '1253423'
+url: https://www.printables.com/model/1253423-golf-putting-ball-return
+autor: zevisullivan
+licencia: CC0
+piezas:
+- archivo: golf putting ball return.stl
+  printables_file_id: '5222285'
+  gramos: 258.2

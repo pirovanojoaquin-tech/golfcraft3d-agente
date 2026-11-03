@@ -1,0 +1,29 @@
+nombre: Exhibidor de pared para 12 pelotas
+descripcion: Para lucir la colección de pelotas con logos de canchas y torneos. 3
+  estantes con asiento para cada pelota, marco de color y cartel con el nombre que
+  quieras.
+personalizable: Color a elección (10 colores de PLA)
+precio: 18300
+gramos: 152.1
+tiempo: 4 h 31 min
+colores:
+- verde
+- negro
+- azul
+destacado: false
+notas: null
+origen: propio
+diseno: exhibidor-de-pelotas-de-pared
+inspiracion: Los exhibidores de pelotas de colección. Diseño propio.
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/exhibidor-de-pelotas-de-pared/cuerpo.stl
+  gramos: 146.7
+- archivo: acento.stl
+  ruta: disenos/exhibidor-de-pelotas-de-pared/acento.stl
+  gramos: 5.3
+  color: blanco

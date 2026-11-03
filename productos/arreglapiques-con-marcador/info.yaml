@@ -1,0 +1,23 @@
+nombre: Arreglapiques con marcador
+descripcion: A remodeled divot tool inspired by @bitclicker ‘s creation. It holds
+  a marker making everything you’ll need around the green available !
+personalizable: Color a elección (10 colores de PLA)
+precio: 900
+gramos: 7.0
+tiempo: 22 min
+colores:
+- negro
+- verde
+- rojo
+destacado: false
+notas: null
+origen: makerworld
+diseno: null
+inspiracion: null
+printables_id: null
+makerworld_id: 497253
+url: https://makerworld.com/es/models/497253-golf-divot-tool-with-marker
+autor: Sequo
+licencia: BY-SA
+piezas: []
+archivo_pendiente: true
