@@ -1,0 +1,38 @@
+nombre: Marcadores de bola con tu inicial (x4)
+descripcion: Pack de 4 marcadores de 26 mm con canto estriado, tu inicial en relieve
+  y anillo de otro color. Para marcar la bola en el green con estilo; ideal para regalar.
+inspiracion: Los marcadores personalizados con inicial. Diseño propio en 2 colores.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: marcadores-de-bola-con-inicial
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/marcadores-de-bola-con-inicial/cuerpo.stl
+  gramos: 5.4
+- archivo: acento.stl
+  ruta: disenos/marcadores-de-bola-con-inicial/acento.stl
+  gramos: 0.6
+  color: amarillo
+gramos: 6.0
+tiempo_min: 19
+tiempo: 19 min
+costo_filamento: 241
+precio: 800
+material: PLA
+colores_render:
+- negro
+- verde
+- azul
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

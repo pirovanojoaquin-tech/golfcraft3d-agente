@@ -1,0 +1,33 @@
+nombre: Arreglapiques con marcador
+nombre_original: Golf Divot Tool with Marker
+descripcion: A remodeled divot tool inspired by @bitclicker ‘s creation. It holds
+  a marker making everything you’ll need around the green available !
+origen: makerworld
+printables_id: null
+makerworld_id: 497253
+url: https://makerworld.com/es/models/497253-golf-divot-tool-with-marker
+autor: Sequo
+licencia: BY-SA
+licencia_nombre: BY-SA
+piezas: []
+archivo_pendiente: true
+gramos: 7.0
+tiempo_min: 22
+tiempo: 22 min
+costo_filamento: 280
+precio: 900
+material: PLA
+colores_render:
+- negro
+- verde
+- rojo
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: rojo
+estimacion: 'Gramos y tiempo del perfil publicado en MakerWorld (0.16mm layer, 6 walls,
+  Gyroid 25%). Las fotos son del autor: si se aprueba, se rehacen con nuestros renders
+  cuando llegue el archivo.'

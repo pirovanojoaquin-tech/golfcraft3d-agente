@@ -1,0 +1,35 @@
+nombre: Clip de putter para la bolsa
+nombre_original: Golf Bag Putter Clip V4
+descripcion: Golf Bag Putter Clip.  Printed in 2 parts and superglued together.
+origen: printables
+printables_id: '471589'
+url: https://www.printables.com/model/471589-golf-bag-putter-clip-v4
+autor: Wyliebutler
+licencia: CC0
+licencia_nombre: Creative Commons — Public Domain
+piezas:
+- archivo: PUTTER_CLIP_V4.stl
+  printables_file_id: '2848731'
+  gramos: 11.0
+- archivo: PUTTER_CLIP_V4_CLIP.stl
+  printables_file_id: '2848733'
+  gramos: 5.4
+gramos: 16.4
+tiempo_min: 34
+tiempo: 34 min
+costo_filamento: 657
+precio: 2000
+material: PLA
+colores_render:
+- negro
+- verde
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: amarillo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

@@ -1,0 +1,39 @@
+nombre: Exhibidor de pared para 12 pelotas
+descripcion: Para lucir la colección de pelotas con logos de canchas y torneos. 3
+  estantes con asiento para cada pelota, marco de color y cartel con el nombre que
+  quieras.
+inspiracion: Los exhibidores de pelotas de colección. Diseño propio.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: exhibidor-de-pelotas-de-pared
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/exhibidor-de-pelotas-de-pared/cuerpo.stl
+  gramos: 146.7
+- archivo: acento.stl
+  ruta: disenos/exhibidor-de-pelotas-de-pared/acento.stl
+  gramos: 5.3
+  color: blanco
+gramos: 152.1
+tiempo_min: 271
+tiempo: 4 h 31 min
+costo_filamento: 6082
+precio: 18300
+material: PLA
+colores_render:
+- verde
+- negro
+- azul
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

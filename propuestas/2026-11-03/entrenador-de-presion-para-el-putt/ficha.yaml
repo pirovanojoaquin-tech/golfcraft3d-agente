@@ -1,0 +1,40 @@
+nombre: Entrenador de presión para el putt
+descripcion: Rampa con un hoyito arriba marcado con un aro de color. Si le pegás con
+  la velocidad justa, la bola sube y se queda en el hoyito; corta no llega y larga
+  pasa de largo. Entrena la velocidad, que es lo que más falla en el putt.
+inspiracion: Los entrenadores de "presión" de putt que están entre los más vendidos
+  (rampas con objetivo chico arriba). Diseño propio, sin copiar ningún producto.
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: entrenador-de-presion-de-putt
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/entrenador-de-presion-de-putt/cuerpo.stl
+  gramos: 65.8
+- archivo: acento.stl
+  ruta: disenos/entrenador-de-presion-de-putt/acento.stl
+  gramos: 1.6
+  color: rojo
+gramos: 67.4
+tiempo_min: 130
+tiempo: 2 h 10 min
+costo_filamento: 2696
+precio: 8100
+material: PLA
+colores_render:
+- blanco
+- negro
+- verde
+fotos:
+- archivo: 1.jpg
+  color: blanco
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: verde
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
