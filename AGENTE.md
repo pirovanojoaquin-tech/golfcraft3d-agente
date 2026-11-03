@@ -260,8 +260,9 @@ Al menos 1 de las 3 historias del día tiene que ser de producto.
 
 ## Rotación de productos
 
-- **Un producto no se repite en carrusel antes de 14 días, ni en historia antes de 7** (cuento desde su última
-  aparición en `contenido/calendario.json`, publicada o programada).
+- **Nunca se repite un producto (pedido del dueño, 3/11/2026).** Cada producto tiene **un solo día**: su
+  estreno, con su carrusel y sus historias de ese día. Después no vuelve a aparecer en posts ni historias.
+  Por eso la propuesta es de **7 productos por semana: uno nuevo y original por día**.
 - **Si no alcanzan los productos, no repitas: hacé un post general** (sin `producto:` en el plan): tips de
   entrenamiento (putt, drive, chipping; ejercicios correctos y conocidos), personalizados ("lo hacemos a tu
   medida"), cómo comprar (tienda + Mercado Libre), proceso de impresión 3D. Usá slides `info` y `pasos` (en
