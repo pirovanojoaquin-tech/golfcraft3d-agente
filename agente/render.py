@@ -32,6 +32,8 @@ def args():
     ap.add_argument("--transparente", action="store_true",
                     help="PNG sin fondo (solo producto + sombra) para montar sobre fondos de marca")
     ap.add_argument("--pelota", action="store_true", help="agrega una pelota de golf a escala real al lado")
+    ap.add_argument("--acentos", default="",
+                    help="piezas de otro color (AMS), 'ruta.stl|#hex;ruta2.stl|#hex': se suman al modelo principal")
     ap.add_argument("--escena", help="escena en uso de agente/escenas.py (ej: gorra)")
     ap.add_argument("--escena-params", default="{}", help="parámetros de la escena en JSON")
     ap.add_argument("--margen", type=float, help="aire alrededor de lo encuadrado (1 = justo)")
@@ -217,8 +219,18 @@ def main():
     a = args()
     bpy.ops.wm.read_factory_settings(use_empty=True)
     obj = importar(a.modelo)
-    normalizar(obj)
     material_pla(obj, a.color)
+    # productos de varios colores: cada pieza con su material, todo junto en un objeto (queda en su lugar)
+    for parte in filter(None, a.acentos.split(";")):
+        ruta, color = parte.rsplit("|", 1)
+        extra = importar(ruta)
+        material_pla(extra, color)
+        bpy.ops.object.select_all(action="DESELECT")
+        extra.select_set(True)
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.join()
+    normalizar(obj)
     visibles = [obj]
     if a.pelota:
         visibles.append(pelota_de_golf(obj))

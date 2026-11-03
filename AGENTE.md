@@ -106,6 +106,47 @@ Vale para los modelos de terceros y para los diseños propios. No cambies nada d
 - Descartá lo que sea solo lindo, lo que necesite piezas que no imprimimos (resortes, imanes, electrónica)
   salvo que sean muy comunes, y lo que ya tengamos parecido en `productos/`.
 
+## Filtro de calidad (OBLIGATORIO, desde 3/11/2026)
+
+El dueño se quejó de productos "feos, aburridos, truchos" y de otros que no se entiende para qué sirven
+(ej: un soporte de celular que no muestra un celular puesto). **Sé muy exigente: es mejor proponer menos
+que proponer algo flojo.** Cada producto (de afuera o propio) tiene que pasar **las 6 preguntas**; si falla
+una, no va:
+
+1. **¿Se entiende en una foto para qué sirve?** Si hace falta explicarlo, no va.
+2. **¿Se ve lindo, prolijo y "de marca"?** Nada de piezas planas sin gracia, cilindros, placas genéricas o
+   cosas que parezcan prototipo. Preferí formas trabajadas, detalles y **2 o 3 colores (tenemos AMS)**.
+3. **¿Funciona para todos?** Nada que dependa de un modelo de celular, un tamaño de palo/varilla raro o
+   una pieza que no tengamos. Si es para celular, que sea universal (agarre ajustable/abrazadera).
+4. **¿Conviene hacerlo en 3D?** Que no se consiga más barato y mejor hecho en cualquier lado
+   (ej: una pelota de golf impresa, no). El 3D gana en: personalizado, diseños únicos, colores, formas
+   que no existen en el mercado local.
+5. **¿Lo compraría alguien que no conocemos?** Pensá en un golfista que practica: ¿le resuelve algo real o es un juguete?
+6. **¿Se puede mostrar en uso?** Tiene que poder armarse su **imagen en uso** (ver "Imagen en uso"):
+   el soporte con un celular puesto, la base con la varilla clavada, el clip en la bolsa.
+   Si no hay forma de mostrarlo en contexto, no va.
+
+En el mail de la propuesta, por cada producto poné una línea "Por qué sí:" con la razón concreta.
+
+### De dónde sacar ideas
+- **Modelos de afuera:** `buscar.py` (Printables + MakerWorld/Bambu). Ordená por lo mejor, no por lo primero:
+  muchos likes/descargas, fotos reales lindas, buenas reseñas. Solo licencias que permiten vender (ver abajo).
+- **Diseños propios inspirados en lo que más se vende:** buscá con WebSearch (y mirá las fotos de los
+  resultados con WebFetch) los productos de entrenamiento de golf más vendidos y mejor puntuados (Amazon, Golf Galaxy, PGA Tour Superstore, marcas de training aids).
+  Elegí los que se pueden hacer **mejor o más personalizados en 3D** y diseñá **nuestra versión** con la misma
+  función: nunca copies la forma exacta, logos ni nombres de marca (pueden tener patente o diseño registrado).
+- **Varios colores (AMS):** los diseños propios pueden tener piezas de color fijo. En `disenos/<x>/info.yaml`,
+  `piezas: [modelo.scad, {archivo: letras.scad, color: blanco}]`: la primera pieza va en el color que elige
+  el cliente y las demás en su color fijo, encajadas en el mismo lugar (mismas coordenadas). Así salen los
+  renders en varios colores. Ideal para nombres/números en relieve, bordes, detalles.
+
+### Licencias
+Se mantiene el filtro: **solo modelos cuya licencia permite vender** (BY, BY-SA, CC0 en MakerWorld; CC-BY,
+CC-BY-SA, CC0 en Printables). El dueño pidió (3/11/2026) ignorar las licencias de MakerWorld; Claude no lo
+aplica porque vender modelos con licencia que lo prohíbe es usar el trabajo de otro sin permiso. Alternativas:
+si un modelo con "Standard Digital File License" vale mucho la pena, proponelo aparte como "pedir permiso /
+comprar licencia comercial al autor" (muchos creadores la venden), o hacé nuestra versión propia de la idea.
+
 ## Diseños propios (entrenamiento de golf)
 
 Objetivo: productos originales de GolfCraft3D, sin depender de licencias de terceros.
@@ -185,6 +226,10 @@ Estructura:
 Máximo ~600 caracteres antes de los hashtags.
 
 ## Carrusel (5 o 6 slides, estilo catálogo)
+
+**Obligatorio desde 3/11/2026:** el carrusel de cada producto lleva su **imagen en uso** (slide 1 o 2, con
+`tipo: foto` y `foto: en-uso.jpg`). Si todavía no está, armala antes (ver "Imagen en uso") o no planifiques
+ese producto esa semana.
 
 Usá las plantillas de estilo catálogo (renders sin fondo de `productos/<slug>/fotos/png/`, ver
 `planes/2026-10-21.yaml`). Cada carrusel tiene que mostrar el producto de formas distintas:

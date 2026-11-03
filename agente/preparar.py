@@ -179,11 +179,16 @@ def precio(gramos):
     return round(costo), final
 
 
-def renderizar(modelo, destino, color, angulo, giro, vertical, muestras):
+def acentos_arg(acentos):
+    """[(stl, nombre de color)] -> argumento --acentos de render.py (piezas de otro color, impresas con AMS)."""
+    return ";".join(f"{ruta}|{CONFIG['colores'][color]}" for ruta, color in acentos or [])
+
+
+def renderizar(modelo, destino, color, angulo, giro, vertical, muestras, acentos=None):
     png = destino.with_suffix(".png")
     cmd = ["blender", "-b", "-P", str(RAIZ / "agente" / "render.py"), "--", str(modelo), str(png),
            "--color", color, "--angulo", str(angulo), "--giro", str(giro),
-           "--tam", "1080", "--muestras", str(muestras)]
+           "--tam", "1080", "--muestras", str(muestras), "--acentos", acentos_arg(acentos)]
     if vertical:
         cmd += ["--alto", "1350"]
     r = subprocess.run(cmd, capture_output=True, text=True)
@@ -237,7 +242,7 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
     })
 
 
-def terminar(carpeta, piezas, gramos, minutos, modelo_render, colores, muestras, datos):
+def terminar(carpeta, piezas, gramos, minutos, modelo_render, colores, muestras, datos, acentos=None):
     """Renderiza en los colores pedidos y escribe ficha.yaml (común a Printables y diseños propios)."""
     costo, final = precio(gramos)
     paleta = CONFIG["colores"]
@@ -246,7 +251,8 @@ def terminar(carpeta, piezas, gramos, minutos, modelo_render, colores, muestras,
     for n, color in enumerate(colores[:len(ANGULOS)], 1):
         angulo, giro = ANGULOS[n - 1]
         destino = carpeta / "fotos" / f"{n}.jpg"
-        renderizar(modelo_render, destino, paleta[color], angulo, giro, vertical=(n == 1), muestras=muestras)
+        renderizar(modelo_render, destino, paleta[color], angulo, giro, vertical=(n == 1), muestras=muestras,
+                   acentos=acentos)
         fotos.append({"archivo": f"{n}.jpg", "color": color})
 
     ficha = {
@@ -277,8 +283,10 @@ def preparar_propio(slug_diseno, fecha, colores=None, muestras=64):
     info = yaml.safe_load((base / "info.yaml").read_text(encoding="utf-8"))
     carpeta = RAIZ / "propuestas" / fecha / slug(info["nombre"])
     (carpeta / "fotos").mkdir(parents=True, exist_ok=True)
-    piezas, gramos, minutos, stls = [], 0.0, 0.0, []
-    for archivo in info["piezas"]:
+    piezas, gramos, minutos, stls, acentos = [], 0.0, 0.0, [], []
+    for pieza in info["piezas"]:
+        # una pieza puede ser "modelo.scad" o {archivo: letras.scad, color: blanco} (color fijo, AMS)
+        archivo, color_fijo = (pieza, None) if isinstance(pieza, str) else (pieza["archivo"], pieza.get("color"))
         fuente = base / archivo
         stl = fuente.with_suffix(".stl")
         if fuente.suffix.lower() == ".scad":
@@ -288,7 +296,10 @@ def preparar_propio(slug_diseno, fecha, colores=None, muestras=64):
         g, m = laminar(stl)
         gramos, minutos = gramos + g, minutos + m
         stls.append(stl)
-        piezas.append({"archivo": stl.name, "ruta": stl.relative_to(RAIZ).as_posix(), "gramos": round(g, 1)})
+        piezas.append({"archivo": stl.name, "ruta": stl.relative_to(RAIZ).as_posix(), "gramos": round(g, 1),
+                       **({"color": color_fijo} if color_fijo else {})})
+        if color_fijo and len(stls) > 1:
+            acentos.append((stl, color_fijo))
     return terminar(carpeta, piezas, gramos, minutos, stls[0], colores, muestras, {
         "nombre": info["nombre"],
         "descripcion": info.get("descripcion", ""),
@@ -300,7 +311,7 @@ def preparar_propio(slug_diseno, fecha, colores=None, muestras=64):
         "licencia": "Diseño propio",
         "licencia_nombre": "Diseño propio de GolfCraft3D (sin restricciones)",
         "diseno": slug_diseno,
-    })
+    }, acentos)
 
 
 def foto_mw(url, destino, vertical):

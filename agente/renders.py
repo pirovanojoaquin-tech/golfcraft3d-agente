@@ -18,7 +18,7 @@ import yaml
 
 from .calendario import RAIZ
 from .makerworld import modelo_de_pieza
-from .preparar import CONFIG, DESCARGAS, a_stl, descargar, formato_tiempo, laminar, link_descarga
+from .preparar import CONFIG, DESCARGAS, a_stl, acentos_arg, descargar, formato_tiempo, laminar, link_descarga
 
 # (elevación, giro) de las vistas extra para las fotos de Mercado Libre
 VISTAS_ML = {"frente": (10, 0), "angulo": (45, -40), "arriba": (89, 0), "atras": (35, 215)}
@@ -45,10 +45,13 @@ def medidas(stl):
     return {"largo": round(largo), "ancho": round(ancho), "alto": round(m.get("z", 0))}
 
 
+ACENTOS = []  # piezas de color fijo (productos de varios colores, AMS): se cargan en main()
+
+
 def render(stl, destino, color, angulo, giro, muestras, pelota=False):
     cmd = ["blender", "-b", "-P", str(RAIZ / "agente" / "render.py"), "--", str(stl), str(destino),
            "--color", CONFIG["colores"][color], "--angulo", str(angulo), "--giro", str(giro),
-           "--tam", "1080", "--muestras", str(muestras), "--transparente"]
+           "--tam", "1080", "--muestras", str(muestras), "--transparente", "--acentos", acentos_arg(ACENTOS)]
     if pelota:
         cmd.append("--pelota")
     r = subprocess.run(cmd, capture_output=True, text=True)
@@ -65,6 +68,7 @@ def main():
     carpeta = RAIZ / "productos" / a.slug
     info = yaml.safe_load((carpeta / "info.yaml").read_text(encoding="utf-8"))
     stl = stl_del_producto(info)
+    ACENTOS[:] = [(RAIZ / p["ruta"], p["color"]) for p in info["piezas"][1:] if p.get("color") and p.get("ruta")]
     salida = carpeta / "fotos" / "png"
     salida.mkdir(parents=True, exist_ok=True)
 
