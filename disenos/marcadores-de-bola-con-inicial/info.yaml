@@ -1,0 +1,6 @@
+nombre: Marcadores de bola con tu inicial (x4)
+descripcion: Pack de 4 marcadores de 26 mm con canto estriado, tu inicial en relieve y anillo de otro color. Para marcar la bola en el green con estilo; ideal para regalar.
+inspiracion: Los marcadores personalizados con inicial. Diseño propio en 2 colores.
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: amarillo}

@@ -1,0 +1,6 @@
+nombre: Exhibidor de pared para 12 pelotas
+descripcion: Para lucir la colección de pelotas con logos de canchas y torneos. 3 estantes con asiento para cada pelota, marco de color y cartel con el nombre que quieras.
+inspiracion: Los exhibidores de pelotas de colección. Diseño propio.
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}

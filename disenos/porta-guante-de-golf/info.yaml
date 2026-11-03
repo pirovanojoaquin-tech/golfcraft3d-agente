@@ -1,0 +1,6 @@
+nombre: Porta guante de golf
+descripcion: Mano de 15 cm donde ponés el guante después de jugar para que seque estirado y no se arrugue ni se endurezca. Tiene ojal para colgarlo de la bolsa. El nombre en relieve se personaliza.
+inspiracion: Los "glove holders" que se venden para cuidar el guante. Diseño propio.
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: verde}
