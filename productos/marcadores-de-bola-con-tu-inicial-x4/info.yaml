@@ -26,3 +26,14 @@ piezas:
   ruta: disenos/marcadores-de-bola-con-inicial/acento.stl
   gramos: 0.6
   color: amarillo
+medidas_mm:
+  largo: 58
+  ancho: 58
+  alto: 3
+colores_png:
+- negro
+- verde
+- azul
+- blanco
+- rojo
+- amarillo

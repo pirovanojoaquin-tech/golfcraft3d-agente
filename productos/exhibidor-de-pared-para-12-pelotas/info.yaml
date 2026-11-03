@@ -27,3 +27,14 @@ piezas:
   ruta: disenos/exhibidor-de-pelotas-de-pared/acento.stl
   gramos: 5.3
   color: blanco
+medidas_mm:
+  largo: 224
+  ancho: 206
+  alto: 26
+colores_png:
+- verde
+- negro
+- azul
+- blanco
+- rojo
+- amarillo

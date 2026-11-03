@@ -28,3 +28,14 @@ piezas:
   ruta: disenos/entrenador-de-presion-de-putt/acento.stl
   gramos: 1.6
   color: rojo
+medidas_mm:
+  largo: 193
+  ancho: 76
+  alto: 22
+colores_png:
+- blanco
+- negro
+- verde
+- rojo
+- azul
+- amarillo

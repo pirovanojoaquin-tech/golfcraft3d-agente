@@ -21,3 +21,14 @@ piezas:
 - archivo: golf putting ball return.stl
   printables_file_id: '5222285'
   gramos: 258.2
+medidas_mm:
+  largo: 229
+  ancho: 222
+  alto: 51
+colores_png:
+- verde
+- blanco
+- negro
+- rojo
+- azul
+- amarillo

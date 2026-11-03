@@ -27,3 +27,14 @@ piezas:
   ruta: disenos/porta-guante-de-golf/acento.stl
   gramos: 0.7
   color: verde
+medidas_mm:
+  largo: 149
+  ancho: 123
+  alto: 3
+colores_png:
+- negro
+- blanco
+- azul
+- rojo
+- verde
+- amarillo
