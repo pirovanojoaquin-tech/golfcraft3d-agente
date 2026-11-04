@@ -44,6 +44,9 @@ def args():
     return ap.parse_args(argv)
 
 
+MAX_CARAS = 400_000
+
+
 def importar(ruta):
     ext = ruta.lower().rsplit(".", 1)[-1]
     antes = set(bpy.data.objects)
@@ -67,7 +70,17 @@ def importar(ruta):
     bpy.context.view_layer.objects.active = objs[0]
     if len(objs) > 1:
         bpy.ops.object.join()
-    return bpy.context.view_layer.objects.active
+    obj = bpy.context.view_layer.objects.active
+    # mallas muy pesadas (texturas tejidas, escaneos): se simplifican para que el render no tarde horas;
+    # a 400 mil triángulos no se nota la diferencia en una foto
+    caras = len(obj.data.polygons)
+    if caras > MAX_CARAS:
+        if obj.data.users > 1:
+            obj.data = obj.data.copy()
+        mod = obj.modifiers.new("simplificar", "DECIMATE")
+        mod.ratio = MAX_CARAS / caras
+        bpy.ops.object.modifier_apply(modifier=mod.name)
+    return obj
 
 
 def normalizar(obj):
