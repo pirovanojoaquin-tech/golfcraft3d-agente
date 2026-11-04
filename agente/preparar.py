@@ -13,6 +13,7 @@ Deja todo en propuestas/<fecha>/<slug>/:
 Los archivos 3D descargados quedan en descargas/ (no se suben al repo).
 """
 import argparse
+import hashlib
 import math
 import re
 import subprocess
@@ -242,18 +243,25 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
     for i, s in enumerate(elegidos):
         local = descargar(link_descarga(d["id"], s["id"]), DESCARGAS / str(d["id"]) / s["name"])
         stl = a_stl(local)
+        # la marca guarda el factor y el tamaño del archivo ya escalado: si el archivo se volvió a bajar
+        # (contenido distinto) se escala de nuevo; si no, no se escala dos veces
+        marca = stl.with_suffix(".escalado")
+        hecho = marca.read_text().split() if marca.exists() else []
+        ya_escalado = len(hecho) == 2 and hecho[1] == hashlib.md5(stl.read_bytes()).hexdigest()
         if i == 0:
             # el mismo factor para todas las piezas (así siguen encajando): lo define la primera
-            m0 = medidas(stl)
-            if alto:
-                factor = alto / m0["z"]
-            elif m0 and max(m0.values()) < 10:  # exportado en otra unidad: lo llevamos a 12 cm de alto
-                factor = 120 / m0["z"]
+            if ya_escalado:
+                factor = float(hecho[0])
+            else:
+                m0 = medidas(stl)
+                if alto:
+                    factor = alto / m0["z"]
+                elif m0 and max(m0.values()) < 10:  # exportado en otra unidad: lo llevamos a 12 cm de alto
+                    factor = 120 / m0["z"]
         if abs(factor - 1) > 0.01 and stl.suffix.lower() == ".stl":
-            marca = stl.with_suffix(".escalado")
-            if not marca.exists() or marca.read_text() != f"{factor:.6f}":
+            if not (ya_escalado and hecho[0] == f"{factor:.6f}"):
                 escalar(stl, factor)
-                marca.write_text(f"{factor:.6f}")
+                marca.write_text(f"{factor:.6f} {hashlib.md5(stl.read_bytes()).hexdigest()}")
             local = stl
         g, m = laminar(local if local.suffix.lower() == ".3mf" else stl)
         gramos, minutos = gramos + g, minutos + m
