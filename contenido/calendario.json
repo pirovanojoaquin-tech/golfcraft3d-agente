@@ -1207,5 +1207,352 @@
       "contenido/media/2026-11-08/historia-3.jpg"
     ],
     "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-09-historia-1",
+    "fecha": "2026-11-09",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "devolucion-de-bola-para-el-putt",
+    "imagenes": [
+      "contenido/media/2026-11-09/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-09-post",
+    "fecha": "2026-11-09",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "devolucion-de-bola-para-el-putt",
+    "imagenes": [
+      "contenido/media/2026-11-09/post-1.jpg",
+      "contenido/media/2026-11-09/post-2.jpg",
+      "contenido/media/2026-11-09/post-3.jpg",
+      "contenido/media/2026-11-09/post-4.jpg",
+      "contenido/media/2026-11-09/post-5.jpg",
+      "contenido/media/2026-11-09/post-6.jpg"
+    ],
+    "caption": "¿Cansado de ir a buscar la bola después de cada putt? 🔁\n\nLa devolución de bola se pone detrás del objetivo en la alfombra: si errás, la rampa te la devuelve rodando. Así practicás putts seguidos, uno atrás del otro, sin cortar el ritmo.\n\nIdeal para entrenar en casa o en la oficina. En tu color.\n#putting #putt #entrenamientogolf #golfencasa\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-09-historia-2",
+    "fecha": "2026-11-09",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-09/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-09-historia-3",
+    "fecha": "2026-11-09",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-09/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-10-historia-1",
+    "fecha": "2026-11-10",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "entrenador-de-presion-para-el-putt",
+    "imagenes": [
+      "contenido/media/2026-11-10/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-10-post",
+    "fecha": "2026-11-10",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "entrenador-de-presion-para-el-putt",
+    "imagenes": [
+      "contenido/media/2026-11-10/post-1.jpg",
+      "contenido/media/2026-11-10/post-2.jpg",
+      "contenido/media/2026-11-10/post-3.jpg",
+      "contenido/media/2026-11-10/post-4.jpg",
+      "contenido/media/2026-11-10/post-5.jpg",
+      "contenido/media/2026-11-10/post-6.jpg"
+    ],
+    "caption": "El putt que más se falla no es el torcido: es el corto o el largo 🎯\n\nEl entrenador de presión es una rampa con un hoyito arriba. Con la velocidad justa, la bola sube y se queda; si le pegás corto no llega, y si le pegás fuerte pasa de largo.\n\nDiseño exclusivo GolfCraft3D, en dos colores.\n#putting #putt #entrenamientogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-10-historia-2",
+    "fecha": "2026-11-10",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-10/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-10-historia-3",
+    "fecha": "2026-11-10",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-10/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-11-historia-1",
+    "fecha": "2026-11-11",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "marcadores-de-bola-con-tu-inicial-x4",
+    "imagenes": [
+      "contenido/media/2026-11-11/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-11-post",
+    "fecha": "2026-11-11",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "marcadores-de-bola-con-tu-inicial-x4",
+    "imagenes": [
+      "contenido/media/2026-11-11/post-1.jpg",
+      "contenido/media/2026-11-11/post-2.jpg",
+      "contenido/media/2026-11-11/post-3.jpg",
+      "contenido/media/2026-11-11/post-4.jpg",
+      "contenido/media/2026-11-11/post-5.jpg",
+      "contenido/media/2026-11-11/post-6.jpg"
+    ],
+    "caption": "Marcá tu bola en el green con tu propia inicial ✨\n\nPack de 4 marcadores de 26 mm con canto estriado, la letra que quieras en relieve y anillo de otro color. Livianos, prolijos y únicos.\n\nEl regalo ideal para el golfista que tiene todo.\n#marcadordebola #green #regalogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-11-historia-2",
+    "fecha": "2026-11-11",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-11/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-11-historia-3",
+    "fecha": "2026-11-11",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-11/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-12-historia-1",
+    "fecha": "2026-11-12",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-12/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-12-post",
+    "fecha": "2026-11-12",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-12/post-1.jpg",
+      "contenido/media/2026-11-12/post-2.jpg",
+      "contenido/media/2026-11-12/post-3.jpg",
+      "contenido/media/2026-11-12/post-4.jpg",
+      "contenido/media/2026-11-12/post-5.jpg"
+    ],
+    "caption": "3 ejercicios para pegarle mejor a los hierros, sin gastar una bola 🏌️\n\n1️⃣ La toalla: poné una toalla 10 cm detrás de la bola. Si la tocás, pegaste antes de tiempo.\n2️⃣ La línea: marcá una línea en el pasto y hacé que el divot empiece después de la línea.\n3️⃣ Medio swing: pegá con el swing a la altura de la cintura y terminá en equilibrio.\n\nGuardalo para tu próxima práctica 📌\n#hierros #swing #entrenamientogolf #tipsdegolf\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-12-historia-2",
+    "fecha": "2026-11-12",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-12/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-12-historia-3",
+    "fecha": "2026-11-12",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-12/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-13-historia-1",
+    "fecha": "2026-11-13",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "porta-guante-de-golf",
+    "imagenes": [
+      "contenido/media/2026-11-13/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-13-post",
+    "fecha": "2026-11-13",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "porta-guante-de-golf",
+    "imagenes": [
+      "contenido/media/2026-11-13/post-1.jpg",
+      "contenido/media/2026-11-13/post-2.jpg",
+      "contenido/media/2026-11-13/post-3.jpg",
+      "contenido/media/2026-11-13/post-4.jpg",
+      "contenido/media/2026-11-13/post-5.jpg",
+      "contenido/media/2026-11-13/post-6.jpg"
+    ],
+    "caption": "El guante dura mucho más si lo dejás secar estirado 🧤\n\nEl porta guante es una mano de 15 cm: después de jugar ponés el guante y se seca con la forma justa, sin arrugarse ni endurecerse. Tiene ojal para colgarlo de la bolsa y tu nombre en relieve.\n\nDiseño exclusivo GolfCraft3D.\n#guantedegolf #accesoriosdegolf #regalogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-13-historia-2",
+    "fecha": "2026-11-13",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-13/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-13-historia-3",
+    "fecha": "2026-11-13",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-13/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-14-historia-1",
+    "fecha": "2026-11-14",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "exhibidor-de-pared-para-12-pelotas",
+    "imagenes": [
+      "contenido/media/2026-11-14/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-14-post",
+    "fecha": "2026-11-14",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "exhibidor-de-pared-para-12-pelotas",
+    "imagenes": [
+      "contenido/media/2026-11-14/post-1.jpg",
+      "contenido/media/2026-11-14/post-2.jpg",
+      "contenido/media/2026-11-14/post-3.jpg",
+      "contenido/media/2026-11-14/post-4.jpg",
+      "contenido/media/2026-11-14/post-5.jpg",
+      "contenido/media/2026-11-14/post-6.jpg"
+    ],
+    "caption": "¿Juntás pelotas de las canchas que visitás? Merecen estar a la vista 🏆\n\nExhibidor de pared para 12 pelotas: 3 estantes con asiento para cada una, marco de color y cartel con el nombre que quieras.\n\nDiseño exclusivo GolfCraft3D. Un regalo distinto para el golfista coleccionista.\n#pelotasdegolf #coleccion #regalogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-14-historia-2",
+    "fecha": "2026-11-14",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-14/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-14-historia-3",
+    "fecha": "2026-11-14",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-14/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-15-historia-1",
+    "fecha": "2026-11-15",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-15/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-15-post",
+    "fecha": "2026-11-15",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-15/post-1.jpg",
+      "contenido/media/2026-11-15/post-2.jpg",
+      "contenido/media/2026-11-15/post-3.jpg",
+      "contenido/media/2026-11-15/post-4.jpg"
+    ],
+    "caption": "¿Cómo comprar en GolfCraft3D? Así de fácil 🛒\n\n1️⃣ Elegí el producto en la tienda (link en la bio) o en Mercado Libre.\n2️⃣ Elegí el color, y si querés, el nombre o la inicial.\n3️⃣ Lo imprimimos a pedido y te lo mandamos.\n\n¿Tenés una idea que no está? La diseñamos para vos. Escribinos por DM.\n#golf #accesoriosdegolf #impresion3d #golfistas\n#golfargentina #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-15-historia-2",
+    "fecha": "2026-11-15",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-15/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-15-historia-3",
+    "fecha": "2026-11-15",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-15/historia-3.jpg"
+    ],
+    "estado": "pendiente"
   }
 ]
