@@ -56,7 +56,12 @@ def generar(slug, color=None, muestras=32):
         if not render.exists():
             raise RuntimeError(f"Falló el render: {r.stdout[-800:]}")
         ancla = json.loads(Path(str(render) + ".json").read_text())["ancla"]
-        im = montaje.montar(Image.open(foto), Image.open(render), ancla, receta["punto"], receta.get("escala", 1.0),
+        capa = Image.open(render).convert("RGBA")
+        # el piso invisible deja un velo parejo casi transparente (se ve como un rectángulo en la foto):
+        # se descarta lo más tenue y queda solo el producto y su sombra de verdad
+        umbral = receta.get("umbral_sombra", 0.12) * 255
+        capa.putalpha(capa.getchannel("A").point(lambda v: 0 if v < umbral else round((v - umbral) * 255 / (255 - umbral))))
+        im = montaje.montar(Image.open(foto), capa, ancla, receta["punto"], receta.get("escala", 1.0),
                             grano=receta.get("grano", 2), desenfoque=receta.get("desenfoque", 0.5))
     if receta.get("recorte"):
         im = im.crop(tuple(receta["recorte"]))

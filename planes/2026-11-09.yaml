@@ -12,6 +12,7 @@ dias:
         Ideal para entrenar en casa o en la oficina. En tu color.
         #putting #putt #entrenamientogolf #golfencasa
       slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Practicá sin parar", subtitulo: "La bola vuelve sola", etiqueta: "Nuevo"}
         - {tipo: "hero", titulo: "Pegá y la bola vuelve", subtitulo: "Devolución de bola para el putt", etiqueta: "Nuevo"}
         - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Ponela detrás del objetivo en la alfombra", "Pegale al putt", "Si errás, la bola vuelve sola"], tono: "crema"}
         - {tipo: "colores"}
@@ -33,6 +34,7 @@ dias:
         Diseño exclusivo GolfCraft3D, en dos colores.
         #putting #putt #entrenamientogolf #diseñopropio
       slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Ni corto ni largo", subtitulo: "Entrená la velocidad del putt", etiqueta: "Nuevo"}
         - {tipo: "hero", titulo: "Velocidad justa", subtitulo: "Entrenador de presión para el putt", etiqueta: "Nuevo", sellos: ["Diseño propio", "2 colores", "A pedido"]}
         - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyalo en la alfombra o el green", "Pegale desde 1, 2 y 3 metros", "Si queda en el hoyito, fue perfecto"], tono: "verde"}
         - {tipo: "colores"}
@@ -54,6 +56,7 @@ dias:
         El regalo ideal para el golfista que tiene todo.
         #marcadordebola #green #regalogolf #diseñopropio
       slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Tu inicial en el green", subtitulo: "Pack de 4 marcadores", etiqueta: "Nuevo"}
         - {tipo: "hero", titulo: "Tu inicial en el green", subtitulo: "Marcadores de bola x4", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu inicial", "2 colores"]}
         - {tipo: "pasos", titulo: "Pedilos así", pasos: ["Elegí la inicial", "Elegí los dos colores", "Te llegan los 4 listos para jugar"], tono: "crema"}
         - {tipo: "colores"}
@@ -97,6 +100,7 @@ dias:
         Diseño exclusivo GolfCraft3D.
         #guantedegolf #accesoriosdegolf #regalogolf #diseñopropio
       slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Tu guante como nuevo", subtitulo: "Con tu nombre en relieve", etiqueta: "Nuevo"}
         - {tipo: "hero", titulo: "Tu guante como nuevo", subtitulo: "Porta guante de golf", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu nombre", "A pedido"]}
         - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Terminás de jugar", "Ponés el guante en la mano", "Lo colgás de la bolsa y se seca estirado"], tono: "verde"}
         - {tipo: "colores"}
@@ -118,6 +122,7 @@ dias:
         Diseño exclusivo GolfCraft3D. Un regalo distinto para el golfista coleccionista.
         #pelotasdegolf #coleccion #regalogolf #diseñopropio
       slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Tu colección en la pared", subtitulo: "Exhibidor para 12 pelotas", etiqueta: "Nuevo"}
         - {tipo: "hero", titulo: "Tu colección, a la vista", subtitulo: "Exhibidor de pared para 12 pelotas", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu nombre", "2 colores"]}
         - {tipo: "pasos", titulo: "Pedilo así", pasos: ["Elegí el color del marco", "Decinos el nombre del cartel", "Lo colgás con dos tornillos"], tono: "crema"}
         - {tipo: "colores"}
