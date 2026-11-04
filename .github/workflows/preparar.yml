@@ -44,20 +44,28 @@ jobs:
           NOMBRE: ${{ matrix.p.nombre }}
           ARCHIVOS: ${{ matrix.p.archivos }}
           COLORES: ${{ matrix.p.colores }}
+          ALTO: ${{ matrix.p.alto }}
           FECHA: ${{ inputs.fecha }}
         run: |
           ARGS=(--fecha "$FECHA")
           [ -n "$NOMBRE" ] && ARGS+=(--nombre "$NOMBRE")
           [ -n "$ARCHIVOS" ] && ARGS+=(--archivos "$ARCHIVOS")
           [ -n "$COLORES" ] && ARGS+=(--colores "$COLORES")
+          [ -n "$ALTO" ] && ARGS+=(--alto "$ALTO")
           python -m agente.preparar "$ID" "${ARGS[@]}"
+
+      # solo lo que cambió este producto (si se suben carpetas enteras, las copias viejas de un
+      # producto pisan lo nuevo de otro al juntar los artefactos)
+      - name: Juntar lo nuevo
+        run: |
+          mkdir -p salida
+          git ls-files -m -o --exclude-standard propuestas disenos | while read -r f; do
+            mkdir -p "salida/$(dirname "$f")"; cp "$f" "salida/$f"; done
 
       - uses: actions/upload-artifact@v4
         with:
           name: propuesta-${{ strategy.job-index }}
-          path: |
-            propuestas/
-            disenos/
+          path: salida/
 
   guardar:
     needs: producto

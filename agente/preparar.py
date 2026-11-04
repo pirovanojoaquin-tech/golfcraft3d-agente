@@ -147,6 +147,23 @@ def medidas(ruta):
     return {k: float(v) for k, v in re.findall(r"size_([xyz]) = ([\d.]+)", r.stdout)}
 
 
+def escalar(ruta, factor):
+    """Reescribe un STL multiplicado por `factor` (algunos autores exportan en metros o pulgadas)."""
+    import numpy as np
+    datos = ruta.read_bytes()
+    if datos[:5].lower() == b"solid" and b"facet" in datos[:400]:
+        nums = re.findall(rb"vertex\s+(\S+)\s+(\S+)\s+(\S+)", datos)
+        v = np.array(nums, dtype=float).reshape(-1, 3, 3)
+    else:
+        n = int.from_bytes(datos[80:84], "little")
+        reg = np.frombuffer(datos, dtype=np.dtype([("n", "<f4", 3), ("v", "<f4", (3, 3)), ("a", "<u2")]), count=n, offset=84)
+        v = reg["v"].astype(float)
+    v = (v * factor).astype("<f4")
+    salida = np.zeros(len(v), dtype=np.dtype([("n", "<f4", 3), ("v", "<f4", (3, 3)), ("a", "<u2")]))
+    salida["v"] = v
+    ruta.write_bytes(b"\0" * 80 + len(v).to_bytes(4, "little") + salida.tobytes())
+
+
 def laminar(ruta):
     """Devuelve (gramos, minutos) estimados para una pieza.
 
@@ -203,7 +220,7 @@ def formato_tiempo(minutos):
     return f"{h} h {m:02d} min" if h else f"{m} min"
 
 
-def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras=64):
+def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras=64, alto=None):
     d = detalle(print_id)
     nombre = nombre or d["name"]
     carpeta = RAIZ / "propuestas" / fecha / slug(nombre)
@@ -221,9 +238,23 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
         elegidos = [next((s for s in disponibles if s["name"].lower().endswith(".stl")), disponibles[0])]
 
     piezas, gramos, minutos = [], 0.0, 0.0
-    for s in elegidos:
+    factor = 1.0
+    for i, s in enumerate(elegidos):
         local = descargar(link_descarga(d["id"], s["id"]), DESCARGAS / str(d["id"]) / s["name"])
         stl = a_stl(local)
+        if i == 0:
+            # el mismo factor para todas las piezas (así siguen encajando): lo define la primera
+            m0 = medidas(stl)
+            if alto:
+                factor = alto / m0["z"]
+            elif m0 and max(m0.values()) < 10:  # exportado en otra unidad: lo llevamos a 12 cm de alto
+                factor = 120 / m0["z"]
+        if abs(factor - 1) > 0.01 and stl.suffix.lower() == ".stl":
+            marca = stl.with_suffix(".escalado")
+            if not marca.exists() or marca.read_text() != f"{factor:.6f}":
+                escalar(stl, factor)
+                marca.write_text(f"{factor:.6f}")
+            local = stl
         g, m = laminar(local if local.suffix.lower() == ".3mf" else stl)
         gramos, minutos = gramos + g, minutos + m
         piezas.append({"archivo": s["name"], "printables_file_id": s["id"], "gramos": round(g, 1)})
@@ -239,6 +270,7 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
         "autor": d["user"]["publicUsername"],
         "licencia": d["license"]["abbreviation"],
         "licencia_nombre": d["license"]["name"],
+        **({"escala": round(factor, 4)} if abs(factor - 1) > 0.01 else {}),
     })
 
 
@@ -382,6 +414,7 @@ def main():
     ap.add_argument("--archivos", help="nombres de archivo separados por | (por defecto el primer STL)")
     ap.add_argument("--colores", help="colores del stock separados por coma (ej: verde,blanco,rojo)")
     ap.add_argument("--muestras", type=int, default=64)
+    ap.add_argument("--alto", type=float, help="alto final en mm de la primera pieza (escala todas igual)")
     a = ap.parse_args()
     colores = a.colores.split(",") if a.colores else None
     if colores:
@@ -394,7 +427,7 @@ def main():
         carpeta, ficha = preparar_makerworld(a.printables_id.split(":", 1)[1], a.fecha, a.nombre, colores)
     else:
         carpeta, ficha = preparar(a.printables_id, a.fecha, a.nombre,
-                                  a.archivos.split("|") if a.archivos else None, colores, a.muestras)
+                                  a.archivos.split("|") if a.archivos else None, colores, a.muestras, a.alto)
     print(f"{carpeta.relative_to(RAIZ)}: {ficha['gramos']} g, {ficha['tiempo']}, precio ${ficha['precio']}")
 
 
