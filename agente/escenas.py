@@ -191,7 +191,17 @@ def gorra(obj, color_gorra="#1F2A44", color_tee="#E2C9A0", ranura_z=5.6, ranura_
     return [obj, t], [obj, t, visera, copa, boton] + costuras
 
 
-ESCENAS = {"gorra": gorra}
+def apoyado(obj, ancho=4.0, para_foto=True):
+    """Producto apoyado sobre una superficie (green, mesa, repisa): el piso es invisible y solo recibe
+    la sombra. El ancla es el centro de la base (va en `punto` de la receta)."""
+    bpy.ops.mesh.primitive_plane_add(size=ancho, location=(0, 0, 0))
+    piso = bpy.context.active_object
+    piso.is_shadow_catcher = True
+    obj["ancla"] = (0, 0, 0)
+    return [obj], [obj, piso]
+
+
+ESCENAS = {"gorra": gorra, "apoyado": apoyado}
 
 
 def construir(nombre, obj, **params):

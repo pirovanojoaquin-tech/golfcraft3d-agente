@@ -6,7 +6,7 @@ Uso (lo corre el workflow en-uso.yml; necesita blender y prusa-slicer):
 Receta en productos/<slug>/info.yaml (la arma el agente una vez por producto, ver AGENTE.md):
     en_uso:
       foto: {id: gcZcCqpGEw0, nombre: gorra-beige}   # foto de Unsplash (fondos/<nombre>.jpg)
-      escena: gorra                                  # escena de agente/escenas.py
+      escena: gorra                                  # escena de agente/escenas.py (apoyado: sobre mesa/green)
       params: {para_foto: true}                      # parámetros de la escena
       angulo: 40                                     # elevación de la cámara
       giro: -160                                     # giro de la cámara
@@ -28,6 +28,7 @@ from PIL import Image
 from . import montaje
 from .calendario import RAIZ
 from .preparar import CONFIG
+from .preparar import acentos_arg
 from .renders import stl_del_producto
 
 
@@ -47,7 +48,10 @@ def generar(slug, color=None, muestras=32):
                "--color", CONFIG["colores"][color], "--angulo", str(receta["angulo"]), "--giro", str(receta["giro"]),
                "--tam", "1000", "--muestras", str(muestras), "--escena", receta["escena"],
                "--escena-params", json.dumps(receta.get("params", {})), "--margen", str(receta.get("margen", 1.25)),
-               "--sin-piso", "--transparente", "--luz-relativa"]
+               "--sin-piso", "--transparente", "--luz-relativa",
+               # piezas de color fijo (AMS): estrella dorada, hebilla, etc.
+               "--acentos", acentos_arg([(RAIZ / p["ruta"], p["color"]) for p in info["piezas"][1:]
+                                         if p.get("color") and p.get("ruta")])]
         r = subprocess.run(cmd, capture_output=True, text=True)
         if not render.exists():
             raise RuntimeError(f"Falló el render: {r.stdout[-800:]}")
