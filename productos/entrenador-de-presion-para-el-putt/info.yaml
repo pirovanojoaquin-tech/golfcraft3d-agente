@@ -31,7 +31,7 @@ piezas:
 medidas_mm:
   largo: 193
   ancho: 76
-  alto: 22
+  alto: 23
 colores_png:
 - blanco
 - negro

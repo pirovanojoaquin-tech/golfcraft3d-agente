@@ -37,9 +37,22 @@ def stl_del_producto(info):
     return a_stl(destino)
 
 
-def medidas(stl):
-    r = subprocess.run(["prusa-slicer", "--info", str(stl)], capture_output=True, text=True)
-    m = {k: float(v) for k, v in re.findall(r"size_([xyz]) = ([\d.]+)", r.stdout)}
+def medidas(stl, extras=(), escala=1.0):
+    """Medidas del producto armado: todas las piezas (las de color fijo están en su lugar) y la escala
+    del modelo (algunos vienen en otra unidad, ver preparar.py --alto)."""
+    mins, maxs = [], []
+    for ruta in [stl, *extras]:
+        r = subprocess.run(["prusa-slicer", "--info", str(ruta)], capture_output=True, text=True)
+        mn = dict(re.findall(r"min_([xyz]) = (-?[\d.]+)", r.stdout))
+        mx = dict(re.findall(r"max_([xyz]) = (-?[\d.]+)", r.stdout))
+        if mn and mx:
+            mins.append(mn)
+            maxs.append(mx)
+    if mins:
+        m = {k: (max(float(x[k]) for x in maxs) - min(float(x[k]) for x in mins)) * escala for k in "xyz"}
+    else:
+        r = subprocess.run(["prusa-slicer", "--info", str(stl)], capture_output=True, text=True)
+        m = {k: float(v) * escala for k, v in re.findall(r"size_([xyz]) = ([\d.]+)", r.stdout)}
     # alto = z, tal como se ve el producto en los renders (un trofeo parado mide de alto lo que mide)
     largo, ancho = sorted([m.get("x", 0), m.get("y", 0)], reverse=True)
     return {"largo": round(largo), "ancho": round(ancho), "alto": round(m.get("z", 0))}
@@ -94,7 +107,7 @@ def main():
             pieza["gramos"] = round(g, 1)
             gramos, minutos = gramos + g, minutos + m
         info.update(gramos=round(gramos, 1), tiempo=formato_tiempo(minutos), gramos_verificados=True)
-    info["medidas_mm"] = medidas(stl)
+    info["medidas_mm"] = medidas(stl, [ruta for ruta, _ in ACENTOS], info.get("escala") or 1.0)
     info["colores_png"] = colores
     (carpeta / "info.yaml").write_text(yaml.safe_dump(info, allow_unicode=True, sort_keys=False), encoding="utf-8")
     print(f"{a.slug}: {len(colores) + 2 + len(VISTAS_ML)} renders, medidas {info['medidas_mm']}")
