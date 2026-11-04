@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 12,
+  "siguiente": 13,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -646,6 +646,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-03",
       "sha_fotos": "9c182ffe504a3cdcaeb381f8db9654806ae8401d"
+    },
+    "marcador-de-linea-para-pelota": {
+      "codigo": 12,
+      "estado": "propuesto",
+      "pack": 3,
+      "categoria": "MLA1345",
+      "categoria_nombre": "Golf > Pelotas",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 4600,
+          "comision": 3396,
+          "envio": 0,
+          "filamento": 752,
+          "ganancia": 452
+        },
+        {
+          "pack": 2,
+          "precio": 9200,
+          "comision": 4132,
+          "envio": 0,
+          "filamento": 1504,
+          "ganancia": 3564
+        },
+        {
+          "pack": 3,
+          "precio": 13200,
+          "comision": 4772,
+          "envio": 0,
+          "filamento": 2256,
+          "ganancia": 6172
+        },
+        {
+          "pack": 5,
+          "precio": 20700,
+          "comision": 8792,
+          "envio": 0,
+          "filamento": 3760,
+          "ganancia": 8148
+        },
+        {
+          "pack": 10,
+          "precio": 39100,
+          "comision": 6256,
+          "envio": 0,
+          "filamento": 7520,
+          "ganancia": 25324
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-04"
     }
   }
 }
