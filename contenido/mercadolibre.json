@@ -649,7 +649,7 @@
     },
     "marcador-de-linea-para-pelota": {
       "codigo": 12,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 3,
       "categoria": "MLA1345",
       "categoria_nombre": "Golf > Pelotas",
@@ -698,7 +698,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-04",
-      "sha_fotos": "5eedeec5e1dd0f9cf0d2144a4fa795cdd97167fd"
+      "sha_fotos": "5eedeec5e1dd0f9cf0d2144a4fa795cdd97167fd",
+      "item_id": "MLA4160369160",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4160369160-marcador-de-linea-para-pelota-golf-pack-x3-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     }
   }
 }
