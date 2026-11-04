@@ -38,3 +38,21 @@ colores_png:
 - blanco
 - rojo
 - amarillo
+en_uso:
+  foto:
+    id: 62Ims7pw_X8
+    nombre: madera-oscura
+  escena: apoyado
+  color: verde
+  angulo: 89
+  giro: 0
+  margen: 1.1
+  punto:
+  - 1200
+  - 1650
+  escala: 1.9
+  recorte:
+  - 0
+  - 200
+  - 2400
+  - 3200

@@ -1,0 +1,150 @@
+# Semana del 9 al 15/11/2026: un producto nuevo por día (aprobados el 3/11) y 2 posts generales.
+# Ningún producto se repite: los días generales no muestran productos ya estrenados.
+dias:
+  - fecha: 2026-11-09
+    post:
+      producto: devolucion-de-bola-para-el-putt
+      caption: |
+        ¿Cansado de ir a buscar la bola después de cada putt? 🔁
+
+        La devolución de bola se pone detrás del objetivo en la alfombra: si errás, la rampa te la devuelve rodando. Así practicás putts seguidos, uno atrás del otro, sin cortar el ritmo.
+
+        Ideal para entrenar en casa o en la oficina. En tu color.
+        #putting #putt #entrenamientogolf #golfencasa
+      slides:
+        - {tipo: "hero", titulo: "Pegá y la bola vuelve", subtitulo: "Devolución de bola para el putt", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Ponela detrás del objetivo en la alfombra", "Pegale al putt", "Si errás, la bola vuelve sola"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "la devolución de bola"}
+    historias:
+      - {tipo: "hero", producto: "devolucion-de-bola-para-el-putt", etiqueta: "Nuevo", titulo: "Putts sin parar", subtitulo: "La bola vuelve sola"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Practicá en series", texto: "Hacé series de 10 putts desde la misma distancia y anotá cuántos embocás. Medir es la mejor forma de mejorar."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Tenés una idea?", texto: "La diseñamos e imprimimos: recreamos productos, cambiamos medidas y grabamos nombres o logos. Escribinos por DM."}
+
+  - fecha: 2026-11-10
+    post:
+      producto: entrenador-de-presion-para-el-putt
+      caption: |
+        El putt que más se falla no es el torcido: es el corto o el largo 🎯
+
+        El entrenador de presión es una rampa con un hoyito arriba. Con la velocidad justa, la bola sube y se queda; si le pegás corto no llega, y si le pegás fuerte pasa de largo.
+
+        Diseño exclusivo GolfCraft3D, en dos colores.
+        #putting #putt #entrenamientogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Velocidad justa", subtitulo: "Entrenador de presión para el putt", etiqueta: "Nuevo", sellos: ["Diseño propio", "2 colores", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyalo en la alfombra o el green", "Pegale desde 1, 2 y 3 metros", "Si queda en el hoyito, fue perfecto"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el entrenador de presión"}
+    historias:
+      - {tipo: "hero", producto: "entrenador-de-presion-para-el-putt", etiqueta: "Nuevo", titulo: "Ni corto ni largo", subtitulo: "Entrená la velocidad"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Pasá el hoyo", texto: "Un putt corto nunca entra. Apuntá a dejar la bola unos 40 cm pasada del hoyo si no emboca."}
+      - {tipo: "texto", etiqueta: "Mercado Libre", titulo: "Comprá online", texto: "Muchos de nuestros productos ya están en Mercado Libre, con envío. Link en la bio."}
+
+  - fecha: 2026-11-11
+    post:
+      producto: marcadores-de-bola-con-tu-inicial-x4
+      caption: |
+        Marcá tu bola en el green con tu propia inicial ✨
+
+        Pack de 4 marcadores de 26 mm con canto estriado, la letra que quieras en relieve y anillo de otro color. Livianos, prolijos y únicos.
+
+        El regalo ideal para el golfista que tiene todo.
+        #marcadordebola #green #regalogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Tu inicial en el green", subtitulo: "Marcadores de bola x4", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu inicial", "2 colores"]}
+        - {tipo: "pasos", titulo: "Pedilos así", pasos: ["Elegí la inicial", "Elegí los dos colores", "Te llegan los 4 listos para jugar"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "los marcadores con tu inicial"}
+    historias:
+      - {tipo: "hero", producto: "marcadores-de-bola-con-tu-inicial-x4", etiqueta: "Nuevo", titulo: "Con tu inicial", subtitulo: "Pack de 4 marcadores"}
+      - {tipo: "texto", etiqueta: "Reglas de golf", titulo: "¿Cuándo se marca la bola?", texto: "En el green podés levantar tu bola para limpiarla: antes, marcá su lugar justo detrás con un marcador."}
+      - {tipo: "texto", etiqueta: "Ideal para regalar", titulo: "Se viene fin de año", texto: "Regalos de golf personalizados con nombre o inicial. Escribinos por DM y lo armamos."}
+
+  - fecha: 2026-11-12
+    post:
+      caption: |
+        3 ejercicios para pegarle mejor a los hierros, sin gastar una bola 🏌️
+
+        1️⃣ La toalla: poné una toalla 10 cm detrás de la bola. Si la tocás, pegaste antes de tiempo.
+        2️⃣ La línea: marcá una línea en el pasto y hacé que el divot empiece después de la línea.
+        3️⃣ Medio swing: pegá con el swing a la altura de la cintura y terminá en equilibrio.
+
+        Guardalo para tu próxima práctica 📌
+        #hierros #swing #entrenamientogolf #tipsdegolf
+      slides:
+        - {tipo: "info", titulo: "3 ejercicios para los hierros", items: ["La toalla: no pegar antes de la bola", "La línea: el divot después de la bola", "Medio swing: contacto y equilibrio"]}
+        - {tipo: "info", titulo: "1. La toalla", items: ["Una toalla 10 cm detrás de la bola", "Swing normal", "Si la tocás, el palo bajó antes"]}
+        - {tipo: "info", titulo: "2. La línea", items: ["Marcá una línea en el pasto", "Poné la bola sobre la línea", "El divot tiene que empezar adelante"]}
+        - {tipo: "info", titulo: "3. Medio swing", items: ["Backswing hasta la cintura", "Pegale suave y centrado", "Terminá en equilibrio 3 segundos"]}
+        - {tipo: "cta", nombre_corto: "entrenar con accesorios hechos a tu medida"}
+    historias:
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Primero la bola", texto: "Con los hierros, la bola se golpea antes que el pasto. Por eso el divot queda adelante de donde estaba la bola."}
+      - {tipo: "texto", etiqueta: "Impresión 3D", titulo: "Capa por capa", texto: "Imprimimos cada pieza a pedido con impresoras Bambu Lab. Por eso podemos hacerla en el color que elijas."}
+      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Todo se hace a pedido", texto: "Elegís el color y lo imprimimos para vos. Escribinos por DM y te contamos colores y combos."}
+
+  - fecha: 2026-11-13
+    post:
+      producto: porta-guante-de-golf
+      caption: |
+        El guante dura mucho más si lo dejás secar estirado 🧤
+
+        El porta guante es una mano de 15 cm: después de jugar ponés el guante y se seca con la forma justa, sin arrugarse ni endurecerse. Tiene ojal para colgarlo de la bolsa y tu nombre en relieve.
+
+        Diseño exclusivo GolfCraft3D.
+        #guantedegolf #accesoriosdegolf #regalogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Tu guante como nuevo", subtitulo: "Porta guante de golf", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu nombre", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Terminás de jugar", "Ponés el guante en la mano", "Lo colgás de la bolsa y se seca estirado"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el porta guante"}
+    historias:
+      - {tipo: "hero", producto: "porta-guante-de-golf", etiqueta: "Nuevo", titulo: "Que no se arrugue", subtitulo: "Porta guante con tu nombre"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Cuidá el guante", texto: "No lo guardes húmedo y hecho un bollo: estiralo y dejalo secar a la sombra. Agarra mejor y te dura el doble."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "Con tu nombre", texto: "Grabamos el nombre que quieras en relieve. Ideal para regalar. Escribinos por DM."}
+
+  - fecha: 2026-11-14
+    post:
+      producto: exhibidor-de-pared-para-12-pelotas
+      caption: |
+        ¿Juntás pelotas de las canchas que visitás? Merecen estar a la vista 🏆
+
+        Exhibidor de pared para 12 pelotas: 3 estantes con asiento para cada una, marco de color y cartel con el nombre que quieras.
+
+        Diseño exclusivo GolfCraft3D. Un regalo distinto para el golfista coleccionista.
+        #pelotasdegolf #coleccion #regalogolf #diseñopropio
+      slides:
+        - {tipo: "hero", titulo: "Tu colección, a la vista", subtitulo: "Exhibidor de pared para 12 pelotas", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu nombre", "2 colores"]}
+        - {tipo: "pasos", titulo: "Pedilo así", pasos: ["Elegí el color del marco", "Decinos el nombre del cartel", "Lo colgás con dos tornillos"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el exhibidor de pelotas"}
+    historias:
+      - {tipo: "hero", producto: "exhibidor-de-pared-para-12-pelotas", etiqueta: "Nuevo", titulo: "12 pelotas, 12 recuerdos", subtitulo: "Exhibidor con tu nombre"}
+      - {tipo: "texto", etiqueta: "¿Sabías que...?", titulo: "Los hoyuelos", texto: "Una pelota de golf tiene entre 300 y 500 hoyuelos: hacen que vuele casi el doble que una lisa."}
+      - {tipo: "texto", etiqueta: "Ideal para regalar", titulo: "Regalos con nombre", texto: "Todos nuestros productos se pueden personalizar. Escribinos por DM y lo armamos para vos."}
+
+  - fecha: 2026-11-15
+    post:
+      caption: |
+        ¿Cómo comprar en GolfCraft3D? Así de fácil 🛒
+
+        1️⃣ Elegí el producto en la tienda (link en la bio) o en Mercado Libre.
+        2️⃣ Elegí el color, y si querés, el nombre o la inicial.
+        3️⃣ Lo imprimimos a pedido y te lo mandamos.
+
+        ¿Tenés una idea que no está? La diseñamos para vos. Escribinos por DM.
+        #golf #accesoriosdegolf #impresion3d #golfistas
+      slides:
+        - {tipo: "info", titulo: "Cómo comprar", items: ["Tienda online: link en la bio", "Mercado Libre: con envío", "Por DM: personalizados"]}
+        - {tipo: "info", titulo: "Lo hacemos a tu medida", items: ["10 colores de PLA", "Nombres, iniciales o logos", "Diseños nuevos a pedido"]}
+        - {tipo: "info", titulo: "¿Por qué impreso en 3D?", items: ["Diseños que no existen en el mercado", "En tu color", "Se hace a pedido, sin stock"]}
+        - {tipo: "cta", nombre_corto: "pedir tu accesorio de golf"}
+    historias:
+      - {tipo: "texto", etiqueta: "Tienda online", titulo: "Todo en un lugar", texto: "Todos nuestros productos con fotos, colores y precios: golfcraft3d.github.io (link en la bio)."}
+      - {tipo: "texto", etiqueta: "Mercado Libre", titulo: "Comprá con envío", texto: "Muchos productos están en Mercado Libre, con todos los medios de pago. Link en la bio."}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "La rutina pre-golpe", texto: "Hacé siempre los mismos pasos antes de pegar: mirar el objetivo, un swing de práctica y a la bola. Da confianza."}

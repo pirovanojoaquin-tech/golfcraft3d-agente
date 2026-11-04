@@ -37,3 +37,21 @@ colores_png:
 - blanco
 - rojo
 - amarillo
+en_uso:
+  foto:
+    id: r4oXCEG9s1k
+    nombre: hoyo-cenital
+  escena: apoyado
+  color: negro
+  angulo: 55
+  giro: 20
+  margen: 1.1
+  punto:
+  - 1230
+  - 1230
+  escala: 0.36
+  recorte:
+  - 860
+  - 0
+  - 2140
+  - 1600

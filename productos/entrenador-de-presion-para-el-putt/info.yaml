@@ -39,3 +39,21 @@ colores_png:
 - rojo
 - azul
 - amarillo
+en_uso:
+  foto:
+    id: h58RSCTn2vI
+    nombre: alfombra-putt-living
+  escena: apoyado
+  color: blanco
+  angulo: 26
+  giro: -90
+  margen: 1.1
+  punto:
+  - 1180
+  - 1500
+  escala: 0.9
+  recorte:
+  - 300
+  - 1110
+  - 1960
+  - 3185

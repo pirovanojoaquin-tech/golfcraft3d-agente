@@ -41,7 +41,7 @@ def generar(slug, color=None, muestras=32):
     foto = RAIZ / "fondos" / f"{receta['foto']['nombre']}.jpg"
     if not foto.exists():
         raise SystemExit(f"Falta {foto.relative_to(RAIZ)}: bajala antes con el workflow banco.yml (descargar)")
-    color = color or (info.get("colores") or ["verde"])[0]
+    color = color or receta.get("color") or (info.get("colores") or ["verde"])[0]  # receta: color que contrasta con la foto
     with tempfile.TemporaryDirectory() as tmp:
         render = Path(tmp) / "render.png"
         cmd = ["blender", "-b", "-P", str(RAIZ / "agente" / "render.py"), "--", str(stl_del_producto(info)), str(render),
@@ -57,10 +57,10 @@ def generar(slug, color=None, muestras=32):
             raise RuntimeError(f"Falló el render: {r.stdout[-800:]}")
         ancla = json.loads(Path(str(render) + ".json").read_text())["ancla"]
         im = montaje.montar(Image.open(foto), Image.open(render), ancla, receta["punto"], receta.get("escala", 1.0),
-                            grano=receta.get("grano", 2))
+                            grano=receta.get("grano", 2), desenfoque=receta.get("desenfoque", 0.5))
     if receta.get("recorte"):
         im = im.crop(tuple(receta["recorte"]))
-    nombre = "en-uso.jpg" if color == (info.get("colores") or ["verde"])[0] else f"en-uso-{color}.jpg"
+    nombre = "en-uso.jpg" if color in ((info.get("colores") or ["verde"])[0], receta.get("color")) else f"en-uso-{color}.jpg"
     destino = carpeta / "fotos" / nombre
     im.save(destino, quality=92)
     print(f"{slug}: {destino.relative_to(RAIZ)}")
