@@ -701,7 +701,14 @@
       "sha_fotos": "5eedeec5e1dd0f9cf0d2144a4fa795cdd97167fd",
       "item_id": "MLA4160369160",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4160369160-marcador-de-linea-para-pelota-golf-pack-x3-impreso-3d-verde-_JM",
-      "status_ml": "paused"
+      "status_ml": "paused",
+      "entrada": {
+        "pack": 2,
+        "item_id": "MLA4160394822",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4160394822-marcador-de-linea-para-pelota-golf-pack-x2-impreso-3d-verde-_JM",
+        "precio": 9200,
+        "ganancia": 3564
+      }
     }
   }
 }
