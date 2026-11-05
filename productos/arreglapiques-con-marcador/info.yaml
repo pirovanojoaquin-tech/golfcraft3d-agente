@@ -45,12 +45,12 @@ en_uso:
   escena: apoyado
   margen: 1.1
   color: rojo
-  angulo: 14
-  giro: -30
+  angulo: 32
+  giro: -75
   punto:
-  - 760
-  - 1230
-  escala: 0.5
+  - 820
+  - 1260
+  escala: 0.8
   recorte:
   - 400
   - 0
