@@ -19,5 +19,7 @@ makerworld_id: 497253
 url: https://makerworld.com/es/models/497253-golf-divot-tool-with-marker
 autor: Sequo
 licencia: BY-SA
-piezas: []
-archivo_pendiente: true
+piezas:
+- archivo: Divot_Tool_Mk2(3).3mf
+  telegram_file_id: BQACAgEAAxkBAAPFau0DDYP4qYhay4KWa2eJsGVcKsEAAtwIAALYS2lHVzktSOtwIIA9BA
+archivo_pendiente: false

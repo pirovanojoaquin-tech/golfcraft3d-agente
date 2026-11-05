@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649433,
+  "offset": 242649434,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -101,6 +101,16 @@
       "fecha": "2026-11-05T19:06:00+00:00",
       "texto": "ML SI 13",
       "procesado": true
+    },
+    {
+      "fecha": "2026-11-05T22:28:29+00:00",
+      "texto": "arreglapiques",
+      "procesado": true,
+      "archivo": {
+        "file_id": "BQACAgEAAxkBAAPFau0DDYP4qYhay4KWa2eJsGVcKsEAAtwIAALYS2lHVzktSOtwIIA9BA",
+        "nombre": "Divot_Tool_Mk2(3).3mf",
+        "tamanio": 3002946
+      }
     }
   ]
 }
