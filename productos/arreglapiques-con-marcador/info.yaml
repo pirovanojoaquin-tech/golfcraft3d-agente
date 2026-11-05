@@ -1,6 +1,7 @@
 nombre: Arreglapiques con marcador
-descripcion: A remodeled divot tool inspired by @bitclicker ‘s creation. It holds
-  a marker making everything you’ll need around the green available !
+descripcion: 'Arreglapiques con marcador de bola que se encastra en el mango. Arreglás
+  el pique que dejó la bola en el green y tenés el marcador siempre a mano: todo lo
+  que necesitás en el green, en una sola pieza.'
 personalizable: Color a elección (10 colores de PLA)
 precio: 900
 gramos: 4.8
@@ -36,3 +37,22 @@ colores_png:
 - blanco
 - azul
 - amarillo
+ml_titulo: Arreglapiques Golf Con Marcador De Bola
+en_uso:
+  foto:
+    id: TO9hcfWyr-U
+    nombre: green-bola-hoyo
+  escena: apoyado
+  margen: 1.1
+  color: rojo
+  angulo: 14
+  giro: -30
+  punto:
+  - 760
+  - 1230
+  escala: 0.5
+  recorte:
+  - 400
+  - 0
+  - 1680
+  - 1600
