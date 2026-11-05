@@ -1,4 +1,4 @@
-# Semana del 9 al 15/11/2026: un producto nuevo por día (aprobados el 3/11) y 2 posts generales.
+# Semana del 9 al 15/11/2026: un producto nuevo por día (los 6 aprobados el 3/11) y 1 post general.
 # Ningún producto se repite: los días generales no muestran productos ya estrenados.
 dias:
   - fecha: 2026-11-09
@@ -69,25 +69,25 @@ dias:
 
   - fecha: 2026-11-12
     post:
+      producto: arreglapiques-con-marcador
       caption: |
-        3 ejercicios para pegarle mejor a los hierros, sin gastar una bola 🏌️
+        Arreglá tu pique y marcá la bola con la misma herramienta ⛳
 
-        1️⃣ La toalla: poné una toalla 10 cm detrás de la bola. Si la tocás, pegaste antes de tiempo.
-        2️⃣ La línea: marcá una línea en el pasto y hacé que el divot empiece después de la línea.
-        3️⃣ Medio swing: pegá con el swing a la altura de la cintura y terminá en equilibrio.
+        El arreglapiques trae un marcador de bola que se encastra en el mango: lo sacás, marcás, y lo volvés a guardar. Todo lo que necesitás en el green, en una sola pieza que entra en cualquier bolsillo.
 
-        Guardalo para tu próxima práctica 📌
-        #hierros #swing #entrenamientogolf #tipsdegolf
+        En el color que elijas.
+        #arreglapiques #green #accesoriosdegolf #golfistas
       slides:
-        - {tipo: "info", titulo: "3 ejercicios para los hierros", items: ["La toalla: no pegar antes de la bola", "La línea: el divot después de la bola", "Medio swing: contacto y equilibrio"]}
-        - {tipo: "info", titulo: "1. La toalla", items: ["Una toalla 10 cm detrás de la bola", "Swing normal", "Si la tocás, el palo bajó antes"]}
-        - {tipo: "info", titulo: "2. La línea", items: ["Marcá una línea en el pasto", "Poné la bola sobre la línea", "El divot tiene que empezar adelante"]}
-        - {tipo: "info", titulo: "3. Medio swing", items: ["Backswing hasta la cintura", "Pegale suave y centrado", "Terminá en equilibrio 3 segundos"]}
-        - {tipo: "cta", nombre_corto: "entrenar con accesorios hechos a tu medida"}
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Todo en una pieza", subtitulo: "Arreglapiques con marcador", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Pique y marcador, juntos", subtitulo: "Arreglapiques con marcador", etiqueta: "Nuevo", sellos: ["10 colores", "Marcador incluido", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Clavá las puntas al lado del pique", "Empujá el pasto hacia el centro", "Sacá el marcador y marcá tu bola"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el arreglapiques"}
     historias:
-      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Primero la bola", texto: "Con los hierros, la bola se golpea antes que el pasto. Por eso el divot queda adelante de donde estaba la bola."}
-      - {tipo: "texto", etiqueta: "Impresión 3D", titulo: "Capa por capa", texto: "Imprimimos cada pieza a pedido con impresoras Bambu Lab. Por eso podemos hacerla en el color que elijas."}
-      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Todo se hace a pedido", texto: "Elegís el color y lo imprimimos para vos. Escribinos por DM y te contamos colores y combos."}
+      - {tipo: "hero", producto: "arreglapiques-con-marcador", etiqueta: "Nuevo", titulo: "Cuidá el green", subtitulo: "Arreglapiques con marcador"}
+      - {tipo: "texto", etiqueta: "Etiqueta de golf", titulo: "Arreglá tu pique", texto: "Un pique arreglado en el momento se recupera en un día; uno olvidado tarda semanas. Arreglá el tuyo y uno más."}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "No hagas palanca", texto: "Clavá las puntas al costado del pique y empujá el pasto hacia el centro. Si levantás la tierra, rompés la raíz."}
 
   - fecha: 2026-11-13
     post:
