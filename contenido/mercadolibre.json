@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 13,
+  "siguiente": 14,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -709,6 +709,58 @@
         "precio": 9200,
         "ganancia": 3564
       }
+    },
+    "soporte-de-plano-de-swing": {
+      "codigo": 13,
+      "estado": "propuesto",
+      "pack": 2,
+      "categoria": "MLA9552",
+      "categoria_nombre": "Golf > Palos y Sets > Maderas y Híbridos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 9000,
+          "comision": 4100,
+          "envio": 0,
+          "filamento": 1488,
+          "ganancia": 3412
+        },
+        {
+          "pack": 2,
+          "precio": 18000,
+          "comision": 8360,
+          "envio": 0,
+          "filamento": 2976,
+          "ganancia": 6664
+        },
+        {
+          "pack": 3,
+          "precio": 25700,
+          "comision": 10752,
+          "envio": 0,
+          "filamento": 4464,
+          "ganancia": 10484
+        },
+        {
+          "pack": 5,
+          "precio": 40500,
+          "comision": 6480,
+          "envio": 0,
+          "filamento": 7440,
+          "ganancia": 26580
+        },
+        {
+          "pack": 10,
+          "precio": 76500,
+          "comision": 12240,
+          "envio": 0,
+          "filamento": 14880,
+          "ganancia": 49380
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-05"
     }
   }
 }
