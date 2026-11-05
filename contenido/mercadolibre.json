@@ -712,7 +712,7 @@
     },
     "soporte-de-plano-de-swing": {
       "codigo": 13,
-      "estado": "propuesto",
+      "estado": "error",
       "pack": 2,
       "categoria": "MLA9552",
       "categoria_nombre": "Golf > Palos y Sets > Maderas y Híbridos",
