@@ -3,8 +3,8 @@ descripcion: A remodeled divot tool inspired by @bitclicker ‘s creation. It ho
   a marker making everything you’ll need around the green available !
 personalizable: Color a elección (10 colores de PLA)
 precio: 900
-gramos: 7.0
-tiempo: 22 min
+gramos: 4.8
+tiempo: 10 min
 colores:
 - negro
 - verde
@@ -22,4 +22,17 @@ licencia: BY-SA
 piezas:
 - archivo: Divot_Tool_Mk2(3).3mf
   telegram_file_id: BQACAgEAAxkBAAPFau0DDYP4qYhay4KWa2eJsGVcKsEAAtwIAALYS2lHVzktSOtwIIA9BA
+  gramos: 4.8
 archivo_pendiente: false
+gramos_verificados: true
+medidas_mm:
+  largo: 68
+  ancho: 51
+  alto: 6
+colores_png:
+- negro
+- verde
+- rojo
+- blanco
+- azul
+- amarillo
