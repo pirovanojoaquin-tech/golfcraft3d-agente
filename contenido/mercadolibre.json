@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 15,
+  "siguiente": 16,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -825,6 +825,58 @@
         "precio": 7200,
         "ganancia": 2168
       }
+    },
+    "union-en-t-para-varillas-de-alineacion": {
+      "codigo": 15,
+      "estado": "propuesto",
+      "pack": 3,
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 5600,
+          "comision": 3556,
+          "envio": 0,
+          "filamento": 916,
+          "ganancia": 1128
+        },
+        {
+          "pack": 2,
+          "precio": 11200,
+          "comision": 4452,
+          "envio": 0,
+          "filamento": 1832,
+          "ganancia": 4916
+        },
+        {
+          "pack": 3,
+          "precio": 16000,
+          "comision": 8040,
+          "envio": 0,
+          "filamento": 2748,
+          "ganancia": 5212
+        },
+        {
+          "pack": 5,
+          "precio": 25200,
+          "comision": 10672,
+          "envio": 0,
+          "filamento": 4580,
+          "ganancia": 9948
+        },
+        {
+          "pack": 10,
+          "precio": 47600,
+          "comision": 7616,
+          "envio": 0,
+          "filamento": 9160,
+          "ganancia": 30824
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-07"
     }
   }
 }
