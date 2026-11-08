@@ -828,7 +828,7 @@
     },
     "union-en-t-para-varillas-de-alineacion": {
       "codigo": 15,
-      "estado": "propuesto",
+      "estado": "error",
       "pack": 3,
       "categoria": "MLA1347",
       "categoria_nombre": "Golf > Otros",
