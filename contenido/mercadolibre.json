@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 16,
+  "siguiente": 17,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -878,6 +878,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-07",
       "sha_fotos": "5d1eb706686b6a4e25f5c9d04e9573d326a9e041"
+    },
+    "adaptador-de-varilla-para-el-grip": {
+      "codigo": 16,
+      "estado": "propuesto",
+      "pack": 10,
+      "categoria": "MLA2550",
+      "categoria_nombre": "Golf > Carros Eléctricos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 2000,
+          "comision": 2980,
+          "envio": 0,
+          "filamento": 304,
+          "ganancia": -1284
+        },
+        {
+          "pack": 2,
+          "precio": 4000,
+          "comision": 3300,
+          "envio": 0,
+          "filamento": 608,
+          "ganancia": 92
+        },
+        {
+          "pack": 3,
+          "precio": 5700,
+          "comision": 3572,
+          "envio": 0,
+          "filamento": 912,
+          "ganancia": 1216
+        },
+        {
+          "pack": 5,
+          "precio": 9000,
+          "comision": 4100,
+          "envio": 0,
+          "filamento": 1520,
+          "ganancia": 3380
+        },
+        {
+          "pack": 10,
+          "precio": 17000,
+          "comision": 8200,
+          "envio": 0,
+          "filamento": 3040,
+          "ganancia": 5760
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-08"
     }
   }
 }
