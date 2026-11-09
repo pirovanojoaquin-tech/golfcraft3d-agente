@@ -712,7 +712,7 @@
     },
     "soporte-de-plano-de-swing": {
       "codigo": 13,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 2,
       "categoria": "MLA2550",
       "categoria_nombre": "Golf > Palos y Sets > Maderas y Híbridos",
@@ -761,7 +761,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-05",
-      "sha_fotos": "fc55438023b739ec03007dc9522701bf8bf79603"
+      "sha_fotos": "fc55438023b739ec03007dc9522701bf8bf79603",
+      "item_id": "MLA2274894393",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2274894393-soporte-de-plano-de-swing-golf-pack-x2-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     },
     "anillo-de-precision-para-el-putt": {
       "codigo": 14,
