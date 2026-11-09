@@ -890,7 +890,14 @@
       "sha_fotos": "5d1eb706686b6a4e25f5c9d04e9573d326a9e041",
       "item_id": "MLA2274498207",
       "link": "http://articulo.mercadolibre.com.ar/MLA-2274498207-union-en-t-para-varillas-de-alineacion-golf-pack-x3-amarillo-_JM",
-      "status_ml": "paused"
+      "status_ml": "paused",
+      "entrada": {
+        "pack": 2,
+        "item_id": "MLA4178264458",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4178264458-union-en-t-para-varillas-de-alineacion-golf-pack-x2-amarillo-_JM",
+        "precio": 11200,
+        "ganancia": 4916
+      }
     },
     "adaptador-de-varilla-para-el-grip": {
       "codigo": 16,
