@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 17,
+  "siguiente": 18,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -951,6 +951,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-08",
       "sha_fotos": "55aa5b4b4425d5a0a6a4ae849a075f6c1bfcbcfa"
+    },
+    "devolucion-de-bola-para-el-putt": {
+      "codigo": 17,
+      "estado": "propuesto",
+      "pack": 1,
+      "categoria": "MLA2549",
+      "categoria_nombre": "Golf > Palos y Sets > Putters",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 62000,
+          "comision": 9920,
+          "envio": 0,
+          "filamento": 10328,
+          "ganancia": 41752
+        },
+        {
+          "pack": 2,
+          "precio": 124000,
+          "comision": 19840,
+          "envio": 0,
+          "filamento": 20656,
+          "ganancia": 83504
+        },
+        {
+          "pack": 3,
+          "precio": 176700,
+          "comision": 28272,
+          "envio": 0,
+          "filamento": 30984,
+          "ganancia": 117444
+        },
+        {
+          "pack": 5,
+          "precio": 279000,
+          "comision": 44640,
+          "envio": 0,
+          "filamento": 51640,
+          "ganancia": 182720
+        },
+        {
+          "pack": 10,
+          "precio": 527000,
+          "comision": 84320,
+          "envio": 0,
+          "filamento": 103280,
+          "ganancia": 339400
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-09"
     }
   }
 }
