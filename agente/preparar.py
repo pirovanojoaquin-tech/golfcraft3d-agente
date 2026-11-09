@@ -256,8 +256,14 @@ def preparar(print_id, fecha, nombre=None, archivos=None, colores=None, muestras
                 m0 = medidas(stl)
                 if alto:
                     factor = alto / m0["z"]
-                elif m0 and max(m0.values()) < 10:  # exportado en otra unidad: lo llevamos a 12 cm de alto
-                    factor = 120 / m0["z"]
+                elif m0 and max(m0.values()) < 1:  # en metros
+                    factor = 1000.0
+                elif m0 and max(m0.values()) < 15:  # en pulgadas (para figuras, mejor pasar --alto)
+                    factor = 25.4
+                elif m0 and max(m0.values()) > 400:  # en centésimas o micrones: se divide por 10 hasta que entre en la cama
+                    factor = 1.0
+                    while max(m0.values()) * factor > 300:
+                        factor /= 10
         if abs(factor - 1) > 0.01 and stl.suffix.lower() == ".stl":
             if not (ya_escalado and hecho[0] == f"{factor:.6f}"):
                 escalar(stl, factor)
