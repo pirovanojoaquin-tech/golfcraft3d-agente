@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-02",
+  "fecha": "2026-11-09",
   "avisos": [
     {
       "producto": "guia-de-agarre-para-el-palo",
@@ -38,7 +38,7 @@
       "estado_ml": "active",
       "precio": 9900,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 1,
       "preguntas": 0
     },
     {
@@ -48,7 +48,7 @@
       "estado_ml": "active",
       "precio": 12800,
       "vendidos": 0,
-      "visitas_7d": 3,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -58,7 +58,7 @@
       "estado_ml": "active",
       "precio": 6800,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 1,
       "preguntas": 0
     },
     {
@@ -78,7 +78,7 @@
       "estado_ml": "active",
       "precio": 6800,
       "vendidos": 0,
-      "visitas_7d": 2,
+      "visitas_7d": 1,
       "preguntas": 0
     },
     {
@@ -139,6 +139,86 @@
       "precio": 13200,
       "vendidos": 0,
       "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "marcador-de-linea-para-pelota",
+      "pack": "x3",
+      "item_id": "MLA4160369160",
+      "estado_ml": "active",
+      "precio": 13200,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "marcador-de-linea-para-pelota",
+      "pack": "x2",
+      "item_id": "MLA4160394822",
+      "estado_ml": "active",
+      "precio": 9200,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "soporte-de-plano-de-swing",
+      "pack": "x2",
+      "item_id": "MLA2274894393",
+      "estado_ml": "active",
+      "precio": 18000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "soporte-de-plano-de-swing",
+      "pack": "x1",
+      "item_id": "MLA4178264356",
+      "estado_ml": "active",
+      "precio": 9000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "anillo-de-precision-para-el-putt",
+      "pack": "x2",
+      "item_id": "MLA2268444869",
+      "estado_ml": "active",
+      "precio": 14400,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "anillo-de-precision-para-el-putt",
+      "pack": "x1",
+      "item_id": "MLA2268431899",
+      "estado_ml": "active",
+      "precio": 7200,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "union-en-t-para-varillas-de-alineacion",
+      "pack": "x3",
+      "item_id": "MLA2274498207",
+      "estado_ml": "under_review",
+      "precio": 16000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "union-en-t-para-varillas-de-alineacion",
+      "pack": "x2",
+      "item_id": "MLA4178264458",
+      "estado_ml": "under_review",
+      "precio": 11200,
+      "vendidos": 0,
+      "visitas_7d": 0,
       "preguntas": 0
     }
   ]
