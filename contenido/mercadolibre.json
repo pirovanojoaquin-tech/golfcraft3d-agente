@@ -764,7 +764,14 @@
       "sha_fotos": "fc55438023b739ec03007dc9522701bf8bf79603",
       "item_id": "MLA2274894393",
       "link": "http://articulo.mercadolibre.com.ar/MLA-2274894393-soporte-de-plano-de-swing-golf-pack-x2-impreso-3d-verde-_JM",
-      "status_ml": "paused"
+      "status_ml": "paused",
+      "entrada": {
+        "pack": 1,
+        "item_id": "MLA4178264356",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-4178264356-soporte-de-plano-de-swing-golf-impreso-3d-verde-_JM",
+        "precio": 9000,
+        "ganancia": 3412
+      }
     },
     "anillo-de-precision-para-el-putt": {
       "codigo": 14,
