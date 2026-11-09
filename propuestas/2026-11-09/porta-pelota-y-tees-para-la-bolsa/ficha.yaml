@@ -1,0 +1,39 @@
+nombre: Porta pelota y tees para la bolsa
+descripcion: Se cuelga de la bolsa o el carro con un mosquetón y lleva una pelota
+  a presión y 3 tees a mano. Para salir del tee sin revolver la bolsa.
+inspiracion: Los "ball & tee holders" que se cuelgan de la bolsa. Diseño propio en
+  2 colores (AMS).
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: porta-pelota-y-tees-para-la-bolsa
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/porta-pelota-y-tees-para-la-bolsa/cuerpo.stl
+  gramos: 25.4
+- archivo: acento.stl
+  ruta: disenos/porta-pelota-y-tees-para-la-bolsa/acento.stl
+  gramos: 0.6
+  color: blanco
+gramos: 25.9
+tiempo_min: 66
+tiempo: 1 h 06 min
+costo_filamento: 1038
+precio: 3200
+material: PLA
+colores_render:
+- negro
+- verde
+- azul
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

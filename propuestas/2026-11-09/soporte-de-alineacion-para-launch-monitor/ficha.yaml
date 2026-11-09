@@ -1,0 +1,37 @@
+nombre: Soporte de alineación para launch monitor
+nombre_original: Garmin Approach R10 Golf Launch Monitor Stand - Shot Alignment and
+  Leveling Aid
+descripcion: This stand will help you easily align and level your Garmin Approach
+  R10 Golf Launch Monitor to your shot line
+origen: printables
+printables_id: '91017'
+url: https://www.printables.com/model/91017-garmin-approach-r10-golf-launch-monitor-stand-shot
+autor: mcfada
+licencia: CC-BY-SA
+licencia_nombre: Creative Commons — Attribution  — Share Alike
+piezas:
+- archivo: Base STL - Garmin R10 Approach Stand.stl
+  printables_file_id: '395525'
+  gramos: 48.0
+- archivo: Adjustment Screw STL - Garmin R10 Approach Stand.stl
+  printables_file_id: '395526'
+  gramos: 6.2
+gramos: 54.2
+tiempo_min: 123
+tiempo: 2 h 03 min
+costo_filamento: 2168
+precio: 6600
+material: PLA
+colores_render:
+- negro
+- rojo
+- gris
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: rojo
+- archivo: 3.jpg
+  color: gris
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

@@ -1,0 +1,40 @@
+nombre: Conos de distancia para putt (x5)
+descripcion: Set de 5 conos numerados del 1 al 5. Los ponés a 1, 2, 3, 4 y 5 metros
+  del hoyo y hacés la escalera de putts, el ejercicio que más mejora el control de
+  la distancia.
+inspiracion: Los conos de entrenamiento con distancias de las academias de golf. Diseño
+  propio en 2 colores (AMS).
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: conos-de-distancia-para-putt
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/conos-de-distancia-para-putt/cuerpo.stl
+  gramos: 25.6
+- archivo: acento.stl
+  ruta: disenos/conos-de-distancia-para-putt/acento.stl
+  gramos: 0.2
+  color: blanco
+gramos: 25.7
+tiempo_min: 57
+tiempo: 57 min
+costo_filamento: 1030
+precio: 3100
+material: PLA
+colores_render:
+- rojo
+- amarillo
+- azul
+fotos:
+- archivo: 1.jpg
+  color: rojo
+- archivo: 2.jpg
+  color: amarillo
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

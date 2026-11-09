@@ -1,0 +1,37 @@
+nombre: Mini hoyo de golf de escritorio
+nombre_original: Desktop Mini Golf Hole 1
+descripcion: This is a Desktop Mini Golf that I designed. Comes with a mini putter,
+  cup and rock push in obstacles ball that I have cut to either print with supports,
+  or split in half and glue together (rolls better when split). I plan on doing many
+  more holes to build out a whole little course with more fun obstacles in the future!
+  Can all be printed on one single plate but it takes quite a bit longer than just
+  separating them out. Hope you enjoy!
+origen: makerworld
+printables_id: null
+makerworld_id: 255040
+url: https://makerworld.com/es/models/255040-desktop-mini-golf-hole-1
+autor: MoltenPlastic3D
+licencia: BY
+licencia_nombre: BY
+piezas: []
+archivo_pendiente: true
+gramos: 77.0
+tiempo_min: 134
+tiempo: 2 h 14 min
+costo_filamento: 3080
+precio: 9300
+material: PLA
+colores_render:
+- verde
+- blanco
+- amarillo
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: blanco
+- archivo: 3.jpg
+  color: amarillo
+estimacion: 'Gramos y tiempo del perfil publicado en MakerWorld (0.2mm layer, 2 walls,
+  15% infill). Las fotos son del autor: si se aprueba, se rehacen con nuestros renders
+  cuando llegue el archivo.'
