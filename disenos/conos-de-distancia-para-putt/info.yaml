@@ -1,0 +1,6 @@
+nombre: Conos de distancia para putt (x5)
+descripcion: Set de 5 conos numerados del 1 al 5. Los ponés a 1, 2, 3, 4 y 5 metros del hoyo y hacés la escalera de putts, el ejercicio que más mejora el control de la distancia.
+inspiracion: Los conos de entrenamiento con distancias de las academias de golf. Diseño propio en 2 colores (AMS).
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}

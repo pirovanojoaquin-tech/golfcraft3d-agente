@@ -1,0 +1,6 @@
+nombre: Porta pelota y tees para la bolsa
+descripcion: Se cuelga de la bolsa o el carro con un mosquetón y lleva una pelota a presión y 3 tees a mano. Para salir del tee sin revolver la bolsa.
+inspiracion: Los "ball & tee holders" que se cuelgan de la bolsa. Diseño propio en 2 colores (AMS).
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}

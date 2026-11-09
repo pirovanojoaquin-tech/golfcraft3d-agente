@@ -1,0 +1,6 @@
+nombre: Etiqueta de bolsa con tu nombre
+descripcion: Etiqueta para la bolsa de golf con una pelota con hoyuelos en relieve y tu nombre en otro color. Ranura para la correa. Para que tu bolsa no se confunda en el club; ideal para regalar.
+inspiracion: Las etiquetas de bolsa personalizadas, de los regalos de golf más vendidos. Diseño propio en 2 colores (AMS).
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}
