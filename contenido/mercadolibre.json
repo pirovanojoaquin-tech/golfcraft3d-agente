@@ -954,7 +954,7 @@
     },
     "devolucion-de-bola-para-el-putt": {
       "codigo": 17,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 1,
       "categoria": "MLA2549",
       "categoria_nombre": "Golf > Palos y Sets > Putters",
@@ -1003,7 +1003,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-09",
-      "sha_fotos": "2d0d5d55387c51251fcc43a0cf86e206910a4d47"
+      "sha_fotos": "2d0d5d55387c51251fcc43a0cf86e206910a4d47",
+      "item_id": "MLA2276229777",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2276229777-devolucion-de-bola-para-el-putt-golf-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     }
   }
 }
