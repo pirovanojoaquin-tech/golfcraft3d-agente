@@ -29,3 +29,14 @@ piezas:
   gramos: 0.2
   color: blanco
 escala: null
+medidas_mm:
+  largo: 98
+  ancho: 52
+  alto: 9
+colores_png:
+- verde
+- negro
+- azul
+- blanco
+- rojo
+- amarillo

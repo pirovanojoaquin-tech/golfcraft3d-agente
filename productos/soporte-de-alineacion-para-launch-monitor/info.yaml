@@ -27,3 +27,14 @@ piezas:
   printables_file_id: '395526'
   gramos: 6.2
 escala: null
+medidas_mm:
+  largo: 186
+  ancho: 165
+  alto: 18
+colores_png:
+- negro
+- rojo
+- gris
+- blanco
+- azul
+- verde
