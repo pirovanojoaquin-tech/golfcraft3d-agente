@@ -1340,6 +1340,18 @@
     "estado": "pendiente"
   },
   {
+    "id": "2026-11-10-reel",
+    "fecha": "2026-11-10",
+    "hora": "19:00",
+    "tipo": "REEL",
+    "producto": "entrenador-de-presion-para-el-putt",
+    "imagenes": [
+      "contenido/media/2026-11-10/reel.mp4"
+    ],
+    "caption": "El putt que más se falla no es el torcido: es el corto o el largo 🎯\n\nEl entrenador de presión es una rampa con un hoyito arriba. Con la velocidad justa, la bola sube y se queda; si le pegás corto no llega, y si le pegás fuerte pasa de largo.\n\nDiseño exclusivo GolfCraft3D, en dos colores.\n#putting #putt #entrenamientogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
     "id": "2026-11-10-historia-3",
     "fecha": "2026-11-10",
     "hora": "20:30",
