@@ -273,7 +273,9 @@ colores y cierre con el logo (11 s, vertical). Salen el **mismo día del estreno
    deja `contenido/media/<fecha>/reel.mp4`). Si el video no está a la hora, ese reel no se publica (no da error).
 3. Revisalo: sacá 6-8 capturas con ffmpeg y miralas en una hoja de contacto (texto cortado, producto que se sale
    del cuadro, color que no contrasta con el fondo). Para corregir, cambiá el plan y relanzá con `rehacer=true`.
-4. Los reels salen **sin música** (la API no deja usar la música de Instagram). No uses música con derechos.
+4. **Música:** el reel lleva una pista de `assets/musica/` (Kevin MacLeod, CC BY 4.0: uso comercial libre nombrando
+   al autor; el crédito se suma solo al texto del reel). La API no deja usar la música de Instagram. Para sumar
+   pistas: mp3 de 12 s en esa carpeta + su entrada en `creditos.yaml`. Nunca música con derechos.
 5. Probar sin publicar: workflow `publicar.yml` con `modo=probar_reel` e `id=<fecha>-reel`.
 
 ## Rotación de productos

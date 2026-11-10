@@ -6,8 +6,8 @@ Uso (lo corre el workflow reel.yml; necesita blender, prusa-slicer y ffmpeg):
         --gancho "¿Tus putts quedan cortos?" --beneficios "Entrená la velocidad|En casa o en el green|En tu color"
     opciones: --color blanco  --angulo 28  --cuadros 100  --dir-cuadros <carpeta con f_000.png...> (ya renderizados)
 
-Video vertical 1080x1920 a 25 cuadros por segundo, ~11 s, H.264 + pista de audio en silencio (Instagram la
-pide en algunos casos). Escenas: gancho → beneficios → colores → cierre con logo.
+Video vertical 1080x1920 a 25 cuadros por segundo, ~11 s, H.264 + música de assets/musica (o silencio
+si no hay pistas). Escenas: gancho → beneficios → colores → cierre con logo.
 """
 import argparse
 import subprocess
@@ -189,14 +189,25 @@ def generar(slug, salida, gancho, beneficios, color=None, angulo=24, cuadros=100
 
     salida = Path(salida)
     salida.parent.mkdir(parents=True, exist_ok=True)
-    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(carpeta_v / "%04d.jpg"),
-                        "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
+    # música: una pista de assets/musica (uso comercial libre con crédito), siempre la misma para cada reel
+    pistas = sorted((RAIZ / "assets" / "musica").glob("*.mp3"))
+    pista = pistas[sum(map(ord, str(salida))) % len(pistas)] if pistas else None
+    audio = ["-i", str(pista)] if pista else ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
+    r = subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-framerate", str(FPS),
+                        "-i", str(carpeta_v / "%04d.jpg"), *audio,
                         "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-pix_fmt", "yuv420p", "-profile:v", "high",
                         "-r", str(FPS), "-c:a", "aac", "-b:a", "96k", "-shortest", "-movflags", "+faststart",
                         str(salida)], capture_output=True, text=True)
     if r.returncode != 0 or not salida.exists():
         raise RuntimeError(f"ffmpeg falló: {r.stderr[-600:]}")
     tmp.cleanup()
+    # crédito de la música: publicar.py lo suma al texto del reel
+    nota = salida.with_suffix(".musica.txt")
+    if pista:
+        c = yaml.safe_load((RAIZ / "assets" / "musica" / "creditos.yaml").read_text(encoding="utf-8"))[pista.stem]
+        nota.write_text(f"🎵 Música: «{c['titulo']}» de {c['autor']}, {c['licencia']}\n", encoding="utf-8")
+    elif nota.exists():
+        nota.unlink()
     print(f"{slug}: {salida.relative_to(RAIZ) if salida.is_relative_to(RAIZ) else salida} ({salida.stat().st_size // 1024} KB)")
     return salida
 

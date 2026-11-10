@@ -74,7 +74,11 @@ def publicar_item(ig, item, base):
     if item["tipo"] == "STORY":
         return ig.publicar_historia(urls[0])
     if item["tipo"] == "REEL":
-        return ig.publicar_reel(urls[0], con_cierre(item["caption"], item.get("producto")))
+        caption = con_cierre(item["caption"], item.get("producto"))
+        nota = (RAIZ / item["imagenes"][0]).with_suffix(".musica.txt")
+        if nota.exists():  # la licencia de la música pide nombrar al autor
+            caption = (caption + "\n\n" + nota.read_text(encoding="utf-8").strip())[:2200]
+        return ig.publicar_reel(urls[0], caption)
     raise ValueError(f"Tipo desconocido: {item['tipo']}")
 
 
