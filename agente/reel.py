@@ -80,21 +80,29 @@ def generar(slug, salida, gancho, beneficios, color=None, angulo=24, cuadros=100
         dir_cuadros.mkdir()
         renderizar_cuadros(info, color, angulo, cuadros, dir_cuadros)
     giro = [Image.open(f).convert("RGBA") for f in sorted(dir_cuadros.glob("f_*.png"))]
+    # caja que ocupa el producto a lo largo de toda la vuelta: con eso se lo escala para que entre justo entre
+    # el texto de arriba y el de abajo, sea alto (un arbolito) o chato y ancho (una rampa)
+    cajas = [c.getchannel("A").point(lambda a: 255 if a > 150 else 0).getbbox() for c in giro[::4]]
+    cajas = [c for c in cajas if c]
+    bx0, by0 = min(c[0] for c in cajas), min(c[1] for c in cajas)
+    bx1, by1 = max(c[2] for c in cajas), max(c[3] for c in cajas)
+    lado_base = giro[0].width * min(980 / (bx1 - bx0), 700 / (by1 - by0))
+    centro_y = (by0 + by1) / 2 / giro[0].height  # centro del producto dentro del cuadro (0..1)
 
     fondo = D.fondo(TAM, tono)
     fondo_cierre = D.fondo(TAM, "verde")
     d0 = ImageDraw.Draw(fondo)
 
     # --- capas fijas de cada escena (se dibujan una vez; por cuadro solo cambian opacidad y posición)
-    f_gancho = D.ajustar_fuente(d0, gancho, 920, 330, 112, minimo=64)
-    c_gancho = capa_texto(lambda d, _: D.texto_bloque(d, (80, 290), gancho, f_gancho, titulo_c, 920, 1.12, centrado=True))
+    f_gancho = D.ajustar_fuente(d0, gancho, 940, 250, 104, minimo=56)
+    c_gancho = capa_texto(lambda d, _: D.texto_bloque(d, (70, 280), gancho, f_gancho, titulo_c, 940, 1.12, centrado=True))
     c_logo = capa_texto(lambda d, c: c.alpha_composite(D.logo(150, blanco=tono == "verde"), (465, 80)))
     f_nombre = D.ajustar_fuente(d0, info["nombre"], 920, 190, 78, minimo=52)
     c_nombre = capa_texto(lambda d, _: D.texto_bloque(d, (80, 300), info["nombre"], f_nombre, titulo_c, 920, 1.12,
                                                        centrado=True))
     f_ben = D.fuente(50, 700)
     fondo_p, letra_p = ((255, 255, 255), marca) if tono == "verde" else (marca, D.BLANCO)
-    c_ben = [capa_texto(lambda d, _, b=b, n=n: D.pastilla(d, (540, 1290 + n * 112), b, f_ben, fondo_p, letra_p,
+    c_ben = [capa_texto(lambda d, _, b=b, n=n: D.pastilla(d, (540, 1330 + n * 104), b, f_ben, fondo_p, letra_p,
                                                           pad=(40, 20), centro=True))
              for n, b in enumerate(beneficios[:3])]
     c_colores = capa_texto(lambda d, _: (
@@ -113,12 +121,14 @@ def generar(slug, salida, gancho, beneficios, color=None, angulo=24, cuadros=100
         D.pastilla(d, (540, 1370), D.CTA, D.fuente(56, 800), (255, 255, 255), marca, pad=(52, 26), centro=True),
         d.text((540, 1540), D.USUARIO, font=D.fuente(46, 700), fill=(214, 236, 224), anchor="mm")))
 
-    def producto(lienzo, t, escala=1.0, y=900, op=1.0):
-        """El producto girando (una vuelta cada 4 s), centrado en (540, y)."""
+    def producto(lienzo, t, escala=1.0, y=930, op=1.0):
+        """El producto girando (una vuelta cada 4 s), con su centro en (540, y)."""
         cuadro = giro[int(t * FPS) % len(giro)]
-        lado = round(1240 * escala)
+        lado = round(lado_base * escala)
         im = con_opacidad(cuadro.resize((lado, lado), Image.BICUBIC), op)
-        lienzo.alpha_composite(im, (540 - lado // 2, y - lado // 2))
+        capa = Image.new("RGBA", TAM, (0, 0, 0, 0))
+        capa.paste(im, (540 - lado // 2, round(y - lado * centro_y)))
+        lienzo.alpha_composite(capa)
 
     n_cuadros = round(DURACION * FPS)
     carpeta_v = Path(tmp.name) / "video"
@@ -164,7 +174,7 @@ def generar(slug, salida, gancho, beneficios, color=None, angulo=24, cuadros=100
                 producto(im, t, op=entra_y_sale(t, c0, c1))
         else:
             op = suave((t - z0) / 0.4)
-            producto(im, t, escala=0.7, y=820, op=op)
+            producto(im, t, escala=0.68, y=840, op=op)
             im.alpha_composite(con_opacidad(c_cierre, op), (0, round(30 * (1 - op))))
         im.convert("RGB").save(carpeta_v / f"{n:04d}.jpg", quality=93)
 
