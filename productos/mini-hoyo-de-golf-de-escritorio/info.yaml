@@ -19,6 +19,8 @@ makerworld_id: 255040
 url: https://makerworld.com/es/models/255040-desktop-mini-golf-hole-1
 autor: MoltenPlastic3D
 licencia: BY
-piezas: []
-archivo_pendiente: true
+piezas:
+- archivo: COURSE+3MF.3mf
+  telegram_file_id: BQACAgEAAxkBAAP2avNVpmVVYz8arf2WHbHvZ9Oepa0AAqYIAAIqzJhHicNC5FOtyOA9BA
+archivo_pendiente: false
 escala: null

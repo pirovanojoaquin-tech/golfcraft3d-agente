@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649439,
+  "offset": 242649441,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -136,6 +136,21 @@
       "fecha": "2026-11-10T00:29:22+00:00",
       "texto": "NO ML 16",
       "procesado": true
+    },
+    {
+      "fecha": "2026-11-10T17:34:14+00:00",
+      "texto": "ML SI 18",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-11-10T17:34:30+00:00",
+      "texto": "mini hoyo",
+      "procesado": true,
+      "archivo": {
+        "file_id": "BQACAgEAAxkBAAP2avNVpmVVYz8arf2WHbHvZ9Oepa0AAqYIAAIqzJhHicNC5FOtyOA9BA",
+        "nombre": "COURSE+3MF.3mf",
+        "tamanio": 1034251
+      }
     }
   ]
 }
