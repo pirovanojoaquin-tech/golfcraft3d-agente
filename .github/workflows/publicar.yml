@@ -10,7 +10,7 @@ on:
       modo:
         description: "Qué hacer"
         type: choice
-        options: [publicar, simular, verificar]
+        options: [publicar, simular, verificar, probar_reel]
         default: publicar
       id:
         description: "(Opcional) id de una entrada a publicar ya, ej: 2026-10-20-post"
@@ -50,6 +50,7 @@ jobs:
           ARGS=()
           [ "$MODO" = "simular" ] && ARGS+=(--simular)
           [ "$MODO" = "verificar" ] && ARGS+=(--verificar)
+          if [ "$MODO" = "probar_reel" ]; then python -m agente.publicar --probar-reel "$ID"; exit 0; fi
           [ -n "$ID" ] && ARGS+=(--id "$ID")
           python -m agente.publicar "${ARGS[@]}"
 

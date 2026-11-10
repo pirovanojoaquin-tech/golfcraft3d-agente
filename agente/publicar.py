@@ -5,6 +5,7 @@ Uso:
     python -m agente.publicar --simular     # muestra qué publicaría, sin publicar
     python -m agente.publicar --id 2026-10-20-post   # publica una entrada puntual ya
     python -m agente.publicar --verificar   # solo chequea que el token funcione
+    python -m agente.publicar --probar-reel 2026-11-10-reel   # sube el video sin publicarlo (prueba)
 
 Variables de entorno:
     IG_ACCESS_TOKEN   token de larga duración de Instagram (obligatorio salvo --simular)
@@ -39,7 +40,9 @@ def base_url():
 
 def pendientes(items, ahora):
     hoy, hora = ahora.strftime("%Y-%m-%d"), ahora.strftime("%H:%M")
-    return [i for i in items if i["estado"] == "pendiente" and i["fecha"] == hoy and i["hora"] <= hora]
+    # un reel agendado cuyo video todavía no se generó no se intenta (ni cuenta como error)
+    return [i for i in items if i["estado"] == "pendiente" and i["fecha"] == hoy and i["hora"] <= hora
+            and (i["tipo"] != "REEL" or (RAIZ / i["imagenes"][0]).exists())]
 
 
 PERSONALIZADOS = "✍️ ¿Lo querés distinto? Recreamos productos y diseñamos a tu medida. Escribinos por DM."
@@ -70,6 +73,8 @@ def publicar_item(ig, item, base):
         return ig.publicar_imagen(urls[0], con_cierre(item["caption"], item.get("producto")))
     if item["tipo"] == "STORY":
         return ig.publicar_historia(urls[0])
+    if item["tipo"] == "REEL":
+        return ig.publicar_reel(urls[0], con_cierre(item["caption"], item.get("producto")))
     raise ValueError(f"Tipo desconocido: {item['tipo']}")
 
 
@@ -78,6 +83,8 @@ def main():
     ap.add_argument("--simular", action="store_true")
     ap.add_argument("--id")
     ap.add_argument("--verificar", action="store_true")
+    ap.add_argument("--probar-reel", metavar="ID", help="sube el video de ese reel a Instagram SIN publicarlo, "
+                    "para confirmar que lo acepta")
     args = ap.parse_args()
 
     token = os.environ.get("IG_ACCESS_TOKEN")
@@ -88,6 +95,12 @@ def main():
     if args.verificar:
         print("Cuenta:", ig.cuenta())
         print("Límite de publicación:", ig.limite_publicacion())
+        return
+
+    if args.probar_reel:
+        item = next(i for i in calendario.cargar() if i["id"] == args.probar_reel)
+        c = ig.contenedor_reel(base_url() + item["imagenes"][0], item["caption"])
+        print(f"OK: Instagram aceptó el video de {item['id']} (contenedor {c}, no se publicó)")
         return
 
     ahora = datetime.now(ZoneInfo(CONFIG["zona_horaria"]))

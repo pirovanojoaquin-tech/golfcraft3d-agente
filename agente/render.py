@@ -37,6 +37,8 @@ def args():
     ap.add_argument("--escena", help="escena en uso de agente/escenas.py (ej: gorra)")
     ap.add_argument("--escena-params", default="{}", help="parámetros de la escena en JSON")
     ap.add_argument("--margen", type=float, help="aire alrededor de lo encuadrado (1 = justo)")
+    ap.add_argument("--cuadros", type=int, default=0,
+                    help="reel: renderiza N cuadros con el producto dando una vuelta (salida_000.png, ...)")
     ap.add_argument("--sin-piso", action="store_true", help="sin piso (para montar sobre una foto)")
     ap.add_argument("--luz-relativa", action="store_true",
                     help="las luces giran con la cámara (misma iluminación que la vista normal, desde cualquier giro)")
@@ -293,6 +295,14 @@ def main():
         alto = a.alto or a.tam
         with open(a.salida + ".json", "w") as f:
             json.dump({"ancla": [v.x * a.tam, (1 - v.y) * alto]}, f)
+    if a.cuadros:
+        # animación para reels: el producto gira sobre su eje; cámara y luces quedan fijas
+        base = a.salida.rsplit(".", 1)[0]
+        for k in range(a.cuadros):
+            obj.rotation_euler = (0, 0, 2 * math.pi * k / a.cuadros)
+            esc.render.filepath = f"{base}_{k:03d}.png"
+            bpy.ops.render.render(write_still=True)
+        return
     bpy.ops.render.render(write_still=True)
 
 

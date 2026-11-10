@@ -1,0 +1,56 @@
+name: Reels
+
+# Arma los videos de los reels agendados en un plan (días con `reel:`): el producto girando en 3D con textos
+# animados. Lo lanza el agente después de planificar. Cada reel tarda unos 15 minutos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: "Plan con los reels (ej: planes/2026-11-17.yaml)"
+        required: true
+      rehacer:
+        description: "Volver a generar los que ya existen (true/false)"
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  reels:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar Blender, laminador y ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends prusa-slicer blender ffmpeg
+          pip install -r requirements.txt
+
+      - name: Generar
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  # modelos de MakerWorld (los manda el dueño al bot)
+          PLAN: ${{ inputs.plan }}
+          REHACER: ${{ inputs.rehacer }}
+        run: |
+          ARGS=(--plan "$PLAN")
+          [ "$REHACER" = "true" ] && ARGS+=(--rehacer)
+          python -m agente.reel "${ARGS[@]}"
+
+      - name: Subir al repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contenido/media/*/reel.mp4
+          if ! git diff --cached --quiet; then
+            git commit -m "Reels de ${{ inputs.plan }}"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

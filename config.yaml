@@ -15,6 +15,7 @@ horarios:
   historia-1: "10:00"
   post: "12:30"
   historia-2: "16:00"
+  reel: "19:00"          # solo los días que el plan trae `reel:`
   historia-3: "20:30"
 
 zona_horaria: America/Argentina/Buenos_Aires

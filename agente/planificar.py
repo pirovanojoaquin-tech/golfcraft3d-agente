@@ -139,6 +139,18 @@ def procesar(plan, reemplazar=False):
                 "caption": armar_caption(p["caption"]), "estado": "pendiente",
             })
 
+        if "reel" in dia:
+            # reel del producto del día: acá solo se agenda; el video lo arma `python -m agente.reel --plan <plan>`
+            # (workflow reel.yml) en contenido/media/<fecha>/reel.mp4. Si el video no está, no se publica.
+            rl = dia["reel"]
+            slug = rl.get("producto") or dia.get("post", {}).get("producto")
+            producto(slug)
+            nuevos.append({
+                "id": f"{fecha}-reel", "fecha": fecha, "hora": horarios.get("reel", "19:00"), "tipo": "REEL",
+                "producto": slug, "imagenes": [rel(carpeta / "reel.mp4")],
+                "caption": armar_caption(rl.get("caption") or dia["post"]["caption"]), "estado": "pendiente",
+            })
+
         for n, h in enumerate(dia.get("historias", []), 1):
             ruta = rel(disenio.guardar(render_historia(h), carpeta / f"historia-{n}.jpg"))
             nuevos.append({

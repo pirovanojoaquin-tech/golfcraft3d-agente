@@ -91,5 +91,15 @@ class Instagram:
         c = self._req("POST", f"{self.user_id}/media", image_url=url, media_type="STORIES")["id"]
         return self._publicar(c)
 
+    def contenedor_reel(self, url, caption, miniatura_ms=1500):
+        """Crea el contenedor del reel y espera a que Instagram procese el video (sin publicarlo)."""
+        c = self._req("POST", f"{self.user_id}/media", media_type="REELS", video_url=url, caption=caption,
+                      share_to_feed="true", thumb_offset=str(miniatura_ms))["id"]
+        self._esperar(c, intentos=72)  # el video tarda más que una foto: hasta 6 minutos
+        return c
+
+    def publicar_reel(self, url, caption):
+        return self._publicar(self.contenedor_reel(url, caption))
+
     def limite_publicacion(self):
         return self._req("GET", f"{self.user_id}/content_publishing_limit", fields="quota_usage,config")
