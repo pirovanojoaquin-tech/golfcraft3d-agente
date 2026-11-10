@@ -63,7 +63,8 @@ y opcionalmente `fotos` (URLs raw de GitHub separadas por coma, máximo 10). Ant
    `productos/propuestos.json` si esa fecha ya tiene respuesta). Puede estar en Gmail (hilo
    `Productos nuevos`) **o en Telegram**: GitHub guarda cada hora lo que el dueño le escribe al bot en
    `contenido/telegram.json`; mirá ahí los mensajes con `procesado: false` posteriores a la propuesta. Cuando uses uno, marcalo `procesado: true`.
-2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si es ambigua, respondé en
+2. Interpretá la respuesta: "SI 1, 3" → aprobados 1 y 3; "NO" → ninguno. Si trae "REEL 2, 4", esos dos
+   productos llevan reel (ver "Reels"). Si es ambigua, respondé en
    el mismo hilo preguntando y no hagas nada más con esa propuesta. Si no respondió, seguí al paso 5.
 3. `python -m agente.aprobar <fecha> <números>`. Completá en `productos/<slug>/info.yaml` la
    `descripcion` en español y `personalizable`. Commit + push. Lanzá `guardar-drive.yml` con los slugs
@@ -264,8 +265,13 @@ Para llegar a gente nueva, **2 reels por semana**: animación 3D del producto gi
 colores y cierre con el logo (11 s, vertical). Salen el **mismo día del estreno** del producto, a las 19:00
 (`config.yaml > horarios > reel`), así no se repite ningún producto.
 
-1. En el plan, sumá `reel:` a los 2 días con los productos más vistosos (formas con volumen, 2 colores,
-   texturas). Ejemplo: `reel: {gancho: "¿Tus putts quedan cortos o largos?", beneficios: ["Entrená la velocidad justa", "En casa o en el green", "Diseño propio, en tu color"]}`. Opcionales: `color`, `angulo` (elevación de la cámara, 24 por
+0. **Los 2 productos del reel los elige el dueño (pedido del 10/11/2026).** En la propuesta del lunes (mail y
+   Telegram) pedile que, además de aprobar, elija 2 para reel: responde `SI 1,2,4 REEL 2,4` (los números de
+   REEL son de la misma lista). Al procesar la respuesta, anotá `reel: true` en el `info.yaml` de esos dos.
+   Si aprueba pero no elige reels, preguntale una vez por Telegram; si al planificar sigue sin elegir, elegí vos
+   los 2 más vistosos y avisale cuáles.
+1. En el plan, sumá `reel:` a los días de los productos con `reel: true` (si te toca elegir a vos: formas con
+   volumen, 2 colores, texturas). Ejemplo: `reel: {gancho: "¿Tus putts quedan cortos o largos?", beneficios: ["Entrená la velocidad justa", "En casa o en el green", "Diseño propio, en tu color"]}`. Opcionales: `color`, `angulo` (elevación de la cámara, 24 por
    defecto), `caption` (si no, usa el del post), `producto`.
    El **gancho** es una pregunta o promesa corta (máx. ~45 caracteres); los **beneficios**, 3 frases de hasta ~28.
 2. `python -m agente.planificar` agenda el reel (`<fecha>-reel`, tipo `REEL`). El video se arma aparte:

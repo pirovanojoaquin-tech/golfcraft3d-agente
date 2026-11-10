@@ -76,6 +76,8 @@ def armar(fecha, sha, intro=None):
   <div style="background:#fff;border-left:4px solid {VERDE};padding:12px 14px;border-radius:8px;margin-bottom:18px">
     <b>Para aprobar, respondé este mail</b> con los números que querés, por ejemplo:<br>
     <span style="font-size:18px;font-family:monospace">SI {ejemplo}</span><br>
+    <b>Elegí también 2 para reel</b> (video animado), por ejemplo:
+    <span style="font-size:18px;font-family:monospace">SI {ejemplo} REEL {ejemplo.split(", ")[0]}, {ejemplo.split(", ")[-1]}</span><br>
     <span style="color:#55625b;font-size:13px">Si no querés ninguno: <span style="font-family:monospace">NO</span>.
     Los aprobados se guardan en tu Drive (PRODUCTOS 3D GOLF) y empiezan a publicarse.</span>
   </div>
