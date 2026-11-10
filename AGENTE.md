@@ -258,6 +258,24 @@ Variá los tipos a lo largo de la semana:
 
 Al menos 1 de las 3 historias del día tiene que ser de producto.
 
+## Reels (desde 10/11/2026, pedido del dueño)
+
+Para llegar a gente nueva, **2 reels por semana**: animación 3D del producto girando, con textos animados, sus
+colores y cierre con el logo (11 s, vertical). Salen el **mismo día del estreno** del producto, a las 19:00
+(`config.yaml > horarios > reel`), así no se repite ningún producto.
+
+1. En el plan, sumá `reel:` a los 2 días con los productos más vistosos (formas con volumen, 2 colores,
+   texturas). Ejemplo: `reel: {gancho: "¿Tus putts quedan cortos o largos?", beneficios: ["Entrená la velocidad justa", "En casa o en el green", "Diseño propio, en tu color"]}`. Opcionales: `color`, `angulo` (elevación de la cámara, 24 por
+   defecto), `caption` (si no, usa el del post), `producto`.
+   El **gancho** es una pregunta o promesa corta (máx. ~45 caracteres); los **beneficios**, 3 frases de hasta ~28.
+2. `python -m agente.planificar` agenda el reel (`<fecha>-reel`, tipo `REEL`). El video se arma aparte:
+   commit + push del plan y lanzá el workflow `reel.yml` con `plan=planes/<archivo>.yaml` (unos 15 min por reel;
+   deja `contenido/media/<fecha>/reel.mp4`). Si el video no está a la hora, ese reel no se publica (no da error).
+3. Revisalo: sacá 6-8 capturas con ffmpeg y miralas en una hoja de contacto (texto cortado, producto que se sale
+   del cuadro, color que no contrasta con el fondo). Para corregir, cambiá el plan y relanzá con `rehacer=true`.
+4. Los reels salen **sin música** (la API no deja usar la música de Instagram). No uses música con derechos.
+5. Probar sin publicar: workflow `publicar.yml` con `modo=probar_reel` e `id=<fecha>-reel`.
+
 ## Rotación de productos
 
 - **Nunca se repite un producto (pedido del dueño, 3/11/2026).** Cada producto tiene **un solo día**: su

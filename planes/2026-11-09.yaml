@@ -24,6 +24,7 @@ dias:
       - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Tenés una idea?", texto: "La diseñamos e imprimimos: recreamos productos, cambiamos medidas y grabamos nombres o logos. Escribinos por DM."}
 
   - fecha: 2026-11-10
+    reel: {"gancho": "¿Tus putts quedan cortos o largos?", "beneficios": ["Entrená la velocidad justa", "En casa o en el green", "Diseño propio, en tu color"], "color": "blanco"}
     post:
       producto: entrenador-de-presion-para-el-putt
       caption: |
@@ -112,6 +113,7 @@ dias:
       - {tipo: "texto", etiqueta: "Personalizados", titulo: "Con tu nombre", texto: "Grabamos el nombre que quieras en relieve. Ideal para regalar. Escribinos por DM."}
 
   - fecha: 2026-11-14
+    reel: {"gancho": "Tu colección de pelotas, a la vista", "beneficios": ["Para 12 pelotas", "Con el nombre que quieras", "Se cuelga con 2 tornillos"], "color": "verde", "angulo": 30}
     post:
       producto: exhibidor-de-pared-para-12-pelotas
       caption: |
