@@ -176,5 +176,46 @@
     "propuesto": "2026-11-03",
     "estado": "aprobado",
     "respondido": "2026-11-03"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Conos de distancia para putt (x5)",
+    "slug": "conos-de-distancia-para-putt-x5",
+    "propuesto": "2026-11-09",
+    "estado": "aprobado",
+    "respondido": "2026-11-10"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Etiqueta de bolsa con tu nombre",
+    "slug": "etiqueta-de-bolsa-con-tu-nombre",
+    "propuesto": "2026-11-09",
+    "estado": "aprobado",
+    "respondido": "2026-11-10"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Mini hoyo de golf de escritorio",
+    "slug": "mini-hoyo-de-golf-de-escritorio",
+    "makerworld_id": 255040,
+    "propuesto": "2026-11-09",
+    "estado": "aprobado",
+    "respondido": "2026-11-10"
+  },
+  {
+    "printables_id": null,
+    "nombre": "Porta pelota y tees para la bolsa",
+    "slug": "porta-pelota-y-tees-para-la-bolsa",
+    "propuesto": "2026-11-09",
+    "estado": "aprobado",
+    "respondido": "2026-11-10"
+  },
+  {
+    "printables_id": "91017",
+    "nombre": "Soporte de alineación para launch monitor",
+    "slug": "soporte-de-alineacion-para-launch-monitor",
+    "propuesto": "2026-11-09",
+    "estado": "aprobado",
+    "respondido": "2026-11-10"
   }
 ]

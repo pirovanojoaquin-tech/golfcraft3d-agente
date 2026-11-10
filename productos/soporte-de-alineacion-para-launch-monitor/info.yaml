@@ -1,0 +1,29 @@
+nombre: Soporte de alineación para launch monitor
+descripcion: 'Trípode con tornillos niveladores para el launch monitor Garmin Approach
+  R10: lo deja nivelado y alineado con el objetivo, con canal para una varilla de
+  alineación. Accesorio compatible, no original de la marca.'
+personalizable: Color a elección (10 colores de PLA)
+precio: 6600
+gramos: 54.2
+tiempo: 2 h 03 min
+colores:
+- negro
+- rojo
+- gris
+destacado: false
+notas: null
+origen: printables
+diseno: null
+inspiracion: null
+printables_id: '91017'
+url: https://www.printables.com/model/91017-garmin-approach-r10-golf-launch-monitor-stand-shot
+autor: mcfada
+licencia: CC-BY-SA
+piezas:
+- archivo: Base STL - Garmin R10 Approach Stand.stl
+  printables_file_id: '395525'
+  gramos: 48.0
+- archivo: Adjustment Screw STL - Garmin R10 Approach Stand.stl
+  printables_file_id: '395526'
+  gramos: 6.2
+escala: null
