@@ -16,7 +16,7 @@ import tempfile
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 from . import disenio as D
 from .calendario import RAIZ
@@ -80,6 +80,15 @@ def generar(slug, salida, gancho, beneficios, color=None, angulo=24, cuadros=100
         dir_cuadros.mkdir()
         renderizar_cuadros(info, color, angulo, cuadros, dir_cuadros)
     giro = [Image.open(f).convert("RGBA") for f in sorted(dir_cuadros.glob("f_*.png"))]
+    # la sombra llega hasta el borde del cuadro: se difuminan los bordes para que no se vea un corte recto
+    w0, h0 = giro[0].size
+    borde = w0 // 7
+    mascara = Image.new("L", (w0, h0), 255)
+    dm = ImageDraw.Draw(mascara)
+    for i in range(borde):
+        dm.rectangle((i, i, w0 - 1 - i, h0 - 1 - i), outline=round(255 * (i / borde) ** 1.5))
+    for c in giro:
+        c.putalpha(ImageChops.multiply(c.getchannel("A"), mascara))
     # caja que ocupa el producto a lo largo de toda la vuelta: con eso se lo escala para que entre justo entre
     # el texto de arriba y el de abajo, sea alto (un arbolito) o chato y ancho (una rampa)
     cajas = [c.getchannel("A").point(lambda a: 255 if a > 150 else 0).getbbox() for c in giro[::4]]
