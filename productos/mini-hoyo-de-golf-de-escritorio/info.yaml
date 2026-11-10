@@ -3,8 +3,8 @@ descripcion: Mini green de escritorio con bunkers, hoyo y putter para jugar en l
   oficina o en casa. Un regalo divertido para cualquier golfista.
 personalizable: Color a elección (10 colores de PLA)
 precio: 9300
-gramos: 77.0
-tiempo: 2 h 14 min
+gramos: 67.3
+tiempo: 1 h 56 min
 colores:
 - verde
 - blanco
@@ -22,5 +22,18 @@ licencia: BY
 piezas:
 - archivo: COURSE+3MF.3mf
   telegram_file_id: BQACAgEAAxkBAAP2avNVpmVVYz8arf2WHbHvZ9Oepa0AAqYIAAIqzJhHicNC5FOtyOA9BA
+  gramos: 67.3
 archivo_pendiente: false
 escala: null
+gramos_verificados: true
+medidas_mm:
+  largo: 221
+  ancho: 183
+  alto: 8
+colores_png:
+- verde
+- blanco
+- amarillo
+- negro
+- rojo
+- azul
