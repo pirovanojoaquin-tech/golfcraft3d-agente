@@ -40,3 +40,21 @@ colores_png:
 - blanco
 - rojo
 - amarillo
+en_uso:
+  foto:
+    id: q2Fyzn-KJOQ
+    nombre: madera-clara
+  escena: apoyado
+  margen: 1.1
+  color: verde
+  angulo: 65
+  giro: 0
+  punto:
+  - 700
+  - 850
+  escala: 1.0
+  recorte:
+  - 60
+  - 0
+  - 1340
+  - 1600

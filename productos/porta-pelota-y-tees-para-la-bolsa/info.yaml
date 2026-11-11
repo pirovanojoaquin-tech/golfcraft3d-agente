@@ -40,3 +40,21 @@ colores_png:
 - rojo
 - amarillo
 reel: true
+en_uso:
+  foto:
+    id: q2Fyzn-KJOQ
+    nombre: madera-clara
+  escena: apoyado
+  margen: 1.1
+  color: negro
+  angulo: 45
+  giro: 30
+  punto:
+  - 1200
+  - 950
+  escala: 0.9
+  recorte:
+  - 560
+  - 0
+  - 1840
+  - 1600
