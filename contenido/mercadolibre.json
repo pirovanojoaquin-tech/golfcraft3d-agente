@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 20,
+  "siguiente": 21,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -1118,6 +1118,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-11",
       "sha_fotos": "165bb9ea901f9825601a329d86de9ff59744ce31"
+    },
+    "arreglapiques-con-marcador": {
+      "codigo": 20,
+      "estado": "propuesto",
+      "pack": 10,
+      "categoria": "MLA1344",
+      "categoria_nombre": "Golf > Palos y Sets > Sets Completos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 1800,
+          "comision": 2948,
+          "envio": 0,
+          "filamento": 192,
+          "ganancia": -1340
+        },
+        {
+          "pack": 2,
+          "precio": 3600,
+          "comision": 3236,
+          "envio": 0,
+          "filamento": 384,
+          "ganancia": -20
+        },
+        {
+          "pack": 3,
+          "precio": 5200,
+          "comision": 3492,
+          "envio": 0,
+          "filamento": 576,
+          "ganancia": 1132
+        },
+        {
+          "pack": 5,
+          "precio": 8100,
+          "comision": 3956,
+          "envio": 0,
+          "filamento": 960,
+          "ganancia": 3184
+        },
+        {
+          "pack": 10,
+          "precio": 15300,
+          "comision": 7928,
+          "envio": 0,
+          "filamento": 1920,
+          "ganancia": 5452
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-12"
     }
   }
 }
