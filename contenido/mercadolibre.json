@@ -1065,7 +1065,7 @@
       "status_ml": "active"
     },
     "marcadores-de-bola-con-tu-inicial-x4": {
-      "estado": "propuesto",
+      "estado": "error",
       "intentos": 1,
       "desde": 1794416999,
       "codigo": 19,
