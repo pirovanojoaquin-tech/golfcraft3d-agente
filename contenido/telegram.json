@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649441,
+  "offset": 242649442,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -151,6 +151,11 @@
         "nombre": "COURSE+3MF.3mf",
         "tamanio": 1034251
       }
+    },
+    {
+      "fecha": "2026-11-11T23:15:40+00:00",
+      "texto": "ML SI 19",
+      "procesado": true
     }
   ]
 }
