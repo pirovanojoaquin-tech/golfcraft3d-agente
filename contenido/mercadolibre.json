@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 21,
+  "siguiente": 22,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -1171,6 +1171,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-12",
       "sha_fotos": "113a019d32f0b528c1531a3a11098ee1a44c9648"
+    },
+    "porta-guante-de-golf": {
+      "codigo": 21,
+      "estado": "propuesto",
+      "pack": 3,
+      "categoria": "MLA79269",
+      "categoria_nombre": "Golf > Indumentaria > Guantes",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 5600,
+          "comision": 3556,
+          "envio": 0,
+          "filamento": 928,
+          "ganancia": 1116
+        },
+        {
+          "pack": 2,
+          "precio": 11200,
+          "comision": 4452,
+          "envio": 0,
+          "filamento": 1856,
+          "ganancia": 4892
+        },
+        {
+          "pack": 3,
+          "precio": 16000,
+          "comision": 8040,
+          "envio": 0,
+          "filamento": 2784,
+          "ganancia": 5176
+        },
+        {
+          "pack": 5,
+          "precio": 25200,
+          "comision": 10672,
+          "envio": 0,
+          "filamento": 4640,
+          "ganancia": 9888
+        },
+        {
+          "pack": 10,
+          "precio": 47600,
+          "comision": 7616,
+          "envio": 0,
+          "filamento": 9280,
+          "ganancia": 30704
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-13"
     }
   }
 }
