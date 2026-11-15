@@ -1644,7 +1644,9 @@
       "contenido/media/2026-11-15/post-4.jpg"
     ],
     "caption": "¿Cómo comprar en GolfCraft3D? Así de fácil 🛒\n\n1️⃣ Elegí el producto en la tienda (link en la bio) o en Mercado Libre.\n2️⃣ Elegí el color, y si querés, el nombre o la inicial.\n3️⃣ Lo imprimimos a pedido y te lo mandamos.\n\n¿Tenés una idea que no está? La diseñamos para vos. Escribinos por DM.\n#golf #accesoriosdegolf #impresion3d #golfistas\n#golfargentina #golfcraft3d",
-    "estado": "pendiente"
+    "estado": "pendiente",
+    "intentos": 1,
+    "error": "POST 17841445495228241/media_publish -> 400: {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Cannot Publish', 'error_user_msg': 'The media is not ready for publishing, please wait for a moment', 'fbtrace_id': 'AcqeSn_s5tUn3jEO-1Bvgzy'}"
   },
   {
     "id": "2026-11-15-historia-2",
