@@ -1,0 +1,6 @@
+nombre: Exhibidor "Hoyo en uno" con tu nombre
+descripcion: Base para exhibir la pelota de tu hoyo en uno, con tu nombre y la fecha en otro color. Para el escritorio o la vitrina; el regalo para el que por fin lo logró.
+inspiracion: Los exhibidores de "hole in one" que venden las tiendas de golf. Diseño propio en 2 colores (AMS).
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}

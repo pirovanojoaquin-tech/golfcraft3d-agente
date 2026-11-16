@@ -1,0 +1,6 @@
+nombre: Posa palos para el green
+descripcion: Se clava en el pasto al borde del green y sostiene hasta 3 palos por el grip, para que no se mojen con el rocío ni queden olvidados. El texto se personaliza con tu nombre.
+inspiracion: Los "club caddy" para apoyar los palos en el green. Diseño propio en 2 colores (AMS).
+piezas:
+  - cuerpo.scad
+  - {archivo: acento.scad, color: blanco}
