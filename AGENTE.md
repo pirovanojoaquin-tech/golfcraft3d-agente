@@ -141,6 +141,18 @@ En el mail de la propuesta, por cada producto poné una línea "Por qué sí:" c
   el cliente y las demás en su color fijo, encajadas en el mismo lugar (mismas coordenadas). Así salen los
   renders en varios colores. Ideal para nombres/números en relieve, bordes, detalles.
 
+### Modelos que NO sirven aunque tengan buena foto (aprendido el 11/11/2026)
+Nuestras fotos salen del archivo 3D en un solo color por pieza. Por eso **no propongas** modelos de afuera que:
+- dependen de **colores pintados** en Bambu Studio (un solo archivo con varios colores: casitas, mini canchas);
+- son **láminas planas que se arman o doblan** (faroles cilíndricos, cajas plegables);
+- traen **muchas piezas sueltas** que hay que ensamblar.
+En la foto del autor se ven lindos, pero nuestro render sale de un color, desarmado o irreconocible, y después no
+se pueden publicar. Preferí modelos de **una pieza con relieve propio** (figuras, adornos con textura). Si uno de
+esos vale mucho la pena, proponelo aclarando que hace falta **una foto real** del dueño para publicarlo.
+
+**Guardá seguido:** después de generar un plan o un lote de imágenes, commit + push enseguida (aunque falte
+revisar algo). El 11/11 la sesión se cortó con todo el contenido de la semana sin subir.
+
 ### Licencias
 Se mantiene el filtro: **solo modelos cuya licencia permite vender** (BY, BY-SA, CC0 en MakerWorld; CC-BY,
 CC-BY-SA, CC0 en Printables). El dueño pidió (3/11/2026) ignorar las licencias de MakerWorld; Claude no lo
