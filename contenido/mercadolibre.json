@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 23,
+  "siguiente": 24,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -1287,6 +1287,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-14",
       "sha_fotos": "20f802039bef1b4aab603c2152e0b6191e9c21dc"
+    },
+    "conos-de-distancia-para-putt-x5": {
+      "codigo": 23,
+      "estado": "propuesto",
+      "pack": 2,
+      "categoria": "MLA2550",
+      "categoria_nombre": "Golf > Carros Eléctricos",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 6200,
+          "comision": 3652,
+          "envio": 0,
+          "filamento": 1028,
+          "ganancia": 1520
+        },
+        {
+          "pack": 2,
+          "precio": 12400,
+          "comision": 4644,
+          "envio": 0,
+          "filamento": 2056,
+          "ganancia": 5700
+        },
+        {
+          "pack": 3,
+          "precio": 17700,
+          "comision": 8312,
+          "envio": 0,
+          "filamento": 3084,
+          "ganancia": 6304
+        },
+        {
+          "pack": 5,
+          "precio": 27900,
+          "comision": 11104,
+          "envio": 0,
+          "filamento": 5140,
+          "ganancia": 11656
+        },
+        {
+          "pack": 10,
+          "precio": 52700,
+          "comision": 8432,
+          "envio": 0,
+          "filamento": 10280,
+          "ganancia": 33988
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-16"
     }
   }
 }
