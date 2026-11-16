@@ -1,0 +1,154 @@
+# Semana del 16 al 22/11/2026: 4 productos nuevos (aprobados el 10/11) con imagen en uso, 2 reels elegidos por el
+# dueño (conos y porta pelota) y 3 posts generales. El mini hoyo de escritorio espera una foto real (ver Pendientes).
+dias:
+  - fecha: 2026-11-16
+    reel: {gancho: "¿Controlás la distancia de tus putts?", beneficios: ["5 conos numerados", "La escalera de 1 a 5 metros", "Diseño propio, 2 colores"], color: "rojo", angulo: 20}
+    post:
+      producto: conos-de-distancia-para-putt-x5
+      caption: |
+        El ejercicio que más mejora tu putt se llama "la escalera" 🪜
+
+        Ponés los 5 conos a 1, 2, 3, 4 y 5 metros del hoyo y vas embocando de a uno. Si fallás, volvés a empezar. Los conos numerados te marcan cada distancia sin medir de nuevo.
+
+        Diseño exclusivo GolfCraft3D, con los números en otro color.
+        #putting #putt #entrenamientogolf #diseñopropio
+      slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "La escalera de putts", subtitulo: "5 conos de distancia", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Entrená la distancia", subtitulo: "Conos de distancia para putt (x5)", etiqueta: "Nuevo", sellos: ["Diseño propio", "Del 1 al 5", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Poné los conos a 1, 2, 3, 4 y 5 metros", "Emboká desde cada uno, en orden", "Si fallás, volvés al cono 1"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "los conos de distancia"}
+    historias:
+      - {tipo: "hero", producto: "conos-de-distancia-para-putt-x5", etiqueta: "Nuevo", titulo: "La escalera", subtitulo: "5 conos numerados"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Distancia antes que línea", texto: "La mayoría de los tres putts vienen de un primer putt mal medido, no torcido. Entrená la distancia."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Tenés una idea?", texto: "La diseñamos e imprimimos: recreamos productos, cambiamos medidas y grabamos nombres o logos. Escribinos por DM."}
+
+  - fecha: 2026-11-17
+    post:
+      caption: |
+        3 errores comunes en el putt (y cómo corregirlos) ⛳
+
+        1️⃣ Mover la cabeza: mirá el lugar donde estaba la bola hasta escuchar que cae.
+        2️⃣ Frenar el palo: el putter tiene que acelerar suave a través de la bola.
+        3️⃣ Apretar de más: agarrá el putter como si fuera un tubo de pasta de dientes abierto.
+
+        Guardalo para tu próxima práctica 📌
+        #putting #putt #tipsdegolf #entrenamientogolf
+      slides:
+        - {tipo: "info", titulo: "3 errores comunes en el putt", items: ["Mover la cabeza", "Frenar el palo en el golpe", "Apretar de más el grip"]}
+        - {tipo: "info", titulo: "1. Cabeza quieta", items: ["Mirá donde estaba la bola", "No sigas la bola con la vista", "Escuchá cómo cae"]}
+        - {tipo: "info", titulo: "2. No frenes", items: ["Backswing corto", "Acelerá suave en el golpe", "Terminá más largo que el backswing"]}
+        - {tipo: "info", titulo: "3. Manos blandas", items: ["Presión 4 de 10", "Hombros sueltos", "El palo se mueve como un péndulo"]}
+        - {tipo: "cta", nombre_corto: "entrenar con accesorios hechos a tu medida"}
+    historias:
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "El péndulo", texto: "En el putt, los hombros mueven el palo y las muñecas quedan quietas. Pensá en un péndulo."}
+      - {tipo: "texto", etiqueta: "Impresión 3D", titulo: "Capa por capa", texto: "Imprimimos cada pieza a pedido con impresoras Bambu Lab. Por eso podemos hacerla en el color que elijas."}
+      - {tipo: "texto", etiqueta: "Mercado Libre", titulo: "Comprá online", texto: "Muchos de nuestros productos ya están en Mercado Libre, con envío. Link en la bio."}
+
+  - fecha: 2026-11-18
+    reel: {gancho: "Pelota y tees siempre a mano", beneficios: ["Se cuelga de la bolsa", "1 pelota y 3 tees", "Diseño propio, 2 colores"], color: "negro", angulo: 30}
+    post:
+      producto: porta-pelota-y-tees-para-la-bolsa
+      caption: |
+        ¿Revolvés toda la bolsa buscando un tee? Se terminó 🏌️
+
+        Este porta se cuelga de la bolsa o del carro con un mosquetón y lleva una pelota a presión y 3 tees, siempre a mano. Llegás al tee de salida y ya tenés todo.
+
+        Diseño exclusivo GolfCraft3D, en tu color.
+        #accesoriosdegolf #bolsadegolf #golfistas #diseñopropio
+      slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Todo a mano", subtitulo: "Porta pelota y tees", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Pelota y tees, a mano", subtitulo: "Porta pelota y tees para la bolsa", etiqueta: "Nuevo", sellos: ["Diseño propio", "2 colores", "A pedido"]}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Colgalo de la bolsa con un mosquetón", "Calzá la pelota a presión", "Poné 3 tees en el costado"], tono: "verde"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el porta pelota y tees"}
+    historias:
+      - {tipo: "hero", producto: "porta-pelota-y-tees-para-la-bolsa", etiqueta: "Nuevo", titulo: "Siempre a mano", subtitulo: "Porta pelota y tees"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Llevá una de repuesto", texto: "Tené siempre una pelota extra a mano: si la primera se pierde, jugás la provisional sin demorar al grupo."}
+      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Todo se hace a pedido", texto: "Elegís el color y lo imprimimos para vos. Escribinos por DM y te contamos colores y combos."}
+
+  - fecha: 2026-11-19
+    post:
+      producto: etiqueta-de-bolsa-con-tu-nombre
+      caption: |
+        Que tu bolsa no se confunda con ninguna otra 🏷️
+
+        Etiqueta para la bolsa de golf con una pelota con hoyuelos en relieve y tu nombre en otro color. Tiene ranura para la correa y aguanta sol y lluvia.
+
+        Un regalo simple y personal para cualquier golfista.
+        #bolsadegolf #regalogolf #personalizado #diseñopropio
+      slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Tu nombre en la bolsa", subtitulo: "Etiqueta personalizada", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Tu bolsa, con tu nombre", subtitulo: "Etiqueta de bolsa personalizada", etiqueta: "Nuevo", sellos: ["Diseño propio", "Con tu nombre", "2 colores"]}
+        - {tipo: "pasos", titulo: "Pedila así", pasos: ["Decinos el nombre", "Elegí los dos colores", "La atás a la bolsa con su correa"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "la etiqueta con tu nombre"}
+    historias:
+      - {tipo: "hero", producto: "etiqueta-de-bolsa-con-tu-nombre", etiqueta: "Nuevo", titulo: "Con tu nombre", subtitulo: "Etiqueta para la bolsa"}
+      - {tipo: "texto", etiqueta: "Ideal para regalar", titulo: "Se viene fin de año", texto: "Regalos de golf con nombre para tu grupo de juego o los clientes de tu empresa. Pedidos por cantidad por DM."}
+      - {tipo: "texto", etiqueta: "¿Sabías que...?", titulo: "Bolsas iguales", texto: "En los torneos, decenas de bolsas del mismo modelo quedan juntas en el bag room. Una etiqueta evita confusiones."}
+
+  - fecha: 2026-11-20
+    post:
+      caption: |
+        Regalos de golf para fin de año: ideas para cada presupuesto 🎁
+
+        🟢 Detalle: marcadores con inicial o etiqueta de bolsa con nombre.
+        🟢 Para entrenar: accesorios de putt para practicar en casa.
+        🟢 Para lucir: exhibidor de pelotas o trofeo personalizado.
+
+        Todo se hace a pedido, en el color que elijas. Pedí con tiempo: escribinos por DM.
+        #regalogolf #navidad #golfistas #golfargentina
+      slides:
+        - {tipo: "info", titulo: "Regalos de golf para fin de año", items: ["Un detalle con nombre", "Algo para entrenar en casa", "Algo para lucir"]}
+        - {tipo: "info", titulo: "Personalizados", items: ["Con nombre, inicial o logo", "En el color que elijas", "Para empresas y grupos de juego"]}
+        - {tipo: "info", titulo: "Pedí con tiempo", items: ["Imprimimos a pedido", "Envíos por Mercado Libre", "Consultas por DM"]}
+        - {tipo: "cta", nombre_corto: "regalar golf esta Navidad"}
+    historias:
+      - {tipo: "texto", etiqueta: "Regalos", titulo: "Amigo invisible golfista", texto: "¿Te tocó un golfista? Tenemos regalos personalizados para todos los presupuestos. Escribinos por DM."}
+      - {tipo: "texto", etiqueta: "Empresas", titulo: "Regalos corporativos", texto: "Hacemos regalos de golf con el logo de tu empresa para clientes y torneos. Pedidos por cantidad."}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Practicá en casa", texto: "10 minutos de putt por día en la alfombra rinden más que una hora por semana en el club."}
+
+  - fecha: 2026-11-21
+    post:
+      producto: soporte-de-alineacion-para-launch-monitor
+      caption: |
+        ¿Tenés un Garmin Approach R10? Que mida bien cada tiro 🎯
+
+        Este soporte lo deja nivelado y apuntando al objetivo: trípode de base ancha con regulación de altura y canal para una varilla de alineación. Lo armás igual en el pasto, la alfombra o el simulador.
+
+        Accesorio compatible (no original de la marca). Lo hacemos en tu color.
+        #launchmonitor #garminr10 #simuladordegolf #entrenamientogolf
+      slides:
+        - {tipo: "portada", foto: "en-uso.jpg", titulo: "Tu R10, bien alineado", subtitulo: "Soporte para launch monitor", etiqueta: "Nuevo"}
+        - {tipo: "hero", titulo: "Nivelado y alineado", subtitulo: "Soporte para launch monitor R10", etiqueta: "Nuevo"}
+        - {tipo: "pasos", titulo: "Cómo se usa", pasos: ["Apoyá el soporte detrás de la bola", "Nivelalo y apuntá con una varilla", "Poné el launch monitor arriba"], tono: "crema"}
+        - {tipo: "colores"}
+        - {tipo: "medidas"}
+        - {tipo: "cta_producto", nombre_corto: "el soporte para tu R10"}
+    historias:
+      - {tipo: "hero", producto: "soporte-de-alineacion-para-launch-monitor", etiqueta: "Nuevo", titulo: "Para tu R10", subtitulo: "Soporte de alineación"}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Alineación = datos buenos", texto: "Un launch monitor mal alineado te marca slices y hooks que no existen. Alinealo siempre con el objetivo."}
+      - {tipo: "texto", etiqueta: "Personalizados", titulo: "¿Otro modelo?", texto: "Si tenés otro launch monitor, diseñamos el soporte a medida. Escribinos por DM."}
+
+  - fecha: 2026-11-22
+    post:
+      caption: |
+        ¿Por qué impreso en 3D? 🖨️
+
+        Porque nos deja hacer lo que una fábrica no puede: accesorios que no existen en el mercado, en el color que quieras y con tu nombre, de a una unidad.
+
+        Cada pieza se imprime a pedido en PLA, un plástico de origen vegetal, firme y liviano.
+        #impresion3d #golf #accesoriosdegolf #golfargentina
+      slides:
+        - {tipo: "info", titulo: "¿Por qué impreso en 3D?", items: ["Diseños que no existen en el mercado", "En el color que elijas", "Con tu nombre o logo"]}
+        - {tipo: "info", titulo: "Cómo lo hacemos", items: ["Diseñamos cada accesorio", "Lo imprimimos capa por capa", "Lo revisamos antes de enviarlo"]}
+        - {tipo: "info", titulo: "El material", items: ["PLA: plástico de origen vegetal", "Firme y liviano", "10 colores disponibles"]}
+        - {tipo: "cta", nombre_corto: "pedir tu accesorio de golf"}
+    historias:
+      - {tipo: "texto", etiqueta: "GolfCraft3D", titulo: "Hecho en Argentina", texto: "Diseñamos e imprimimos cada accesorio acá. Si tenés una idea, la hacemos realidad."}
+      - {tipo: "texto", etiqueta: "Tienda online", titulo: "Todo en un lugar", texto: "Todos nuestros productos con fotos, colores y precios: golfcraft3d.github.io (link en la bio)."}
+      - {tipo: "texto", etiqueta: "Tip de golf", titulo: "Rutina antes de pegar", texto: "Hacé siempre los mismos pasos antes de cada golpe. La rutina baja los nervios y mejora la consistencia."}

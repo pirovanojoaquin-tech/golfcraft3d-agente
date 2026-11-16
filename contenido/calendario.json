@@ -1674,5 +1674,374 @@
     "estado": "publicado",
     "ig_media_id": "18104175005183873",
     "publicado_en": "2026-11-15T20:43:06-03:00"
+  },
+  {
+    "id": "2026-11-16-historia-1",
+    "fecha": "2026-11-16",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "conos-de-distancia-para-putt-x5",
+    "imagenes": [
+      "contenido/media/2026-11-16/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-16-post",
+    "fecha": "2026-11-16",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "conos-de-distancia-para-putt-x5",
+    "imagenes": [
+      "contenido/media/2026-11-16/post-1.jpg",
+      "contenido/media/2026-11-16/post-2.jpg",
+      "contenido/media/2026-11-16/post-3.jpg",
+      "contenido/media/2026-11-16/post-4.jpg",
+      "contenido/media/2026-11-16/post-5.jpg",
+      "contenido/media/2026-11-16/post-6.jpg"
+    ],
+    "caption": "El ejercicio que más mejora tu putt se llama \"la escalera\" 🪜\n\nPonés los 5 conos a 1, 2, 3, 4 y 5 metros del hoyo y vas embocando de a uno. Si fallás, volvés a empezar. Los conos numerados te marcan cada distancia sin medir de nuevo.\n\nDiseño exclusivo GolfCraft3D, con los números en otro color.\n#putting #putt #entrenamientogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-16-historia-2",
+    "fecha": "2026-11-16",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-16/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-16-reel",
+    "fecha": "2026-11-16",
+    "hora": "19:00",
+    "tipo": "REEL",
+    "producto": "conos-de-distancia-para-putt-x5",
+    "imagenes": [
+      "contenido/media/2026-11-16/reel.mp4"
+    ],
+    "caption": "El ejercicio que más mejora tu putt se llama \"la escalera\" 🪜\n\nPonés los 5 conos a 1, 2, 3, 4 y 5 metros del hoyo y vas embocando de a uno. Si fallás, volvés a empezar. Los conos numerados te marcan cada distancia sin medir de nuevo.\n\nDiseño exclusivo GolfCraft3D, con los números en otro color.\n#putting #putt #entrenamientogolf #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-16-historia-3",
+    "fecha": "2026-11-16",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-16/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-17-historia-1",
+    "fecha": "2026-11-17",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-17/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-17-post",
+    "fecha": "2026-11-17",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-17/post-1.jpg",
+      "contenido/media/2026-11-17/post-2.jpg",
+      "contenido/media/2026-11-17/post-3.jpg",
+      "contenido/media/2026-11-17/post-4.jpg",
+      "contenido/media/2026-11-17/post-5.jpg"
+    ],
+    "caption": "3 errores comunes en el putt (y cómo corregirlos) ⛳\n\n1️⃣ Mover la cabeza: mirá el lugar donde estaba la bola hasta escuchar que cae.\n2️⃣ Frenar el palo: el putter tiene que acelerar suave a través de la bola.\n3️⃣ Apretar de más: agarrá el putter como si fuera un tubo de pasta de dientes abierto.\n\nGuardalo para tu próxima práctica 📌\n#putting #putt #tipsdegolf #entrenamientogolf\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-17-historia-2",
+    "fecha": "2026-11-17",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-17/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-17-historia-3",
+    "fecha": "2026-11-17",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-17/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-18-historia-1",
+    "fecha": "2026-11-18",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "porta-pelota-y-tees-para-la-bolsa",
+    "imagenes": [
+      "contenido/media/2026-11-18/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-18-post",
+    "fecha": "2026-11-18",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "porta-pelota-y-tees-para-la-bolsa",
+    "imagenes": [
+      "contenido/media/2026-11-18/post-1.jpg",
+      "contenido/media/2026-11-18/post-2.jpg",
+      "contenido/media/2026-11-18/post-3.jpg",
+      "contenido/media/2026-11-18/post-4.jpg",
+      "contenido/media/2026-11-18/post-5.jpg",
+      "contenido/media/2026-11-18/post-6.jpg"
+    ],
+    "caption": "¿Revolvés toda la bolsa buscando un tee? Se terminó 🏌️\n\nEste porta se cuelga de la bolsa o del carro con un mosquetón y lleva una pelota a presión y 3 tees, siempre a mano. Llegás al tee de salida y ya tenés todo.\n\nDiseño exclusivo GolfCraft3D, en tu color.\n#accesoriosdegolf #bolsadegolf #golfistas #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-18-historia-2",
+    "fecha": "2026-11-18",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-18/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-18-reel",
+    "fecha": "2026-11-18",
+    "hora": "19:00",
+    "tipo": "REEL",
+    "producto": "porta-pelota-y-tees-para-la-bolsa",
+    "imagenes": [
+      "contenido/media/2026-11-18/reel.mp4"
+    ],
+    "caption": "¿Revolvés toda la bolsa buscando un tee? Se terminó 🏌️\n\nEste porta se cuelga de la bolsa o del carro con un mosquetón y lleva una pelota a presión y 3 tees, siempre a mano. Llegás al tee de salida y ya tenés todo.\n\nDiseño exclusivo GolfCraft3D, en tu color.\n#accesoriosdegolf #bolsadegolf #golfistas #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-18-historia-3",
+    "fecha": "2026-11-18",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-18/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-19-historia-1",
+    "fecha": "2026-11-19",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "etiqueta-de-bolsa-con-tu-nombre",
+    "imagenes": [
+      "contenido/media/2026-11-19/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-19-post",
+    "fecha": "2026-11-19",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "etiqueta-de-bolsa-con-tu-nombre",
+    "imagenes": [
+      "contenido/media/2026-11-19/post-1.jpg",
+      "contenido/media/2026-11-19/post-2.jpg",
+      "contenido/media/2026-11-19/post-3.jpg",
+      "contenido/media/2026-11-19/post-4.jpg",
+      "contenido/media/2026-11-19/post-5.jpg",
+      "contenido/media/2026-11-19/post-6.jpg"
+    ],
+    "caption": "Que tu bolsa no se confunda con ninguna otra 🏷️\n\nEtiqueta para la bolsa de golf con una pelota con hoyuelos en relieve y tu nombre en otro color. Tiene ranura para la correa y aguanta sol y lluvia.\n\nUn regalo simple y personal para cualquier golfista.\n#bolsadegolf #regalogolf #personalizado #diseñopropio\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-19-historia-2",
+    "fecha": "2026-11-19",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-19/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-19-historia-3",
+    "fecha": "2026-11-19",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-19/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-20-historia-1",
+    "fecha": "2026-11-20",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-20/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-20-post",
+    "fecha": "2026-11-20",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-20/post-1.jpg",
+      "contenido/media/2026-11-20/post-2.jpg",
+      "contenido/media/2026-11-20/post-3.jpg",
+      "contenido/media/2026-11-20/post-4.jpg"
+    ],
+    "caption": "Regalos de golf para fin de año: ideas para cada presupuesto 🎁\n\n🟢 Detalle: marcadores con inicial o etiqueta de bolsa con nombre.\n🟢 Para entrenar: accesorios de putt para practicar en casa.\n🟢 Para lucir: exhibidor de pelotas o trofeo personalizado.\n\nTodo se hace a pedido, en el color que elijas. Pedí con tiempo: escribinos por DM.\n#regalogolf #navidad #golfistas #golfargentina\n#golf #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-20-historia-2",
+    "fecha": "2026-11-20",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-20/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-20-historia-3",
+    "fecha": "2026-11-20",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-20/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-21-historia-1",
+    "fecha": "2026-11-21",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": "soporte-de-alineacion-para-launch-monitor",
+    "imagenes": [
+      "contenido/media/2026-11-21/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-21-post",
+    "fecha": "2026-11-21",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": "soporte-de-alineacion-para-launch-monitor",
+    "imagenes": [
+      "contenido/media/2026-11-21/post-1.jpg",
+      "contenido/media/2026-11-21/post-2.jpg",
+      "contenido/media/2026-11-21/post-3.jpg",
+      "contenido/media/2026-11-21/post-4.jpg",
+      "contenido/media/2026-11-21/post-5.jpg",
+      "contenido/media/2026-11-21/post-6.jpg"
+    ],
+    "caption": "¿Tenés un Garmin Approach R10? Que mida bien cada tiro 🎯\n\nEste soporte lo deja nivelado y apuntando al objetivo: trípode de base ancha con regulación de altura y canal para una varilla de alineación. Lo armás igual en el pasto, la alfombra o el simulador.\n\nAccesorio compatible (no original de la marca). Lo hacemos en tu color.\n#launchmonitor #garminr10 #simuladordegolf #entrenamientogolf\n#golf #golfargentina #impresion3d #golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-21-historia-2",
+    "fecha": "2026-11-21",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-21/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-21-historia-3",
+    "fecha": "2026-11-21",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-21/historia-3.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-22-historia-1",
+    "fecha": "2026-11-22",
+    "hora": "10:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-22/historia-1.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-22-post",
+    "fecha": "2026-11-22",
+    "hora": "12:30",
+    "tipo": "CAROUSEL",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-22/post-1.jpg",
+      "contenido/media/2026-11-22/post-2.jpg",
+      "contenido/media/2026-11-22/post-3.jpg",
+      "contenido/media/2026-11-22/post-4.jpg"
+    ],
+    "caption": "¿Por qué impreso en 3D? 🖨️\n\nPorque nos deja hacer lo que una fábrica no puede: accesorios que no existen en el mercado, en el color que quieras y con tu nombre, de a una unidad.\n\nCada pieza se imprime a pedido en PLA, un plástico de origen vegetal, firme y liviano.\n#impresion3d #golf #accesoriosdegolf #golfargentina\n#golfcraft3d",
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-22-historia-2",
+    "fecha": "2026-11-22",
+    "hora": "16:00",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-22/historia-2.jpg"
+    ],
+    "estado": "pendiente"
+  },
+  {
+    "id": "2026-11-22-historia-3",
+    "fecha": "2026-11-22",
+    "hora": "20:30",
+    "tipo": "STORY",
+    "producto": null,
+    "imagenes": [
+      "contenido/media/2026-11-22/historia-3.jpg"
+    ],
+    "estado": "pendiente"
   }
 ]
