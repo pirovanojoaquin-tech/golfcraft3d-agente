@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-09",
+  "fecha": "2026-11-16",
   "avisos": [
     {
       "producto": "guia-de-agarre-para-el-palo",
@@ -38,7 +38,7 @@
       "estado_ml": "active",
       "precio": 9900,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -58,7 +58,7 @@
       "estado_ml": "active",
       "precio": 6800,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -68,7 +68,7 @@
       "estado_ml": "active",
       "precio": 12800,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 1,
       "preguntas": 0
     },
     {
@@ -88,7 +88,7 @@
       "estado_ml": "active",
       "precio": 18000,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -128,7 +128,7 @@
       "estado_ml": "active",
       "precio": 55200,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -138,7 +138,7 @@
       "estado_ml": "active",
       "precio": 13200,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -148,7 +148,7 @@
       "estado_ml": "active",
       "precio": 13200,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -158,7 +158,7 @@
       "estado_ml": "active",
       "precio": 9200,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 2,
       "preguntas": 0
     },
     {
@@ -188,7 +188,7 @@
       "estado_ml": "active",
       "precio": 14400,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -217,6 +217,26 @@
       "item_id": "MLA4178264458",
       "estado_ml": "under_review",
       "precio": 11200,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "devolucion-de-bola-para-el-putt",
+      "pack": "x1",
+      "item_id": "MLA2276229777",
+      "estado_ml": "active",
+      "precio": 62000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "entrenador-de-presion-para-el-putt",
+      "pack": "x1",
+      "item_id": "MLA4184363490",
+      "estado_ml": "active",
+      "precio": 16200,
       "vendidos": 0,
       "visitas_7d": 0,
       "preguntas": 0
