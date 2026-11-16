@@ -16,6 +16,8 @@ import os
 import sys
 from datetime import datetime, timezone
 
+import time
+
 import requests
 
 from .calendario import RAIZ
@@ -29,7 +31,14 @@ def _api(metodo, **datos):
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         sys.exit("Falta TELEGRAM_BOT_TOKEN")
-    r = requests.post(f"https://api.telegram.org/bot{token}/{metodo}", json=datos, timeout=60)
+    for intento in range(4):  # la conexión con Telegram a veces se corta o no responde: se reintenta
+        try:
+            r = requests.post(f"https://api.telegram.org/bot{token}/{metodo}", json=datos, timeout=60)
+            break
+        except requests.exceptions.RequestException:
+            if intento == 3:
+                raise
+            time.sleep(10 * (intento + 1))
     respuesta = r.json()
     if not respuesta.get("ok"):
         raise RuntimeError(f"Telegram {metodo}: {respuesta.get('description')}")
