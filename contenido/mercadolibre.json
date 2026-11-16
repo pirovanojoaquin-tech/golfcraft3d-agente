@@ -1065,7 +1065,7 @@
       "status_ml": "active"
     },
     "marcadores-de-bola-con-tu-inicial-x4": {
-      "estado": "propuesto",
+      "estado": "publicado",
       "intentos": 1,
       "desde": 1794416999,
       "codigo": 19,
@@ -1117,7 +1117,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-11",
-      "sha_fotos": "165bb9ea901f9825601a329d86de9ff59744ce31"
+      "sha_fotos": "165bb9ea901f9825601a329d86de9ff59744ce31",
+      "item_id": "MLA2294229737",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2294229737-marcadores-de-bola-con-tu-inicial-x4-golf-pack-x10-negro-_JM",
+      "status_ml": "paused"
     },
     "arreglapiques-con-marcador": {
       "codigo": 20,
