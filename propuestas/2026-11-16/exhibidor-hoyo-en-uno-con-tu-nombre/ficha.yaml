@@ -1,0 +1,40 @@
+nombre: Exhibidor "Hoyo en uno" con tu nombre
+descripcion: Base para exhibir la pelota de tu hoyo en uno, con tu nombre y la fecha
+  en otro color. Para el escritorio o la vitrina; el regalo para el que por fin lo
+  logró.
+inspiracion: Los exhibidores de "hole in one" que venden las tiendas de golf. Diseño
+  propio en 2 colores (AMS).
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: exhibidor-hoyo-en-uno
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/exhibidor-hoyo-en-uno/cuerpo.stl
+  gramos: 58.7
+- archivo: acento.stl
+  ruta: disenos/exhibidor-hoyo-en-uno/acento.stl
+  gramos: 0.7
+  color: blanco
+gramos: 59.4
+tiempo_min: 134
+tiempo: 2 h 14 min
+costo_filamento: 2376
+precio: 7200
+material: PLA
+colores_render:
+- verde
+- negro
+- azul
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: azul
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

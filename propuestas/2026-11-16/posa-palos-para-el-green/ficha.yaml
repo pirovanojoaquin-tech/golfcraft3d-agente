@@ -1,0 +1,40 @@
+nombre: Posa palos para el green
+descripcion: Se clava en el pasto al borde del green y sostiene hasta 3 palos por
+  el grip, para que no se mojen con el rocío ni queden olvidados. El texto se personaliza
+  con tu nombre.
+inspiracion: Los "club caddy" para apoyar los palos en el green. Diseño propio en
+  2 colores (AMS).
+origen: propio
+printables_id: null
+url: null
+autor: GolfCraft3D
+licencia: Diseño propio
+licencia_nombre: Diseño propio de GolfCraft3D (sin restricciones)
+diseno: posa-palos-para-el-green
+piezas:
+- archivo: cuerpo.stl
+  ruta: disenos/posa-palos-para-el-green/cuerpo.stl
+  gramos: 21.5
+- archivo: acento.stl
+  ruta: disenos/posa-palos-para-el-green/acento.stl
+  gramos: 0.2
+  color: blanco
+gramos: 21.7
+tiempo_min: 43
+tiempo: 43 min
+costo_filamento: 866
+precio: 2600
+material: PLA
+colores_render:
+- negro
+- verde
+- rojo
+fotos:
+- archivo: 1.jpg
+  color: negro
+- archivo: 2.jpg
+  color: verde
+- archivo: 3.jpg
+  color: rojo
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.

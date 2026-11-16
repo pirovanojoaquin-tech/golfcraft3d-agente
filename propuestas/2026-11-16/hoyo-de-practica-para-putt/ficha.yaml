@@ -1,0 +1,32 @@
+nombre: Hoyo de práctica para putt
+nombre_original: Mini Golf Training Hole
+descripcion: Just a model for a minigolf hole, four different variants
+origen: printables
+printables_id: '1275819'
+url: https://www.printables.com/model/1275819-mini-golf-training-hole
+autor: Sir_Bambii
+licencia: CC-BY
+licencia_nombre: Creative Commons — Attribution
+piezas:
+- archivo: Golfhole Easy.stl
+  printables_file_id: '5325149'
+  gramos: 39.8
+gramos: 39.8
+tiempo_min: 68
+tiempo: 1 h 08 min
+costo_filamento: 1593
+precio: 4800
+material: PLA
+colores_render:
+- verde
+- negro
+- blanco
+fotos:
+- archivo: 1.jpg
+  color: verde
+- archivo: 2.jpg
+  color: negro
+- archivo: 3.jpg
+  color: blanco
+estimacion: Gramos y tiempo estimados con perfil genérico (0,2 mm, 15 % relleno, 2
+  perímetros). Verificar en Bambu Studio antes de cotizar piezas grandes.
