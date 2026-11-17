@@ -1800,7 +1800,9 @@
     "imagenes": [
       "contenido/media/2026-11-17/historia-3.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "17933152947423005",
+    "publicado_en": "2026-11-17T20:43:13-03:00"
   },
   {
     "id": "2026-11-18-historia-1",
