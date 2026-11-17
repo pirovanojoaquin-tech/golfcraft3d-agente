@@ -1236,7 +1236,14 @@
       "sha_fotos": "99f1204e405b01bd6e07ee88cabb70fdd7c0e558",
       "item_id": "MLA4206050968",
       "link": "http://articulo.mercadolibre.com.ar/MLA-4206050968-porta-guante-de-golf-pack-x3-impreso-3d-negro-_JM",
-      "status_ml": "paused"
+      "status_ml": "paused",
+      "entrada": {
+        "pack": 2,
+        "item_id": "MLA2295598347",
+        "link": "http://articulo.mercadolibre.com.ar/MLA-2295598347-porta-guante-de-golf-pack-x2-impreso-3d-negro-_JM",
+        "precio": 11200,
+        "ganancia": 4892
+      }
     },
     "exhibidor-de-pared-para-12-pelotas": {
       "codigo": 22,
