@@ -1184,7 +1184,7 @@
     },
     "porta-guante-de-golf": {
       "codigo": 21,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 3,
       "categoria": "MLA79269",
       "categoria_nombre": "Golf > Indumentaria > Guantes",
@@ -1233,7 +1233,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-13",
-      "sha_fotos": "99f1204e405b01bd6e07ee88cabb70fdd7c0e558"
+      "sha_fotos": "99f1204e405b01bd6e07ee88cabb70fdd7c0e558",
+      "item_id": "MLA4206050968",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4206050968-porta-guante-de-golf-pack-x3-impreso-3d-negro-_JM",
+      "status_ml": "paused"
     },
     "exhibidor-de-pared-para-12-pelotas": {
       "codigo": 22,
