@@ -1247,7 +1247,7 @@
     },
     "exhibidor-de-pared-para-12-pelotas": {
       "codigo": 22,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 1,
       "categoria": "MLA1345",
       "categoria_nombre": "Golf > Pelotas",
@@ -1296,7 +1296,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-14",
-      "sha_fotos": "20f802039bef1b4aab603c2152e0b6191e9c21dc"
+      "sha_fotos": "20f802039bef1b4aab603c2152e0b6191e9c21dc",
+      "item_id": "MLA2295703847",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-2295703847-exhibidor-de-pared-para-12-pelotas-golf-impreso-3d-verde-_JM",
+      "status_ml": "paused"
     },
     "conos-de-distancia-para-putt-x5": {
       "codigo": 23,
