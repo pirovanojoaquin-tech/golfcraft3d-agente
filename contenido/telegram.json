@@ -1,6 +1,6 @@
 {
   "chat_id": 7710125800,
-  "offset": 242649442,
+  "offset": 242649447,
   "mensajes": [
     {
       "fecha": "2026-10-19T19:32:02+00:00",
@@ -155,6 +155,31 @@
     {
       "fecha": "2026-11-11T23:15:40+00:00",
       "texto": "ML SI 19",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-11-17T00:34:05+00:00",
+      "texto": "ML SI 2E",
+      "procesado": false
+    },
+    {
+      "fecha": "2026-11-17T00:34:54+00:00",
+      "texto": "SI 1,2,3 REEL 1,2",
+      "procesado": false
+    },
+    {
+      "fecha": "2026-11-17T00:35:20+00:00",
+      "texto": "ML SI 20",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-11-17T00:35:24+00:00",
+      "texto": "ML SI 21",
+      "procesado": true
+    },
+    {
+      "fecha": "2026-11-17T00:35:40+00:00",
+      "texto": "Ml SI 22",
       "procesado": true
     }
   ]
