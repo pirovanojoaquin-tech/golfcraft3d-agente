@@ -1131,7 +1131,7 @@
     },
     "arreglapiques-con-marcador": {
       "codigo": 20,
-      "estado": "propuesto",
+      "estado": "publicado",
       "pack": 10,
       "categoria": "MLA1344",
       "categoria_nombre": "Golf > Palos y Sets > Sets Completos",
@@ -1180,7 +1180,10 @@
       "referencia": null,
       "envio_estimado": [],
       "fecha": "2026-11-12",
-      "sha_fotos": "113a019d32f0b528c1531a3a11098ee1a44c9648"
+      "sha_fotos": "113a019d32f0b528c1531a3a11098ee1a44c9648",
+      "item_id": "MLA4206051028",
+      "link": "http://articulo.mercadolibre.com.ar/MLA-4206051028-arreglapiques-golf-con-marcador-de-bola-pack-x10-impreso-3d-negro-_JM",
+      "status_ml": "paused"
     },
     "porta-guante-de-golf": {
       "codigo": 21,
