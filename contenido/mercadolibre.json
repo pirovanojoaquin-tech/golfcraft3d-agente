@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 25,
+  "siguiente": 26,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -1416,6 +1416,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-18",
       "sha_fotos": "5bcc1d7fe24649b63469e2d7b72d9a4cadff1bc0"
+    },
+    "etiqueta-de-bolsa-con-tu-nombre": {
+      "codigo": 25,
+      "estado": "propuesto",
+      "pack": 5,
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 3800,
+          "comision": 3268,
+          "envio": 0,
+          "filamento": 604,
+          "ganancia": -72
+        },
+        {
+          "pack": 2,
+          "precio": 7600,
+          "comision": 3876,
+          "envio": 0,
+          "filamento": 1208,
+          "ganancia": 2516
+        },
+        {
+          "pack": 3,
+          "precio": 10900,
+          "comision": 4404,
+          "envio": 0,
+          "filamento": 1812,
+          "ganancia": 4684
+        },
+        {
+          "pack": 5,
+          "precio": 17100,
+          "comision": 8216,
+          "envio": 0,
+          "filamento": 3020,
+          "ganancia": 5864
+        },
+        {
+          "pack": 10,
+          "precio": 32300,
+          "comision": 11808,
+          "envio": 0,
+          "filamento": 6040,
+          "ganancia": 14452
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-19"
     }
   }
 }
