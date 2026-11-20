@@ -1974,7 +1974,9 @@
     "imagenes": [
       "contenido/media/2026-11-20/historia-2.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18033656264860198",
+    "publicado_en": "2026-11-20T16:13:06-03:00"
   },
   {
     "id": "2026-11-20-historia-3",
