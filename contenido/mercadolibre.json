@@ -1,6 +1,6 @@
 {
   "user_id": 173697484,
-  "siguiente": 26,
+  "siguiente": 27,
   "productos": {
     "guia-de-agarre-para-el-palo": {
       "codigo": 1,
@@ -1469,6 +1469,58 @@
       "envio_estimado": [],
       "fecha": "2026-11-19",
       "sha_fotos": "5ac7b5bf1c319989b4cec91b29e71726b8d2a656"
+    },
+    "soporte-de-alineacion-para-launch-monitor": {
+      "codigo": 26,
+      "estado": "propuesto",
+      "pack": 1,
+      "categoria": "MLA1347",
+      "categoria_nombre": "Golf > Otros",
+      "calculo": [
+        {
+          "pack": 1,
+          "precio": 13200,
+          "comision": 4772,
+          "envio": 0,
+          "filamento": 2168,
+          "ganancia": 6260
+        },
+        {
+          "pack": 2,
+          "precio": 26400,
+          "comision": 10864,
+          "envio": 0,
+          "filamento": 4336,
+          "ganancia": 11200
+        },
+        {
+          "pack": 3,
+          "precio": 37700,
+          "comision": 6032,
+          "envio": 0,
+          "filamento": 6504,
+          "ganancia": 25164
+        },
+        {
+          "pack": 5,
+          "precio": 59400,
+          "comision": 9504,
+          "envio": 0,
+          "filamento": 10840,
+          "ganancia": 39056
+        },
+        {
+          "pack": 10,
+          "precio": 112200,
+          "comision": 17952,
+          "envio": 0,
+          "filamento": 21680,
+          "ganancia": 72568
+        }
+      ],
+      "referencia": null,
+      "envio_estimado": [],
+      "fecha": "2026-11-21"
     }
   }
 }
