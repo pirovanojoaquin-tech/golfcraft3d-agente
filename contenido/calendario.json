@@ -2000,7 +2000,9 @@
     "imagenes": [
       "contenido/media/2026-11-21/historia-1.jpg"
     ],
-    "estado": "pendiente"
+    "estado": "publicado",
+    "ig_media_id": "18455785210121322",
+    "publicado_en": "2026-11-21T10:13:07-03:00"
   },
   {
     "id": "2026-11-21-post",
