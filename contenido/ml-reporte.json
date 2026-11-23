@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-16",
+  "fecha": "2026-11-23",
   "avisos": [
     {
       "producto": "guia-de-agarre-para-el-palo",
@@ -38,7 +38,7 @@
       "estado_ml": "active",
       "precio": 9900,
       "vendidos": 0,
-      "visitas_7d": 0,
+      "visitas_7d": 1,
       "preguntas": 0
     },
     {
@@ -68,7 +68,7 @@
       "estado_ml": "active",
       "precio": 12800,
       "vendidos": 0,
-      "visitas_7d": 1,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -158,7 +158,7 @@
       "estado_ml": "active",
       "precio": 9200,
       "vendidos": 0,
-      "visitas_7d": 2,
+      "visitas_7d": 0,
       "preguntas": 0
     },
     {
@@ -257,6 +257,56 @@
       "item_id": "MLA2294229755",
       "estado_ml": "active",
       "precio": 7200,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "arreglapiques-con-marcador",
+      "pack": "x10",
+      "item_id": "MLA4206051028",
+      "estado_ml": "active",
+      "precio": 15300,
+      "vendidos": 0,
+      "visitas_7d": 1,
+      "preguntas": 0
+    },
+    {
+      "producto": "arreglapiques-con-marcador",
+      "pack": "x5",
+      "item_id": "MLA2295703885",
+      "estado_ml": "active",
+      "precio": 8100,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "porta-guante-de-golf",
+      "pack": "x3",
+      "item_id": "MLA4206050968",
+      "estado_ml": "active",
+      "precio": 16000,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "porta-guante-de-golf",
+      "pack": "x2",
+      "item_id": "MLA2295598347",
+      "estado_ml": "active",
+      "precio": 11200,
+      "vendidos": 0,
+      "visitas_7d": 0,
+      "preguntas": 0
+    },
+    {
+      "producto": "exhibidor-de-pared-para-12-pelotas",
+      "pack": "x1",
+      "item_id": "MLA2295703847",
+      "estado_ml": "active",
+      "precio": 36600,
       "vendidos": 0,
       "visitas_7d": 0,
       "preguntas": 0
